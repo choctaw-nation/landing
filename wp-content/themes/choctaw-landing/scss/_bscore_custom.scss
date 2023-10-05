@@ -298,6 +298,41 @@ hr {
   }
 }
 
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .daterangepicker {
+    background-color: #2d2d2d;
+    color: white;
+    border: 1px solid rgba(255,255,255,.2);
+  }
+  .daterangepicker .calendar-table .next span, .daterangepicker .calendar-table .prev span {
+    color: white;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+  }
+  .daterangepicker .calendar-table .next:hover span, .daterangepicker .calendar-table .prev:hover span {
+    color: black;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+  }
+  .daterangepicker .calendar-table {
+    background-color: transparent;
+    border: 0px;
+  }
+  .daterangepicker td.off, .daterangepicker td.off.in-range, .daterangepicker td.off.start-date, .daterangepicker td.off.end-date {
+    background: rgba(255,255,255,.2);
+    color: black;
+  }
+  .daterangepicker td.in-range {
+    background: #69813b;
+    color: white;
+  }
+  .daterangepicker td.active, .daterangepicker td.active:hover {
+    background: #384919;
+    color: white;
+  }
+}
+
 #title-bar {
   @include media-breakpoint-up(lg) {
     margin-top: -90px;
