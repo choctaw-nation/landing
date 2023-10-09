@@ -1,0 +1,18 @@
+/** Eat & Drink Page **/
+.menu {
+	&-link {
+		color: rgb(33, 37, 41);
+		i {
+			margin-right: 0.5rem;
+		}
+	}
+}
+
+ul.dining-hours {
+	padding-left: 0;
+	margin-bottom: 1.25rem;
+	margin-top: 1rem;
+	li {
+		list-style: none;
+	}
+}

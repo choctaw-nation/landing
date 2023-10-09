@@ -1,0 +1,49 @@
+@use '../abstracts/mixins' as m;
+
+footer {
+	background-image: linear-gradient(
+			to bottom,
+			rgba(1, 1, 1, 0.2),
+			rgba(1, 1, 1, 0.2)
+		),
+		url("/wp-content/uploads/2023/08/footer-bg.jpg");
+	background-size: cover;
+	background-position: center;
+	color: white;
+	h2 {
+		padding-bottom: 1rem;
+	}
+	p,
+	ul,
+	ol,
+	a,
+	li {
+		font-family: "gill-sans-nova", sans-serif;
+		font-size: 1rem;
+		font-weight: 400;
+		letter-spacing: 0.1rem;
+	}
+	a {
+		color: white;
+		text-decoration: none;
+		text-transform: none;
+	}
+	ul,
+	ol {
+		list-style: none;
+		padding-left: 0;
+		li {
+			margin-bottom: 0.5rem;
+		}
+	}
+	.social-icons a {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+	.footer-info {
+		background: #231f20;
+		@include m.media-breakpoint-down(lg) {
+			text-align: center;
+		}
+	}
+}

@@ -1,0 +1,32 @@
+#weather-widget {
+	color: white;
+	padding: 1rem;
+	font-size: 1.15rem;
+
+	.row {
+		background: url("/wp-content/uploads/2023/08/brown-basket-bg.jpg");
+		background-size: cover;
+	}
+
+	.day {
+		font-weight: 700;
+		font-size: 1rem;
+	}
+
+	h2,
+	.h2 {
+		color: white;
+		font-size: 5rem;
+		i {
+			color: yellow;
+		}
+	}
+	p {
+		font-size: 1rem;
+	}
+
+	small {
+		vertical-align: top;
+		padding-left: 0.25rem;
+	}
+}

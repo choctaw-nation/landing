@@ -34,6 +34,7 @@ auth.json
 /.vscode/*
 .wpe-*
 local-xdebuginfo.php
+/_wpeprivate
 
 
 # WP-Content

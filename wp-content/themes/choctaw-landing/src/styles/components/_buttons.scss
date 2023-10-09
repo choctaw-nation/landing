@@ -1,0 +1,102 @@
+%btn {
+	border: 1px solid transparent;
+	border-radius: 0;
+	color: black;
+	transition: 0.3s;
+	text-decoration: none;
+	
+	&:hover {
+		color: white;
+	}
+}
+.btn {
+	&-reserve {
+		height: 43px;
+		font-size: 1.14rem;
+		line-height: 1.25;
+		border: 2px solid white;
+	}
+	&-white {
+		@extend %btn;
+		background: white;
+		border-color: white;
+
+	}
+	&-reserve {
+		@extend %btn;
+		color: var(--color-secondary);
+		background: white;
+		border-color: white;
+
+	}
+	&-default {
+		@extend %btn;
+		color: var(--color-primary);
+		border: 2px solid var(--color-primary);
+		padding: 0.5rem 1rem;
+		font-weight: 500;
+		line-height: 3;
+
+		&:hover {
+			background: var(--color-primary);
+			color: white;
+			border: 2px solid var(--color-primary);
+		}
+	}
+
+	&-secondary {
+		@extend %btn;
+		color: white;
+		border: 2px solid white;
+		padding: 0.5rem 1rem;
+		font-weight: 500;
+		&:hover {
+			background: white;
+			color: var(--color-primary);
+		}
+	}
+	&-mega-menu {
+		@extend %btn;
+		background: var(--color-primary);
+		color: white;
+		border: 2px solid var(--color-primary);
+		width: 100%;
+		font-weight: 500;
+		font-size: 1rem;
+		text-transform: uppercase;
+		&:hover {
+			background: white;
+			color: var(--color-primary);
+		}
+	}
+	&-diamond {
+		@extend %btn;
+		transform: rotateZ(45deg);
+		i {
+			color: white;
+			transform: rotateZ(-45deg);
+			transition: 0.3s;
+		}
+
+		&:hover {
+			background: white;
+			i {
+				color: black;
+			}
+		}
+		
+		&-white {
+			@extend .btn-diamond;
+			background: white;
+			i {
+				color: var(--color-primary);
+			}
+			&:hover {
+				background: var(--color-primary);
+				i {
+					color: white;
+				}
+			}
+		}
+	}
+}
