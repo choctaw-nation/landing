@@ -11258,17 +11258,15 @@ hr {
 .navbar .navbar-nav .nav-item {
   text-transform: none;
 }
-.navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 {
-  display: flex;
+.navbar .navbar-nav .nav-item .dropdown-menu.depth_0.show, .navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 {
   flex-direction: row;
-  margin-top: 42px;
   border-radius: 0;
   border: none;
   border-top: 4px solid #69813b;
   top: auto;
   padding: 1rem 2rem;
 }
-.navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 ul, .navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 li, .navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 a {
+.navbar .navbar-nav .nav-item .dropdown-menu.depth_0.show ul, .navbar .navbar-nav .nav-item .dropdown-menu.depth_0.show li, .navbar .navbar-nav .nav-item .dropdown-menu.depth_0.show a, .navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 ul, .navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 li, .navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 a {
   position: relative;
   border: none;
   border-radius: 0;
@@ -11276,29 +11274,51 @@ hr {
   font-family: "gill-sans-nova", sans-serif;
   padding: 0 1rem 0 0;
 }
-.navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 > li > a {
+.navbar .navbar-nav .nav-item .dropdown-menu.depth_0.show > li > a, .navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 > li > a {
   font-weight: 700;
   text-transform: uppercase;
   font-family: "trajan-sans-pro", sans-serif;
   padding: 1rem 0;
 }
-.navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 li:last-child {
+.navbar .navbar-nav .nav-item .dropdown-menu.depth_0.show li:last-child, .navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 li:last-child {
   padding: 0;
 }
-.navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 .dropdown-menu.depth_1 {
+.navbar .navbar-nav .nav-item .dropdown-menu.depth_0.show .dropdown-menu.depth_1, .navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 .dropdown-menu.depth_1 {
   margin-bottom: 1rem;
 }
-.navbar .navbar-nav .nav-item:hover li:not(:nth-last-child(2)):not(:last-child) .dropdown-menu.depth_1 li {
-  border-right: 1px solid black;
+.navbar .navbar-nav .nav-item .dropdown-menu.depth_0.show {
+  display: flex;
+  flex-direction: column;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu.depth_0.show > li > a {
+  padding: 0.5rem 0;
+}
+.navbar .navbar-nav .nav-item .dropdown-menu.depth_0.show ul, .navbar .navbar-nav .nav-item .dropdown-menu.depth_0.show li {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+}
+@media (min-width: 1200px) {
+  .navbar .navbar-nav .nav-item:hover > .dropdown-menu.depth_0 {
+    margin-top: 42px;
+    display: flex;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar .navbar-nav .nav-item:hover li:not(:nth-last-child(2)):not(:last-child) .dropdown-menu.depth_1 li {
+    border-right: 1px solid black;
+  }
 }
 .navbar .navbar-nav .nav-item .mega-menu-image {
   aspect-ratio: 1;
   object-fit: cover;
 }
-.navbar .navbar-nav > .nav-item {
-  margin-top: 2.5rem;
-  padding-bottom: 2.5rem;
-  text-transform: uppercase;
+@media (min-width: 992px) {
+  .navbar .navbar-nav > .nav-item {
+    margin-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    text-transform: uppercase;
+  }
 }
 .dropdown-toggle::after {
   display: none;
@@ -11445,12 +11465,44 @@ hr {
 #booking-bar .select select, #booking-bar .select::after {
   grid-area: select;
 }
+.daterangepicker {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(100px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.daterangepicker .calendar-table {
+  background-color: transparent;
+  border: 0px;
+}
+.daterangepicker .drp-buttons .btn {
+  padding: 0.25rem 1rem;
+  line-height: 1rem;
+  border: 2px solid #69813b;
+  background: white;
+  border-radius: 0;
+  color: #69813b;
+}
+.daterangepicker .drp-buttons .btn:hover {
+  background: #69813b;
+  color: white;
+}
+.daterangepicker td.in-range {
+  background: #69813b;
+  color: white;
+}
+.daterangepicker td.active, .daterangepicker td.active:hover {
+  background: #384919;
+  color: white;
+}
+.daterangepicker td.available:hover, .daterangepicker th.available:hover {
+  background-color: white;
+  color: #69813b;
+}
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   .daterangepicker {
-    background-color: #2d2d2d;
+    background-color: rgba(55, 55, 55, 0.9);
     color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
   }
   .daterangepicker .calendar-table .next span, .daterangepicker .calendar-table .prev span {
     color: white;
@@ -11462,20 +11514,16 @@ hr {
     border: solid black;
     border-width: 0 2px 2px 0;
   }
-  .daterangepicker .calendar-table {
-    background-color: transparent;
-    border: 0px;
-  }
   .daterangepicker td.off, .daterangepicker td.off.in-range, .daterangepicker td.off.start-date, .daterangepicker td.off.end-date {
     background: rgba(255, 255, 255, 0.2);
     color: black;
   }
-  .daterangepicker td.in-range {
+  .daterangepicker .drp-buttons .btn {
     background: #69813b;
     color: white;
   }
-  .daterangepicker td.active, .daterangepicker td.active:hover {
-    background: #384919;
+  .daterangepicker .drp-buttons .btn:hover {
+    background: #2d2d2d;
     color: white;
   }
 }
