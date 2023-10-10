@@ -1,23 +1,21 @@
-@use './abstracts/mixins' as m;
-@use './base/base';
-@use './base/typography';
+@use "./abstracts/mixins" as m;
+@use "./base/base";
+@use "./base/typography";
 
-@use './components/navbar';
-@use './components/booking-bar';
-@use './components/title-bar';
-@use './components/buttons';
-@use './components/footer';
+@use "./components/navbar";
+@use "./components/booking-bar";
+@use "./components/title-bar";
+@use "./components/buttons";
+@use "./components/footer";
 
-@use './pages/eat-drink';
-@use './pages/things-to-do';
-@use './pages/entertainment';
-
-
+@use "./pages/eat-drink";
+@use "./pages/things-to-do";
+@use "./pages/entertainment";
 
 .blue-topo-bg {
 	background: url("/wp-content/uploads/2023/08/footer-bg.jpg");
 	color: white;
-	
+
 	h2 {
 		color: white;
 		margin-top: 1rem;
@@ -43,8 +41,6 @@
 	z-index: -1;
 }
 
-
-
 .vertical-line {
 	border-right: 1.5px solid #414042;
 	height: calc(100% - 152px);
@@ -54,7 +50,7 @@
 	&-white {
 		border-right: 1.5px solid white;
 	}
-	
+
 	&-rooms {
 		@extend .vertical-line;
 		height: calc(100% - 136px);
@@ -91,4 +87,3 @@
 		font-size: 1.25rem;
 	}
 }
-

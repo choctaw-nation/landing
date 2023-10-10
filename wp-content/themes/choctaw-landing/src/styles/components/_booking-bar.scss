@@ -1,15 +1,18 @@
-@use '../abstracts/mixins' as m;
+@use "../abstracts/mixins" as m;
+@use "./daterangepicker";
 
 #booking-bar {
+	background: url("/wp-content/uploads/2023/08/brown-basket-bg.jpg");
+	color: white;
+
 	@include m.media-breakpoint-up(lg) {
 		margin-top: -90px;
 	}
+
 	@include m.media-breakpoint-down(lg) {
 		max-width: none;
 	}
-	background: url("/wp-content/uploads/2023/08/brown-basket-bg.jpg");
-	color: white;
-	
+
 	label {
 		padding-left: 1rem;
 	}
@@ -26,7 +29,7 @@
 	}
 
 	label {
-		font-family: "gill-sans-nova", sans-serif;
+		font-family: var(--font-body);
 	}
 
 	input[type="text"] {
@@ -39,11 +42,12 @@
 		font-size: 1.15rem;
 		line-height: 1.25;
 		z-index: 1;
+		cursor: pointer;
+
 		&:focus {
 			background-color: transparent;
 			color: white;
 		}
-		cursor: pointer;
 	}
 
 	select {
@@ -72,56 +76,13 @@
 		position: relative;
 		padding: 0;
 		height: 43px;
+		border: 2px solid white;
+		border-radius: 0;
+		cursor: pointer;
 
 		select,
 		&::after {
 			grid-area: select;
 		}
-
-		border: 2px solid white;
-		border-radius: 0;
-		cursor: pointer;
-	}
-}
-
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-	.daterangepicker {
-		background-color: #2d2d2d;
-		color: white;
-		border: 1px solid rgba(255, 255, 255, 0.2);
-	}
-	.daterangepicker .calendar-table .next span,
-	.daterangepicker .calendar-table .prev span {
-		color: white;
-		border: solid white;
-		border-width: 0 2px 2px 0;
-	}
-	.daterangepicker .calendar-table .next:hover span,
-	.daterangepicker .calendar-table .prev:hover span {
-		color: black;
-		border: solid black;
-		border-width: 0 2px 2px 0;
-	}
-	.daterangepicker .calendar-table {
-		background-color: transparent;
-		border: 0px;
-	}
-	.daterangepicker td.off,
-	.daterangepicker td.off.in-range,
-	.daterangepicker td.off.start-date,
-	.daterangepicker td.off.end-date {
-		background: rgba(255, 255, 255, 0.2);
-		color: black;
-	}
-	.daterangepicker td.in-range {
-		background: #69813b;
-		color: white;
-	}
-	.daterangepicker td.active,
-	.daterangepicker td.active:hover {
-		background: #384919;
-		color: white;
 	}
 }

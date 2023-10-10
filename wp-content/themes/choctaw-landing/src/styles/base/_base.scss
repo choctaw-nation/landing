@@ -1,12 +1,12 @@
-@use '../abstracts/variables' as v;
+@use "../abstracts/variables" as v;
 
 :root {
 	--color-primary: #{v.$color-primary};
 	--color-primary--dark: #{v.$color-primary};
-	--color-secondary:#{v.$color-secondary};
-	
-	--font-body:#{v.$font-body};
-	--font-headings:#{v.$font-headings};
+	--color-secondary: #{v.$color-secondary};
+
+	--font-body: #{v.$font-body};
+	--font-headings: #{v.$font-headings};
 }
 
 hr {
