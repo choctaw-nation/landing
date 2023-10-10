@@ -8,8 +8,6 @@
  */
 
 get_header();
-
-
 ?>
 
 <div id="header-img" class="container-fluid gx-0">

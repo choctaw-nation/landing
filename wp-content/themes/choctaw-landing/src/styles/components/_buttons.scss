@@ -8,6 +8,11 @@
 	&:hover {
 		color: white;
 	}
+	&:focus-visible {
+		outline: var(--color-primary) 2px solid;
+		outline-offset: 2px;
+		border: 2px solid white;
+	}
 }
 
 .btn {

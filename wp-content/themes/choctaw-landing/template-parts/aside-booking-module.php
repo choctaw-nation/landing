@@ -6,8 +6,9 @@
  * @since 0.2
  */
 
+cno_enqueue_date_range_picker();
 ?>
-<aside id="booking-bar" class="container">
+<form id="booking-bar" class="container">
 	<div class="row py-5 px-3">
 		<div class="col-12 col-xl-4 d-flex flex-column align-items-center justify-content-end pb-3">
 			<h2 class="fw-bold text-uppercase">Stay With Us</h2>
@@ -23,18 +24,22 @@
 			<label for="numGuests">Number of Guests</label>
 			<div class="d-block position-relative">
 				<div class="select">
-					<select id="numGuests" aria-label="Default select example">
-						<option selected>1 Guest(s)</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
+					<select id="numGuests" aria-label="Number of guests">
+						<option selected># of Guest(s)</option>
+						<?php
+						$guests = 5;
+						for ( $i = 1; $i <= $guests; $i++ ) {
+							echo "<option value='{$i}'>{$i}</option>";
+						}
+						?>
 					</select>
 				</div>
 				<i class="fas fa-chevron-right form-arrow"></i>
 			</div>
 		</div>
 		<div class="col-12 col-xl-3 d-flex flex-column align-items-start justify-content-end pb-3">
-			<a href='#' id="reserveBtn" type="button" class="btn btn-reserve">Reserve Now</a>
+			<input type='submit' value='Reserve Now' id="reserveBtn" class="btn btn-reserve" />
 		</div>
 	</div>
-</aside>
+</form>
+<?php get_template_part( 'template-parts/alert', 'bootstrap-toast' ); ?>

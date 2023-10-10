@@ -3,7 +3,7 @@
 @use "./base/typography";
 
 @use "./components/navbar";
-@use "./components/booking-bar";
+// @use "./components/booking-bar"; // Enqueued independently
 @use "./components/title-bar";
 @use "./components/buttons";
 @use "./components/footer";

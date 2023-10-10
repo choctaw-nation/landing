@@ -70,47 +70,58 @@ function cno_enqueue_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-	cno_enqueue_date_range_picker();
+	cno_register_daterangepicker();
 }
 
 add_action( 'wp_enqueue_scripts', 'cno_enqueue_scripts' );
 
-/** Adds Date Range Picker Assets to the head of the page */
-function cno_enqueue_date_range_picker() {
-	wp_enqueue_script(
+/** Registers Date-Range-Picker Scripts & Styles to be called at a later time */
+function cno_register_daterangepicker() {
+	wp_register_script(
 		'moment',
 		'https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js',
-		array( 'jquery' ),
+		array(),
 		'2.18.1',
-		array(
-			'strategy' => 'async',
-		)
+		array( 'strategy' => 'async' )
 	);
 
-	wp_enqueue_script(
+	wp_register_script(
 		'date-range-picker',
 		'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js',
-		array( 'moment' ),
+		array( 'moment', 'jquery', 'bootscore' ),
 		null,
-		array(
-			'strategy' => 'defer',
-		)
+		array( 'strategy' => 'defer' )
 	);
 
-	wp_enqueue_style(
+	wp_register_style(
 		'date-range-picker',
 		'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css',
-		array( 'main' ),
+		array( 'bootscore' ),
 		null
 	);
 
-	wp_enqueue_script(
+	$cno_date_range_picker = require_once get_stylesheet_directory() . '/dist/vendors/date-range-picker.asset.php';
+	wp_register_script(
 		'cno-date-range-picker',
 		get_stylesheet_directory_uri() . '/dist/vendors/date-range-picker.js',
 		array( 'date-range-picker' ),
-		null,
-		array(
-			'strategy' => 'defer',
-		)
+		$cno_date_range_picker['version'],
+		array( 'strategy' => 'defer' )
 	);
+	wp_register_style(
+		'cno-date-range-picker',
+		get_stylesheet_directory_uri() . '/dist/vendors/date-range-picker.css',
+		array( 'date-range-picker' ),
+		$cno_date_range_picker['version'],
+	);
+}
+
+/** Adds Date Range Picker Assets to the head of the page */
+function cno_enqueue_date_range_picker() {
+	$daterangepicker_scripts = array( 'date-range-picker', 'moment', 'cno-date-range-picker' );
+	foreach ( $daterangepicker_scripts as $script ) {
+		wp_enqueue_script( $script );
+	}
+	wp_enqueue_style( 'date-range-picker' );
+	wp_enqueue_style( 'cno-date-range-picker' );
 }
