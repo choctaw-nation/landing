@@ -10,13 +10,13 @@
 get_header();
 ?>
 
-<div id="header-img" class="container-fluid gx-0">
+<header id="header-img" class="container-fluid gx-0">
 	<img src="/wp-content/uploads/2023/07/Homepage-Header.jpg" alt="Homepage Header" class="w-100" />
-</div>
+</header>
 
 <?php get_template_part( 'template-parts/aside', 'booking-module' ); ?>
 
-<div id="luxury" class="container py-5">
+<section id="luxury" class="container py-5">
 	<div class="row align-items-center pt-2 pb-5">
 		<div class="col-12 col-lg-5">
 			<img class="w-100 my-5" src="/wp-content/uploads/2023/08/luxury-has-landed-homepage.jpg" alt="Luxury Has Landed" />
@@ -40,10 +40,10 @@ get_header();
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
-<div id="adventure" class="container-fluid py-5"
-	 style="background: url('/wp-content/uploads/2023/08/adventure-home-bg.jpg'); background-position:bottom; background-repeat: no-repeat; background-size: cover;">
+<section id="adventure" class="container-fluid py-5"
+		 style="background: url('/wp-content/uploads/2023/08/adventure-home-bg.jpg'); background-position:bottom; background-repeat: no-repeat; background-size: cover;">
 	<div class="container pt-5">
 		<div class="row py-5">
 			<div class="col-12 col-xl-7">
@@ -68,9 +68,9 @@ get_header();
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
-<div id="winner" class="container offset-topo-bg py-5">
+<section id="winner" class="container offset-topo-bg py-5">
 	<div class="row align-items-center pt-2 pb-5">
 		<div class="col-12 col-lg-5 order-1 order-lg-2">
 			<img class="w-100 my-5" src="/wp-content/uploads/2023/08/youre-a-winner-homepage.jpg" alt="You're a Winner" />
@@ -93,9 +93,9 @@ get_header();
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
-<div id="meet" class="container py-5">
+<section id="meet" class="container py-5">
 	<div class="row align-items-center pt-2 pb-5">
 		<div class="col-12 col-lg-5">
 			<img class="w-100 my-5" src="/wp-content/uploads/2023/08/meet-and-gather-homepage.jpg" alt="Meet & Gather" />
@@ -119,7 +119,7 @@ get_header();
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 
 

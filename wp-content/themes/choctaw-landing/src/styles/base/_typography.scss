@@ -1,3 +1,5 @@
+@use "./typography/links";
+
 %base_font_styles {
 	font-family: var(--font-body);
 	font-weight: 400;
@@ -7,23 +9,12 @@
 
 body {
 	@extend %base_font_styles;
-	
 }
 
 p {
 	@extend %base_font_styles;
 	font-size: 1.75rem;
 	letter-spacing: 0.1rem;
-}
-
-a {
-	text-decoration: none;
-	color: var(--color-primary);
-	transition: 0.3s;
-
-	&:hover {
-		color: var(--color-primary--dark);
-	}
 }
 
 h1,

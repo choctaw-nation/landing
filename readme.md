@@ -7,6 +7,7 @@ A new project, started by Blake & being handed-off to KJ.
 ## v0.2
 
 -   bug fixes and improvements (see [Github Issue #1](https://github.com/choctaw-nation/landing/issues/1))
+-   Init Bootstrap Toasts
 -   Init Component Section Class
 -   init Composre & NPM
 -   Cleanup functions.php
