@@ -70,6 +70,7 @@ function cno_enqueue_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+	cno_enqueue_date_range_picker();
 }
 
 add_action( 'wp_enqueue_scripts', 'cno_enqueue_scripts' );
@@ -79,17 +80,21 @@ function cno_enqueue_date_range_picker() {
 	wp_enqueue_script(
 		'moment',
 		'https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js',
-		array(),
+		array( 'jquery' ),
 		'2.18.1',
-		array( 'strategy' => 'async' )
+		array(
+			'strategy' => 'async',
+		)
 	);
 
 	wp_enqueue_script(
 		'date-range-picker',
 		'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js',
-		array( 'moment', 'jquery' ),
+		array( 'moment' ),
 		null,
-		array( 'strategy' => 'defer' )
+		array(
+			'strategy' => 'defer',
+		)
 	);
 
 	wp_enqueue_style(
@@ -97,5 +102,15 @@ function cno_enqueue_date_range_picker() {
 		'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css',
 		array( 'main' ),
 		null
+	);
+
+	wp_enqueue_script(
+		'cno-date-range-picker',
+		get_stylesheet_directory_uri() . '/dist/vendors/date-range-picker.js',
+		array( 'date-range-picker' ),
+		null,
+		array(
+			'strategy' => 'defer',
+		)
 	);
 }
