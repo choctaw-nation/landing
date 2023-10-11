@@ -1,0 +1,94 @@
+@use "../../abstracts/mixins" as m;
+
+#header-img {
+	position: relative;
+}
+
+.hero-headline {
+	color: white;
+	text-transform: uppercase;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	z-index: 3;
+	font-weight: 400;
+
+	@include m.media-breakpoint-up(sm) {
+		text-align: center;
+	}
+
+	&__line-1 {
+		font-size: clamp(16px, 4vw, 130px);
+		font-family: var(--font-body);
+		margin-inline-start: 8px;
+		@include m.media-breakpoint-up(sm) {
+			margin-inline-start: unset;
+		}
+	}
+
+	&__line-2 {
+		font-size: clamp(32px, 12vw, 183px);
+		font-family: var(--font-headings);
+	}
+}
+
+.hero-headline {
+	--vertical-center: 35%;
+	--horizontal-center: 30%;
+	--offset: 10%;
+
+	--right: var(--offset);
+	--bottom: var(--offset);
+	--left: var(--offset);
+	--top: var(--offset);
+
+	&.bottom-right {
+		text-align: start;
+		bottom: var(--bottom);
+		right: var(--right);
+
+		@include m.media-breakpoint-only(lg) {
+			--bottom: 15%;
+		}
+	}
+
+	&.bottom-left {
+		text-align: end;
+		bottom: var(--bottom);
+		left: var(--left);
+
+		@include m.media-breakpoint-only(lg) {
+			--bottom: 15%;
+		}
+	}
+
+	&.top-right {
+		text-align: start;
+		right: var(--right);
+		top: var(--top);
+	}
+
+	&.top-left {
+		text-align: end;
+		left: var(--left);
+		top: var(--top);
+	}
+
+	&.center-left {
+		text-align: end;
+		bottom: var(--vertical-center);
+		left: var(--left);
+	}
+
+	&.center-right {
+		text-align: start;
+		bottom: var(--vertical-center);
+		right: var(--right);
+	}
+
+	&.center {
+		text-align: center;
+		bottom: var(--vertical-center);
+		left: var(--horizontal-center);
+	}
+}

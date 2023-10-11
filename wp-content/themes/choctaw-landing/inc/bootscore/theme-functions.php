@@ -24,7 +24,7 @@ add_action( 'after_setup_theme', 'register_navwalker' );
 if ( ! function_exists( 'register_comment_list' ) ) :
 	function register_comment_list() {
 		// Register Comment List
-		require_once get_template_directory() . '/inc/comment-list.php';
+		require_once get_template_directory() . '/inc/bootscore/comment-list.php';
 	}
 endif;
 add_action( 'after_setup_theme', 'register_comment_list' );
@@ -300,7 +300,7 @@ require get_template_directory() . '/inc/bootscore/template-functions.php';
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+	require get_template_directory() . '/inc/bootscore/jetpack.php';
 }
 
 

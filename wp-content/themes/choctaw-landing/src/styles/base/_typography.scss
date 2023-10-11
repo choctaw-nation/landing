@@ -1,4 +1,5 @@
 @use "./typography/links";
+@use "./typography/hero-headline";
 
 %base_font_styles {
 	font-family: var(--font-body);

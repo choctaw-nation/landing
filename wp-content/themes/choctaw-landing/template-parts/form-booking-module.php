@@ -8,7 +8,7 @@
 
 cno_enqueue_date_range_picker();
 ?>
-<form id="booking-bar" class="container">
+<form id="booking-bar" class="container position-relative">
 	<div class="row py-5 px-3">
 		<div class="col-12 col-xl-4 d-flex flex-column align-items-center justify-content-end pb-3">
 			<h2 class="fw-bold text-uppercase">Stay With Us</h2>

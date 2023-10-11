@@ -6,13 +6,9 @@
  */
 
 get_header();
-?>
-
-<div id="header-img" class="container-fluid gx-0">
-	<img src="/wp-content/uploads/2023/09/stay-header.jpg" alt="Stay Header" class="w-100" />
-</div>
-
-<?php get_template_part( 'template-parts/aside', 'booking-module' ); ?>
+$hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
+$hero->the_hero();
+get_template_part( 'template-parts/form', 'booking-module' ); ?>
 
 <div id="luxury" class="container my-5">
 	<div class="row justify-content-center pt-2 pb-5">
@@ -48,7 +44,7 @@ get_header();
 						<div class="col-12 col-md-9">
 							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
 							<p class="py-2 d-none d-md-block"><img src="/wp-content/uploads/2023/08/double-arrow.svg" class="arrow position-absolute" /><a href="#" download
-									class="arrow-link">Make Reservations</a></p>
+								   class="arrow-link">Make Reservations</a></p>
 							<p class="py-2 d-block d-md-none"><a href="#" download class="btn-default">Make Reservations</a></p>
 						</div>
 					</div>
@@ -73,7 +69,7 @@ get_header();
 						<div class="col-12 col-md-9">
 							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
 							<p class="py-2 d-none d-md-block"><img src="/wp-content/uploads/2023/08/double-arrow.svg" class="arrow position-absolute" /><a href="#" download
-									class="arrow-link">Make Reservations</a></p>
+								   class="arrow-link">Make Reservations</a></p>
 							<p class="py-2 d-block d-md-none"><a href="#" download class="btn-default">Make Reservations</a></p>
 						</div>
 					</div>
@@ -99,7 +95,7 @@ get_header();
 						<div class="col-12 col-md-9">
 							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
 							<p class="py-2 d-none d-md-block"><img src="/wp-content/uploads/2023/08/double-arrow.svg" class="arrow position-absolute" /><a href="#" download
-									class="arrow-link">Make Reservations</a></p>
+								   class="arrow-link">Make Reservations</a></p>
 							<p class="py-2 d-block d-md-none"><a href="#" download class="btn-default">Make Reservations</a></p>
 						</div>
 					</div>
@@ -125,7 +121,7 @@ get_header();
 						<div class="col-12 col-md-9">
 							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
 							<p class="py-2 d-none d-md-block"><img src="/wp-content/uploads/2023/08/double-arrow.svg" class="arrow position-absolute" /><a href="#" download
-									class="arrow-link">Make Reservations</a></p>
+								   class="arrow-link">Make Reservations</a></p>
 							<p class="py-2 d-block d-md-none"><a href="#" download class="btn-default">Make Reservations</a></p>
 						</div>
 					</div>
@@ -137,7 +133,7 @@ get_header();
 </div>
 
 <div id="amenities" class="container-fluid my-5"
-	style="background: url('/wp-content/uploads/2023/09/amenities-bg.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+	 style="background: url('/wp-content/uploads/2023/09/amenities-bg.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
 	<div class="container">
 		<div class="row">
 			<div class="col-12 d-flex align-items-end" style="height: 600px;">
@@ -243,7 +239,7 @@ get_header();
 					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
 						et accusam et justo duo dolores et ea rebum.</p>
 					<p class="py-4 d-none d-md-block"><img src="/wp-content/uploads/2023/08/double-arrow.svg" class="arrow position-absolute" /><a href="#" download
-							class="arrow-link">Reserve Your Space</a></p>
+						   class="arrow-link">Reserve Your Space</a></p>
 					<p class="py-4 d-block d-md-none"><a href="#" download class="btn-default">Reserve Your Space</a></p>
 				</div>
 			</div>
