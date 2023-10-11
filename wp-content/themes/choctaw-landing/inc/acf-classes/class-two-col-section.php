@@ -8,25 +8,70 @@
 
 /** Used to handle ACF markup */
 class Two_Col_Section extends ACF_Generator {
-	private string|int|null $section_id;
+	/**
+	 * Main headline for the component.
+	 *
+	 * @var string $headline
+	 */
 	private string $headline;
+
+	/**
+	 * Secondary headline or subheadline.
+	 *
+	 * @var string $subheadline
+	 */
 	private string $subheadline;
+
+	/**
+	 * A flag indicating whether the component has a call-to-action (CTA).
+	 *
+	 * @var bool $has_cta
+	 */
 	private bool $has_cta;
+
+	/**
+	 * An array of call-to-action elements or buttons.
+	 *
+	 * @var array $cta
+	 */
 	private array $cta;
+
+	/**
+	 * An array containing image-related information.
+	 *
+	 * @var array $img
+	 */
 	private array $img;
+
+	/**
+	 * A flag indicating whether the component should use topography as the background.
+	 *
+	 * @var bool $has_topography_bg
+	 */
 	private bool $has_topography_bg;
+
+	/**
+	 * A flag indicating whether the component layout should be reversed.
+	 *
+	 * @var bool $should_reverse
+	 */
 	private bool $should_reverse;
+
+	/**
+	 * A flag indicating whether the image should span the full width of the component.
+	 *
+	 * @var bool $img_is_full_width
+	 */
 	private bool $img_is_full_width;
+
 
 	/** Inits the class
 	 *
-	 * @param int             $post_id the post id
-	 * @param array           $acf_fields the acf fields
-	 * @param string|int|null $section_id the section_id
+	 * @param int   $post_id the post id
+	 * @param array $acf_fields the acf fields
 	 */
-	public function __construct( int $post_id, array $acf_fields, string|int|null $section_id = null ) {
-		$this->post_id    = $post_id;
-		$this->section_id = $section_id;
+	public function __construct( int $post_id, array $acf_fields ) {
+		$this->post_id = $post_id;
 		$this->init_props( $acf_fields );
 	}
 
@@ -50,16 +95,17 @@ class Two_Col_Section extends ACF_Generator {
 	 * @return string the markup
 	 */
 	public function get_the_markup(): string {
+		$section_id = $this->get_the_section_id();
 		if ( $this->img_is_full_width ) {
 			$bg_img  = $this->img['url'];
-			$markup  = '<section class="container-fluid py-5 two-col two-col--full-width" style="background-image:url(' . "'{$bg_img}')" . '">';
+			$markup  = '<section id="' . $section_id . '" class="container-fluid py-5 two-col two-col--full-width" style="background-image:url(' . "'{$bg_img}')" . '">';
 			$markup .= "<div class='container pt-5'><div class='row-py-5'>";
 			$markup .= $this->get_fullwidth_content_col();
 			$markup .= '</div>';
 		} else {
 			$section_class = $this->set_the_class( 'section' );
 			$row_class     = $this->set_the_class( 'row' );
-			$markup        = "<section class='{$section_class}' id='{$this->section_id}'>";
+			$markup        = "<section class='{$section_class}' id='{$section_id}'>";
 			$markup       .= "<div class='{$row_class}'>";
 			$markup       .= $this->get_col_1();
 			$markup       .= $this->get_col_2();
@@ -69,11 +115,22 @@ class Two_Col_Section extends ACF_Generator {
 		return $markup;
 	}
 
+	/**
+	 * Outputs the HTML markup for the section.
+	 * This method fetches the HTML markup using the 'get_the_markup' method
+	 * and then echoes it to the output.
+	 */
 	public function the_section() {
 		$markup = $this->get_the_markup();
 		echo $markup;
 	}
 
+	/**
+	 * Set the CSS class based on the element type.
+	 *
+	 * @param string $el - The element type ('section', 'row', 'col-1', 'col-2').
+	 * @return string - The CSS class for the specified element type.
+	 */
 	private function set_the_class( string $el ) {
 		$class = '';
 		switch ( $el ) {
@@ -99,6 +156,22 @@ class Two_Col_Section extends ACF_Generator {
 		return $class;
 	}
 
+	/**
+	 * Generate the section ID based on the headline.
+	 *
+	 * @return string - The section ID generated from the headline.
+	 */
+	private function get_the_section_id(): string {
+		$lowercase  = strtolower( $this->headline );
+		$snake_case = preg_replace( '/\s+/', '-', $lowercase );
+		return $snake_case;
+	}
+
+	/**
+	 * Generate the markup for col-1 (column 1).
+	 *
+	 * @return string - The HTML markup for col-1.
+	 */
 	private function get_col_1(): string {
 		$col_1   = $this->set_the_class( 'col-1' );
 		$srcset  = wp_get_attachment_image_srcset( $this->img['id'] );
@@ -108,6 +181,12 @@ class Two_Col_Section extends ACF_Generator {
 		return $markup;
 	}
 
+	/**
+	 * Generate the markup for col-2 (column 2).
+	 *
+	 * @param string $col_class - Optional CSS class for the col-2 element.
+	 * @return string - The HTML markup for col-2.
+	 */
 	private function get_col_2( $col_class = '' ): string {
 		$col_2   = empty( $col_class ) ? $this->set_the_class( 'col-2' ) : $col_class;
 		$markup  = "<div class='{$col_2}'>";
@@ -121,6 +200,11 @@ class Two_Col_Section extends ACF_Generator {
 		return $markup;
 	}
 
+	/**
+	 * Generate the markup for the full-width content column.
+	 *
+	 * @return string - The HTML markup for the full-width content column.
+	 */
 	private function get_fullwidth_content_col(): string {
 		$markup  = "<div class='col-12 col-xl-7'>";
 		$markup .= $this->get_inner_row_1();
@@ -129,6 +213,12 @@ class Two_Col_Section extends ACF_Generator {
 		return $markup;
 	}
 
+	/**
+	 * Generate the HTML markup for the headline.
+	 *
+	 * @param bool $is_fullwidth - Optional flag for full-width layout.
+	 * @return string - The HTML markup for the headline.
+	 */
 	private function get_the_headline( bool $is_fullwidth = false ): string {
 		if ( $is_fullwidth ) {
 			return "<div class='col-9 col-lg-10'>
@@ -139,6 +229,11 @@ class Two_Col_Section extends ACF_Generator {
 		}
 	}
 
+	/**
+	 * Generate the HTML markup for the subheadline and optional CTA.
+	 *
+	 * @return string - The HTML markup for the subheadline and CTA.
+	 */
 	private function get_the_subheadline(): string {
 		$markup = "<div class='col-12 col-md-9 col-xl-10'><div class='two-col__subheadline'>{$this->subheadline}</div>";
 		if ( $this->has_cta ) {
@@ -148,6 +243,12 @@ class Two_Col_Section extends ACF_Generator {
 		return $markup;
 	}
 
+	/**
+	 * Generate the HTML markup for the Call to Action (CTA) element.
+	 *
+	 * @param bool $is_fullwidth - Optional flag for full-width layout.
+	 * @return string - The HTML markup for the CTA.
+	 */
 	private function get_the_cta( bool $is_fullwidth = false ): string {
 		$href   = esc_url( $this->cta['url'] );
 		$text   = esc_textarea( $this->cta['title'] );
