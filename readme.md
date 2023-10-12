@@ -13,6 +13,11 @@ A new project, started by Blake & being handed-off to KJ.
 -   Cleanup functions.php
 -   Optimize Bootstrap/Bootscore bundle sizes
 
+### Weather Widget
+
+-   Powered by Open Weather Map. See `wp-config-sample.php` & @kjroelke for details
+-
+
 ### Booking Module
 
 -   Got refactored (per [#1](https://github.com/choctaw-nation/landing/issues/1))
@@ -21,6 +26,8 @@ A new project, started by Blake & being handed-off to KJ.
 -   Improved UI with Toast message handling
 -   Updated HTML/CSS for better accessibility
     -   BUG: Initial date picker is not ideal for keyboard-only users, but _technically_ workable.
+
+---
 
 ## v0.1.1
 

@@ -99,7 +99,7 @@ class Two_Col_Section extends ACF_Generator {
 		$section_id = $this->get_the_section_id();
 		if ( $this->img_is_full_width ) {
 			$bg_img  = $this->image->src;
-			$markup  = "<{$this->wrapper_el} id='{$section_id}' class='container-fluid py-5 two-col two-col--full-width' style=" . 'background-image:url(' . "'{$bg_img}')" . '">';
+			$markup  = "<{$this->wrapper_el} id='{$section_id}' class='container-fluid py-5 two-col two-col--full-width' style='background-image:url({$bg_img})'>";
 			$markup .= "<div class='container pt-5'><div class='row-py-5'>";
 			$markup .= $this->get_fullwidth_content_col();
 			$markup .= '</div>';
