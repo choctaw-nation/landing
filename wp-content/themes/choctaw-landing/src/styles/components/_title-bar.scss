@@ -1,13 +1,17 @@
-@use '../abstracts/mixins' as m;
+@use "../abstracts/mixins" as m;
 
-#title-bar {
-	@include m.media-breakpoint-up(lg) {
-		margin-top: -90px;
+.title-bar {
+	&.with-background {
+		background: url("/wp-content/uploads/2023/08/light-gray-map-background.jpg");
+
+		@include m.media-breakpoint-up(lg) {
+			margin-top: -90px;
+		}
+		@include m.media-breakpoint-down(lg) {
+			max-width: none;
+		}
 	}
-	@include m.media-breakpoint-down(lg) {
-		max-width: none;
-	}
-	background: url("/wp-content/uploads/2023/08/light-gray-map-background.jpg");
+
 	label {
 		padding-left: 1rem;
 	}

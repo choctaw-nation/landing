@@ -8,6 +8,12 @@
 
 /** Used to handle ACF markup */
 class Two_Col_Section extends ACF_Generator {
+	/** Defines the wrapper element. Defaults to "section"
+	 *
+	 * @var string $wrapper_el
+	 */
+	private string $wrapper_el;
+
 	/**
 	 * Main headline for the component.
 	 *
@@ -37,13 +43,6 @@ class Two_Col_Section extends ACF_Generator {
 	private array $cta;
 
 	/**
-	 * An array containing image-related information.
-	 *
-	 * @var array $img
-	 */
-	private array $img;
-
-	/**
 	 * A flag indicating whether the component should use topography as the background.
 	 *
 	 * @var bool $has_topography_bg
@@ -64,28 +63,30 @@ class Two_Col_Section extends ACF_Generator {
 	 */
 	private bool $img_is_full_width;
 
-
 	/** Inits the class
 	 *
-	 * @param int   $post_id the post id
-	 * @param array $acf_fields the acf fields
+	 * @param int    $post_id the post id
+	 * @param array  $acf_fields the acf fields
+	 * @param string $wrapper_el [optional] a valid html element to set the wrapping element to (default: 'section')
 	 */
-	public function __construct( int $post_id, array $acf_fields ) {
-		$this->post_id = $post_id;
+	public function __construct( int $post_id, array $acf_fields, string $wrapper_el = 'section' ) {
+		$this->post_id    = $post_id;
+		$this->wrapper_el = $wrapper_el;
 		$this->init_props( $acf_fields );
 	}
+
 
 	/** Sets the Class variables based on ACF fields
 	 *
 	 * @param array $acf the ACF fields
 	 */
 	protected function init_props( array $acf ) {
+		$this->set_the_image( $acf['image'] );
 		$this->headline          = esc_textarea( $acf['headline'] );
 		$this->subheadline       = acf_esc_html( $acf['subheadline'] );
 		$this->has_cta           = $acf['has_cta'];
 		$this->cta               = $acf['cta'];
 		$this->should_reverse    = $acf['should_reverse'];
-		$this->img               = $acf['image'];
 		$this->img_is_full_width = $acf['is_image_full_width'];
 		$this->has_topography_bg = $acf['has_topography_bg'];
 	}
@@ -97,21 +98,21 @@ class Two_Col_Section extends ACF_Generator {
 	public function get_the_markup(): string {
 		$section_id = $this->get_the_section_id();
 		if ( $this->img_is_full_width ) {
-			$bg_img  = $this->img['url'];
-			$markup  = '<section id="' . $section_id . '" class="container-fluid py-5 two-col two-col--full-width" style="background-image:url(' . "'{$bg_img}')" . '">';
+			$bg_img  = $this->image->src;
+			$markup  = "<{$this->wrapper_el} id='{$section_id}' class='container-fluid py-5 two-col two-col--full-width' style=" . 'background-image:url(' . "'{$bg_img}')" . '">';
 			$markup .= "<div class='container pt-5'><div class='row-py-5'>";
 			$markup .= $this->get_fullwidth_content_col();
 			$markup .= '</div>';
 		} else {
 			$section_class = $this->set_the_class( 'section' );
 			$row_class     = $this->set_the_class( 'row' );
-			$markup        = "<section class='{$section_class}' id='{$section_id}'>";
+			$markup        = "<{$this->wrapper_el} class='{$section_class}' id='{$section_id}'>";
 			$markup       .= "<div class='{$row_class}'>";
 			$markup       .= $this->get_col_1();
 			$markup       .= $this->get_col_2();
 		}
 		$markup .= '</div>';
-		$markup .= '</section>';
+		$markup .= "</{$this->wrapper_el}>";
 		return $markup;
 	}
 
@@ -174,9 +175,8 @@ class Two_Col_Section extends ACF_Generator {
 	 */
 	private function get_col_1(): string {
 		$col_1   = $this->set_the_class( 'col-1' );
-		$srcset  = wp_get_attachment_image_srcset( $this->img['id'] );
 		$markup  = "<div class='{$col_1}'>";
-		$markup .= "<img class='w-100 my-5' src='{$this->img['url']}' alt='{$this->img['alt']}' srcset='{$srcset}' />";
+		$markup .= $this->image->get_the_image( 'w-100 my-5' );
 		$markup .= '</div>';
 		return $markup;
 	}

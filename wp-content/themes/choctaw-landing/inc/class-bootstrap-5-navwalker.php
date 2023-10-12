@@ -1,4 +1,4 @@
-<?php
+<?php //phpcs:ignoreFile
 
 /*
 https://github.com/AlexWebLab/bootstrap-5-wordpress-navbar-walker

@@ -10,6 +10,13 @@
 class Title_Bar extends ACF_Generator {
 	private string $headline;
 	private string $subheadline;
+	private bool $with_background;
+
+	public function __construct( int $post_id, array $acf_fields, bool $with_background = true ) {
+		$this->post_id         = $post_id;
+		$this->with_background = $with_background;
+		$this->init_props( $acf_fields );
+	}
 
 	protected function init_props( array $acf ) {
 		$this->headline    = esc_textarea( $acf['headline'] );
@@ -20,13 +27,16 @@ class Title_Bar extends ACF_Generator {
 		$markup  = "<div class='col-10 py-3'>";
 		$markup .= "<h2 class='fw-bold text-center'>{$this->headline}</h2>{$this->subheadline}";
 		$markup .= '</div>';
+		return $markup;
 	}
 
 	public function get_the_title_bar(): string {
-		$markup  = "<div id='title-bar' class='container mb-5 position-relative'>";
-		$markup .= "<div class='row justify-content-center py-5 my-3'>";
-		$markup .= $this->get_the_content();
-		$markup .= '</div></div>';
+		$container_class  = 'container mb-5 position-relative title-bar';
+		$container_class .= $this->with_background ? ' with-background' : '';
+		$markup           = "<section class='{$container_class}'>";
+		$markup          .= "<div class='row justify-content-center py-5 my-3'>";
+		$markup          .= $this->get_the_content();
+		$markup          .= '</div></section>';
 		return $markup;
 	}
 

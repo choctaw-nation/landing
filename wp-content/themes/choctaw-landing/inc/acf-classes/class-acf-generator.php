@@ -1,4 +1,4 @@
-<?php //phpcs:ignore
+<?php
 /**
  * The Super ACF class that all children inherit
  *
@@ -16,6 +16,13 @@ abstract class ACF_Generator {
 	 */
 	protected int $post_id;
 
+	/**
+	 * The ACF Image
+	 *
+	 * @var ?ACF_Image $image
+	 */
+	protected ?ACF_Image $image;
+
 	/** Inits the class
 	 *
 	 * @param int   $post_id the post id
@@ -31,4 +38,15 @@ abstract class ACF_Generator {
 	 * @param array $acf the acf array
 	 */
 	abstract protected function init_props( array $acf );
+
+	/**
+	 * Sets the class property $image to a new ACF_Image
+	 *
+	 * @param array $image the ACF Image array
+	 */
+	protected function set_the_image( array $image ) {
+		if ( is_array( $image ) ) {
+			$this->image = new ACF_Image( $image );
+		}
+	}
 }
