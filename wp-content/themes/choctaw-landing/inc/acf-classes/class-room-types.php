@@ -25,9 +25,13 @@ class Room_Types extends Card {
 		$this->can_reserve = $acf['can_reserve'];
 	}
 
-	/** Generates the markup */
-	protected function get_the_markup(): string {
-		$markup  = "<div class='col-12 col-xl-6 pt-3 pb-5 room-type'>";
+	/** Generates the markup
+	 *
+	 * @param string $col_class the column class
+	 * @param string $headline_element [optional] the Headline element (Default 'h3')
+	 */
+	protected function get_the_markup( string $col_class, string $headline_element = 'h3' ): string {
+		$markup  = "<div class='{$col_class} room-type'>";
 		$markup .= '<div class="row align-items-center">';
 		$markup .= '<div class="col-12 col-lg-5 col-xl-12">';
 		$markup .= $this->image->get_the_image( 'room-type__image' );
@@ -38,14 +42,18 @@ class Room_Types extends Card {
 		return $markup;
 	}
 
-	/** Generates the body of the card */
-	protected function get_the_content(): string {
+	/**
+	 *  Generates the body of the card
+	 *
+	 * @param string $headline_element [optional] the Headline element (Default 'h3')
+	 */
+	protected function get_the_content( string $headline_element = 'h3' ): string {
 		$markup  = "<div class='col-12 col-lg-7 col-xl-12 pt-3 pb-5'>";
 		$markup .= "<div class='row position-relative justify-content-end justify-content-md-start'>";
 		if ( $this->can_reserve ) {
 			$markup .= '<div class="col-3 col-xxl-2 d-none d-md-block"></div>';
 		}
-		$markup .= "<div class='col-12 col-md-9 py-3'><h3 class='room-type__headline'>{$this->headline}</h3></div>";
+		$markup .= "<div class='col-12 col-md-9 py-3'><{$headline_element} class='room-type__headline'>{$this->headline}</{$headline_element}></div>";
 		if ( $this->can_reserve ) {
 			$markup .= "<div class='col-3 col-xxl-2 d-none d-md-block'><div class='vertical-line-rooms'></div></div>";
 		}

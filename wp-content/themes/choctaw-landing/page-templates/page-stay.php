@@ -25,7 +25,7 @@ $title_bar->the_title_bar();
 		$room_types = get_field( 'room_types' );
 		foreach ( $room_types as $room_type ) {
 			$room = new Room_Types( get_the_ID(), $room_type );
-			$room->the_card();
+			$room->the_card( 'col-12 col-xl-6 pt-3 pb-5' );
 		}
 		?>
 	</div>
@@ -36,8 +36,7 @@ $amenities_group = get_field( 'amenities' );
 $banner          = new ACF_Image( $amenities_group['amenities_banner'] );
 
 ?>
-<header id="amenities" class="container-fluid my-5 banner-bg-header"
-		style="background: url('<?php echo $banner->src; ?>');">
+<header id="amenities" class="container-fluid my-5 banner-bg-header" style="background: url('<?php echo $banner->src; ?>');">
 	<div class="container">
 		<div class="row">
 			<div class="col-12 d-flex align-items-end" style="height: 600px;">
@@ -68,7 +67,7 @@ $banner          = new ACF_Image( $amenities_group['amenities_banner'] );
 			echo '<div class="row">';
 			foreach ( $row as $amenity ) {
 				$amenity_card = new Card( get_the_ID(), $amenity );
-				$amenity_card->the_card();
+				$amenity_card->the_card( 'col-12 col-md-6 col-xl-3 p-3' );
 			}
 			echo '</div>';
 		}

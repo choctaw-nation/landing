@@ -82,10 +82,12 @@ class Two_Col_Section extends ACF_Generator {
 	 */
 	protected function init_props( array $acf ) {
 		$this->set_the_image( $acf['image'] );
-		$this->headline          = esc_textarea( $acf['headline'] );
-		$this->subheadline       = acf_esc_html( $acf['subheadline'] );
-		$this->has_cta           = $acf['has_cta'];
-		$this->cta               = $acf['cta'];
+		$this->headline    = esc_textarea( $acf['headline'] );
+		$this->subheadline = acf_esc_html( $acf['subheadline'] );
+		$this->has_cta     = $acf['has_cta'];
+		if ( $acf['has_cta'] ) {
+			$this->cta = $acf['cta'];
+		}
 		$this->should_reverse    = $acf['should_reverse'];
 		$this->img_is_full_width = $acf['is_image_full_width'];
 		$this->has_topography_bg = $acf['has_topography_bg'];
@@ -188,12 +190,17 @@ class Two_Col_Section extends ACF_Generator {
 	 * @return string - The HTML markup for col-2.
 	 */
 	private function get_col_2( $col_class = '' ): string {
-		$col_2   = empty( $col_class ) ? $this->set_the_class( 'col-2' ) : $col_class;
-		$markup  = "<div class='{$col_2}'>";
-		$markup .= "<div class='row position-relative'>";
-		$markup .= "<div class='col-3 col-xl-2 d-none d-md-block'></div>";
+		$col_2           = empty( $col_class ) ? $this->set_the_class( 'col-2' ) : $col_class;
+		$inner_row_class = $this->has_cta ? 'row position-relative' : 'row position-relative justify-content-md-end';
+		$markup          = "<div class='{$col_2}'>";
+		$markup         .= "<div class='{$inner_row_class}'>";
+		if ( $this->has_cta ) {
+			$markup .= "<div class='col-3 col-xl-2 d-none d-md-block'></div>";
+		}
 		$markup .= $this->get_the_headline();
-		$markup .= "<div class='col-3 col-xl-2 d-none d-md-block'><div class='vertical-line'></div></div>";
+		if ( $this->has_cta ) {
+			$markup .= "<div class='col-3 col-xl-2 d-none d-md-block'><div class='vertical-line'></div></div>";
+		}
 		$markup .= $this->get_the_subheadline();
 		$markup .= '</div>';
 		$markup .= '</div>';

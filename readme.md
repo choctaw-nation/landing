@@ -16,7 +16,8 @@ A new project, started by Blake & being handed-off to KJ.
 ### Weather Widget
 
 -   Powered by Open Weather Map. See `wp-config-sample.php` & @kjroelke for details
--
+-   Weather Widget uses the `ChoctawNation` namespace for simple, non-conflicting class names (e.g. `Weather` and `API`)
+-   Also uses Bootstrap Icons package for weather icons (generates svg code)
 
 ### Booking Module
 
@@ -33,6 +34,8 @@ A new project, started by Blake & being handed-off to KJ.
 
 -   Remove WooCommerce Styles from SCSS compiler
 -   Rename theme & match version control (with further checks for WP + PHP version).
+
+---
 
 ## v0.1
 

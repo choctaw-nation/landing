@@ -8,12 +8,14 @@
 
 namespace ChoctawNation;
 
+use Bootstrap_Icons;
 use DateTime;
 use DateTimeZone;
 
 /** Handles the weather data from the Open Weather API Response */
 class Weather {
-	private string $full_date;
+	private string $pretty_date_format = 'l, F j';
+	private string $pretty_full_date;
 	private int $temp;
 	private int $humidity;
 	private int $wind;
@@ -21,6 +23,12 @@ class Weather {
 	private string $icon;
 	private string $description;
 	private int $chance_of_rain;
+
+	/** The date as a PHP DateTime object if it needs further manipulation
+	 *
+	 * @var DateTime $date_obj;
+	 */
+	public DateTime $date_obj;
 
 	public function __construct( array $data ) {
 		$this->set_the_date( $data['dt'] );
@@ -35,11 +43,12 @@ class Weather {
 	}
 
 	private function set_the_date( int $date ) {
-		$utc             = DateTime::createFromFormat( 'U', $date, new DateTimeZone( 'UTC' ) );
-		$local           = new DateTimeZone( 'America/Chicago' );
-		$central         = $utc->setTimezone( $local );
-		$this->full_date = $central->format( 'l, j F' );
-		$this->day       = $central->format( 'D' );
+		$utc                    = DateTime::createFromFormat( 'U', $date, new DateTimeZone( 'UTC' ) );
+		$local                  = new DateTimeZone( 'America/Chicago' );
+		$central                = $utc->setTimezone( $local );
+		$this->pretty_full_date = $central->format( $this->pretty_date_format );
+		$this->day              = $central->format( 'D' );
+		$this->date_obj         = $central;
 	}
 
 	private function set_main_props( array $main ) {
@@ -51,16 +60,14 @@ class Weather {
 		}
 	}
 
-	private function set_the_weather( array $data ) {
-		$this->icon        = $this->set_the_icon( $data['main'] );
-		$this->description = $data['description'];
+	private function set_the_weather( array $weather ) {
+		$this->icon        = $this->set_the_icon( $weather['main'] );
+		$this->description = $weather['description'];
 	}
 
-	private function set_the_icon( string $icon ): string {
-		switch ( $icon ) {
-			default:
-				return 'null';
-		}
+	private function set_the_icon( string $icon_name ): string {
+		$bs_icon = new Bootstrap_Icons();
+		return $bs_icon->get_the_icon( $icon_name );
 	}
 
 	private function set_the_wind( array $wind ) {
@@ -77,12 +84,14 @@ class Weather {
 		echo $this->temp;
 	}
 
+	/** Returns the pretty full date as "10 Jul, 2023" */
 	public function get_the_full_date(): string {
-		return $this->full_date;
+		return $this->pretty_full_date;
 	}
 
+	/** Echoes the pretty full date as "10 Jul, 2023" */
 	public function the_full_date() {
-		echo $this->full_date;
+		echo $this->pretty_full_date;
 	}
 
 	public function get_the_humidity(): string {

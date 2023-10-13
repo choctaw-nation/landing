@@ -9,7 +9,12 @@
 /** Enqueues Scripts & Styles */
 function cno_enqueue_scripts() {
 	// Fontawesome
-	wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/fontawesome/css/all.min.css', array(), '6.4.2' );
+	wp_enqueue_style(
+		'fontawesome',
+		get_template_directory_uri() . '/fontawesome/css/all.min.css',
+		array(),
+		'6.4.2'
+	);
 
 	// Adobe Font Typekit CSS
 	wp_enqueue_style( 'typekit', 'https://use.typekit.net/jqq3pwr.css', array(), null );
@@ -21,6 +26,7 @@ function cno_enqueue_scripts() {
 		array(),
 		$bootscore['version']
 	);
+
 	wp_enqueue_script(
 		'bootscore',
 		get_stylesheet_directory_uri() . '/dist/vendors/bootstrap.js',

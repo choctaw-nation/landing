@@ -3,6 +3,12 @@
 	padding: 1rem;
 	font-size: 1.15rem;
 
+	.bi {
+		--size: 2.25rem;
+		width: var(--size);
+		height: var(--size);
+	}
+
 	.row {
 		background: url("/wp-content/uploads/2023/08/brown-basket-bg.jpg");
 		background-size: cover;
@@ -17,8 +23,8 @@
 	.h2 {
 		color: white;
 		font-size: 5rem;
-		i {
-			color: yellow;
+		.bi {
+			--size: 3rem;
 		}
 	}
 	p {

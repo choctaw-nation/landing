@@ -30,26 +30,36 @@ class Card extends ACF_Generator {
 		$this->subheadline = $acf['subheadline'];
 	}
 
-	/** Generates the markup */
-	protected function get_the_markup(): string {
-		$markup  = "<div class='col-12 col-md-6 col-xl-3 p-3 card'>";
+	/** Generates the markup
+	 *
+	 * @param string $col_class the column class
+	 * @param string $headline_element [optional] the Headline element (Default 'h3')
+	 */
+	protected function get_the_markup( string $col_class, string $headline_element = 'h3' ): string {
+		$markup  = "<div class='{$col_class} card'>";
 		$markup .= $this->image->get_the_image( 'pb-3 card__image' );
-		$markup .= $this->get_the_content();
+		$markup .= $this->get_the_content( $headline_element );
 		$markup .= '</div>';
 		return $markup;
 	}
 
-	/** Echoes the markup of the card */
-	public function the_card() {
-		$markup = $this->get_the_markup();
+	/** Echoes the markup of the card
+	 *
+	 * @param string $col_class the column class
+	 * @param string $headline_element [optional] the Headline element (Default 'h3')
+	 */
+	public function the_card( string $col_class, string $headline_element = 'h3' ) {
+		$markup = $this->get_the_markup( $col_class, $headline_element );
 		echo $markup;
 	}
 
 	/**
 	 * Generates the body of the card
+	 *
+	 * @param string $headline_element [optional] the Headline element (Default 'h3')
 	 */
-	protected function get_the_content(): string {
-		$markup  = "<h3 class='card__headline'>{$this->headline}</h3>";
+	protected function get_the_content( string $headline_element = 'h3' ): string {
+		$markup  = "<{$headline_element} class='card__headline'>{$this->headline}</{$headline_element}>";
 		$markup .= "<div class='card__subheadline'>{$this->subheadline}</div>";
 		return $markup;
 	}

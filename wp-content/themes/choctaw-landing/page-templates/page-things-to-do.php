@@ -54,7 +54,7 @@ $banner      = new ACF_Image( $attractions['banner_image'] );
 		echo '<div class="row">';
 		foreach ( $row as $attraction ) {
 			$attraction_card = new Card( get_the_ID(), $attraction );
-			$attraction_card->the_card();
+			$attraction_card->the_card( 'col-12 col-md-6 col-xl-3 p-3' );
 		}
 		echo '</div>';
 	}
