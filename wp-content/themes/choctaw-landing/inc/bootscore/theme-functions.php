@@ -10,7 +10,7 @@
 // Register Bootstrap 5 Nav Walker
 if ( ! function_exists( 'register_navwalker' ) ) :
 	function register_navwalker() {
-		require_once get_template_directory() . '/inc/class-bootstrap-5-navwalker.php';
+		require_once get_template_directory() . '/inc/bootscore/class-bootstrap-5-navwalker.php';
 		// Register Menus
 		register_nav_menu( 'main-menu', 'Main menu' );
 		register_nav_menu( 'footer-menu', 'Footer menu' );

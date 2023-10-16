@@ -12,6 +12,7 @@ A new project, started by Blake & being handed-off to KJ.
 -   init Composre & NPM
 -   Cleanup functions.php
 -   Optimize Bootstrap/Bootscore bundle sizes
+-   Created the `cno-navwalker` class to appropiately scope our team's changes to a specific subclass while not touching the underyling logic (see _[polymorphism](https://www.javatpoint.com/polymorphism-in-php)_).
 
 ### Weather Widget
 

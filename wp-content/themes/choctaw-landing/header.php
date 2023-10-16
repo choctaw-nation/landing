@@ -32,32 +32,35 @@
 
 <body <?php body_class(); ?>>
 
-<?php wp_body_open(); ?>
+	<?php wp_body_open(); ?>
 
-<div id="page" class="site">
+	<div id="page" class="site">
 
-	<header id="masthead" class="site-header">
+		<header id="masthead" class="site-header">
 
-	<div class="fixed-top bg-body-tertiary header-bar">
+			<div class="fixed-top bg-body-tertiary header-bar">
 
-		<nav id="nav-main" class="navbar navbar-expand-xl py-0">
+				<nav id="nav-main" class="navbar navbar-expand-xl py-0">
 
-		<div class="<?php echo bootscore_container_class(); ?>">
+					<div class="<?php echo bootscore_container_class(); ?>">
 
-			<!-- Navbar Brand -->
-			<a class="navbar-brand sm p-3" href="<?php echo esc_url( home_url() ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo/logo.svg" alt="logo" class="logo sm"></a>
+						<!-- Navbar Brand -->
+						<a class="navbar-brand sm p-3" href="<?php echo esc_url( home_url() ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo/logo.svg"
+								 alt="logo" class="logo sm"></a>
 
-			<!-- Offcanvas Navbar -->
-			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-navbar" style="height:fit-content;">
-			<div class="offcanvas-header pb-0">
-				<!-- <span class="h5 offcanvas-title"><?php esc_html_e( 'Menu', 'bootscore' ); ?></span> -->
-				<ul class="navbar-nav "><li class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-18"><a href="/" class="nav-link ">Home</a></li></ul>
-				<a href="#" class="btn btn-mobile-nav" data-bs-dismiss="offcanvas" aria-label="Close">x</a>
-			</div>
-			<div class="offcanvas-body pt-0">
+						<!-- Offcanvas Navbar -->
+						<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-navbar" style="height:fit-content;">
+							<div class="offcanvas-header pb-0">
+								<!-- <span class="h5 offcanvas-title"><?php esc_html_e( 'Menu', 'bootscore' ); ?></span> -->
+								<ul class="navbar-nav ">
+									<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-18"><a href="/" class="nav-link ">Home</a></li>
+								</ul>
+								<a href="#" class="btn btn-mobile-nav" data-bs-dismiss="offcanvas" aria-label="Close">x</a>
+							</div>
+							<div class="offcanvas-body pt-0">
 
-				<!-- Bootstrap 5 Nav Walker Main Menu -->
-				<?php
+								<!-- Bootstrap 5 Nav Walker Main Menu -->
+								<?php
 				wp_nav_menu(
 					array(
 						'theme_location' => 'main-menu',
@@ -66,41 +69,42 @@
 						'fallback_cb'    => '__return_false',
 						'items_wrap'     => '<ul id="bootscore-navbar" class="navbar-nav ms-auto %2$s">%3$s</ul>',
 						'depth'          => 3,
-						'walker'         => new bootstrap_5_wp_nav_menu_walker(),
+						'walker'         => new CNO_Navwalker(),
 					)
 				);
 				?>
 
-				<!-- Top Nav 2 Widget -->
-				<?php if ( is_active_sidebar( 'top-nav-2' ) ) : ?>
-					<?php dynamic_sidebar( 'top-nav-2' ); ?>
-				<?php endif; ?>
+								<!-- Top Nav 2 Widget -->
+								<?php if ( is_active_sidebar( 'top-nav-2' ) ) : ?>
+								<?php dynamic_sidebar( 'top-nav-2' ); ?>
+								<?php endif; ?>
 
-			</div>
-			</div>
+							</div>
+						</div>
 
-			<div class="header-actions d-flex align-items-center">
+						<div class="header-actions d-flex align-items-center">
 
-			<!-- Top Nav Widget -->
-			<?php if ( is_active_sidebar( 'top-nav' ) ) : ?>
-				<?php dynamic_sidebar( 'top-nav' ); ?>
-			<?php endif; ?>
+							<!-- Top Nav Widget -->
+							<?php if ( is_active_sidebar( 'top-nav' ) ) : ?>
+							<?php dynamic_sidebar( 'top-nav' ); ?>
+							<?php endif; ?>
 
-			<?php get_template_part( 'template-parts/header/actions' ); ?>
+							<?php get_template_part( 'template-parts/header/actions' ); ?>
 
-			<!-- Navbar Toggler -->
-			<button class="btn btn-diamond d-xl-none ms-1 ms-md-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar" aria-controls="offcanvas-navbar">
-				<i class="fa-solid fa-bars"></i><span class="visually-hidden-focusable">Menu</span>
-			</button>
+							<!-- Navbar Toggler -->
+							<button class="btn btn-diamond d-xl-none ms-1 ms-md-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar"
+									aria-controls="offcanvas-navbar">
+								<i class="fa-solid fa-bars"></i><span class="visually-hidden-focusable">Menu</span>
+							</button>
 
-			</div><!-- .header-actions -->
+						</div><!-- .header-actions -->
 
-		</div><!-- bootscore_container_class(); -->
+					</div><!-- bootscore_container_class(); -->
 
-		</nav><!-- .navbar -->
+				</nav><!-- .navbar -->
 
-		<?php get_template_part( 'template-parts/header/top-nav-search-collapse' ); ?>
+				<?php get_template_part( 'template-parts/header/top-nav-search-collapse' ); ?>
 
-	</div><!-- .fixed-top .bg-light -->
+			</div><!-- .fixed-top .bg-light -->
 
-	</header><!-- #masthead -->
+		</header><!-- #masthead -->

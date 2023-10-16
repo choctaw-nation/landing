@@ -1,13 +1,21 @@
-<?php //phpcs:ignoreFile
+<?php
+/**
+ * Bootstrap 5 Nav Walker
+ *
+ * @link https://github.com/AlexWebLab/bootstrap-5-wordpress-navbar-walker
+ * @package Bootscore
+ */
 
-/*
-https://github.com/AlexWebLab/bootstrap-5-wordpress-navbar-walker
-*/
-
-// bootstrap 5 wp_nav_menu walker
-class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu {
-	private $current_item;
-	private $dropdown_menu_alignment_values = array(
+/**
+ * The Bootscore NavWalker
+ */
+class Bootstrap_5_WP_Nav_Menu_Walker extends Walker_Nav_Menu {
+	/** The current nav item
+	 *
+	 * @var WP_Post $current_item
+	 */
+	protected $current_item;
+	protected $dropdown_menu_alignment_values = array(
 		'dropdown-menu-start',
 		'dropdown-menu-end',
 		'dropdown-menu-sm-start',
@@ -22,6 +30,15 @@ class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu {
 		'dropdown-menu-xxl-end',
 	);
 
+	/**
+	 * Starts the list before the elements are added.
+	 *
+	 * @see Walker::start_lvl()
+	 *
+	 * @param string   $output Used to append additional content (passed by reference).
+	 * @param int      $depth  Depth of menu item. Used for padding.
+	 * @param stdClass $args   An object of wp_nav_menu() arguments.
+	 */
 	function start_lvl( &$output, $depth = 0, $args = null ) {
 		$dropdown_menu_class[] = '';
 		foreach ( $this->current_item->classes as $class ) {
@@ -34,7 +51,18 @@ class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu {
 		$output .= "\n$indent<ul class=\"dropdown-menu$submenu " . esc_attr( implode( ' ', $dropdown_menu_class ) ) . " depth_$depth\">\n";
 	}
 
-	function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+	/**
+	 * Starts the element output.
+	 *
+	 * @see Walker::start_el()
+	 *
+	 * @param string   $output  Used to append additional content (passed by reference).
+	 * @param WP_Post  $item    Menu item data object.
+	 * @param int      $depth   Optional. Depth of menu item. Used for padding.
+	 * @param stdClass $args    Optional. An object of wp_nav_menu() arguments.
+	 * @param int      $id      Optional. ID of the current menu item. Default 0.
+	 */
+	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
 		$this->current_item = $item;
 
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
@@ -75,58 +103,5 @@ class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu {
 		$item_output .= $args->after;
 
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-	}
-
-	function end_lvl( &$output, $depth = 0, $args = null ) {
-		// This function handles the mega-menu output
-		$nav_items = wp_get_nav_menu_items( 'main-menu' );
-		$nav_arr   = array();
-		$last_item = null;
-		foreach ( (array) $nav_items as $key => $nav_item ) {
-			if ( ! $nav_item->menu_item_parent ) {
-				array_push( $nav_arr, $last_item );
-			}
-			if ( count( $nav_items ) - 1 === $key ) {
-				array_push( $nav_arr, $last_item );
-			}
-			$last_item = $nav_item->ID;
-		}
-
-		switch ( $this->current_item->ID ) {
-			case $nav_arr[1]:
-				$mega_menu_content = get_field( 'stay_content', 'option' );
-				break;
-			case $nav_arr[2]:
-				$mega_menu_content = get_field( 'eat_and_drink_content', 'option' );
-				break;
-			case $nav_arr[3]:
-				$mega_menu_content = get_field( 'entertainment_content', 'option' );
-				break;
-			case $nav_arr[4]:
-				$mega_menu_content = get_field( 'things_to_do_content', 'option' );
-				break;
-			case $nav_arr[5]:
-				$mega_menu_content = get_field( 'mercantile_content', 'option' );
-				break;
-			default:
-				$mega_menu_content = '';
-		}
-
-		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
-			$t = '';
-			$n = '';
-		} else {
-			$t = "\t";
-			$n = "\n";
-		}
-		$indent = str_repeat( $t, $depth );
-
-		if ( $depth === 0 && $mega_menu_content ) {
-			$output .= '<li class="pt-3" style="width: 130px;">';
-			$output .= $mega_menu_content;
-			$output .= '</li>';
-		}
-
-		$output .= "$indent</ul>{$n}";
 	}
 }

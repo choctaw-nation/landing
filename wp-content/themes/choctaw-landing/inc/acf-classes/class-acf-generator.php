@@ -14,7 +14,7 @@ abstract class ACF_Generator {
 	 *
 	 * @var int $post_id
 	 */
-	protected int $post_id;
+	protected int|string $post_id;
 
 	/**
 	 * The ACF Image
@@ -25,10 +25,10 @@ abstract class ACF_Generator {
 
 	/** Inits the class
 	 *
-	 * @param int   $post_id the post id
-	 * @param array $acf_fields the acf fields
+	 * @param int|string $post_id the post id
+	 * @param array      $acf_fields the acf fields
 	 */
-	public function __construct( int $post_id, array $acf_fields ) {
+	public function __construct( int|string $post_id, array $acf_fields ) {
 		$this->post_id = $post_id;
 		$this->init_props( $acf_fields );
 	}
