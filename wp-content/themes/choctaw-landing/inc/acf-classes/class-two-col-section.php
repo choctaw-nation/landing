@@ -269,10 +269,10 @@ class Two_Col_Section extends ACF_Generator {
 		}
 
 		$desktop_link_class = $is_fullwidth ? 'arrow-link arrow-link-white' : 'arrow-link';
-		$markup            .= "<a href='{$href}' download class='{$desktop_link_class}'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
+		$markup            .= "<a href='{$href}' class='{$desktop_link_class}'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
 		// mobile
 		$mobile_link_class = $is_fullwidth ? 'btn-secondary' : 'btn-default';
-		$markup           .= "<p class='py-4 d-block d-md-none'><a href='{$href}' download class='{$mobile_link_class}'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
+		$markup           .= "<p class='py-4 d-block d-md-none'><a href='{$href}' class='{$mobile_link_class} d-inline-block'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
 		return $markup;
 	}
 

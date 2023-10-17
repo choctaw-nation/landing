@@ -64,29 +64,32 @@ class CNO_Navwalker extends Bootstrap_5_WP_Nav_Menu_Walker {
 	 * @param int $id the current item's ID
 	 * @return string the markup
 	 */
-	private function get_the_mega_menu_content( int $id ) {
+	private function get_the_mega_menu_content( int $id ): string {
 		$mega_menu_content = '';
+
 		if ( ! in_array( $id, $this->nav_arr, true ) ) {
 			return $mega_menu_content;
 		}
+
 		switch ( $id ) {
 			case $this->nav_arr[1]:
-				$mega_menu         = new Mega_Menu_Content( 'option', get_field( 'stay_content', 'option' ) );
-				$mega_menu_content = $mega_menu->get_the_content();
+				$mega_menu = new Mega_Menu_Content( 'option', get_field( 'stay_content', 'option' ) );
 				break;
 			case $this->nav_arr[2]:
-				$mega_menu_content = get_field( 'eat_and_drink_content', 'option' );
+				$mega_menu = new Mega_Menu_Content( 'option', get_field( 'eat_and_drink_content', 'option' ) );
 				break;
 			case $this->nav_arr[3]:
-				$mega_menu_content = get_field( 'entertainment_content', 'option' );
+				$mega_menu = new Mega_Menu_Content( 'option', get_field( 'entertainment_content', 'option' ) );
 				break;
 			case $this->nav_arr[4]:
-				$mega_menu_content = get_field( 'things_to_do_content', 'option' );
+				$mega_menu = new Mega_Menu_Content( 'option', get_field( 'things_to_do_content', 'option' ) );
 				break;
 			case $this->nav_arr[5]:
-				$mega_menu_content = get_field( 'mercantile_content', 'option' );
+				$mega_menu = new Mega_Menu_Content( 'option', get_field( 'mercantile_content', 'option' ) );
 				break;
 		}
+
+		$mega_menu_content = $mega_menu->get_the_content();
 		return $mega_menu_content;
 	}
 }
