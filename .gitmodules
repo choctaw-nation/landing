@@ -1,0 +1,3 @@
+[submodule "wp-content/plugins/cno-events-plugin"]
+	path = wp-content/plugins/cno-events-plugin
+	url = https://github.com/choctaw-nation/cno-events-plugin.git
