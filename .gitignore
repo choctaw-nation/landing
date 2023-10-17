@@ -41,7 +41,8 @@ local-xdebuginfo.php
 /wp-content/aiowps_backups/
 /wp-content/cache/
 /wp-content/mu-plugins/
-/wp-content/plugins/
+/wp-content/plugins/*
+!/wp-content/plugins/cno-events-plugin
 /wp-content/themes/twenty*/
 /wp-content/upgrade/
 /wp-content/upgrade-temp-backup/
