@@ -50,7 +50,7 @@ class CNO_Navwalker extends Bootstrap_5_WP_Nav_Menu_Walker {
 		$indent = str_repeat( $t, $depth );
 
 		if ( 0 === $depth && $mega_menu_content ) {
-			$output .= '<li class="pt-3" style="width: 130px;">';
+			$output .= '<li class="pt-3 constrain-width">';
 			$output .= $mega_menu_content;
 			$output .= '</li>';
 		}
