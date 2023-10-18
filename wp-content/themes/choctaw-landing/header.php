@@ -41,7 +41,7 @@
 					<div class="<?php echo bootscore_container_class(); ?>">
 						<!-- Navbar Brand -->
 						<a class="navbar-brand sm p-3" href="<?php echo esc_url( home_url() ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo/logo.svg"
-								alt="logo" class="logo sm"></a>
+								 alt="logo" class="logo sm"></a>
 
 						<!-- Offcanvas Navbar -->
 						<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-navbar" style="height:fit-content;">
@@ -59,9 +59,9 @@
 									array(
 										'theme_location' => 'main-menu',
 										'container'      => false,
-										'menu_class'     => '',
+										'menu_class'     => 'navbar-nav ms-auto',
+										'menu_id'        => 'bootscore-navbar',
 										'fallback_cb'    => '__return_false',
-										'items_wrap'     => '<ul id="bootscore-navbar" class="navbar-nav ms-auto %2$s">%3$s</ul>',
 										'depth'          => 3,
 										'walker'         => new CNO_Navwalker(),
 									)

@@ -21,19 +21,40 @@
  * @since 0.1
  * @author Blake Perkins
  */
-class CNO_Navwalker extends Walker_Nav_Menu {
-	/** The Current Menu Item
-	 *
-	 * @var WP_Post $current_item
-	 */
-	private WP_Post $current_item;
-
+class CNO_Navwalker extends Bootstrap_5_WP_Nav_Menu_Walker {
 	/**
 	 * An array of the last items' IDs of each top-level menu item
 	 *
-	 * @var int[] $nav_arr
+	 * @var int[] $last_item_ids
 	 */
-	private array $nav_arr;
+	private array $last_item_ids;
+
+	/** How many children a menu has
+	 *
+	 * @var int $children_count
+	 */
+	private int $children_count;
+
+	/**
+	 * Depth of menu item. Used for padding.
+	 *
+	 * @var int $depth
+	 */
+	private int $depth;
+
+	/**
+	 * The array of wp_nav_menu() arguments as an object.
+	 *
+	 * @var ?stdClass $args
+	 */
+	private ?stdClass $args;
+
+	/**
+	 * Optional. ID of the current menu item. Default 0.
+	 *
+	 * @param int $id
+	 */
+	private int $id;
 
 	/**
 	 * The Opening Level
@@ -43,90 +64,156 @@ class CNO_Navwalker extends Walker_Nav_Menu {
 	 * @param ?stdClass $args An object of wp_nav_menu() arguments.
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = \null ) {
-		$indent  = str_repeat( "\t", $depth ); // indents the final HTML
-		$submenu = ( $depth > 0 ) ? ' sub-menu' : ''; // adds sub-menu class
+		$dropdown_menu_class[] = '';
+		// handle user-inputted classes
+		foreach ( $this->current_item->classes as $class ) {
+			if ( in_array( $class, $this->dropdown_menu_alignment_values, true ) ) {
+				$dropdown_menu_class[] = $class;
+			}
+		}
+		$indent       = str_repeat( "\t", $depth );
+		$is_top_level = 0 === $depth;
+		$submenu      = ( $is_top_level ) ? ' mega-menu__container' : ' sub-menu';
+		$grid         = '';
+
+		if ( $is_top_level ) {
+			$column_count = $this->children_count + 1; // add 1 for unaccounted-for acf field
+			$grid         = " style=\"--grid-columns:{$column_count}\"";
+		}
+
+		$output .= "\n$indent<ul class=\"dropdown-menu$submenu " . esc_attr( implode( ' ', $dropdown_menu_class ) ) . " depth_$depth\"" . $grid . ">\n";
 	}
 
 	/**
-	 * Starts the Element Output (li a span)
+	 * Starts the Element Output (inside the `li`)
 	 *
-	 * @param string   $output            Used to append additional content (passed by reference).
-	 *
-	 * @param WP_Post  $data_object       Menu item data object.
-	 * @param int      $depth             Depth of menu item. Used for padding.
-	 * @param stdClass $args              An object of wp_nav_menu() arguments.
-	 * @param int      $id Optional. ID of the current menu item. Default 0.
+	 * @param string   $output       Used to append additional content (passed by reference).
+	 * @param WP_Post  $data_object  Menu item data object.
+	 * @param int      $depth        Depth of menu item. Used for padding.
+	 * @param stdClass $args         An object of wp_nav_menu() arguments.
+	 * @param int      $id           Optional. ID of the current menu item. Default 0.
 	 */
 	public function start_el( &$output, $data_object, $depth = 0, $args = \null, $id = 0 ) {
 		$this->current_item = $data_object;
+		$this->depth        = $depth;
+		$this->args         = $args;
+		$this->id           = $id;
 
-		$output .= $this->get_the_li_element( $depth, $args );
-		$output .= $this->get_the_anchor_element( $args );
+		$output .= $this->get_the_li_element();
+		$output .= $this->get_the_anchor_element();
 	}
 
 	/** Generate the Opening `li` tag
 	 *
-	 * @param int      $depth Depth of menu item. Used for padding.
-	 * @param stdClass $args  An object of wp_nav_menu() arguments.
 	 * @return string the HTML
 	 */
-	private function get_the_li_element( $depth, $args ): string {
-		$indent        = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+	private function get_the_li_element(): string {
+		if ( $this->has_children ) {
+			$this->set_the_children_count();
+		}
+		$indent        = ( $this->depth ) ? str_repeat( "\t", $this->depth ) : '';
 		$li_attributes = '';
-		$class_names   = $this->set_the_li_classes( $depth, $args );
-		$html_id       = $this->set_the_li_id( $args );
+		$class_names   = $this->set_the_li_classes();
+		$html_id       = $this->set_the_li_id();
 		return $indent . '<li' . $html_id . $class_names . $li_attributes . '>';
 	}
 
-	/** Handles the setting of the element's classes and returns an HTML string
+	/**
+	 * Sets the number of children a sub-menu has
+	 */
+	private function set_the_children_count() {
+		// Getting the menu item objects array from the menu.
+		$menu_items = wp_get_nav_menu_items( $this->args->menu->term_id );
+
+		// Getting the parent ids by looping through the menu item objects array. This will give an array of parent ids and the number of their children.
+		$menu_item_parents = array_map(
+			function ( $o ) {
+				return $o->menu_item_parent;
+			},
+			$menu_items
+		);
+		// Get number of children menu item has.
+		$this->children_count = array_count_values( $menu_item_parents )[ $this->current_item->ID ];
+	}
+
+	/**
+	 * Handles the setting of the element's classes and returns an HTML string
 	 *
-	 * @param int       $depth whether we are at the top-level or a sub-level
-	 * @param ?stdClass $args An object of wp_nav_menu() arguments.
 	 * @return string the class names
 	 */
-	private function set_the_li_classes( int $depth, stdClass $args ): string {
+	private function set_the_li_classes(): string {
 		$classes   = empty( $this->current_item->classes ) ? array() : (array) $this->current_item->classes;
-		$classes[] = ( $args->walker->has_children ) ? 'dropdown' : '';
+		$classes[] = ( $this->has_children ) ? 'dropdown ' : '';
+		$classes[] = ( $this->has_children && 0 === $this->depth ) ? 'mega-menu position-static ' : '';
 		$classes[] = ( $this->current_item->current || $this->current_item->current_item_ancestor ) ? 'active' : '';
 		$classes[] = 'nav-item';
 		$classes[] = 'nav-item-' . $this->current_item->ID;
 
-		if ( $depth && $args->walker->has_children ) {
+		if ( $this->depth && $this->has_children ) {
 			$classes[] = 'dropdown-menu dropdown-menu-end';
 		}
 
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $this->current_item, $args ) );
+		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $this->current_item, $this->args ) );
 		$class_names = ' class="' . esc_attr( $class_names ) . '"';
 		return $class_names;
 	}
 
-	/** Handles the id generation
+	/**
+	 * Handles the id generation
 	 *
-	 * @param ?stdClass $args An object of wp_nav_menu() arguments.
 	 * @return string the id
 	 */
-	private function set_the_li_id( ?stdClass $args ): string {
-		$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $this->current_item->ID, $this->current_item, $args );
+	private function set_the_li_id(): string {
+		$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $this->current_item->ID, $this->current_item, $this->args );
 		$id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
 		return $id;
 	}
 
-	private function get_the_anchor_element( $args ): string {
-		$attributes  = ! empty( $this->current_item->attr_title ) ? ' title="' . esc_attr( $this->current_item->attr_title ) . '"' : '';
-		$attributes .= ! empty( $this->current_item->target ) ? ' target="' . esc_attr( $this->current_item->target ) . '"' : '';
-		$attributes .= ! empty( $this->current_item->xfn ) ? ' rel="' . esc_attr( $this->current_item->xfn ) . '"' : '';
-		$attributes .= ! empty( $this->current_item->url ) ? ' href="' . esc_attr( $this->current_item->url ) . '"' : '';
+	/**
+	 * Generates the intial <a></a> tag
+	 *
+	 * @return string the anchor
+	 */
+	private function get_the_anchor_element(): string {
+		$attributes = $this->get_the_attributes();
 
-		$attributes  .= ( $args->walker->has_children ) ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
-		$item_output  = $args->walker->before;
+		$title = apply_filters( 'the_title', $this->current_item->title, $this->current_item->ID );
+		$title = apply_filters( 'nav_menu_item_title', $title, $this->current_item, $this->args, $this->depth );
+
+		$item_output  = $this->args->before;
 		$item_output .= "<a {$attributes}>";
-		$item_output .= $args->walker->link_before . apply_filters( 'the_title', $this->current_item->title, $this->current_item->ID ) . $args->walker->link_after;
+		$item_output .= $this->args->link_before . $title . $this->args->link_after;
 		$item_output .= '</a>';
-		$item_output .= $args->after;
+		$item_output .= $this->args->after;
+		$item_output  = apply_filters( 'walker_nav_menu_start_el', $item_output, $this->current_item, $this->depth, $this->args );
+		return $item_output;
 	}
 
-	// public function end_el( &$output, $item, $depth = 0, $args = \null ) {
-	// }
+	/** Builds the anchor attributes */
+	private function get_the_attributes(): string {
+		$attributes = array(
+			'title'  => $this->current_item->attr_title,
+			'target' => $this->current_item->target,
+			'rel'    => $this->current_item->xfn,
+			'href'   => $this->current_item->url,
+			'class'  => '',
+		);
+
+		if ( $this->has_children ) {
+			$attributes['data-toggle'] = 'dropdown';
+			$attributes['class']       = 'dropdown-toggle';
+			$is_mega_menu_title        = 0 !== $this->depth && '0' !== $this->current_item->menu_item_parent;
+
+			if ( $is_mega_menu_title ) {
+				$attributes['class'] .= ' mega-menu__title';
+			}
+		}
+		if ( 0 === $this->depth ) {
+			$attributes['class'] .= ' text-white';
+		}
+		return $this->build_atts( $attributes );
+	}
+
 
 	/**
 	 * Ends the list of after the elements are added. Specifically, this function handles the mega-menu output.
@@ -145,7 +232,7 @@ class CNO_Navwalker extends Walker_Nav_Menu {
 			$is_top_level_item = '0' === $nav_item->menu_item_parent;
 
 			if ( $is_top_level_item || $nav_item === $end_of_array ) {
-				$this->nav_arr[] = $last_item;
+				$this->last_item_ids[] = $last_item;
 			}
 			$last_item = $nav_item->ID;
 		}
@@ -158,7 +245,7 @@ class CNO_Navwalker extends Walker_Nav_Menu {
 		$indent = str_repeat( $t, $depth );
 
 		if ( 0 === $depth && $mega_menu_content ) {
-			$output .= '<li class="pt-3 constrain-width">';
+			$output .= '<li class="pt-3 flex-grow-1 mega-menu__acf-field">';
 			$output .= $mega_menu_content;
 			$output .= '</li>';
 		}
@@ -167,7 +254,7 @@ class CNO_Navwalker extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * If current_item->ID in $nav_arr[], get the content
+	 * If current_item->ID in $last_item_ids[], get the content
 	 *
 	 * @param int $id the current item's ID
 	 * @return string the markup
@@ -175,24 +262,24 @@ class CNO_Navwalker extends Walker_Nav_Menu {
 	private function get_the_mega_menu_content( int $id ): string {
 		$mega_menu_content = '';
 
-		if ( ! in_array( $id, $this->nav_arr, true ) ) {
+		if ( ! in_array( $id, $this->last_item_ids, true ) ) {
 			return $mega_menu_content;
 		}
 
 		switch ( $id ) {
-			case $this->nav_arr[1]:
+			case $this->last_item_ids[1]:
 				$mega_menu = new Mega_Menu_Content( 'option', get_field( 'stay_content', 'option' ) );
 				break;
-			case $this->nav_arr[2]:
+			case $this->last_item_ids[2]:
 				$mega_menu = new Mega_Menu_Content( 'option', get_field( 'eat_and_drink_content', 'option' ) );
 				break;
-			case $this->nav_arr[3]:
+			case $this->last_item_ids[3]:
 				$mega_menu = new Mega_Menu_Content( 'option', get_field( 'entertainment_content', 'option' ) );
 				break;
-			case $this->nav_arr[4]:
+			case $this->last_item_ids[4]:
 				$mega_menu = new Mega_Menu_Content( 'option', get_field( 'things_to_do_content', 'option' ) );
 				break;
-			case $this->nav_arr[5]:
+			case $this->last_item_ids[5]:
 				$mega_menu = new Mega_Menu_Content( 'option', get_field( 'mercantile_content', 'option' ) );
 				break;
 		}
