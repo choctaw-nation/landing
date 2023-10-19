@@ -63,7 +63,7 @@
 										'menu_id'        => 'bootscore-navbar',
 										'fallback_cb'    => '__return_false',
 										'depth'          => 3,
-										'walker'         => new CNO_Navwalker(),
+										'walker'         => new CNO_Mega_Menu(),
 									)
 								);
 								?>

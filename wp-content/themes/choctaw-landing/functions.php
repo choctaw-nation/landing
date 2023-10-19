@@ -13,8 +13,13 @@ require_once __DIR__ . '/inc/bootscore/theme-functions.php';
 function cno_theme_includes() {
 	// Include CNO Navwalker
 	require_once __DIR__ . '/inc/class-cno-navwalker.php';
+
+	// Include CNO Mega Menu
+	require_once __DIR__ . '/inc/class-cno-mega-menu.php';
+
 	// Include CNO Scripts & Styles
 	require_once __DIR__ . '/inc/cno-scripts.php';
+
 	// Include ACF Content Generator Classes
 	require_once __DIR__ . '/inc/cno-load-acf-classes.php';
 
