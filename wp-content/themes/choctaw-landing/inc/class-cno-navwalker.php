@@ -185,9 +185,9 @@ class CNO_Navwalker extends Walker_Nav_Menu {
 
 		if ( $this->has_children ) {
 			$attributes['data-toggle'] = 'dropdown';
-			$attributes['class']       = ' dropdown-toggle';
+			$attributes['class']      .= ' dropdown-toggle';
 		} else {
-			$attributes['class'] = ' dropdown-item';
+			$attributes['class'] .= ' dropdown-item';
 		}
 
 		$attributes['class'] .= ' nav-link';

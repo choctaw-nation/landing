@@ -11,17 +11,10 @@
 get_header();
 $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $hero->the_hero();
+$title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
+$title_bar->the_title_bar();
 ?>
 
-<div id="title-bar" class="container mb-5">
-	<div class="row justify-content-center py-5 my-3">
-		<div class="col-10 py-3">
-			<h1 class="fw-bold text-center">Dining Options</h1>
-			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-				accusam et justo duo dolores et ea rebum.</p>
-		</div>
-	</div>
-</div>
 
 <div id="tuklo" class="container py-5">
 	<div class="row align-items-center pt-2 pb-5">

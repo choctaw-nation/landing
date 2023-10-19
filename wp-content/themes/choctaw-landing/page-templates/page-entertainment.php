@@ -11,8 +11,8 @@
 get_header();
 $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $hero->the_hero();
-// $title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
-// $title_bar->the_title_bar();
+$title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
+$title_bar->the_title_bar();
 ?>
 
 <div id="title-bar" class="container mb-5 position-relative">

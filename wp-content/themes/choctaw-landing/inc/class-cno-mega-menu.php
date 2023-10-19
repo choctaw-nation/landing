@@ -119,14 +119,14 @@ class CNO_Mega_Menu extends CNO_Navwalker {
 
 		if ( $this->has_children ) {
 			$attributes['data-toggle'] = 'dropdown';
-			$attributes['class']       = ' dropdown-toggle';
+			$attributes['class']      .= ' dropdown-toggle';
 			$is_mega_menu_title        = 0 !== $this->depth && '0' !== $this->current_item->menu_item_parent;
 
 			if ( $is_mega_menu_title ) {
 				$attributes['class'] .= ' mega-menu__title';
 			}
 		} else {
-			$attributes['class'] = ' dropdown-item';
+			$attributes['class'] .= ' dropdown-item';
 		}
 
 		$attributes['class'] .= ' nav-link';

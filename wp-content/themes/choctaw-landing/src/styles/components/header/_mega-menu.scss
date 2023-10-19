@@ -28,6 +28,14 @@
 }
 
 .mega-menu {
+	@include m.media-breakpoint-up(xl) {
+		&:nth-last-child(-n + 4) {
+			.mega-menu__container {
+				right: 100px;
+			}
+		}
+	}
+
 	&__container {
 		@extend %dropdown_is_visible;
 
@@ -77,10 +85,7 @@
 		&.show {
 			display: flex;
 			flex-direction: column;
-
-			@include m.media-breakpoint-up(xl) {
-				flex-direction: row;
-			}
+			overflow-y: auto;
 
 			.dropdown-menu {
 				font-size: 1.25rem;
