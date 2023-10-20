@@ -90,7 +90,7 @@ class Two_Col_Section extends ACF_Generator {
 	 * @return string the markup
 	 */
 	public function get_the_markup(): string {
-		$section_id    = cno_get_the_section_id( $this->headline );
+		$section_id    = $this->get_the_section_id();
 		$section_class = $this->set_the_class( 'section' );
 		$row_class     = $this->set_the_class( 'row' );
 		$markup        = "<{$this->wrapper_el} class='{$section_class}' id='{$section_id}'>";
@@ -100,6 +100,17 @@ class Two_Col_Section extends ACF_Generator {
 		$markup       .= '</div>';
 		$markup       .= "</{$this->wrapper_el}>";
 		return $markup;
+	}
+
+	/** A wrapper for the global 'cno_get_the_section_id' function */
+	protected function get_the_section_id(): string {
+		if ( function_exists( 'cno_get_the_section_id' ) ) {
+			return cno_get_the_section_id( $this->headline );
+		} else {
+			$lowercase  = strtolower( $this->headline );
+			$snake_case = preg_replace( '/\s+/', '-', $lowercase );
+			return $snake_case;
+		}
 	}
 
 	/**
