@@ -44,7 +44,7 @@
 								 alt="logo" class="logo sm"></a>
 
 						<!-- Offcanvas Navbar -->
-						<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-navbar" style="height:fit-content;">
+						<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-navbar">
 							<div class="offcanvas-header pb-0">
 								<ul class="navbar-nav ">
 									<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-18"><a href="/" class="nav-link ">Home</a></li>

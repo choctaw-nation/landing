@@ -1,6 +1,9 @@
 @use "../abstracts/buttons";
 
 .btn {
+	&-primary {
+		color: white;
+	}
 	&-white {
 		@extend %btn;
 		background: white;

@@ -34,17 +34,17 @@ $title_bar->the_title_bar();
 <?php
 $amenities_group = get_field( 'amenities' );
 $banner          = new ACF_Image( $amenities_group['amenities_banner'] );
-
+get_template_part(
+	'template-parts/content',
+	'banner-header',
+	array(
+		'url'   => $banner->src,
+		'title' => array(
+			'text' => 'Amenities',
+		),
+	)
+);
 ?>
-<header id="amenities" class="container-fluid my-5 banner-bg-header" style="background: url('<?php echo $banner->src; ?>');">
-	<div class="container">
-		<div class="row">
-			<div class="col-12 d-flex align-items-end" style="height: 600px;">
-				<h2 class="text-light mb-4">Amenities</h2>
-			</div>
-		</div>
-	</div>
-</header>
 <section id='featured-amenities' class="container-fluid gx-0">
 	<?php
 	$featured_amenities = $amenities_group['featured_amenities'];

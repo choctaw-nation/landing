@@ -1,3 +1,5 @@
+@use "../abstracts/mixins" as m;
+
 /** Eat & Drink Page **/
 .menu {
 	&-link {
@@ -8,11 +10,20 @@
 	}
 }
 
-ul.dining-hours {
-	padding-left: 0;
+.dining-hours {
 	margin-bottom: 1.25rem;
-	margin-top: 1rem;
-	li {
-		list-style: none;
+
+	&__hours {
+		width: 100%;
+		display: inline-grid;
+		grid-template-columns: 1fr auto 2fr;
+		gap: 10px;
+	}
+}
+
+#containers {
+	font-size: 1.25rem;
+	p {
+		font-size: 1.25rem;
 	}
 }
