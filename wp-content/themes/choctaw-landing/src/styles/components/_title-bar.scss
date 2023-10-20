@@ -1,0 +1,25 @@
+@use "../abstracts/mixins" as m;
+
+.title-bar {
+	&.with-background {
+		background: url("/wp-content/uploads/2023/08/light-gray-map-background.jpg");
+
+		@include m.media-breakpoint-up(lg) {
+			margin-top: -90px;
+		}
+		@include m.media-breakpoint-down(lg) {
+			max-width: none;
+		}
+	}
+
+	label {
+		padding-left: 1rem;
+	}
+
+	.form-arrow {
+		position: absolute;
+		right: 15px;
+		top: 13px;
+		z-index: 0;
+	}
+}

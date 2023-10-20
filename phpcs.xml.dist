@@ -12,6 +12,7 @@
 	<exclude-pattern>/docroot/wp-content/plugins/*</exclude-pattern>
 	<exclude-pattern>/wp-config-sample.php</exclude-pattern>
 	<exclude-pattern>/wp-content/themes/*/dist/*</exclude-pattern>
+	<exclude-pattern>/wp-content/themes/*/bootscore/*</exclude-pattern>
 
 	<!-- Exclude Package Manager directories. -->
 	<exclude-pattern>/vendor/*</exclude-pattern>
@@ -37,7 +38,8 @@
 		<exclude name="WordPress.PHP.DontExtract.extract_extract" />
 		<exclude name="WordPress.NamingConventions.PrefixAllGlobals" />
 		<exclude name="WordPress.Security.EscapeOutput.OutputNotEscaped" />
-		<exclude name="Generic.Files.EndFileNewline.NotFound" />
+		<exclude name="PSR2.Files.EndFileNewline.NoneFound" />
+		<exclude name="Generic.Files.LineEndings.InvalidEOLChar" />
 	</rule>
 
 	<!-- Let's also check that everything is properly documented. -->

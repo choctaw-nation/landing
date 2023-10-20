@@ -1,29 +1,38 @@
 {
 	"name": "choctaw-landing",
-	"version": "1.0",
-	"description": "Custom WP theme for CNO sites",
+	"version": "1.0.0",
+	"description": "A custom wp theme for choctaw-landing",
 	"main": "wp-content/themes/choctaw-landing/src/index.js",
-	"prettier": "@wordpress/prettier-config",
-	"browserslist": [
-		"extends @wordpress/browserslist-config"
-	],
 	"scripts": {
 		"build": "wp-scripts build",
 		"check-engines": "wp-scripts check-engines",
 		"packages-update": "wp-scripts packages-update",
 		"start": "wp-scripts start"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/choctaw-nation/landing.git"
+	},
 	"author": "Choctaw Nation of Oklahoma",
 	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/choctaw-nation/landing/issues"
+	},
+	"homepage": "https://github.com/choctaw-nation/landing#readme",
 	"dependencies": {
+		"@fortawesome/fontawesome-free": "^6.4.2",
 		"@fortawesome/fontawesome-svg-core": "^6.4.2",
 		"@fortawesome/free-brands-svg-icons": "^6.4.2",
 		"@fortawesome/free-regular-svg-icons": "^6.4.2",
 		"@fortawesome/free-solid-svg-icons": "^6.4.2",
+		"@popperjs/core": "^2.11.8",
 		"@wordpress/scripts": "^26.12.0",
-		"aos": "^2.3.4",
-		"bootstrap": "^5.3.1",
-		"swiper": "^10.2.0"
+		"bootstrap": "^5.3.2",
+		"bootstrap-icons": "^1.11.1",
+		"daterangepicker": "^3.1.0",
+		"jquery": "^3.7.1",
+		"moment": "^2.29.4",
+		"swiper": "^10.3.1"
 	},
 	"devDependencies": {
 		"eslint-config-react-app": "^7.0.1"

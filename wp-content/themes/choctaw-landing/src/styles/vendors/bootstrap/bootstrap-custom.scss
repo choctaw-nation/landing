@@ -1,0 +1,52 @@
+@use "../../abstracts/variables" as v;
+// Required
+@import "bootstrap/scss/functions";
+
+$primary: v.$color-primary;
+$link-decoration: none;
+// $dropdown-link-color: v.$color-primary;
+$dropdown-link-hover-color: v.$color-primary--dark;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+
+// Useful Bootstrap Utilities (Optional)
+@import "bootstrap/scss/bootstrap-reboot";
+@import "bootstrap/scss/bootstrap-grid";
+@import "bootstrap/scss/bootstrap-utilities";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/offcanvas";
+
+// Optional Bootstrap Modules (w/ Dependencies)
+@import "bootstrap/scss/accordion";
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/button-group";
+// @import "bootstrap/scss/card";
+// @import 'bootstrap/scss/carousel';
+// @import "bootstrap/scss/code";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/forms";
+// @import "bootstrap/scss/images";
+// @import "bootstrap/scss/jumbotron";
+// @import "bootstrap/scss/list-group";
+// @import "bootstrap/scss/media";
+@import "bootstrap/scss/modal"; // Requires transitions
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar"; // Requires nav
+@import "bootstrap/scss/pagination";
+// @import "bootstrap/scss/placeholders";
+// @import "bootstrap/scss/popover";
+// @import "bootstrap/scss/print";
+// @import "bootstrap/scss/progress";
+// @import "bootstrap/scss/spinners";
+// @import "bootstrap/scss/tables";
+@import "bootstrap/scss/toasts";
+// @import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/type";

@@ -1,0 +1,10 @@
+.two-col {
+	&--full-width {
+		background-size: cover;
+		background-position: bottom;
+
+		.two-col__subheadline p {
+			color: white;
+		}
+	}
+}

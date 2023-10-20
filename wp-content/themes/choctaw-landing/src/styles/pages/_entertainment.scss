@@ -1,0 +1,55 @@
+@use "../abstracts/mixins" as m;
+
+/** Entertainment Page **/
+.events-list {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 10px;
+
+	@include m.media-breakpoint-up(sm) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@include m.media-breakpoint-up(md) {
+		grid-template-columns: repeat(var(--columns), 1fr);
+	}
+
+	&__item {
+		height: 450px;
+		padding: 0;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+}
+
+.event {
+	padding-bottom: 1rem;
+	padding-left: 1.5rem;
+	background-image: linear-gradient(
+		to bottom,
+		transparent 40%,
+		var(--color-primary--dark) 85%
+	);
+
+	&__title {
+		font-size: 1.25rem;
+		font-weight: 700;
+		margin-bottom: 0.25rem;
+		text-transform: uppercase;
+		color: white;
+	}
+
+	%base_text_styles {
+		color: white;
+		font-size: 1rem;
+		margin-bottom: 0;
+	}
+
+	&__meta {
+		@extend %base_text_styles;
+	}
+
+	&__tickets {
+		@extend %base_text_styles;
+	}
+}
