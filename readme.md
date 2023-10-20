@@ -4,6 +4,11 @@ A new project, started by Blake & being handed-off to KJ.
 
 # Changelog
 
+## v0.2.1
+
+-   Added a wrapper for `Two_Col_Section::get_the_section_id` to not throw errors
+-   Removed superfluous scss (outside of `src` folder).
+
 ## v0.2
 
 -   bug fixes and improvements (see [Github Issue #1](https://github.com/choctaw-nation/landing/issues/1))
@@ -13,6 +18,7 @@ A new project, started by Blake & being handed-off to KJ.
 -   Cleanup functions.php
 -   Optimize Bootstrap/Bootscore bundle sizes
 -   Created the `cno-navwalker` class to appropiately scope our team's changes to a specific subclass while not touching the underyling logic (see _[polymorphism](https://www.javatpoint.com/polymorphism-in-php)_).
+-   Created all of the ACF class fields for content generation
 
 ### Weather Widget
 
