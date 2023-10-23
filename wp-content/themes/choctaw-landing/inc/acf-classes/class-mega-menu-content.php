@@ -17,10 +17,23 @@ class Mega_Menu_Content extends ACF_Generator {
 		if ( $acf['image'] ) {
 			$this->set_the_image( $acf['image'] );
 		}
-		$this->featured_event = isset( $acf['featured_event'] ) ? $acf['featured_event'] : null;
+
+		$this->featured_event = $this->set_featured_event( $acf );
 		$this->has_cta        = isset( $acf['has_cta'] ) ? $acf['has_cta'] : null;
 		if ( $this->has_cta ) {
 			$this->cta = $acf['cta_link'];
+		}
+	}
+
+	/** Handles Conditions to set the Featured Event Property
+	 *
+	 * @param array $acf the ACF Fields
+	 */
+	private function set_featured_event( array $acf ) {
+		if ( isset( $acf['use_featured_event'] ) && $acf['use_featured_event'] ) {
+			$this->featured_event = isset( $acf['featured_event'] ) ? $acf['featured_event'] : null;
+		} else {
+			$this->featured_event = null;
 		}
 	}
 
