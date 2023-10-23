@@ -1,9 +1,9 @@
 @use "../../abstracts/mixins" as m;
 
 .navbar-nav {
-	@include m.media-breakpoint-up(lg) {
+	@include m.media-breakpoint-up(xl) {
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: flex-end;
 		align-items: center;
 
 		> .nav-item {
@@ -19,11 +19,6 @@
 
 .nav-btn {
 	text-align: center;
-
-	@include m.media-breakpoint-down(xl) {
-		margin-left: 1rem;
-		margin-top: 0.5rem;
-	}
 
 	&:hover {
 		.nav-link {

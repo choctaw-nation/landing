@@ -30,6 +30,10 @@
 }
 
 .offcanvas {
+	.offcanvas-header {
+		border-bottom: 2px solid white;
+	}
+
 	@include m.media-breakpoint-down(xl) {
 		background: url(/wp-content/uploads/2023/07/nav-bg.jpg);
 	}

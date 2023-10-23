@@ -41,26 +41,24 @@
 					<div class="<?php echo bootscore_container_class(); ?>">
 						<!-- Navbar Brand -->
 						<a class="navbar-brand sm p-3" href="<?php echo esc_url( home_url() ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo/logo.svg"
-								 alt="logo" class="logo sm"></a>
+								alt="logo" class="logo sm"></a>
 
 						<!-- Offcanvas Navbar -->
 						<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-navbar">
-							<div class="offcanvas-header pb-0">
+							<div class="offcanvas-header">
 								<ul class="navbar-nav ">
 									<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-18"><a href="/" class="nav-link ">Home</a></li>
 								</ul>
 								<a href="#" class="btn btn-mobile-nav" data-bs-dismiss="offcanvas" aria-label="Close">x</a>
 							</div>
 							<div class="offcanvas-body pt-0">
-
-								<!-- Bootstrap 5 Nav Walker Main Menu -->
 								<?php
 								wp_nav_menu(
 									array(
 										'theme_location' => 'main-menu',
 										'container'      => false,
 										'menu_class'     => 'navbar-nav ms-auto',
-										'menu_id'        => 'bootscore-navbar',
+										'menu_id'        => 'cno-navbar',
 										'fallback_cb'    => '__return_false',
 										'depth'          => 3,
 										'walker'         => new CNO_Mega_Menu(),
@@ -69,7 +67,6 @@
 								?>
 							</div>
 						</div>
-
 						<div class="header-actions d-flex align-items-center">
 							<!-- Navbar Toggler -->
 							<button class="btn btn-diamond d-xl-none ms-1 ms-md-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar"

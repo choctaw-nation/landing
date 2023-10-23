@@ -8,6 +8,7 @@
 
 // Include Bootscore Functions
 require_once __DIR__ . '/inc/bootscore/theme-functions.php';
+require_once __DIR__ . '/inc/playground-acf-fields.php';
 
 /** Loads CNO Theme Functionality */
 function cno_theme_includes() {
