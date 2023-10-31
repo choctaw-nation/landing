@@ -34,7 +34,7 @@ class Weather_Widget extends API {
 	 *
 	 * @var Weather[] $data;
 	 */
-	private array $data;
+	private ?array $data;
 
 	/** Whether enough time has passed to get the weather
 	 *
@@ -115,9 +115,11 @@ class Weather_Widget extends API {
 		$weather_data = get_post_meta( $this->page_id, 'weather_data', true );
 		if ( $this->can_get_weather || ! is_array( $weather_data ) ) {
 			$this->the_weather();
-			$weather_data = update_post_meta( $this->page_id, 'weather_data', $this->data );
-			$this->set_last_updated();
-			return $this->data;
+			if ( $this->data ) {
+				$weather_data = update_post_meta( $this->page_id, 'weather_data', $this->data );
+				$this->set_last_updated();
+				return $this->data;
+			}
 		}
 		if ( $this->error ) {
 			return new \WP_Error( 'weather_widget', $this->error );
@@ -142,6 +144,7 @@ class Weather_Widget extends API {
 				}
 			}
 		} else {
+			$this->data  = null;
 			$this->error = $data ?? 'No weather data found!';
 		}
 	}
