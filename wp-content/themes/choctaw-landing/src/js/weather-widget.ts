@@ -1,1 +1,0 @@
-import '../styles/components/_weather-widget.scss';

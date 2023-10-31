@@ -2,11 +2,12 @@ import Toast from "bootstrap/js/dist/toast";
 
 /**
  * Represents the configuration options for a toast.
- * @property {HTMLElement} [trigger] - An HTML Element that triggers the Toast.
- * @property {string} [message] - A short message for the toast. Defaults to "Something went wrong!" if not provided.
- * @property {string} [event] - A valid event type to add a listener to.
- * @property {HTMLElement} [element] - A custom toast element to initialize the Toast constructor with.
- * @property {string} [type] - Sets the bg & color of the toast in accordance with bootstrap's colors & background API
+ *
+ * @property {HTMLElement} trigger - An HTML Element that triggers the Toast.
+ * @property {string} message - A short message for the toast. Defaults to "Something went wrong!" if not provided.
+ * @property {string} event - A valid event type to add a listener to.
+ * @property {HTMLElement} element - A custom toast element to initialize the Toast constructor with.
+ * @property {string} type - Sets the bg & color of the toast in accordance with bootstrap's colors & background API
  * @link https://getbootstrap.com/docs/5.3/helpers/color-background/
  */
 export type ToastArgs = {
@@ -25,13 +26,19 @@ export type ToastArgs = {
 		| "dark";
 };
 
-/** To be used within a Callback Function
+/**
+ * The Toast Alert Class
  *
  * @link https://getbootstrap.com/docs/5.3/components/toasts/#examples
  */
 export default class ToastAlert {
+	/** The element with the id of "bootstrap-toast" */
 	private toast: HTMLElement;
+
+	/** A custom toast message. Toast messages are set to "Something went wrong!" by default */
 	private message?: string;
+
+	/** The bootstrap CSS modifier class */
 	private type?: ToastArgs["type"] = "info";
 
 	constructor(args: ToastArgs) {
@@ -63,12 +70,12 @@ export default class ToastAlert {
 
 	/** Sets up the default toast element */
 	private configToastEl() {
-		const toastMessage = this.toast.querySelector(
+		const toastMessageContainer = this.toast.querySelector(
 			".toast-message",
 		) as HTMLElement;
 
-		if (this.message && toastMessage) {
-			toastMessage.innerText = this.message;
+		if (this.message && toastMessageContainer) {
+			toastMessageContainer.innerText = this.message;
 		}
 
 		if (this.type) {
