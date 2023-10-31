@@ -4,6 +4,10 @@ A new project, started by Blake & being handed-off to KJ.
 
 # Changelog
 
+## v0.2.3
+
+-   Update sections to use Swiper
+
 ## v0.2.2
 
 -   Updated weather widget to use custom fields to handle data fetching and rate limiting with the weather API
