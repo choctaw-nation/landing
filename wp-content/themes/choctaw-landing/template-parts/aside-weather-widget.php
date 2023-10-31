@@ -15,8 +15,9 @@ require_once get_stylesheet_directory() . '/inc/weather-widget/class-weather-wid
 // Include the Bootstrap Icons
 require_once get_stylesheet_directory() . '/inc/weather-widget/class-bootstrap-icons.php';
 
-$weather      = new Weather_Widget();
-$weather_data = $weather->get_the_weather();
+$things_to_do_page_id = 49;
+$weather              = new Weather_Widget( $things_to_do_page_id );
+$weather_data         = $weather->get_the_weather();
 ?>
 <div id="weather-widget" class="col-12 col-xl-6 col-xxl-4 text-center py-3 px-4">
 	<?php if ( is_wp_error( $weather_data ) ) : ?>
@@ -24,9 +25,11 @@ $weather_data = $weather->get_the_weather();
 		<?php echo 'Weather Widget Error: ' . $weather_data->get_error_message( 'weather_widget' ); ?>
 	</div>
 	<?php else : ?>
-	<?php $icon_generator = new Bootstrap_Icons(); ?>
-	<?php $today_index = array_values( $weather_data )[0]->get_the_day(); ?>
-	<?php $today = $weather_data[ $today_index ]; ?>
+		<?php
+		$icon_generator = new Bootstrap_Icons();
+		$today_index    = array_values( $weather_data )[0]->get_the_day();
+		$today          = $weather_data[ $today_index ];
+		?>
 	<div class="row position-relative h-100">
 		<div class="col-12 justify-content-around d-flex flex-column">
 			<div class="row">
@@ -45,12 +48,16 @@ $weather_data = $weather->get_the_weather();
 				</div>
 				<div class="col-4">
 					<div><?php $icon_generator->the_icon( 'rainy' ); ?></i></div>
-					<div class="my-2"><span class="h3"><?php $today->the_chance_of_rain(); ?></span><small>%</small></div>
+					<div class="my-2">
+						<span class="h3"><?php $today->the_chance_of_rain(); ?></span><small>%</small>
+					</div>
 					<div>RAIN</div>
 				</div>
 				<div class="col-4">
 					<div><?php $icon_generator->the_icon( 'droplet' ); ?></div>
-					<div class="my-2"><span class="h3 my-3"><?php $today->the_humidity(); ?></span><small>%</small></div>
+					<div class="my-2">
+						<span class="h3 my-3"><?php $today->the_humidity(); ?></span><small>%</small>
+					</div>
 					<div>HUMIDITY</div>
 				</div>
 			</div>
@@ -58,7 +65,7 @@ $weather_data = $weather->get_the_weather();
 			<div class="row justify-content-evenly flex-sm-nowrap">
 				<?php $total = count( $weather_data ); ?>
 				<?php for ( $i = 1; $i < $total; $i++ ) : ?>
-				<?php
+					<?php
 					$day_index = array_values( $weather_data )[ $i ]->get_the_day();
 					$day       = $weather_data[ $day_index ];
 					?>
