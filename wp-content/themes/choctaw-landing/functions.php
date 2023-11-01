@@ -26,9 +26,13 @@ function cno_set_environment() {
 function cno_theme_includes() {
 	cno_set_environment();
 
-	$files = array( 'load-acf-classes', 'navwalker', 'mega-menu', 'scripts', 'tracking-pixels' );
+	$files = array( 'load-acf-classes', 'scripts', 'tracking-pixels' );
 	foreach ( $files as $file ) {
 		require_once __DIR__ . '/inc/cno-' . $file . '.php';
+	}
+	$classes = array( 'navwalker', 'mega-menu' );
+	foreach ( $classes as $file ) {
+		require_once __DIR__ . '/inc/class-cno-' . $file . '.php';
 	}
 
 	// Load Yoast Metabox at the bottom of editor
