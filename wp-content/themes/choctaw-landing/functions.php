@@ -8,21 +8,28 @@
 
 // Include Bootscore Functions
 require_once __DIR__ . '/inc/bootscore/theme-functions.php';
-require_once __DIR__ . '/inc/playground-acf-fields.php';
+
+/** Sets an Environment Variable */
+function cno_set_environment() {
+	$server_name = $_SERVER['SERVER_NAME'];
+
+	if ( false !== strpos( $server_name, '.local' ) ) {
+		$_ENV['CNO_ENV'] = 'dev';
+	} elseif ( false !== strpos( $server_name, 'wpengine' ) ) {
+		$_ENV['CNO_ENV'] = 'stage';
+	} else {
+		$_ENV['CNO_ENV'] = 'prod';
+	}
+}
 
 /** Loads CNO Theme Functionality */
 function cno_theme_includes() {
-	// Include ACF Content Generator Classes
-	require_once __DIR__ . '/inc/cno-load-acf-classes.php';
+	cno_set_environment();
 
-	// Include CNO Navwalker
-	require_once __DIR__ . '/inc/class-cno-navwalker.php';
-
-	// Include CNO Mega Menu
-	require_once __DIR__ . '/inc/class-cno-mega-menu.php';
-
-	// Include CNO Scripts & Styles
-	require_once __DIR__ . '/inc/cno-scripts.php';
+	$files = array( 'load-acf-classes', 'navwalker', 'mega-menu', 'scripts', 'tracking-pixels' );
+	foreach ( $files as $file ) {
+		require_once __DIR__ . '/inc/cno-' . $file . '.php';
+	}
 
 	// Load Yoast Metabox at the bottom of editor
 	add_filter(
