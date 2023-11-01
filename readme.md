@@ -4,6 +4,10 @@ A new project, started by Blake & being handed-off to KJ.
 
 # Changelog
 
+## v0.2.4
+
+- Adds Gathering Page Template
+
 ## v0.2.3
 
 -   Update sections to use Swiper
