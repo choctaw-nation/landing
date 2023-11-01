@@ -20,9 +20,6 @@ get_template_part(
 	array(
 		'url' => $banner->src,
 		'id'  => 'featured-sections',
-		// 'title' => array(
-		// 'text' => 'Area Attractions',
-		// ),
 	)
 );
 ?>
