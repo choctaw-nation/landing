@@ -1,9 +1,9 @@
 import { newSwiper } from "./swiper";
 
-function eatDrinkSwiper() {
-	const el = document.getElementById("restaurant-swiper");
+function eventsSwiper() {
+	const el = document.getElementById("events-swiper");
 	if (!el) {
-		throw new Error(`Couldn't get restaurant swiper!`);
+		throw new Error(`Couldn't get events swiper!`);
 	}
 	newSwiper(el, {
 		loop: false,
@@ -21,4 +21,4 @@ function eatDrinkSwiper() {
 		},
 	});
 }
-eatDrinkSwiper();
+eventsSwiper();

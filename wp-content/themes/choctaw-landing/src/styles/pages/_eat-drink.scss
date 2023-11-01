@@ -22,6 +22,20 @@
 }
 
 #containers {
+	.swiper {
+		height: 700px;
+
+		@include m.media-breakpoint-up(xl) {
+			height: 600px;
+		}
+	}
+
+	.card {
+		&__image {
+			aspect-ratio: 16 / 9;
+			object-fit: cover;
+		}
+	}
 	p {
 		font-size: 1.25rem;
 	}

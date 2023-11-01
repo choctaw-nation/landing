@@ -1,15 +1,13 @@
 <?php
-
 /**
  * Template Name: Entertainment
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Bootscore
+ * @package ChoctawNation
  */
 
 get_header();
-
+wp_enqueue_script( 'events-swiper' );
+wp_enqueue_style( 'events-swiper' );
 $hero            = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $title_bar       = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
 $featured_events = get_field( 'featured_events' );
@@ -41,24 +39,32 @@ $title_bar->the_title_bar();
 			<h2>Cypress Lawn</h2>
 		</div>
 	</div>
-	<ul class="row events-list list-unstyled" style="--columns:<?php echo $columns; ?>">
-		<?php
-		foreach ( $featured_events as $event ) :
-			$event   = is_array( $event ) ? $event['featured_event'] : $event;
-			$feature = new Choctaw_Event( get_field( 'event_details', $event->ID ), $event->ID );
-			$image   = get_the_post_thumbnail_url( $event, 'large' );
-			?>
-		<li class="events-list__item" style="background-image:url('<?php echo $image; ?>')">
-			<a href="<?php echo get_the_permalink( $event ); ?>">
-				<div class="d-flex flex-column justify-content-end h-100 event">
-					<h3 class='event__title'><?php $feature->the_name(); ?></h3>
-					<p class='event__meta'><i class="fa-solid fa-calendar"></i> <?php $feature->the_start_date_time( 'D, m/d/Y @ g:i a' ); ?></p>
-					<!-- <a class='event__tickets' href="#"><i class="fa-solid fa-ticket"></i> Tickets</a> -->
+	<div class="row events-list">
+		<div class="swiper" id='events-swiper' style='--swiper-pagination-color:var(--color-primary);--swiper-navigation-color:var(--color-primary);'>
+			<div class="swiper-wrapper">
+				<?php
+				foreach ( $featured_events as $event ) :
+					$event   = is_array( $event ) ? $event['featured_event'] : $event;
+					$feature = new Choctaw_Event( get_field( 'event_details', $event->ID ), $event->ID );
+					$image   = get_the_post_thumbnail_url( $event, 'large' );
+					?>
+				<div class="swiper-slide h-100 events-list__item" style="background-image:url('<?php echo $image; ?>')">
+					<a href="<?php echo get_the_permalink( $event ); ?>">
+						<div class="d-flex flex-column justify-content-end h-100 event">
+							<h3 class='event__title'><?php $feature->the_name(); ?></h3>
+							<p class='event__meta'><i class="fa-solid fa-calendar"></i> <?php $feature->the_start_date_time( 'D, m/d/Y @ g:i a' ); ?></p>
+							<!-- <a class='event__tickets' href="#"><i class="fa-solid fa-ticket"></i> Tickets</a> -->
+						</div>
+					</a>
 				</div>
-			</a>
-		</li>
-		<?php endforeach; ?>
-	</ul>
+				<?php endforeach; ?>
+			</div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+			<div class="swiper-pagination"></div>
+		</div>
+
+	</div>
 	<div class="col-12 text-center py-5 text-uppercase">
 		<a href="/events">View All Events <i class="fa-regular fa-circle-right"></i></a>
 	</div>

@@ -32,6 +32,8 @@ module.exports = {
 				global: `.${THEME_DIR}/src/index.js`,
 				"vendors/bootstrap": `.${THEME_DIR}/src/js/vendors/bootstrap.js`,
 				"vendors/date-range-picker": `.${THEME_DIR}/src/js/vendors/date-range-picker.js`,
+				"modules/swiper/eat-drink-swiper": `.${THEME_DIR}/src/js/vendors/swiperjs/eat-drink-swiper.ts`,
+				"modules/swiper/events-swiper": `.${THEME_DIR}/src/js/vendors/swiperjs/events-swiper.ts`,
 			};
 
 			if (appNames.length > 0) {

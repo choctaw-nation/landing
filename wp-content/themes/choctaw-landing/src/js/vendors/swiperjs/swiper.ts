@@ -17,7 +17,6 @@ const defaultArgs = {
 		nextEl: ".swiper-button-next",
 		prevEl: ".swiper-button-prev",
 	},
-
 	loop: true,
 	spaceBetween: 20,
 	grabCursor: true,
@@ -28,7 +27,6 @@ const defaultArgs = {
 			slidesPerView: 3,
 			slidesPerGroup: 3,
 			centeredSlides: false,
-			loop: false,
 		},
 	},
 } as SwiperOptions;
