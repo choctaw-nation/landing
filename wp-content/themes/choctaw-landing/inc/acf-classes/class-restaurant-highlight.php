@@ -6,6 +6,7 @@
  * @since 0.2
  */
 
+/** A Card that highlights a Restaurant */
 class Restaurant_Highlight extends Card {
 	private int $price;
 	private string|bool $genre;
@@ -27,8 +28,8 @@ class Restaurant_Highlight extends Card {
 		$markup  = "<{$headline_element} class='card__headline'>{$this->headline}</{$headline_element}>";
 		$markup .= "<div class='card__subheadline'>{$this->subheadline}</div>";
 		if ( $this->price || $this->genre ) {
-			$markup .= '<hr class="my-4" /><div class="row">';
-			$markup .= $this->genre ? "<div class='col'>{$this->genre}</div>" : '';
+			$markup .= '<hr class="my-4" /><div class="card__meta d-flex justify-content-between align-items-center">';
+			$markup .= $this->genre ? "<span class='card__meta--genre d-inline-block'>{$this->genre}</span>" : '';
 			$markup .= $this->price ? $this->get_the_price() : '';
 			$markup .= '</div>';
 		}
@@ -38,10 +39,10 @@ class Restaurant_Highlight extends Card {
 	/** Generates the price markup */
 	private function get_the_price(): string {
 		$grey_dollars = 4 - $this->price;
-		$markup       = "<div class='col'>";
+		$markup       = "<span class='card__meta--price d-inline-block'>";
 		$markup      .= $this->get_the_dollar_signs( $this->price );
 		$markup      .= $this->get_the_dollar_signs( $grey_dollars, true );
-		$markup      .= '</div>';
+		$markup      .= '</span>';
 		return $markup;
 	}
 

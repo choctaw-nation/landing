@@ -1,6 +1,6 @@
 {
 	"name": "choctaw-landing",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"description": "A custom wp theme for choctaw-landing",
 	"main": "wp-content/themes/choctaw-landing/src/index.js",
 	"scripts": {
@@ -31,7 +31,7 @@
 		"bootstrap-icons": "^1.11.1",
 		"daterangepicker": "^3.1.0",
 		"moment": "^2.29.4",
-		"swiper": "^10.3.1"
+		"swiper": "^11.0.3"
 	},
 	"devDependencies": {
 		"eslint-config-react-app": "^7.0.1"

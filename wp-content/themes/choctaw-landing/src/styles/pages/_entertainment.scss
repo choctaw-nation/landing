@@ -2,15 +2,8 @@
 
 /** Entertainment Page **/
 .events-list {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 10px;
-
-	@include m.media-breakpoint-up(sm) {
-		grid-template-columns: repeat(2, 1fr);
-	}
-	@include m.media-breakpoint-up(md) {
-		grid-template-columns: repeat(var(--columns), 1fr);
+	.swiper {
+		height: 500px;
 	}
 
 	&__item {

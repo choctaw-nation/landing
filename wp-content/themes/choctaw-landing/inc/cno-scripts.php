@@ -74,6 +74,36 @@ function cno_enqueue_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 	cno_register_daterangepicker();
+
+	$eat_drink_swiper = require_once get_stylesheet_directory() . '/dist/modules/swiper/eat-drink-swiper.asset.php';
+	wp_register_script(
+		'eat-drink-swiper',
+		get_stylesheet_directory_uri() . '/dist/modules/swiper/eat-drink-swiper.js',
+		array( 'bootscore' ),
+		$eat_drink_swiper['version'],
+		array( 'strategy' => 'defer' )
+	);
+	wp_register_style(
+		'eat-drink-swiper',
+		get_stylesheet_directory_uri() . '/dist/modules/swiper/eat-drink-swiper.css',
+		array( 'bootscore' ),
+		$eat_drink_swiper['version'],
+	);
+	
+	$events_swiper = require_once get_stylesheet_directory() . '/dist/modules/swiper/events-swiper.asset.php';
+	wp_register_script(
+		'events-swiper',
+		get_stylesheet_directory_uri() . '/dist/modules/swiper/events-swiper.js',
+		array( 'bootscore' ),
+		$events_swiper['version'],
+		array( 'strategy' => 'defer' )
+	);
+	wp_register_style(
+		'events-swiper',
+		get_stylesheet_directory_uri() . '/dist/modules/swiper/events-swiper.css',
+		array( 'bootscore' ),
+		$events_swiper['version'],
+	);
 }
 
 add_action( 'wp_enqueue_scripts', 'cno_enqueue_scripts' );
