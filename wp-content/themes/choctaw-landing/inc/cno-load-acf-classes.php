@@ -13,6 +13,18 @@ function cno_load_acf_classes() {
 	$subclasses = array( 'room-types', 'featured-eats', 'full-width-section', 'restaurant-highlight' );
 	$files      = array_merge( $classes, $subclasses );
 
+	if ( class_exists( 'ACF_Generator' ) ) {
+		$key = array_search( 'acf-generator', $files, true );
+		if ( false !== $key ) {
+			unset( $files[ $key ] );
+		}
+	}
+	if ( class_exists( 'ACF_Image' ) ) {
+		$key = array_search( 'acf-image', $files, true );
+		if ( false !== $key ) {
+			unset( $files[ $key ] );
+		}
+	}
 	foreach ( $files as $file ) {
 		$path = $directory . '/' . "class-{$file}.php";
 
