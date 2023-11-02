@@ -1,3 +1,6 @@
 [submodule "wp-content/plugins/cno-events-plugin"]
 	path = wp-content/plugins/cno-events-plugin
 	url = https://github.com/choctaw-nation/cno-events-plugin.git
+[submodule "wp-content/plugins/cno-news-plugin"]
+	path = wp-content/plugins/cno-news-plugin
+	url = https://github.com/choctaw-nation/news-plugin.git
