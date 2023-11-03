@@ -15,21 +15,48 @@
 	& > .menu-item > .nav-link {
 		color: white;
 	}
+
+	button.dropdown-toggle-split {
+		&:focus {
+			color: var(--color-secondary);
+		}
+		@include m.media-breakpoint-up(xl) {
+			tabindex: -1;
+		}
+	}
+	+ .btn-mobile-nav {
+		color: white;
+		border: 2px solid transparent;
+		transition: border 0.2s ease;
+
+		&:focus {
+			border: 2px solid white;
+		}
+	}
 }
 
 .nav-btn {
 	text-align: center;
 
+	%focus_active_styles {
+		background: white;
+		color: var(--color-primary);
+	}
+
 	&:hover {
 		.nav-link {
-			background: white;
-			color: var(--color-primary);
+			@extend %focus_active_styles;
 		}
 	}
+
 	.nav-link {
 		border: 1px solid white;
 		padding: 0;
 		margin: 0;
+
+		&:focus-visible {
+			@extend %focus_active_styles;
+		}
 	}
 }
 
@@ -52,7 +79,16 @@
 	}
 
 	&.active {
-		color: white;
 		font-weight: bold;
+	}
+
+	&:focus-visible {
+		font-weight: bold;
+		text-decoration: underline;
+	}
+
+	&:focus:not(:focus-visible) {
+		font-weight: normal;
+		text-decoration: none;
 	}
 }

@@ -31,9 +31,22 @@
 	.btn-group {
 		position: static;
 
-		> a,
-		> .active {
+		& > .nav-link {
 			color: white;
+
+			&.active {
+				font-weight: bold;
+			}
+
+			&:focus-visible {
+				font-weight: bold;
+				text-decoration: underline;
+			}
+
+			&:focus:not(:focus-visible) {
+				font-weight: normal;
+				text-decoration: none;
+			}
 		}
 
 		@include m.media-breakpoint-down(xl) {
@@ -53,10 +66,15 @@
 		}
 	}
 
-	@include m.media-breakpoint-up(xl) {
-		&:nth-last-child(-n + 3) {
-			.mega-menu__container {
+	&:nth-last-child(-n + 3) {
+		.mega-menu__container {
+			@include m.media-breakpoint-up(xl) {
 				right: 200px;
+			}
+			@media only screen and (min-width: 2000px) {
+				& {
+					right: unset;
+				}
 			}
 		}
 	}
@@ -85,8 +103,9 @@
 			}
 
 			.mega-menu:hover &,
-			.mega-menu:active &,
-			.mega-menu:focus & {
+			.mega-menu > .btn-group > a.nav-link:focus ~ &,
+			&:focus-within,
+			&:focus-visible {
 				display: grid;
 				grid-template-columns:
 					repeat(calc(var(--grid-columns)), 1fr)
@@ -153,7 +172,9 @@
 		font-weight: 500;
 		font-size: 1rem;
 
-		&:hover {
+		&:hover,
+		&:focus {
+			border: 2px solid var(--color-primary);
 			background: white;
 			color: var(--color-primary);
 		}

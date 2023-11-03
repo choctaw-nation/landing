@@ -13,6 +13,15 @@
 	min-height: 100px;
 	color: white;
 
+	.navbar-brand {
+		&:focus-visible {
+			border: solid 2px white;
+		}
+
+		&:focus:not(:focus-visible) {
+			border: none;
+		}
+	}
 	.logo {
 		height: 80px;
 

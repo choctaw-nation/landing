@@ -3,7 +3,8 @@ a {
 	color: var(--color-primary);
 	transition: 0.3s;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		color: var(--color-primary--dark);
 	}
 }
@@ -15,7 +16,8 @@ a {
 	font-size: 1.75rem;
 	z-index: 1;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		text-decoration: underline;
 	}
 }
@@ -26,7 +28,8 @@ a {
 		@extend %arrow-links;
 		color: inherit;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			color: inherit;
 		}
 	}
