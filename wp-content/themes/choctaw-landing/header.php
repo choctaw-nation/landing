@@ -41,7 +41,7 @@
 					<div class="<?php echo bootscore_container_class(); ?>">
 						<!-- Navbar Brand -->
 						<a class="navbar-brand sm p-3" href="<?php echo esc_url( home_url() ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo/logo.svg"
-								alt="logo" class="logo sm"></a>
+								 alt="logo" class="logo sm"></a>
 
 						<!-- Offcanvas Navbar -->
 						<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-navbar">
@@ -79,8 +79,6 @@
 					</div><!-- bootscore_container_class(); -->
 
 				</nav><!-- .navbar -->
-
-				<?php get_template_part( 'template-parts/header/top-nav-search-collapse' ); ?>
 
 			</div><!-- .fixed-top .bg-light -->
 

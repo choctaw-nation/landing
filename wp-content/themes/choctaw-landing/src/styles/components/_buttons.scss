@@ -4,6 +4,7 @@
 	&-primary {
 		color: white;
 	}
+
 	&-white {
 		@extend %btn;
 		background: white;
@@ -19,7 +20,8 @@
 		line-height: 1.25;
 		border: 2px solid white;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			border: 2px solid white;
 		}
 	}
@@ -32,7 +34,8 @@
 		font-weight: 500;
 		line-height: 3;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			background: var(--color-primary);
 			color: white;
 			border: 2px solid var(--color-primary);
@@ -45,7 +48,9 @@
 		border: 2px solid white;
 		padding: 0.5rem 1rem;
 		font-weight: 500;
-		&:hover {
+
+		&:hover,
+		&:focus {
 			background: white;
 			color: var(--color-primary);
 		}
@@ -62,7 +67,8 @@
 			transition: 0.3s;
 		}
 
-		&:hover {
+		&:hover,
+		&:focus {
 			background-color: white;
 			i {
 				color: black;
@@ -77,7 +83,8 @@
 				color: var(--color-primary);
 			}
 
-			&:hover {
+			&:hover,
+			&:focus {
 				background: var(--color-primary);
 
 				i {
