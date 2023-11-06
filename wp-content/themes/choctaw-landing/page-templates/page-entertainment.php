@@ -5,6 +5,8 @@
  * @package ChoctawNation
  */
 
+use ChoctawNation\Events\Choctaw_Event;
+
 get_header();
 wp_enqueue_script( 'events-swiper' );
 wp_enqueue_style( 'events-swiper' );
