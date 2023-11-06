@@ -43,8 +43,8 @@ local-xdebuginfo.php
 /wp-content/cache/
 /wp-content/mu-plugins/
 /wp-content/plugins/*
-!/wp-content/plugins/cno-events-plugin
-!/wp-content/plugins/cno-news-plugin
+!/wp-content/plugins/cno-plugin-events
+!/wp-content/plugins/cno-plugin-news
 /wp-content/themes/twenty*/
 /wp-content/upgrade/
 /wp-content/upgrade-temp-backup/
