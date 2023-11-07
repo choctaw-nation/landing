@@ -18,10 +18,10 @@ if ( ! $featured_events ) {
 	$featured_events = new WP_Query(
 		array(
 			'post_type'      => 'choctaw-events',
-			'posts_per_page' => 4,
-			// 'meta_key'       => 'time_and_date_start_date',
-			// 'orderby'        => 'meta_value_num',
-			// 'order'          => 'ASC',
+			'posts_per_page' => 6,
+			'meta_key'       => 'event_details_time_and_date_start_date',
+			'orderby'        => 'meta_value_num',
+			'order'          => 'ASC',
 		)
 	);
 	$featured_events = $featured_events->posts;
@@ -54,7 +54,8 @@ $title_bar->the_title_bar();
 					<a href="<?php echo get_the_permalink( $event ); ?>">
 						<div class="d-flex flex-column justify-content-end h-100 event">
 							<h3 class='event__title'><?php $feature->the_name(); ?></h3>
-							<p class='event__meta'><i class="fa-solid fa-calendar"></i> <?php $feature->the_start_date_time( 'D, m/d/Y @ g:i a' ); ?></p>
+							<p class='event__meta'><i class="fa-solid fa-calendar"></i>
+								<?php echo ( $feature->has_time ) ? $feature->get_the_start_date_time( 'D, m/d/Y @ g:i a' ) : $feature->get_the_start_date( 'D, m/d/Y' ); ?></p>
 							<!-- <a class='event__tickets' href="#"><i class="fa-solid fa-ticket"></i> Tickets</a> -->
 						</div>
 					</a>
