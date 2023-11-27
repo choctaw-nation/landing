@@ -2,13 +2,8 @@
 /**
  * The header for our theme
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package Bootscore
- *
- * @version 5.3.0
+ * @package ChoctawNation
+ * @version 1.0.0
  */
 
 ?>
@@ -41,7 +36,7 @@
 					<div class="<?php echo bootscore_container_class(); ?>">
 						<!-- Navbar Brand -->
 						<a class="navbar-brand sm p-3" href="<?php echo esc_url( home_url() ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo/logo.svg"
-								 alt="logo" class="logo sm"></a>
+								alt="logo" class="logo sm"></a>
 
 						<!-- Offcanvas Navbar -->
 						<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-navbar">
