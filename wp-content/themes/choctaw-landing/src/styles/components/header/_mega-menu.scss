@@ -30,6 +30,9 @@
 .mega-menu {
 	.btn-group {
 		position: static;
+		.dropdown-toggle-split {
+			display: none;
+		}
 
 		& > .nav-link {
 			color: white;
@@ -49,6 +52,16 @@
 			}
 		}
 
+		&:focus-within {
+			.dropdown-toggle-split {
+				display: block;
+				color: white;
+
+				&:focus {
+					color: var(--color-secondary);
+				}
+			}
+		}
 		@include m.media-breakpoint-down(xl) {
 			display: grid;
 			grid-template-columns: max(150px) auto;
