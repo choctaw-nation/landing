@@ -30,9 +30,6 @@
 .mega-menu {
 	.btn-group {
 		position: static;
-		.dropdown-toggle-split {
-			display: none;
-		}
 
 		& > .nav-link {
 			color: white;
@@ -52,8 +49,21 @@
 			}
 		}
 
+		.dropdown-toggle-split {
+			display: none;
+
+			@include m.media-breakpoint-up(xl) {
+				width: 30px;
+				color: white;
+				&:active,
+				&.show {
+					border: none;
+				}
+			}
+		}
+
 		&:focus-within {
-			.dropdown-toggle-split {
+			.dropdown-toggle-split ~ .nav-link:not(:active) {
 				display: block;
 				color: white;
 
@@ -62,20 +72,12 @@
 				}
 			}
 		}
+
 		@include m.media-breakpoint-down(xl) {
 			display: grid;
 			grid-template-columns: max(150px) auto;
 			margin-bottom: 10px;
 			width: 100%;
-
-			.dropdown-toggle-split {
-				width: 30px;
-				color: white;
-				&:active,
-				&.show {
-					border: none;
-				}
-			}
 		}
 	}
 
@@ -116,9 +118,7 @@
 			}
 
 			.mega-menu:hover &,
-			.mega-menu > .btn-group > a.nav-link:focus ~ &,
-			&:focus-within,
-			&:focus-visible {
+			.mega-menu > .btn-group .dropdown-toggle-split.show ~ & {
 				display: grid;
 				grid-template-columns:
 					repeat(calc(var(--grid-columns)), 1fr)
