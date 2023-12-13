@@ -31,6 +31,17 @@
 	.btn-group {
 		position: static;
 
+		&:focus-within {
+			.nav-link:not(:active) ~ .dropdown-toggle-split {
+				display: block;
+				color: white;
+
+				&:focus {
+					color: var(--color-secondary);
+				}
+			}
+		}
+
 		& > .nav-link {
 			color: white;
 
@@ -43,10 +54,10 @@
 				text-decoration: underline;
 			}
 
-			&:focus:not(:focus-visible) {
-				font-weight: normal;
-				text-decoration: none;
-			}
+			// &:focus:not(:focus-visible) {
+			// 	font-weight: normal;
+			// 	text-decoration: none;
+			// }
 		}
 
 		.dropdown-toggle-split {
@@ -58,17 +69,6 @@
 				&:active,
 				&.show {
 					border: none;
-				}
-			}
-		}
-
-		&:focus-within {
-			.dropdown-toggle-split ~ .nav-link:not(:active) {
-				display: block;
-				color: white;
-
-				&:focus {
-					color: var(--color-secondary);
 				}
 			}
 		}
