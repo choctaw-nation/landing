@@ -4,6 +4,11 @@ A new project, started by Blake & being handed-off to KJ.
 
 # Changelog
 
+## v1.0.3
+
+-   First official release!
+-   All accessibility issue solved, awaiting actual content.
+
 ## v0.2.5
 
 -   Partial fix to [#11](https://github.com/choctaw-nation/landing/issues/11) accessibility ([see comment](https://github.com/choctaw-nation/landing/issues/11#issuecomment-1792691926)), but still some issues to solve for full usability.
