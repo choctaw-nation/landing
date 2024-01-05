@@ -1,6 +1,6 @@
 {
 	"name": "choctaw-landing",
-	"version": "1.0.2",
+	"version": "1.0.5",
 	"description": "A custom wp theme for choctaw-landing",
 	"main": "wp-content/themes/choctaw-landing/src/index.js",
 	"scripts": {
