@@ -31,8 +31,8 @@
 	.btn-group {
 		position: static;
 
-		&:focus-within {
-			.nav-link:not(:active) ~ .dropdown-toggle-split {
+		&:focus-within:not(:active) {
+			.nav-link:not(:active) ~ .dropdown-toggle-split:not(:active) {
 				display: block;
 				color: white;
 
