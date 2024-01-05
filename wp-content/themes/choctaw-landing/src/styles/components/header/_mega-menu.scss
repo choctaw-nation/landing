@@ -53,15 +53,20 @@
 				font-weight: bold;
 				text-decoration: underline;
 			}
-
-			// &:focus:not(:focus-visible) {
-			// 	font-weight: normal;
-			// 	text-decoration: none;
-			// }
 		}
 
 		.dropdown-toggle-split {
 			display: none;
+			.show & {
+				--bs-btn-color: white;
+				display: block;
+
+				&:focus,
+				&:active,
+				&:hover {
+					color: var(--color-secondary);
+				}
+			}
 
 			@include m.media-breakpoint-up(xl) {
 				width: 30px;
