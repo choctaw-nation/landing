@@ -13,7 +13,7 @@ $title_element = isset( $args['title']['element'] ) ? $args['title']['element'] 
 $title_class   = isset( $args['title']['class'] ) ? $args['title']['class'] : 'text-light mb-4';
 
 ?>
-<header id="<?php echo $banner_id; ?>" class="container-fluid my-5 banner-bg-header" style="background: url('<?php echo $url; ?>');">
+<header id="<?php echo $banner_id; ?>" class="container-fluid my-5 banner-bg-header" style="background-image: url('<?php echo $url; ?>');">
 	<div class="container">
 		<div class="row">
 			<div class="col-12 d-flex align-items-end" style="height: 600px;">
