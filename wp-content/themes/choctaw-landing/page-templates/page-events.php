@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Entertainment
+ * Template Name: Events
  *
  * @package ChoctawNation
  */
@@ -69,7 +69,7 @@ $title_bar->the_title_bar();
 
 	</div>
 	<div class="col-12 text-center py-5 text-uppercase">
-		<a href="/events">View All Events <i class="fa-regular fa-circle-right"></i></a>
+		<a href="/events/all-events">View All Events <i class="fa-regular fa-circle-right"></i></a>
 	</div>
 </section>
 <?php
