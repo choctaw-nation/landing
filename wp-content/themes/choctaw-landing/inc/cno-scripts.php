@@ -8,16 +8,16 @@
 
 /** Enqueues Scripts & Styles */
 function cno_enqueue_scripts() {
-	// Fontawesome
-	wp_enqueue_style(
-		'fontawesome',
-		get_template_directory_uri() . '/fontawesome/css/all.min.css',
-		array(),
-		'6.4.2'
-	);
-
 	// Adobe Font Typekit CSS
 	wp_enqueue_style( 'typekit', 'https://use.typekit.net/jqq3pwr.css', array(), null );
+
+	$fontawesome = require_once get_template_directory() . '/dist/vendors/fontawesome.asset.php';
+	wp_enqueue_style(
+		'fontawesome',
+		get_template_directory_uri() . '/dist/vendors/fontawesome.css',
+		array(),
+		$fontawesome['version']
+	);
 
 	$bootscore = require_once get_stylesheet_directory() . '/dist/vendors/bootstrap.asset.php';
 	wp_enqueue_style(
@@ -39,7 +39,7 @@ function cno_enqueue_scripts() {
 	wp_enqueue_style(
 		'main',
 		get_stylesheet_directory_uri() . '/dist/global.css',
-		array( 'bootscore' ),
+		array( 'bootscore', 'fontawesome' ),
 		$main['version']
 	);
 
@@ -89,7 +89,7 @@ function cno_enqueue_scripts() {
 		array( 'bootscore' ),
 		$eat_drink_swiper['version'],
 	);
-	
+
 	$events_swiper = require_once get_stylesheet_directory() . '/dist/modules/swiper/events-swiper.asset.php';
 	wp_register_script(
 		'events-swiper',

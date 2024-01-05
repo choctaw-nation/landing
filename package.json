@@ -20,20 +20,16 @@
 	},
 	"homepage": "https://github.com/choctaw-nation/landing#readme",
 	"dependencies": {
-		"@fortawesome/fontawesome-free": "^6.5.1",
-		"@fortawesome/fontawesome-svg-core": "^6.5.1",
-		"@fortawesome/free-brands-svg-icons": "^6.5.1",
-		"@fortawesome/free-regular-svg-icons": "^6.5.1",
-		"@fortawesome/free-solid-svg-icons": "^6.5.1",
 		"@popperjs/core": "^2.11.8",
-		"@wordpress/scripts": "^26.19.0",
 		"bootstrap": "^5.3.2",
-		"bootstrap-icons": "^1.11.2",
 		"daterangepicker": "^3.1.0",
 		"moment": "^2.29.4",
 		"swiper": "^11.0.5"
 	},
 	"devDependencies": {
+		"@fortawesome/fontawesome-free": "^6.5.1",
+		"bootstrap-icons": "^1.11.2",
+		"@wordpress/scripts": "^26.19.0",
 		"eslint-config-react-app": "^7.0.1"
 	}
 }

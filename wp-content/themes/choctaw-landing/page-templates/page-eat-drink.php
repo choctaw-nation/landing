@@ -44,6 +44,6 @@ foreach ( $featured_eats as $featured_eat ) {
 	</div>
 </div>
 <?php
-$the_mercanitle = new Featured_Eats( get_the_ID(), get_field( 'the_mercantile' ) );
-$the_mercanitle->the_section();
+$the_mercantile = new Featured_Eats( get_the_ID(), get_field( 'the_mercantile' ) );
+$the_mercantile->the_section();
 get_footer();
