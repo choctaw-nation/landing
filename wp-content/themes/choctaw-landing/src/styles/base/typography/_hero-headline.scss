@@ -1,18 +1,6 @@
 @use "../../abstracts/mixins" as m;
 
-#header-img {
-	position: relative;
-}
-
 .hero-headline {
-	color: white;
-	text-transform: uppercase;
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	z-index: 3;
-	font-weight: 400;
-
 	@include m.media-breakpoint-up(sm) {
 		text-align: center;
 	}
@@ -20,10 +8,6 @@
 	&__line-1 {
 		font-size: clamp(16px, 4vw, 130px);
 		font-family: var(--font-body);
-		margin-inline-start: 8px;
-		@include m.media-breakpoint-up(sm) {
-			margin-inline-start: unset;
-		}
 	}
 
 	&__line-2 {

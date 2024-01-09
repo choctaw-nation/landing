@@ -20,7 +20,7 @@ class Hero_Section extends ACF_Generator {
 	}
 
 	public function get_the_hero(): string {
-		$headline = "<h1 class='hero-headline {$this->headline_position}'><span class='hero-headline__line-1'>A place to</span><span class='hero-headline__line-2'>{$this->headline}</span></h1>";
+		$headline = "<h1 class='hero-headline text-white text-uppercase d-flex flex-column position-absolute z-3 fw-normal {$this->headline_position}'><span class='hero-headline__line-1 ms-2 ms-sm-0'>A place to</span><span class='hero-headline__line-2'>{$this->headline}</span></h1>";
 		$markup   = "<header id='header-img' class='hero container-fluid gx-0 position-relative'>{$this->image->get_the_image('w-100 h-100 object-fit-cover hero__image')}{$headline}</header>";
 		return $markup;
 	}
