@@ -10,15 +10,20 @@ footer {
 	background-size: cover;
 	background-position: center;
 	color: white;
+
+	.widget-title {
+		color: white;
+	}
+
 	h2 {
 		padding-bottom: 1rem;
 	}
+
 	p,
 	ul,
 	ol,
 	a,
 	li {
-		font-family: var(--font-body);
 		font-size: 1rem;
 		font-weight: 400;
 		letter-spacing: 0.1rem;
@@ -27,7 +32,14 @@ footer {
 		color: white;
 		text-decoration: none;
 		text-transform: none;
+
+		&:hover,
+		&:focus {
+			color: var(--bs-primary);
+			text-decoration: underline;
+		}
 	}
+
 	ul,
 	ol {
 		list-style: none;
@@ -41,7 +53,8 @@ footer {
 		padding-right: 0.5rem;
 	}
 	.footer-info {
-		background: #231f20;
+		// background-color: #231f20; // Commented in case we need to change --bs-dark value
+		background-color: var(--bs-dark);
 		@include m.media-breakpoint-down(lg) {
 			text-align: center;
 		}

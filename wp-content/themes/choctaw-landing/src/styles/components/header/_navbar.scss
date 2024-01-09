@@ -1,46 +1,32 @@
 @use "../../abstracts/mixins" as m;
 
 .navbar-nav {
-	@include m.media-breakpoint-up(xl) {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
+	.btn {
+		--bs-btn-color: white;
+		--bs-btn-hover-color: var(--bs-secondary);
+	}
 
-		> .nav-item {
+	@include m.media-breakpoint-up(xl) {
+		& > .nav-item {
 			margin-top: 2.5rem;
 			padding-bottom: 2.5rem;
 		}
 	}
 
-	& > .menu-item > .nav-link {
-		color: white;
-	}
-
 	button.dropdown-toggle-split {
 		&:focus {
-			color: var(--color-secondary);
-		}
-		@include m.media-breakpoint-up(xl) {
-			tabindex: -1;
-		}
-	}
-	+ .btn-mobile-nav {
-		color: white;
-		border: 2px solid transparent;
-		transition: border 0.2s ease;
-
-		&:focus {
-			border: 2px solid white;
+			color: var(--bs-secondary);
 		}
 	}
 }
 
 .nav-btn {
+	margin-inline-start: 5px;
 	text-align: center;
 
 	%focus_active_styles {
 		background: white;
-		color: var(--color-primary);
+		color: var(--bs-primary);
 	}
 
 	&:hover {
@@ -61,27 +47,6 @@
 }
 
 .nav-link {
-	&:not(.mega-menu__title) {
-		--mx: 0.25rem;
-		font-size: 1rem;
-		margin-left: var(--mx);
-		margin-right: var(--mx);
-		transition: 0.3s;
-	}
-
-	&.mega-menu,
-	.nav-btn & {
-		padding: 0.75rem 1rem;
-	}
-
-	@include m.media-breakpoint-up(xxl) {
-		--mx: 0.75rem;
-	}
-
-	&.active {
-		font-weight: bold;
-	}
-
 	&:focus-visible {
 		font-weight: bold;
 		text-decoration: underline;
@@ -90,5 +55,18 @@
 	&:focus:not(:focus-visible) {
 		font-weight: normal;
 		text-decoration: none;
+	}
+
+	&:not(.mega-menu__title) {
+		transition: 0.3s;
+	}
+
+	&.mega-menu,
+	.nav-btn & {
+		padding: 0.75rem 1rem;
+	}
+
+	&.active {
+		font-weight: bold;
 	}
 }

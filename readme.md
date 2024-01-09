@@ -4,6 +4,10 @@ A new project, started by Blake & being handed-off to KJ.
 
 # Changelog
 
+## v2.1.0
+
+-   Allow dropdown toggle visibility on the header
+
 ## v2.0.0
 
 -   **Breaking Change:** Migrated Events into Repo and changed link structure

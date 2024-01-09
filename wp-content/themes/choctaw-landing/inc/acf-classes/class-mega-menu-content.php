@@ -6,6 +6,8 @@
  * @since 0.2
  */
 
+use ChoctawNation\Events\Choctaw_Event;
+
 /** The Mega Menu Content Page */
 class Mega_Menu_Content extends ACF_Generator {
 	private ?bool $has_cta;
@@ -43,7 +45,7 @@ class Mega_Menu_Content extends ACF_Generator {
 		if ( $this->featured_event ) {
 			$markup = $this->get_the_featured_event();
 		} else {
-			$markup = $this->image->get_the_image( 'mega-menu__image' );
+			$markup = $this->image->get_the_image( 'mega-menu__image object-fit-cover w-100' );
 			if ( $this->has_cta ) {
 				$markup .= $this->get_the_cta();
 			}
@@ -54,7 +56,14 @@ class Mega_Menu_Content extends ACF_Generator {
 	/** Generates the Featured Event Thumbnail block */
 	public function get_the_featured_event(): string {
 		$this->featured_event->ID;
-		$image     = get_the_post_thumbnail( $this->featured_event, 'post-thumbnail', array( 'class' => 'mega-menu__event-image' ) );
+		$image     = get_the_post_thumbnail(
+			$this->featured_event,
+			'post-thumbnail',
+			array(
+				'class'   => 'mega-menu__event-image object-fit-cover w-100',
+				'loading' => 'lazy',
+			)
+		);
 		$details   = $this->get_the_event_details();
 		$permalink = get_the_permalink( $this->featured_event );
 		return "<a href='{$permalink}' class='mega-menu__event p-0 d-block position-relative'>{$image}{$details}</a>";

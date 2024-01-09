@@ -1,19 +1,6 @@
-@use "./typography/links";
 @use "./typography/hero-headline";
 
-%base_font_styles {
-	font-family: var(--font-body);
-	font-weight: 400;
-	font-style: normal;
-	font-size: 1.25rem;
-}
-
-body {
-	@extend %base_font_styles;
-}
-
 p {
-	@extend %base_font_styles;
 	font-size: 1.75rem;
 	letter-spacing: 0.1rem;
 }
@@ -24,20 +11,29 @@ h2,
 .h2 {
 	font-weight: bold;
 	text-transform: uppercase;
-	color: var(--color-primary);
 }
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
-	font-family: var(--font-headings);
+%arrow-links {
+	line-height: 1.75rem;
+	align-self: flex-end;
+	font-weight: 500;
+	font-size: 1.75rem;
+	z-index: 1;
+
+	&:hover,
+	&:focus {
+	}
+}
+.arrow-link {
+	@extend %arrow-links;
+
+	&-white {
+		@extend %arrow-links;
+		color: inherit;
+
+		&:hover,
+		&:focus {
+			color: inherit;
+		}
+	}
 }

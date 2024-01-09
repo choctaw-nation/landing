@@ -2,16 +2,9 @@
 @use "./header/mega-menu";
 @use "./header/navbar";
 
-.dropdown-toggle::after {
-	display: none;
-}
-
 .header-bar {
 	font-family: var(--font-headings);
-	background: url(/wp-content/uploads/2023/07/nav-bg.jpg);
-	background-size: cover;
 	min-height: 100px;
-	color: white;
 
 	.navbar-brand {
 		&:focus-visible {
@@ -22,6 +15,7 @@
 			border: none;
 		}
 	}
+
 	.logo {
 		height: 80px;
 
@@ -29,25 +23,10 @@
 			max-height: 1000px;
 		}
 	}
-
-	li:not(.nav-btn) {
-		.nav-link.show,
-		.nav-link:hover {
-			background-color: unset;
-		}
-	}
 }
 
 .offcanvas {
-	.offcanvas-header {
-		border-bottom: 2px solid white;
-	}
-
-	@include m.media-breakpoint-down(xl) {
-		background: url(/wp-content/uploads/2023/07/nav-bg.jpg);
-	}
-
-	@include m.media-breakpoint-down(lg) {
-		padding-bottom: 1rem;
+	.btn-close {
+		filter: var(--bs-btn-close-white-filter);
 	}
 }

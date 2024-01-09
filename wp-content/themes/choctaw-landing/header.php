@@ -26,55 +26,51 @@
 </head>
 
 <body <?php body_class(); ?>>
-
 	<?php wp_body_open(); ?>
-
 	<div id="page" class="site">
-		<header id="masthead" class="site-header">
-			<div class="fixed-top bg-body-tertiary header-bar">
+		<header id="masthead" class="site-header fixed-top">
+			<div class="header-bar position-relative">
+				<div class="header-bg position-absolute top-0 w-100 h-100 z-n1">
+					<?php echo wp_get_attachment_image( 16, 'full', false, array( 'class' => 'w-100 h-100 object-fit-cover' ) ); ?>
+				</div>
 				<nav id="nav-main" class="navbar navbar-expand-xl py-0">
 					<div class="<?php echo bootscore_container_class(); ?>">
-						<!-- Navbar Brand -->
-						<a class="navbar-brand sm p-3" href="<?php echo esc_url( home_url() ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo/logo.svg"
-								alt="logo" class="logo sm"></a>
+						<a class="navbar-brand sm p-3" href="<?php echo esc_url( home_url() ); ?>">
+							<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo/logo.svg" alt="Choctaw Landing Logo" class="logo">
+						</a>
+						<button class="btn btn-diamond d-xl-none ms-1 ms-md-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar" aria-controls="offcanvas-navbar">
+							<i class="fa-solid fa-bars"></i>
+							<span class="visually-hidden-focusable">Menu</span>
+						</button>
 
-						<!-- Offcanvas Navbar -->
-						<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-navbar">
-							<div class="offcanvas-header">
+
+						<div class="offcanvas offcanvas-end pb-3 pb-lg-0" tabindex="-1" id="offcanvas-navbar"
+							style='background-image: url(<?php echo wp_get_attachment_url( 16, 'full' ); ?>)'>
+							<div class="offcanvas-header border-bottom border-2 border-white">
 								<ul class="navbar-nav ">
-									<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-18"><a href="/" class="nav-link ">Home</a></li>
+									<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-18">
+										<a href="/" class="nav-link ">Home</a>
+									</li>
 								</ul>
-								<a href="#" class="btn btn-mobile-nav" data-bs-dismiss="offcanvas" aria-label="Close">x</a>
+								<button class="btn btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 							</div>
 							<div class="offcanvas-body pt-0">
 								<?php
-								wp_nav_menu(
-									array(
-										'theme_location' => 'main-menu',
-										'container'      => false,
-										'menu_class'     => 'navbar-nav ms-auto',
-										'menu_id'        => 'cno-navbar',
-										'fallback_cb'    => '__return_false',
-										'depth'          => 3,
-										'walker'         => new CNO_Mega_Menu(),
-									)
-								);
-								?>
+									wp_nav_menu(
+										array(
+											'theme_location' => 'main-menu',
+											'container'   => false,
+											'menu_class'  => 'navbar-nav ms-auto justify-content-xl-end align-items-xl-center',
+											'menu_id'     => 'cno-navbar',
+											'fallback_cb' => '__return_false',
+											'depth'       => 3,
+											'walker'      => new CNO_Mega_Menu(),
+										)
+									);
+									?>
 							</div>
 						</div>
-						<div class="header-actions d-flex align-items-center">
-							<!-- Navbar Toggler -->
-							<button class="btn btn-diamond d-xl-none ms-1 ms-md-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar"
-									aria-controls="offcanvas-navbar">
-								<i class="fa-solid fa-bars"></i><span class="visually-hidden-focusable">Menu</span>
-							</button>
-
-						</div><!-- .header-actions -->
-
-					</div><!-- bootscore_container_class(); -->
-
-				</nav><!-- .navbar -->
-
-			</div><!-- .fixed-top .bg-light -->
-
-		</header><!-- #masthead -->
+					</div>
+				</nav>
+			</div>
+		</header>
