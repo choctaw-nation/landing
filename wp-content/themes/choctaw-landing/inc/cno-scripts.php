@@ -133,17 +133,17 @@ function cno_register_daterangepicker() {
 		null
 	);
 
-	$cno_date_range_picker = require_once get_stylesheet_directory() . '/dist/vendors/date-range-picker.asset.php';
+	$cno_date_range_picker = require_once get_stylesheet_directory() . '/dist/modules/date-range-picker.asset.php';
 	wp_register_script(
 		'cno-date-range-picker',
-		get_stylesheet_directory_uri() . '/dist/vendors/date-range-picker.js',
+		get_stylesheet_directory_uri() . '/dist/modules/date-range-picker.js',
 		array( 'date-range-picker' ),
 		$cno_date_range_picker['version'],
 		array( 'strategy' => 'defer' )
 	);
 	wp_register_style(
 		'cno-date-range-picker',
-		get_stylesheet_directory_uri() . '/dist/vendors/date-range-picker.css',
+		get_stylesheet_directory_uri() . '/dist/modules/date-range-picker.css',
 		array( 'date-range-picker' ),
 		$cno_date_range_picker['version'],
 	);

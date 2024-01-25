@@ -1,6 +1,7 @@
 <?php
 /**
- * The Booking Module
+ * The Booking Module Markup.
+ * Powered by JS Libraries Moment, jQuery and Date Range Picker.
  *
  * @package ChoctawNation
  * @since 0.2
@@ -27,7 +28,7 @@ cno_enqueue_date_range_picker();
 					<select id="numGuests" aria-label="Number of guests">
 						<option selected># of Guest(s)</option>
 						<?php
-						$guests = 5;
+						$guests = 4;
 						for ( $i = 1; $i <= $guests; $i++ ) {
 							echo "<option value='{$i}'>{$i}</option>";
 						}
