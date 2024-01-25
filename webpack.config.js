@@ -32,7 +32,7 @@ module.exports = {
 				global: `.${THEME_DIR}/src/index.js`,
 				"vendors/bootstrap": `.${THEME_DIR}/src/js/vendors/bootstrap.js`,
 				"vendors/fontawesome": `.${THEME_DIR}/src/styles/vendors/fontawesome.scss`,
-				"vendors/date-range-picker": `.${THEME_DIR}/src/js/vendors/date-range-picker.js`,
+				"modules/date-range-picker": `.${THEME_DIR}/src/js/vendors/date-range-picker.js`,
 				"modules/swiper/eat-drink-swiper": `.${THEME_DIR}/src/js/vendors/swiperjs/eat-drink-swiper.ts`,
 				"modules/swiper/events-swiper": `.${THEME_DIR}/src/js/vendors/swiperjs/events-swiper.ts`,
 			};
