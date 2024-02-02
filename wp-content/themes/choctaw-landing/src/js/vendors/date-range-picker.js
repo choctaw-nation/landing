@@ -24,13 +24,13 @@ jQuery(function ($) {
 			numGuests,
 		);
 		if (reservationURL) {
-			new ToastAlert({
-				message: `Success! Our booking portal will open in 3 seconds.`,
-				type: "primary",
-			});
-			setTimeout(() => {
-				window.open(reservationURL, "_blank");
-			}, 3000);
+			// new ToastAlert({
+			// 	message: `Success! Our booking portal will open in 3 seconds.`,
+			// 	type: "primary",
+			// });
+			window.open(reservationURL, "_blank");
+			// setTimeout(() => {
+			// }, 3000);
 		}
 	});
 });
