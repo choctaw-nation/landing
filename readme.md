@@ -4,6 +4,10 @@ A new project, started by Blake & being handed-off to KJ.
 
 # Changelog
 
+## v2.2.1
+
+-   Fix booking url bug
+
 ## v2.1.0
 
 -   Allow dropdown toggle visibility on the header

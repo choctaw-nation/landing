@@ -38,7 +38,7 @@ jQuery(function ($) {
  */
 function generateRedirectURL(daterangepickerData, numGuests) {
 	const BASE_URL = `https://book.rguest.com/onecart/wbe/room/1180/choctaw-landing`;
-	const dateFormat = "YYYY-MM-D";
+	const dateFormat = "YYYY-MM-DD";
 
 	const { startDate, endDate } = daterangepickerData;
 
