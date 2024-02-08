@@ -8,7 +8,7 @@ jQuery(function ($) {
 		endDate: moment().add(2, "days"),
 		minDate: moment(),
 		locale: {
-			format: "M/DD/YYYY",
+			format: "MM/DD/YYYY",
 		},
 		autoApply: true,
 	});
