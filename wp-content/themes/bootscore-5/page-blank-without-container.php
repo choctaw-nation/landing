@@ -76,7 +76,9 @@ $events = array(
 						<div class="container mt-3 py-3 px-3">
 							<div class="row d-flex justify-content-center align-items-center">
 								<div class="col-12 col-md-6 col-lg-3 mb-3 text-center">
-									<!-- <div class='embed-container'><?php // the_field( 'video' ) ?></div> -->
+									<!-- <div class='ratio ratio-16x9'>
+										<?php // the_field( 'video' ); ?>
+									</div> -->
 									<img src="/wp-content/uploads/2023/11/choctaw-c-in-the-trees.jpg" alt="Choctaw C in the Trees" />
 								</div>
 								<div class="col-12 col-md-6 col-lg-7 mb-3">
@@ -101,9 +103,9 @@ $events = array(
 				</section>
 
 				<?php
-				if ( have_rows( 'highlights' ) ) {
-					get_template_part( 'template-parts/content', 'highlights' );
-				}
+				// if ( have_rows( 'highlights' ) ) {
+				// get_template_part( 'template-parts/content', 'highlights' );
+				// }
 				?>
 				<div class="container-fluid bg-light text-dark py-5" id="events">
 					<div class="container text-center my-3">

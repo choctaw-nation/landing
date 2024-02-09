@@ -4,7 +4,7 @@
  */
 
 ?>
-<section class="container-fluid py-5 bg-light text-dark d-none">
+<section class="container-fluid py-5 bg-light text-dark">
 	<div class="container text-center mt-3 pt-3 px-3">
 		<div class="row">
 			<?php
