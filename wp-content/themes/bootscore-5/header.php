@@ -24,11 +24,8 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 	<link rel="manifest" href="/site.webmanifest">
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
-
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="theme-color" content="#ffffff">
-
-	<link rel="stylesheet" href="https://use.typekit.net/jqq3pwr.css">
 	<?php wp_head(); ?>
 	<meta name="facebook-domain-verification" content="p7k8b3wboq8ytze35uncny0182e3jz" />
 </head>

@@ -70,7 +70,7 @@ $events = array(
 				<section class="container-fluid p-0">
 					<img src="<?php the_field( 'featured_image' ); ?>" class="header-image" />
 				</section>
-				<?php get_template_part( 'template-parts/form', 'booking-module' ); ?>
+				<?php // get_template_part( 'template-parts/form', 'booking-module' ); ?>
 				<section class="container-fluid py-5 bg-light text-dark">
 					<div class="container my-3">
 						<div class="container mt-3 py-3 px-3">
