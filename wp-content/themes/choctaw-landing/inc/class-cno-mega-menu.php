@@ -47,7 +47,7 @@ class CNO_Mega_Menu extends CNO_Navwalker {
 		}
 		$indent       = str_repeat( "\t", $depth );
 		$is_top_level = 0 === $depth;
-		$submenu      = ( $is_top_level ) ? ' mega-menu__container' : ' sub-menu';
+		$submenu      = ( $is_top_level ) ? ' mega-menu__container px-3' : ' sub-menu';
 		$grid         = $is_top_level ? " style=\"--grid-columns:{$this->children_count}\"" : '';
 		$output      .= "\n$indent<ul class=\"dropdown-menu$submenu " . esc_attr( implode( ' ', $dropdown_menu_class ) ) . " depth_$depth\"" . $grid . ">\n";
 	}

@@ -25,7 +25,7 @@ $weather_data         = $weather->get_the_weather();
 		<?php echo 'Weather Widget Error: ' . $weather_data->get_error_message( 'weather_widget' ); ?>
 	</div>
 	<?php else : ?>
-		<?php
+	<?php
 		$icon_generator = new Bootstrap_Icons();
 		$today_index    = array_values( $weather_data )[0]->get_the_day();
 		$today          = $weather_data[ $today_index ];
@@ -43,20 +43,22 @@ $weather_data         = $weather->get_the_weather();
 			<div class="row my-4 justify-content-evenly">
 				<div class="col-4">
 					<div><?php $icon_generator->the_icon( 'windy' ); ?></div>
-					<div class="my-2"><span class="h3"><?php $today->the_wind(); ?></span><small>mph</small></div>
+					<div class="my-2">
+						<span class="h3 text-white"><?php $today->the_wind(); ?></span><small>mph</small>
+					</div>
 					<div>WIND</div>
 				</div>
 				<div class="col-4">
 					<div><?php $icon_generator->the_icon( 'rainy' ); ?></i></div>
 					<div class="my-2">
-						<span class="h3"><?php $today->the_chance_of_rain(); ?></span><small>%</small>
+						<span class="h3 text-white"><?php $today->the_chance_of_rain(); ?></span><small>%</small>
 					</div>
 					<div>RAIN</div>
 				</div>
 				<div class="col-4">
 					<div><?php $icon_generator->the_icon( 'droplet' ); ?></div>
 					<div class="my-2">
-						<span class="h3 my-3"><?php $today->the_humidity(); ?></span><small>%</small>
+						<span class="h3 text-white my-3"><?php $today->the_humidity(); ?></span><small>%</small>
 					</div>
 					<div>HUMIDITY</div>
 				</div>
@@ -65,7 +67,7 @@ $weather_data         = $weather->get_the_weather();
 			<div class="row justify-content-evenly flex-sm-nowrap">
 				<?php $total = count( $weather_data ); ?>
 				<?php for ( $i = 1; $i < $total; $i++ ) : ?>
-					<?php
+				<?php
 					$day_index = array_values( $weather_data )[ $i ]->get_the_day();
 					$day       = $weather_data[ $day_index ];
 					?>

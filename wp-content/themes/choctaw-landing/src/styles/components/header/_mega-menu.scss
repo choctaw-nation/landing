@@ -23,12 +23,25 @@
 .mega-menu {
 	--bs-navbar-color: var(--bs-dark);
 
+	&:hover {
+		.btn-group {
+			& > a {
+				color: var(--bs-nav-link-hover-color);
+			}
+
+			& > .btn {
+				color: var(--bs-nav-link-hover-color);
+			}
+		}
+	}
+
 	.sub-menu {
 		--bs-nav-link-color: var(--bs-body-color);
 		--bs-dropdown-font-size: 1rem;
 	}
 
 	.btn-group {
+		width: 100%;
 		flex-wrap: wrap;
 		column-gap: 10px;
 		@include m.media-breakpoint-up(xl) {
@@ -104,6 +117,10 @@
 			@include m.media-breakpoint-up(xl) {
 				@include show-dropdown();
 			}
+		}
+
+		&.show {
+			min-width: 100%;
 		}
 	}
 

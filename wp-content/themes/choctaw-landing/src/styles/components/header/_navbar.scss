@@ -8,8 +8,9 @@
 
 	@include m.media-breakpoint-up(xl) {
 		& > .nav-item {
-			margin-top: 2.5rem;
-			padding-bottom: 2.5rem;
+			--vertical-space: 2.5rem;
+			margin-top: var(--vertical-space);
+			padding-bottom: var(--vertical-space);
 		}
 	}
 
@@ -36,8 +37,8 @@
 	}
 
 	.nav-link {
+		--bs-navbar-nav-link-padding-x: 0.75rem;
 		border: 1px solid white;
-		padding: 0;
 		margin: 0;
 
 		&:focus-visible {
