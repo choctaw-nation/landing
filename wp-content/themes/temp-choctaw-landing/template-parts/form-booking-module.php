@@ -9,7 +9,7 @@
 
 cno_enqueue_date_range_picker();
 ?>
-<aside class="booking">
+<aside class="booking bg-light">
 	<form id="booking-bar" class="container position-relative zi-1030 bg-dark text-light">
 		<div class="row py-5 px-3">
 			<div class="col-12 col-xl-4 d-flex flex-column align-items-center justify-content-end pb-3">
