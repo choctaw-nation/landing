@@ -6,6 +6,10 @@
  * @since 0.1
  */
 
+use ChoctawNation\ACF\Full_Width_Section;
+use ChoctawNation\ACF\Hero_Section;
+use ChoctawNation\ACF\Two_Col_Section;
+
 get_header();
 $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 

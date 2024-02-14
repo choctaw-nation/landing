@@ -3,13 +3,15 @@
  * Hero Section Class
  *
  * @package ChoctawNation
- * @since 0.2
+ * @subpackage ACF
  */
+
+namespace ChoctawNation\ACF;
 
 /**
  * Generates the Hero Section
  */
-class Hero_Section extends ACF_Generator {
+class Hero_Section extends Generator {
 	private string $headline;
 	private string $headline_position;
 

@@ -3,25 +3,27 @@
  * The Super ACF class that all children inherit
  *
  * @package ChoctawNation
- * @since 0.2
+ * @subpackage ACF
  */
+
+namespace ChoctawNation\ACF;
 
 /**
  * The abstract class for creating content generator classes with ACF fields
  */
-abstract class ACF_Generator {
+abstract class Generator {
 	/** The post_id associated with the acf fields
 	 *
-	 * @var int $post_id
+	 * @var int|string $post_id
 	 */
-	protected int|string $post_id;
+	protected $post_id;
 
 	/**
 	 * The ACF Image
 	 *
-	 * @var ?ACF_Image $image
+	 * @var ?Image $image
 	 */
-	protected ?ACF_Image $image;
+	protected ?Image $image;
 
 	/** Inits the class
 	 *
@@ -46,7 +48,7 @@ abstract class ACF_Generator {
 	 */
 	protected function set_the_image( array $image ) {
 		if ( is_array( $image ) ) {
-			$this->image = new ACF_Image( $image );
+			$this->image = new Image( $image );
 		}
 	}
 }

@@ -3,11 +3,13 @@
  * Generates a Simple Card Layout
  *
  * @package ChoctawNation
- * @since 0.2
+ * @subpackage ACF
  */
 
+namespace ChoctawNation\ACF;
+
 /** Generates a Card (Vertical image with title & subheadline) */
-class Card extends ACF_Generator {
+class Card extends Generator {
 	/** The headline
 	 *
 	 * @var string $headline

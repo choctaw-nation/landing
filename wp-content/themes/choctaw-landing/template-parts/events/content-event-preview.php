@@ -20,7 +20,7 @@ if ( $event_details ) {
 		<div class="row">
 			<?php $content_col_class = 'post-preview my-3 my-lg-0'; ?>
 			<?php if ( has_post_thumbnail() ) : ?>
-				<?php $content_col_class .= ' col-lg-8'; ?>
+			<?php $content_col_class .= ' col-lg-8'; ?>
 			<div class="col-lg-4">
 				<a href="<?php the_permalink(); ?>" class="ratio ratio-16x9">
 					<?php the_post_thumbnail( 'choctaw-events-preview', array( 'class' => 'object-fit-cover' ) ); ?>

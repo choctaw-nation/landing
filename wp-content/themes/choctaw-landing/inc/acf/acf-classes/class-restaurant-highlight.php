@@ -3,8 +3,10 @@
  * Restaurant Highlight (Card)
  *
  * @package ChoctawNation
- * @since 0.2
+ * @subpackage ACF
  */
+
+namespace ChoctawNation\ACF;
 
 /** A Card that highlights a Restaurant */
 class Restaurant_Highlight extends Card {

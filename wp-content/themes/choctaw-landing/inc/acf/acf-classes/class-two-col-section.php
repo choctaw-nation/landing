@@ -3,11 +3,13 @@
  * Component Section Generator class
  *
  * @package ChoctawNation
- * @since 0.2
+ * @subpackage ACF
  */
 
+namespace ChoctawNation\ACF;
+
 /** Used to handle ACF markup */
-class Two_Col_Section extends ACF_Generator {
+class Two_Col_Section extends Generator {
 	/** Defines the wrapper element. Defaults to "section"
 	 *
 	 * @var string $wrapper_el

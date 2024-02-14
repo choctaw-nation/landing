@@ -6,6 +6,12 @@
  * @since 0.2
  */
 
+use ChoctawNation\ACF\Card;
+use ChoctawNation\ACF\Hero_Section;
+use ChoctawNation\ACF\Image;
+use ChoctawNation\ACF\Title_Bar;
+use ChoctawNation\ACF\Two_Col_Section;
+
 get_header();
 $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $hero->the_hero();
@@ -13,7 +19,7 @@ $title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
 $title_bar->the_title_bar();
 
 $features_group = get_field( 'features' );
-$banner         = new ACF_Image( $features_group['banner_image'] );
+$banner         = new Image( $features_group['banner_image'] );
 get_template_part(
 	'template-parts/content',
 	'banner-header',

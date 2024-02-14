@@ -4,8 +4,9 @@
  * Based on Two Col Section
  *
  * @package ChoctawNation
- * @since 0.2
  */
+
+namespace ChoctawNation\ACF;
 
 /** Used to handle ACF markup */
 class Featured_Eats extends Two_Col_Section {

@@ -6,6 +6,8 @@
  * @version 1.0.0
  */
 
+use ChoctawNation\Mega_Menu;
+
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -43,9 +45,8 @@
 							<span class="visually-hidden-focusable">Menu</span>
 						</button>
 
-
 						<div class="offcanvas offcanvas-end pb-3 pb-lg-0" tabindex="-1" id="offcanvas-navbar"
-							style='background-image: url(<?php echo wp_get_attachment_url( 16, 'full' ); ?>)'>
+							 style='background-image: url(<?php echo wp_get_attachment_url( 16, 'full' ); ?>)'>
 							<div class="offcanvas-header border-bottom border-2 border-white">
 								<ul class="navbar-nav ">
 									<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-18">
@@ -64,7 +65,7 @@
 											'menu_id'     => 'cno-navbar',
 											'fallback_cb' => '__return_false',
 											'depth'       => 3,
-											'walker'      => new CNO_Mega_Menu(),
+											'walker'      => new Mega_Menu(),
 										)
 									);
 									?>

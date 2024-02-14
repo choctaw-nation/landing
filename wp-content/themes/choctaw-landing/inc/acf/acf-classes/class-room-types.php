@@ -3,8 +3,10 @@
  * Room Types Cards
  *
  * @package ChoctawNation
- * @since 0.2
+ * @subpackage ACF
  */
+
+namespace ChoctawNation\ACF;
 
 /** Extends & overwrites the Card class API with different content */
 class Room_Types extends Card {

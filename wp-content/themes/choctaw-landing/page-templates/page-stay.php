@@ -5,6 +5,13 @@
  * @package ChoctawNation
  */
 
+use ChoctawNation\ACF\Card;
+use ChoctawNation\ACF\Hero_Section;
+use ChoctawNation\ACF\Image;
+use ChoctawNation\ACF\Room_Types;
+use ChoctawNation\ACF\Title_Bar;
+use ChoctawNation\ACF\Two_Col_Section;
+
 get_header();
 
 $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
@@ -33,7 +40,7 @@ $title_bar->the_title_bar();
 
 <?php
 $amenities_group = get_field( 'amenities' );
-$banner          = new ACF_Image( $amenities_group['amenities_banner'] );
+$banner          = new Image( $amenities_group['amenities_banner'] );
 get_template_part(
 	'template-parts/content',
 	'banner-header',
