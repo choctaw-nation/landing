@@ -75,7 +75,7 @@ final class Plugin_Loader extends Admin_Handler {
 		);
 
 		$search_asset_file = require_once dirname( __DIR__, 1 ) . '/dist/choctaw-events-search.asset.php';
-		$deps              = array_merge( array( 'main' ), $search_asset_file['dependencies'] );
+		$deps              = array_merge( array( 'global' ), $search_asset_file['dependencies'] );
 		wp_register_script(
 			'choctaw-events-search',
 			plugin_dir_url( __DIR__ ) . 'dist/choctaw-events-search.js',
