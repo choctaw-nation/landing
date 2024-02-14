@@ -281,7 +281,7 @@ class Featured_Eats extends Two_Col_Section {
 			$anchors[] = "<a href='{$this->reservations_link}' class='{$mobile_link_class}' target='_blank' rel='noopener noreferrer'>Make Reservations</a>";
 		}
 		if ( $this->can_order_online ) {
-			$anchors[] = "<a href='{$this->online_orders_link}' class='{$mobile_link_class}' target='_blank' rel='noopener noreferrer'>Make Reservations</a>";
+			$anchors[] = "<a href='{$this->online_orders_link}' class='{$mobile_link_class}' target='_blank' rel='noopener noreferrer'>Order Online</a>";
 		}
 		$num_anchors = count( $anchors );
 		if ( 2 === $num_anchors ) {

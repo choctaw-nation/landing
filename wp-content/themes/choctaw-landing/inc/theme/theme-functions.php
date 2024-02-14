@@ -9,7 +9,7 @@
 /**
  * Generates an ID based on the string.
  *
- * @param string $str the string to convert to a snake-case
+ * @param string $str the string to convert to kebab-case
  * @return string - The section ID generated from the headline.
  */
 function cno_get_the_section_id( string $str ): string {

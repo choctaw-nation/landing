@@ -75,10 +75,9 @@ class Mega_Menu extends Navwalker {
 			$output .= "<div class='btn-group'>";
 		}
 		$output .= $this->get_the_anchor_element();
-		// if is title, add split-toggle dropdown button that only displays on mobile
+		// if is title, add split-toggle dropdown button
 		if ( $this->is_top_level ) {
 			$output .= '<button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button>';
-			// $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
 		}
 	}
 
@@ -125,7 +124,7 @@ class Mega_Menu extends Navwalker {
 		$classes   = empty( $this->current_item->classes ) ? array() : (array) $this->current_item->classes;
 		$classes[] = ( $this->has_children ) ? 'dropdown ' : '';
 		$classes[] = ( $this->is_top_level ) ? 'mega-menu position-static' : '';
-		$classes[] = ( $this->current_item->current || $this->current_item->current_item_ancestor ) ? 'active' : '';
+		$classes[] = ( ( $this->current_item->current || $this->current_item->current_item_ancestor ) && $this->is_top_level ) ? 'active' : '';
 		$classes[] = 'nav-item';
 		$classes[] = 'nav-item-' . $this->current_item->ID;
 
@@ -160,7 +159,7 @@ class Mega_Menu extends Navwalker {
 
 	/** Builds the anchor attributes */
 	protected function get_the_attributes(): string {
-		$active_class = ( $this->current_item->current || $this->current_item->current_item_ancestor || in_array( 'current_page_parent', $this->current_item->classes, true ) || in_array( 'current-post-ancestor', $this->current_item->classes, true ) ) ? 'active' : '';
+		$active_class = $this->is_top_level && ( $this->current_item->current || $this->current_item->current_item_ancestor || in_array( 'current_page_parent', $this->current_item->classes, true ) || in_array( 'current-post-ancestor', $this->current_item->classes, true ) ) ? 'active' : '';
 
 		$attributes = array(
 			'title'  => $this->current_item->attr_title,

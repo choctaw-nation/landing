@@ -40,10 +40,10 @@ class Image {
 	 *
 	 * @param array $image the acf image array
 	 */
-	public function __construct( array $image ) {
+	public function __construct( array $image, string $size = 'full' ) {
 		$this->src    = esc_url( $image['url'] );
 		$this->alt    = $this->generate_alt( $image );
-		$this->srcset = wp_get_attachment_image_srcset( $image['ID'] );
+		$this->srcset = wp_get_attachment_image_srcset( $image['ID'], $size );
 		$this->id     = $image['ID'];
 	}
 

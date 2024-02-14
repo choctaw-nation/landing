@@ -22,9 +22,9 @@ class Room_Types extends Card {
 	 */
 	protected function init_props( array $acf ) {
 		$this->set_the_image( $acf['image'] );
-		$this->headline    = $acf['headline'];
-		$this->subheadline = $acf['subheadline'];
-		$this->can_reserve = $acf['can_reserve'];
+		$this->headline    = esc_textarea( $acf['headline'] );
+		$this->subheadline = acf_esc_html( $acf['subheadline'] );
+		$this->can_reserve = false;
 	}
 
 	/** Generates the markup
@@ -33,7 +33,8 @@ class Room_Types extends Card {
 	 * @param string $headline_element [optional] the Headline element (Default 'h3')
 	 */
 	protected function get_the_markup( string $col_class, string $headline_element = 'h3' ): string {
-		$markup  = "<div class='{$col_class} room-type'>";
+		$col_id  = cno_get_the_section_id( $this->headline );
+		$markup  = "<div class='{$col_class} room-type' id='{$col_id}'>";
 		$markup .= '<div class="row align-items-center">';
 		$markup .= '<div class="col-12 col-lg-5 col-xl-12">';
 		$markup .= $this->image->get_the_image( 'room-type__image' );

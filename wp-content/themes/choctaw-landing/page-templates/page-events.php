@@ -80,17 +80,6 @@ $title_bar->the_title_bar();
 <?php
 $event_callouts = get_field( 'event_callouts' );
 $banner         = new Image( $event_callouts['banner'] );
-get_template_part(
-	'template-parts/content',
-	'banner-header',
-	array(
-		'url'   => $banner->src,
-		'title' => array(
-			'text'  => 'Special Moments',
-			'class' => 'mb-4',
-		),
-	)
-);
 foreach ( $event_callouts['callouts'] as $callout ) {
 	if ( $callout['is_image_full_width'] ) {
 		$two_col_section = new Full_Width_Section( get_the_ID(), $callout );
