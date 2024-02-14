@@ -3,11 +3,13 @@
  * The Title Bar (logical second section of pages)
  *
  * @package ChoctawNation
- * @since 0.2
+ * @subpackage ACF
  */
 
+namespace ChoctawNation\ACF;
+
 /** Generates the Title Bar (section 2) content */
-class Title_Bar extends ACF_Generator {
+class Title_Bar extends Generator {
 	private string $headline;
 	private string $subheadline;
 	private bool $with_background;

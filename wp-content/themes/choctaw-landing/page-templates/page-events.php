@@ -5,6 +5,11 @@
  * @package ChoctawNation
  */
 
+use ChoctawNation\ACF\Full_Width_Section;
+use ChoctawNation\ACF\Hero_Section;
+use ChoctawNation\ACF\Image;
+use ChoctawNation\ACF\Title_Bar;
+use ChoctawNation\ACF\Two_Col_Section;
 use ChoctawNation\Events\Choctaw_Event;
 
 get_header();
@@ -74,7 +79,7 @@ $title_bar->the_title_bar();
 </section>
 <?php
 $event_callouts = get_field( 'event_callouts' );
-$banner         = new ACF_Image( $event_callouts['banner'] );
+$banner         = new Image( $event_callouts['banner'] );
 get_template_part(
 	'template-parts/content',
 	'banner-header',

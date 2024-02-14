@@ -3,14 +3,16 @@
  * CNO Mega Menu
  *
  * @package ChoctawNation
- * @since 1.0.0
- * @version 2.0
  */
+
+namespace ChoctawNation;
+
+use ChoctawNation\ACF\Mega_Menu_Content;
 
 /**
  * Extends the WP Nav Walker to create megamenu option
  */
-class CNO_Mega_Menu extends CNO_Navwalker {
+class Mega_Menu extends Navwalker {
 	/**
 	 * An array of the last items' IDs of each top-level menu item
 	 *
@@ -33,9 +35,9 @@ class CNO_Mega_Menu extends CNO_Navwalker {
 	/**
 	 * The Opening Level
 	 *
-	 * @param string    $output the html
-	 * @param int       $depth whether we are at the top-level or a sub-level
-	 * @param ?stdClass $args An object of wp_nav_menu() arguments.
+	 * @param string     $output the html
+	 * @param int        $depth whether we are at the top-level or a sub-level
+	 * @param ?\stdClass $args An object of wp_nav_menu() arguments.
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = \null ) {
 		$dropdown_menu_class[] = '';
@@ -55,11 +57,11 @@ class CNO_Mega_Menu extends CNO_Navwalker {
 	/**
 	 * Starts the Element Output (inside the `li`)
 	 *
-	 * @param string   $output       Used to append additional content (passed by reference).
-	 * @param WP_Post  $data_object  Menu item data object.
-	 * @param int      $depth        Depth of menu item. Used for padding.
-	 * @param stdClass $args         An object of wp_nav_menu() arguments.
-	 * @param int      $id           Optional. ID of the current menu item. Default 0.
+	 * @param string    $output       Used to append additional content (passed by reference).
+	 * @param \WP_Post  $data_object  Menu item data object.
+	 * @param int       $depth        Depth of menu item. Used for padding.
+	 * @param \stdClass $args         An object of wp_nav_menu() arguments.
+	 * @param int       $id           Optional. ID of the current menu item. Default 0.
 	 */
 	public function start_el( &$output, $data_object, $depth = 0, $args = \null, $id = 0 ) {
 		$this->current_item = $data_object;
@@ -137,7 +139,7 @@ class CNO_Mega_Menu extends CNO_Navwalker {
 	}
 
 	/**
-	 * Generates the intial `<a></a>` tag
+	 * Generates the initial `<a></a>` tag
 	 *
 	 * @return string the anchor
 	 */

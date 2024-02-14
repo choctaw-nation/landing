@@ -13,7 +13,7 @@
 
 	&-reserve {
 		@extend %btn;
-		color: var(--color-secondary);
+		color: var(--bs-secondary);
 		background: white;
 		height: 43px;
 		font-size: 1.14rem;
@@ -28,17 +28,17 @@
 
 	&-default {
 		@extend %btn;
-		color: var(--color-primary);
-		border: 2px solid var(--color-primary);
+		color: var(--bs-primary);
+		border: 2px solid var(--bs-primary);
 		padding: 0.2rem 1rem 0.5rem;
 		font-weight: 500;
 		line-height: 3;
 
 		&:hover,
 		&:focus {
-			background: var(--color-primary);
+			background: var(--bs-primary);
 			color: white;
-			border: 2px solid var(--color-primary);
+			border: 2px solid var(--bs-primary);
 		}
 	}
 
@@ -52,7 +52,7 @@
 		&:hover,
 		&:focus {
 			background: white;
-			color: var(--color-primary);
+			color: var(--bs-primary);
 		}
 	}
 
@@ -61,7 +61,7 @@
 		transform: rotateZ(45deg);
 		border-color: white;
 
-		i {
+		svg {
 			color: white;
 			transform: rotateZ(-45deg);
 			transition: 0.3s;
@@ -79,15 +79,15 @@
 			@extend .btn-diamond;
 			background-color: white;
 
-			i {
-				color: var(--color-primary);
+			svg {
+				color: var(--bs-primary);
 			}
 
 			&:hover,
 			&:focus {
-				background: var(--color-primary);
+				background: var(--bs-primary);
 
-				i {
+				svg {
 					color: white;
 				}
 			}

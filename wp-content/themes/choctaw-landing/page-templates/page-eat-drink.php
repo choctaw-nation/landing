@@ -6,6 +6,11 @@
  * @since 0.2
  */
 
+use ChoctawNation\ACF\Featured_Eats;
+use ChoctawNation\ACF\Hero_Section;
+use ChoctawNation\ACF\Restaurant_Highlight;
+use ChoctawNation\ACF\Title_Bar;
+
 wp_enqueue_script( 'eat-drink-swiper' );
 wp_enqueue_style( 'eat-drink-swiper' );
 get_header();

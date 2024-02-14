@@ -11,9 +11,10 @@
  * </div> // end_lvl()
  *
  * @package ChoctawNation
- * @since 0.2
  * @version 2.0
  */
+
+namespace ChoctawNation;
 
 /**
  * Extends the WP Nav Walker to create megamenu option
@@ -24,10 +25,10 @@
  * @since 0.1
  * @author Blake Perkins & KJ Roelke
  */
-class CNO_Navwalker extends Walker_Nav_Menu {
+class Navwalker extends \Walker_Nav_Menu {
 	/** The current nav item
 	 *
-	 * @var WP_Post $current_item
+	 * @var \WP_Post $current_item
 	 */
 	protected $current_item;
 
@@ -56,23 +57,23 @@ class CNO_Navwalker extends Walker_Nav_Menu {
 	/**
 	 * The array of wp_nav_menu() arguments as an object.
 	 *
-	 * @var ?stdClass $args
+	 * @var ?\stdClass $args
 	 */
-	protected ?stdClass $args;
+	protected ?\stdClass $args;
 
 	/**
 	 * Optional. ID of the current menu item. Default 0.
 	 *
-	 * @param int $id
+	 * @var int $id
 	 */
 	protected int $id;
 
 	/**
 	 * The Opening Level
 	 *
-	 * @param string    $output the html
-	 * @param int       $depth whether we are at the top-level or a sub-level
-	 * @param ?stdClass $args An object of wp_nav_menu() arguments.
+	 * @param string     $output the html
+	 * @param int        $depth whether we are at the top-level or a sub-level
+	 * @param ?\stdClass $args An object of wp_nav_menu() arguments.
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = \null ) {
 		$dropdown_menu_class[] = '';
@@ -92,11 +93,11 @@ class CNO_Navwalker extends Walker_Nav_Menu {
 	/**
 	 * Starts the Element Output (inside the `li`)
 	 *
-	 * @param string   $output       Used to append additional content (passed by reference).
-	 * @param WP_Post  $data_object  Menu item data object.
-	 * @param int      $depth        Depth of menu item. Used for padding.
-	 * @param stdClass $args         An object of wp_nav_menu() arguments.
-	 * @param int      $id           Optional. ID of the current menu item. Default 0.
+	 * @param string    $output       Used to append additional content (passed by reference).
+	 * @param \WP_Post  $data_object  Menu item data object.
+	 * @param int       $depth        Depth of menu item. Used for padding.
+	 * @param \stdClass $args         An object of wp_nav_menu() arguments.
+	 * @param int       $id           Optional. ID of the current menu item. Default 0.
 	 */
 	public function start_el( &$output, $data_object, $depth = 0, $args = \null, $id = 0 ) {
 		$this->current_item = $data_object;
@@ -153,7 +154,7 @@ class CNO_Navwalker extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * Generates the intial <a></a> tag
+	 * Generates the initial <a></a> tag
 	 *
 	 * @return string the anchor
 	 */

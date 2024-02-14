@@ -7,19 +7,6 @@
  * @package Bootscore
  */
 
-// Register Bootstrap 5 Nav Walker
-if ( ! function_exists( 'register_navwalker' ) ) :
-	function register_navwalker() {
-		require_once get_template_directory() . '/inc/bootscore/class-bootstrap-5-navwalker.php';
-		// Register Menus
-		register_nav_menu( 'main-menu', 'Main menu' );
-		register_nav_menu( 'footer-menu', 'Footer menu' );
-	}
-endif;
-add_action( 'after_setup_theme', 'register_navwalker' );
-// Register Bootstrap 5 Nav Walker END
-
-
 // Register Comment List
 if ( ! function_exists( 'register_comment_list' ) ) :
 	function register_comment_list() {
@@ -47,24 +34,6 @@ if ( ! function_exists( 'bootscore_setup' ) ) :
 		* to change 'bootscore' to the name of your theme in all the template files.
 		*/
 		load_theme_textdomain( 'bootscore', get_template_directory() . '/languages' );
-
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
-
-		/*
-		* Let WordPress manage the document title.
-		* By adding theme support, we declare that this theme does not use a
-		* hard-coded <title> tag in the document head, and expect WordPress to
-		* provide it for us.
-		*/
-		add_theme_support( 'title-tag' );
-
-		/*
-		* Enable support for Post Thumbnails on posts and pages.
-		*
-		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
-		add_theme_support( 'post-thumbnails' );
 
 		/*
 		* Switch default core markup for search form, comment form, and comments
@@ -267,23 +236,6 @@ endif;
 // Shortcode in HTML-Widget
 add_filter( 'widget_text', 'do_shortcode' );
 // Shortcode in HTML-Widget End
-
-
-
-
-
-// Preload Font Awesome
-add_filter( 'style_loader_tag', 'bootscore_fa_preload' );
-
-function bootscore_fa_preload( $tag ) {
-
-	$tag = preg_replace( "/id='fontawesome-css'/", "id='fontawesome-css' online=\"if(media!='all')media='all'\"", $tag );
-
-	return $tag;
-}
-
-// Preload Font Awesome END
-
 
 /**
  * Custom template tags for this theme.
@@ -499,7 +451,6 @@ add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
 // Disables the block editor from managing widgets.
 add_filter( 'use_widgets_block_editor', '__return_false' );
 // Disable Gutenberg blocks in widgets (WordPress 5.8) END
-//
 
 
 /*
@@ -538,19 +489,3 @@ add_filter(
 	10,
 	4
 );
-
-function cc_mime_types( $mimes ) {
-	$mimes['svg'] = 'image/svg+xml';
-	return $mimes;
-}
-add_filter( 'upload_mimes', 'cc_mime_types' );
-
-function fix_svg() {
-	echo '<style type="text/css">
-        .attachment-266x266, .thumbnail img {
-             width: 100% !important;
-             height: auto !important;
-        }
-        </style>';
-}
-add_action( 'admin_head', 'fix_svg' );

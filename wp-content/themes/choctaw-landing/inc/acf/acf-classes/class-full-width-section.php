@@ -3,8 +3,10 @@
  * Component Section Generator class
  *
  * @package ChoctawNation
- * @since 0.2
+ * @subpackage ACF
  */
+
+namespace ChoctawNation\ACF;
 
 /** Used to handle ACF markup */
 class Full_Width_Section extends Two_Col_Section {

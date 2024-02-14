@@ -6,6 +6,11 @@
  * @since 0.2
  */
 
+use ChoctawNation\ACF\Card;
+use ChoctawNation\ACF\Hero_Section;
+use ChoctawNation\ACF\Title_Bar;
+use ChoctawNation\ACF\Two_Col_Section;
+
 get_header();
 
 // HERO

@@ -1,6 +1,6 @@
 {
 	"name": "choctaw-landing",
-	"version": "2.2.0",
+	"version": "3.0.0",
 	"description": "A custom wp theme for choctaw-landing",
 	"main": "wp-content/themes/choctaw-landing/src/index.js",
 	"scripts": {
@@ -20,16 +20,14 @@
 	},
 	"homepage": "https://github.com/choctaw-nation/landing#readme",
 	"dependencies": {
-		"@popperjs/core": "^2.11.8",
 		"bootstrap": "^5.3.2",
 		"daterangepicker": "^3.1.0",
-		"moment": "^2.29.4",
-		"swiper": "^11.0.5"
+		"moment": "^2.30.1",
+		"swiper": "^11.0.6"
 	},
 	"devDependencies": {
-		"@fortawesome/fontawesome-free": "^6.5.1",
-		"@wordpress/scripts": "^27.1.0",
-		"bootstrap-icons": "^1.11.2",
+		"@wordpress/scripts": "^27.2.0",
+		"bootstrap-icons": "^1.11.3",
 		"eslint-config-react-app": "^7.0.1"
 	}
 }

@@ -3,12 +3,6 @@ const defaultConfig = require("@wordpress/scripts/config/webpack.config.js");
 const THEME_NAME = "choctaw-landing";
 const THEME_DIR = `/wp-content/themes/${THEME_NAME}`;
 
-function snakeToCamel(str) {
-	return str.replace(/([-_][a-z])/g, (group) =>
-		group.toUpperCase().replace("-", "").replace("_", ""),
-	);
-}
-
 /**
  * For index.ts (located `~/src/js/folder-name/index.ts)`)
  * Array of strings modeled after folder names (e.g. 'about-choctaw')
@@ -26,34 +20,17 @@ const styleSheets = []; // for scss only
 module.exports = {
 	...defaultConfig,
 	...{
-		entry: function () {
-			// Define custom entry points here
-			const entries = {
+		entry: () => {
+			return {
+				// Define custom entry points here
 				global: `.${THEME_DIR}/src/index.js`,
 				"vendors/bootstrap": `.${THEME_DIR}/src/js/vendors/bootstrap.js`,
-				"vendors/fontawesome": `.${THEME_DIR}/src/styles/vendors/fontawesome.scss`,
 				"modules/date-range-picker": `.${THEME_DIR}/src/js/vendors/date-range-picker.js`,
 				"modules/swiper/eat-drink-swiper": `.${THEME_DIR}/src/js/vendors/swiperjs/eat-drink-swiper.ts`,
 				"modules/swiper/events-swiper": `.${THEME_DIR}/src/js/vendors/swiperjs/events-swiper.ts`,
+				...addEntries( appNames, 'pages' ),
+				...addEntries( styleSheets, 'styles' ),
 			};
-
-			if (appNames.length > 0) {
-				appNames.forEach((appName) => {
-					const appNameOutput = snakeToCamel(appName);
-					entries[
-						appNameOutput
-					] = `.${THEME_DIR}/src/js/${appName}/index.ts`;
-				});
-			}
-			if (styleSheets.length > 0) {
-				styleSheets.forEach((styleSheet) => {
-					const styleSheetOutput = snakeToCamel(styleSheet);
-					entries[
-						`pages/${styleSheetOutput}`
-					] = `.${THEME_DIR}/src/styles/pages/${styleSheet}.scss`;
-				});
-			}
-			return entries;
 		},
 
 		output: {
@@ -62,3 +39,40 @@ module.exports = {
 		},
 	},
 };
+
+/**
+ * Helper function to add entries to the entries object. It takes an array of strings in either kebab-case or snake_case and returns an object with the key as the entry name and the value as the path to the entry file.
+ * @param {array} array - Array of strings
+ * @param {string} type - The type of entry. Either 'pages' or 'styles'
+ */
+function addEntries( array, type ) {
+	if ( ! Array.isArray( array ) ) {
+		throw new Error( `Expecting an array, received ${ typeof array }!` );
+	}
+	if ( 0 >= array.length ) {
+		return {};
+	}
+	const entries = {};
+	array.forEach( ( asset ) => {
+		const assetOutput = snakeToCamel( asset );
+		if ( type === 'styles' ) {
+			entries[
+				`pages/${ assetOutput }`
+			] = `.${ THEME_DIR }/src/styles/pages/${ asset }.scss`;
+		} else if ( type === 'pages' ) {
+			entries[
+				`pages/${ assetOutput }`
+			] = `.${ THEME_DIR }/src/js/${ asset }/index.ts`;
+		} else {
+			throw new Error(
+				`Invalid type! Expected "styles" or "pages", received "${ type }"`
+			);
+		}
+	} );
+	return entries;
+}
+function snakeToCamel(str) {
+	return str.replace(/([-_][a-z])/g, (group) =>
+		group.toUpperCase().replace("-", "").replace("_", ""),
+	);
+}

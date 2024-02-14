@@ -6,12 +6,18 @@
  * @since 0.2
  */
 
+use ChoctawNation\ACF\Card;
+use ChoctawNation\ACF\Hero_Section;
+use ChoctawNation\ACF\Image;
+use ChoctawNation\ACF\Title_Bar;
+use ChoctawNation\ACF\Two_Col_Section;
+
 get_header();
 $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $hero->the_hero();
 $title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
 $title_bar->the_title_bar();
-$weather_widget_photo = new ACF_Image( get_field( 'weather_widget_photo' ) );
+$weather_widget_photo = new Image( get_field( 'weather_widget_photo' ) );
 ?>
 
 <aside id="weather" class="container">
@@ -35,7 +41,7 @@ $weather_widget_photo = new ACF_Image( get_field( 'weather_widget_photo' ) );
 
 <?php
 $attractions = get_field( 'attractions' );
-$banner      = new ACF_Image( $attractions['banner_image'] );
+$banner      = new Image( $attractions['banner_image'] );
 get_template_part(
 	'template-parts/content',
 	'banner-header',

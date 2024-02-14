@@ -3,16 +3,19 @@
  * The Mega Menu Content API
  *
  * @package ChoctawNation
- * @since 0.2
+ * @subpackage ACF
  */
+
+namespace ChoctawNation\ACF;
 
 use ChoctawNation\Events\Choctaw_Event;
 
+
 /** The Mega Menu Content Page */
-class Mega_Menu_Content extends ACF_Generator {
+class Mega_Menu_Content extends Generator {
 	private ?bool $has_cta;
 	private array $cta;
-	private ?WP_Post $featured_event;
+	private ?\WP_Post $featured_event;
 
 	// phpcs:ignore
 	protected function init_props( array $acf ) {
