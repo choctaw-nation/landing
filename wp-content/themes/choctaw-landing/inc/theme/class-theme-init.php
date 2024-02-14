@@ -116,12 +116,10 @@ class Theme_Init {
 			Enqueue_Type::both,
 			'vendors',
 			array(
-				'scripts' => array(),
+				'scripts' => array( 'jquery' ),
 				'styles'  => array(),
-			)
+			),
 		);
-
-		$fontawesome = new Asset_Loader( 'fontawesome', Enqueue_Type::style, 'vendors' );
 
 		$global_scripts = new Asset_Loader(
 			'global',
@@ -209,7 +207,7 @@ class Theme_Init {
 			wp_register_script(
 				'date-range-picker',
 				'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js',
-				array( 'moment', 'jquery', 'bootscore' ),
+				array( 'moment', 'jquery', 'bootstrap' ),
 				null,
 				array( 'strategy' => 'defer' )
 			);
@@ -217,7 +215,7 @@ class Theme_Init {
 			wp_register_style(
 				'date-range-picker',
 				'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css',
-				array( 'bootscore' ),
+				array( 'bootstrap' ),
 				null
 			);
 

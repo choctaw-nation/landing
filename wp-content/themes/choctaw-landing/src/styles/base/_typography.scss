@@ -13,6 +13,10 @@ h2,
 	text-transform: uppercase;
 }
 
+a {
+	transition:color var(--transition-standard);
+}
+
 %arrow-links {
 	line-height: 1.75rem;
 	align-self: flex-end;
@@ -29,11 +33,11 @@ h2,
 
 	&-white {
 		@extend %arrow-links;
-		color: inherit;
+		color: white;
 
 		&:hover,
 		&:focus {
-			color: inherit;
+			color: var(--bs-primary);
 		}
 	}
 }

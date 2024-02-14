@@ -44,16 +44,19 @@ footer {
 	ol {
 		list-style: none;
 		padding-left: 0;
+
 		li {
 			margin-bottom: 0.5rem;
 		}
 	}
+
 	.social-icons a {
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
+		--padding-x: 0.5rem;
+		padding-left: var(--padding-x);
+		padding-right: var(--padding-x);
 	}
+
 	.footer-info {
-		// background-color: #231f20; // Commented in case we need to change --bs-dark value
 		background-color: var(--bs-dark);
 		@include m.media-breakpoint-down(lg) {
 			text-align: center;
