@@ -29,6 +29,9 @@ foreach ( $featured_eats as $featured_eat ) {
 <div id="containers" class="container-fluid blue-topo-bg py-5">
 	<div class="container-fluid container-xl">
 		<div class="row justify-content-center">
+			<div class="col-1 position-relative">
+				<div class="swiper-button-prev"></div>
+			</div>
 			<div class="col-10">
 				<div class="swiper" id='restaurant-swiper' style="--swiper-navigation-sides-offset:20px;--swiper-pagination-color:white;--swiper-navigation-color:white">
 					<div class="swiper-wrapper">
@@ -40,11 +43,14 @@ foreach ( $featured_eats as $featured_eat ) {
 						}
 						?>
 					</div>
-					<div class="swiper-button-prev"></div>
-					<div class="swiper-button-next"></div>
-					<div class="swiper-pagination"></div>
 				</div>
 			</div>
+			<div class="col-1 position-relative">
+				<div class="swiper-button-next"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="swiper-pagination"></div>
 		</div>
 	</div>
 </div>

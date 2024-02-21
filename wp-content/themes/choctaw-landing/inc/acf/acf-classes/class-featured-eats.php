@@ -17,7 +17,7 @@ class Featured_Eats extends Two_Col_Section {
 	private bool $can_accept_reservations;
 	private string $reservations_link;
 	private string $food_genre;
-	private int $price;
+	// private int $price;
 	private bool|array $hours;
 
 	/** Sets the Class variables based on ACF fields
@@ -52,8 +52,8 @@ class Featured_Eats extends Two_Col_Section {
 			$this->menu_link = esc_url( $acf['menu_link'] );
 		}
 		$this->food_genre = $acf['food_genre'];
-		$this->price      = absint( $acf['price'] );
-		$this->hours      = $acf['hours'] ?? null;
+		// $this->price      = absint( $acf['price'] );
+		$this->hours = $acf['hours'] ?? null;
 	}
 
 	/**

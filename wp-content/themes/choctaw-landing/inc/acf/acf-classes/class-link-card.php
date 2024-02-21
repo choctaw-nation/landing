@@ -1,6 +1,6 @@
 <?php
 /**
- * Generates a Simple Card Layout
+ * Extends the Card Layout to include clickable headlines or buttons
  *
  * @package ChoctawNation
  * @subpackage ACF
@@ -9,18 +9,16 @@
 namespace ChoctawNation\ACF;
 
 /** Generates a Card (Vertical image with title & subheadline) */
-class Card extends Generator {
-	/** The headline
+class Link_Card extends Card {
+	/** The link
 	 *
-	 * @var string $headline
+	 * @var ?array $link
 	 */
-	protected string $headline;
+	protected ?array $link;
 
-	/** The subheadline
-	 *
-	 * @var string $subheadline
-	 */
-	protected string $subheadline;
+	private bool $with_button;
+
+	private string $target;
 
 	/** Inits acf fields to class props
 	 *
@@ -30,42 +28,39 @@ class Card extends Generator {
 		$this->set_the_image( $acf['image'] );
 		$this->headline    = $acf['headline'];
 		$this->subheadline = $acf['subheadline'];
+		$this->link        = $acf['link'];
+		if ( $acf['link'] ) {
+			$this->target = $this->link['target'] ? " target='{$this->link['target']}'" : "target='{$this->link['target']}'";
+		}
 	}
 
 	/** Generates the markup
 	 *
 	 * @param string $col_class the column class
 	 * @param string $headline_element [optional] the Headline element (Default 'h3')
+	 * @param bool   $with_button whether to include an anchor button
 	 */
 	protected function get_the_markup( string $col_class, string $headline_element = 'h3' ): string {
 		$id      = $this->get_the_id();
 		$markup  = "<div class='{$col_class} card' id='{$id}'>";
 		$markup .= $this->image->get_the_image( 'pb-3 card__image' );
 		$markup .= $this->get_the_content( $headline_element );
+		if ( $this->with_button ) {
+			$markup .= "<a href='{$this->link['url']}' class='btn btn-primary' {$this->target}>{$this->link['title']}</a>";
+		}
 		$markup .= '</div>';
 		return $markup;
-	}
-
-	/**
-	 * Generates the id of the card
-	 */
-	protected function get_the_id(): string {
-		if ( function_exists( 'cno_get_the_section_id' ) ) {
-			return cno_get_the_section_id( $this->headline );
-		} else {
-			$lowercase  = strtolower( $this->headline );
-			$snake_case = preg_replace( '/\s+/', '-', $lowercase );
-			return $snake_case;
-		}
 	}
 
 	/** Echoes the markup of the card
 	 *
 	 * @param string $col_class the column class
 	 * @param string $headline_element [optional] the Headline element (Default 'h3')
+	 * @param bool   $with_button [optional] the Headline element (Default 'h3')
 	 */
-	public function the_card( string $col_class, string $headline_element = 'h3' ) {
-		$markup = $this->get_the_markup( $col_class, $headline_element );
+	public function the_card( string $col_class, string $headline_element = 'h3', bool $with_button = false ) {
+		$this->with_button = $with_button;
+		$markup            = $this->get_the_markup( $col_class, $headline_element );
 		echo $markup;
 	}
 
@@ -75,7 +70,13 @@ class Card extends Generator {
 	 * @param string $headline_element [optional] the Headline element (Default 'h3')
 	 */
 	protected function get_the_content( string $headline_element = 'h3' ): string {
-		$markup  = "<{$headline_element} class='card__headline fs-4'>{$this->headline}</{$headline_element}>";
+		$markup = "<{$headline_element} class='card__headline fs-4'>";
+		if ( $this->link ) {
+			$markup .= "<a href='{$this->link['url']}' {$this->target}>{$this->headline}</a>";
+		} else {
+			$markup .= $this->headline;
+		}
+		$markup .= "</{$headline_element}>";
 		$markup .= "<div class='card__subheadline'>{$this->subheadline}</div>";
 		return $markup;
 	}

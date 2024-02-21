@@ -39,6 +39,7 @@ class Theme_Init {
 			'full-width-section',
 			'restaurant-highlight',
 			'mega-menu-content',
+			'link-card',
 		);
 		foreach ( $acf_classes as $acf_class ) {
 			require_once $base_path . '/acf/acf-classes/class-' . $acf_class . '.php';
