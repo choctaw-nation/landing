@@ -4,7 +4,7 @@
 	--font-body: #{v.$font-body};
 	--font-headings: #{v.$font-headings};
 
-	--transition-standard:.15s ease-in-out;
+	--transition-standard: 0.15s ease-in-out;
 }
 
 hr {
@@ -12,6 +12,6 @@ hr {
 }
 
 .hero {
-	max-height: 900px;
+	max-height: 90rem;
 	margin-top: 110px;
 }

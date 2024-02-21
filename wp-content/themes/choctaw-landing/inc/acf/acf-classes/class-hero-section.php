@@ -48,7 +48,7 @@ class Hero_Section extends Generator {
 	}
 
 	private function get_the_video(): string {
-		return "<div class='ratio ratio-16x9 h-100'>{$this->video}</div>";
+		return "<div class='ratio ratio-21x9 h-100'>{$this->video}</div>";
 	}
 
 	public function get_the_hero(): string {
