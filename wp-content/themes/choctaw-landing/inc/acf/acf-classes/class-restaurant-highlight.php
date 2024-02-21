@@ -32,7 +32,7 @@ class Restaurant_Highlight extends Card {
 		if ( $this->price || $this->genre ) {
 			$markup .= '<hr class="my-4" /><div class="card__meta d-flex justify-content-between align-items-center">';
 			$markup .= $this->genre ? "<span class='card__meta--genre d-inline-block'>{$this->genre}</span>" : '';
-			$markup .= $this->price ? $this->get_the_price() : '';
+			// $markup .= $this->price ? $this->get_the_price() : '';
 			$markup .= '</div>';
 		}
 		return $markup;

@@ -150,7 +150,7 @@ class Featured_Eats extends Two_Col_Section {
 		$markup .= '<div class="row">';
 		$markup .= $this->get_the_menu();
 		$markup .= "<div class='col'>{$this->food_genre}</div>";
-		$markup .= $this->get_the_price();
+		// $markup .= $this->get_the_price();
 		$markup .= '</div>';
 		$markup .= '<hr class="my-4" />';
 		$markup .= $this->get_the_hours();
