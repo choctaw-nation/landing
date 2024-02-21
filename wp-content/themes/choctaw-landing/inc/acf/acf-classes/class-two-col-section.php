@@ -201,7 +201,7 @@ class Two_Col_Section extends Generator {
 	 * @return string - The HTML markup for the headline.
 	 */
 	protected function get_the_headline(): string {
-		return "<div class='col-12 col-md-9 col-xl-10'><h2>{$this->headline}</h2></div>";
+		return "<div class='col-12 col-md-9 col-xl-10'><h2 class='w-75'>{$this->headline}</h2></div>";
 	}
 
 	/**
