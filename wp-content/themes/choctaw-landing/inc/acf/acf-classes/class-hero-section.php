@@ -42,7 +42,7 @@ class Hero_Section extends Generator {
 		$iframe  = str_replace( $src, $new_src, $iframe );
 
 		// Add extra attributes to iframe HTML.
-		$attributes  = 'frameborder="0" autoplay="true" muted="true" allow="autoplay"';
+		$attributes  = 'frameborder="0" autoplay="true" mute="true" allow="autoplay"';
 		$iframe      = str_replace( '></iframe>', ' ' . $attributes . '></iframe>', $iframe );
 		$this->video = $iframe;
 	}
