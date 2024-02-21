@@ -6,8 +6,8 @@
  * @since 0.2
  */
 
-use ChoctawNation\ACF\Card;
 use ChoctawNation\ACF\Hero_Section;
+use ChoctawNation\ACF\Link_Card;
 use ChoctawNation\ACF\Title_Bar;
 use ChoctawNation\ACF\Two_Col_Section;
 
@@ -28,7 +28,7 @@ $section_3_columns = $section_3['section_3_columns'];
 foreach ( $section_3_columns as $row ) {
 	echo '<div class="row">';
 	foreach ( $row as $col ) {
-		$col_card = new Card( get_the_ID(), $col );
+		$col_card = new Link_Card( get_the_ID(), $col );
 		$col_card->the_card( 'col-12 col-md-6 col-lg-4 my-5 my-md-0', 'h2' );
 	}
 	echo '</div>';
