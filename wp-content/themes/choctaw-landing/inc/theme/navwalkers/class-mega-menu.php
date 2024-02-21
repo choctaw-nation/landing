@@ -191,7 +191,14 @@ class Mega_Menu extends Navwalker {
 	 * @param stdClass $args   An object of wp_nav_menu() arguments.
 	 */
 	public function end_lvl( &$output, $depth = 0, $args = null ) {
-		$nav_items    = wp_get_nav_menu_items( 'main-menu' );
+		$locations   = get_nav_menu_locations(); // Get all menu locations
+		$menu_id     = $locations['main-menu'];
+		$menu_object = wp_get_nav_menu_object( $menu_id );
+
+		if ( $menu_object ) {
+			$menu_name = $menu_object->name;
+			$nav_items = wp_get_nav_menu_items( $menu_name ); // Get menu items
+		}
 		$last_item    = null;
 		$end_of_array = end( $nav_items );
 		foreach ( $nav_items as $nav_item ) {
