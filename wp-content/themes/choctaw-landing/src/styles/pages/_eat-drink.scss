@@ -35,6 +35,9 @@
 			aspect-ratio: 16 / 9;
 			object-fit: cover;
 		}
+		&__headline {
+			font-size: calc(1.34375rem + 1.125vw);
+		}
 	}
 	p {
 		font-size: 1.25rem;
