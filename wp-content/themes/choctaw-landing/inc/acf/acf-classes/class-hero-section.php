@@ -13,13 +13,22 @@ namespace ChoctawNation\ACF;
  */
 class Hero_Section extends Generator {
 	private string $headline;
+	/**
+	 * Headline Position
+	 *
+	 * Options: [bottom-right, bottom-left, top-right, top-left, center-left, center, center-right]
+	 *
+	 * @var string $headline_position
+	 */
 	private string $headline_position;
 	private ?string $video;
 
 	protected function init_props( array $acf ) {
 		$this->headline = esc_textarea( $acf['headline'] );
 		$this->video    = empty( $acf['video'] ) ? null : $acf['video'];
-		$this->handle_video_params();
+		if ( $this->video ) {
+			$this->handle_video_params();
+		}
 		$this->set_the_image( $acf['image'] );
 		$this->headline_position = $acf['headline_position'];
 	}
@@ -48,18 +57,15 @@ class Hero_Section extends Generator {
 	}
 
 	private function get_the_video(): string {
-		return "<div class='ratio ratio-21x9 h-100'>{$this->video}</div>";
+		return "<div class='ratio ratio-21x9 h-100 d-none d-md-block'>{$this->video}</div>";
 	}
 
 	public function get_the_hero(): string {
-		$headline = "<h1 class='hero-headline text-white text-uppercase d-flex flex-column position-absolute z-3 fw-normal {$this->headline_position}'><span class='hero-headline__line-1 ms-2 ms-sm-0'>A place to</span><span class='hero-headline__line-2'>{$this->headline}</span></h1>";
+		$headline = "<h1 class='hero-headline text-white text-uppercase d-flex flex-column position-absolute z-3 fw-normal {$this->headline_position}'><span class='hero-headline__line-1 ms-3 ms-sm-0'>A place to</span><span class='hero-headline__line-2'>{$this->headline}</span></h1>";
 		$markup   = "<header id='header-img' class='hero container-fluid gx-0 position-relative'>";
-		if ( ! empty( $this->video ) ) {
-			$markup .= $this->get_the_video();
-		} else {
-			$markup .= $this->image->get_the_image();
-		}
-		$markup .= "{$headline}</header>";
+		$markup  .= $this->get_the_video();
+		$markup  .= $this->image->get_the_image( 'd-md-none' );
+		$markup  .= "{$headline}</header>";
 		return $markup;
 	}
 
