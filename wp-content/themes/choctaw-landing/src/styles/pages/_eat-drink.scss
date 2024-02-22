@@ -22,6 +22,11 @@
 }
 
 #containers {
+	--swiper-navigation-sides-offset: 20px;
+	--swiper-navigation-color: white;
+	--swiper-pagination-bullet-inactive-color: #fff;
+	--swiper-pagination-color: white;
+	--swiper-pagination-bullet-inactive-opacity: 0.5;
 	.swiper {
 		height: 700px;
 

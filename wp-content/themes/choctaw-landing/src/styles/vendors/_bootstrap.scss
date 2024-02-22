@@ -15,7 +15,7 @@ $font-family-monospace:
 	"Courier New",
 	monospace;
 
-$font-size-base: 1.25rem;
+$font-size-base: 1rem;
 
 // LINKS
 $link-decoration: none;
@@ -25,6 +25,18 @@ $link-hover-color: v.$color-primary--dark;
 // HEADINGS
 $headings-font-family: v.$font-headings;
 $headings-color: $primary;
+
+/**
+* Minor Second Type Scale
+* @see https://typescale.com/
+*/
+
+$h1-font-size: $font-size-base * 2.986;
+$h2-font-size: $font-size-base * 2.488;
+$h3-font-size: $font-size-base * 2.074;
+$h4-font-size: $font-size-base * 1.728;
+$h5-font-size: $font-size-base * 1.44;
+$h6-font-size: $font-size-base * 1.2;
 
 // ================================================
 

@@ -75,8 +75,8 @@ class Card extends Generator {
 	 * @param string $headline_element [optional] the Headline element (Default 'h3')
 	 */
 	protected function get_the_content( string $headline_element = 'h3' ): string {
-		$markup  = "<{$headline_element} class='card__headline fs-4'>{$this->headline}</{$headline_element}>";
-		$markup .= "<div class='card__subheadline'>{$this->subheadline}</div>";
+		$markup  = "<{$headline_element} class='card__headline fs-3'>{$this->headline}</{$headline_element}>";
+		$markup .= "<div class='card__subheadline fs-6'>{$this->subheadline}</div>";
 		return $markup;
 	}
 }

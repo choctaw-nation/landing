@@ -21,18 +21,18 @@ $title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ), false );
 $title_bar->the_title_bar();
 ?>
 
-<section id="room-list" class="container my-5">
+<section id="room-list" class="container mb-5">
 	<div class="row">
 		<div class="col-12">
-			<h2>Room Types</h2>
+			<h2 class='fs-1'>Room Types</h2>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row row-gap-4">
 		<?php
 		$room_types = get_field( 'room_types' );
 		foreach ( $room_types as $room_type ) {
 			$room = new Room_Types( get_the_ID(), $room_type );
-			$room->the_card( 'col-12 col-xl-6 pt-3 pb-5' );
+			$room->the_card( 'col-12 col-xl-6' );
 		}
 		?>
 	</div>
@@ -63,7 +63,7 @@ get_template_part(
 <section id="amenities-list" class="container my-5">
 	<div class="row">
 		<div class="col-12">
-			<h2>Amenities</h2>
+			<h2 class='fs-1'>Amenities</h2>
 		</div>
 		<?php
 		$amenities_columns = $amenities_group['amenities_columns'];
