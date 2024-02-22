@@ -30,7 +30,7 @@ class Hero_Section extends Generator {
 	private ?string $video;
 
 	protected function init_props( array $acf ) {
-		$this->headline = empty( $acf['headline'] ) ? null : esc_textarea( $acf['headline'] );
+		$this->headline = empty( $acf['headline'] ) ? null : acf_esc_html( $acf['headline'] );
 		$this->video    = empty( $acf['video'] ) ? null : $acf['video'];
 		if ( $this->video ) {
 			$this->handle_video_params();
