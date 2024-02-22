@@ -33,7 +33,7 @@ class Full_Width_Section extends Two_Col_Section {
 		$section_id = cno_get_the_section_id( $this->headline );
 		$bg_img     = $this->image->src;
 		$markup     = "<{$this->wrapper_el} id='{$section_id}' class='container-fluid py-5 two-col two-col--full-width' style='background-image:url({$bg_img})'>";
-		$markup    .= "<div class='container pt-5'><div class='row-py-5'>";
+		$markup    .= "<div class='container pt-5'><div class='row py-5'>";
 		$markup    .= $this->get_fullwidth_content_col();
 		$markup    .= '</div></div>';
 		$markup    .= "</{$this->wrapper_el}>";
@@ -55,8 +55,10 @@ class Full_Width_Section extends Two_Col_Section {
 
 	/** For use inside of full-width sections */
 	protected function get_inner_row_1(): string {
-		$markup  = '<div class="position-relative row">';
-		$markup .= '<div class="col-3 col-lg-2 d-none d-md-block"></div>';
+		$markup = '<div class="position-relative row">';
+		if ( $this->has_cta ) {
+			$markup .= '<div class="col-3 col-lg-2 d-none d-md-block"></div>';
+		}
 		$markup .= $this->get_the_headline();
 		$markup .= '</div>';
 		return $markup;
@@ -73,7 +75,10 @@ class Full_Width_Section extends Two_Col_Section {
 
 	/** For use inside of full-width sections */
 	protected function get_inner_row_2(): string {
-		$markup  = '<div class="row position-relative"><div class="col-3 col-lg-2 d-none d-md-block"><div class="vertical-line vertical-line-white"></div></div>';
+		$markup = '<div class="row position-relative">';
+		if ( $this->has_cta ) {
+			$markup .= '<div class="col-3 col-lg-2 d-none d-md-block"><div class="vertical-line vertical-line-white"></div></div>';
+		}
 		$markup .= '<div class="col-9 col-lg-10">';
 		$markup .= "<div class='two-col__subheadline'>{$this->subheadline}</div>";
 		if ( $this->has_cta ) {

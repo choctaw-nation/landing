@@ -1,9 +1,8 @@
 <?php
 /**
- * Template Name: Homepage
+ * Front Page
  *
  * @package ChoctawNation
- * @since 0.1
  */
 
 use ChoctawNation\ACF\Full_Width_Section;

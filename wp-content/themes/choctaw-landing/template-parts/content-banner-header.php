@@ -8,10 +8,14 @@
 
 $url           = $args['url'] ?? null;
 $banner_title  = empty( $args['title']['text'] ) ? '' : $args['title']['text'];
-$banner_id     = empty( $args['id'] ) ? cno_get_the_section_id( $args['title']['text'] ) : $args['id'];
 $title_element = isset( $args['title']['element'] ) ? $args['title']['element'] : 'h2';
 $title_class   = isset( $args['title']['class'] ) ? $args['title']['class'] : 'text-light mb-4';
 
+if ( empty( $args['id'] ) ) {
+	$banner_id = cno_get_the_section_id( $banner_title );
+} else {
+	$banner_id = isset( $args['id'] ) ?: '';
+}
 ?>
 <header id="<?php echo $banner_id; ?>" class="banner-bg-header position-relative container-fluid my-5 g-0">
 	<?php if ( $url ) : ?>

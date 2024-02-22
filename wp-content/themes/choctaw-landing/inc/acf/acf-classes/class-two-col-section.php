@@ -95,7 +95,7 @@ class Two_Col_Section extends Generator {
 		$section_id    = $this->get_the_section_id();
 		$section_class = $this->set_the_class( 'section' );
 		$row_class     = $this->set_the_class( 'row' );
-		$markup        = "<{$this->wrapper_el} class='{$section_class}' id='{$section_id}'>";
+		$markup        = "<{$this->wrapper_el} class='{$section_class} mt-5 two-col' id='{$section_id}'>";
 		$markup       .= "<div class='{$row_class}'>";
 		$markup       .= $this->get_col_1();
 		$markup       .= $this->get_col_2();
@@ -135,7 +135,7 @@ class Two_Col_Section extends Generator {
 		$class = '';
 		switch ( $el ) {
 			case 'section':
-				$class = 'container two-col';
+				$class = 'container';
 				if ( $this->has_topography_bg ) {
 					$class .= ' offset-topo-bg';
 				}
@@ -201,7 +201,7 @@ class Two_Col_Section extends Generator {
 	 * @return string - The HTML markup for the headline.
 	 */
 	protected function get_the_headline(): string {
-		return "<div class='col-12 col-md-9 col-xl-10'><h2 class='w-75'>{$this->headline}</h2></div>";
+		return "<div class='col-12 col-md-9 col-xl-10'><h2 class='two-col__headline'>{$this->headline}</h2></div>";
 	}
 
 	/**

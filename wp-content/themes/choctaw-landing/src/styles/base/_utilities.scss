@@ -28,8 +28,10 @@
 }
 
 .vertical-line {
+	// --magic-height: 152px;
+	--magic-height: 142px;
 	border-right: 1.5px solid #414042;
-	height: calc(100% - 152px);
+	height: calc(100% - var(--magic-height));
 	width: 58px;
 	margin-top: 10px;
 

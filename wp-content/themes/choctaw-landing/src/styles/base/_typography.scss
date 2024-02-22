@@ -1,8 +1,11 @@
 @use "./typography/hero-headline";
 
+body {
+	text-wrap: stable;
+}
+
 p {
-	font-size: 1.75rem;
-	letter-spacing: 0.1rem;
+	font-size: 1.25rem;
 }
 
 h1,
@@ -14,7 +17,7 @@ h2,
 }
 
 a {
-	transition:color var(--transition-standard);
+	transition: color var(--transition-standard);
 }
 
 %arrow-links {

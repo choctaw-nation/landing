@@ -45,10 +45,7 @@ get_template_part(
 	'template-parts/content',
 	'banner-header',
 	array(
-		'title' => array(
-			'text' => 'Amenities',
-			// 'url'  => $banner->src,
-		),
+		'url' => $banner->src,
 	)
 );
 ?>

@@ -2,7 +2,10 @@
 	"name": "choctaw-landing",
 	"version": "3.0.0",
 	"description": "A custom wp theme for choctaw-landing",
-	"main": "wp-content/themes/choctaw-landing/src/index.js",
+	"prettier": "@wordpress/prettier-config",
+	"browserslist": [
+		"extends @wordpress/browserslist-config"
+	],
 	"scripts": {
 		"build": "wp-scripts build",
 		"check-engines": "wp-scripts check-engines",
