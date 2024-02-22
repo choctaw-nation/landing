@@ -36,7 +36,7 @@ use ChoctawNation\Mega_Menu;
 					<?php echo wp_get_attachment_image( 16, 'full', false, array( 'class' => 'w-100 h-100 object-fit-cover' ) ); ?>
 				</div>
 				<nav id="nav-main" class="navbar navbar-expand-xl py-0">
-					<div class="<?php echo bootscore_container_class(); ?>">
+					<div class="container">
 						<a class="navbar-brand sm p-3" href="<?php echo esc_url( home_url() ); ?>">
 							<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo/logo.svg" alt="Choctaw Landing Logo" class="logo">
 						</a>
@@ -46,7 +46,7 @@ use ChoctawNation\Mega_Menu;
 						</button>
 
 						<div class="offcanvas offcanvas-end pb-3 pb-lg-0" tabindex="-1" id="offcanvas-navbar"
-							 style='background-image: url(<?php echo wp_get_attachment_url( 16, 'full' ); ?>)'>
+							style='background-image: url(<?php echo wp_get_attachment_url( 16, 'full' ); ?>)'>
 							<div class="offcanvas-header border-bottom border-2 border-white">
 								<ul class="navbar-nav ">
 									<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-18">

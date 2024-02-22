@@ -16,7 +16,7 @@
 
 			<!-- Top Footer Widget -->
 			<?php if ( is_active_sidebar( 'top-footer' ) ) : ?>
-				<?php dynamic_sidebar( 'top footer' ); ?>
+			<?php dynamic_sidebar( 'top footer' ); ?>
 			<?php endif; ?>
 
 			<div class="row">
@@ -24,7 +24,7 @@
 				<!-- Footer 1 Widget -->
 				<div class="col-md-6 col-lg-4">
 					<?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
-						<?php dynamic_sidebar( 'footer-1' ); ?>
+					<?php dynamic_sidebar( 'footer-1' ); ?>
 					<?php endif; ?>
 				</div>
 
@@ -33,14 +33,14 @@
 						<!-- Footer 2 Widget -->
 						<div class="col-sm-6 col-md-12 col-lg-4">
 							<?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
-								<?php dynamic_sidebar( 'footer-2' ); ?>
+							<?php dynamic_sidebar( 'footer-2' ); ?>
 							<?php endif; ?>
 						</div>
 
 						<!-- Footer 3 Widget -->
 						<div class="col-sm-6 col-md-12 col-lg-4">
 							<?php if ( is_active_sidebar( 'footer-3' ) ) : ?>
-								<?php dynamic_sidebar( 'footer-3' ); ?>
+							<?php dynamic_sidebar( 'footer-3' ); ?>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -52,7 +52,7 @@
 	</div>
 
 	<div class="footer-info pt-3">
-		<div class="<?php echo bootscore_container_class(); ?>">
+		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-12 col-md-7 pb-3 copyright">
 					<p class="m-0"><span class="cr-symbol">&copy;</span>&nbsp;<?php echo gmdate( 'Y' ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.</p>
