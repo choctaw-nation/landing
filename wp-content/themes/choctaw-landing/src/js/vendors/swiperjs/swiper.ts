@@ -1,21 +1,24 @@
-import Swiper from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/scss";
-import "swiper/scss/navigation";
-import "swiper/scss/pagination";
-import { SwiperOptions } from "swiper/types/swiper-options";
+import Swiper from 'swiper';
+import { Navigation, Pagination, A11y, Keyboard } from 'swiper/modules';
+import 'swiper/scss';
+import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
+import 'swiper/scss/a11y';
+import 'swiper/scss/keyboard';
+import { SwiperOptions } from 'swiper/types/swiper-options';
 
 const defaultArgs = {
-	modules: [Navigation, Pagination],
+	modules: [ Navigation, Pagination, A11y, Keyboard ],
 	// If we need pagination
 	pagination: {
-		el: ".swiper-pagination",
+		el: '.swiper-pagination',
+		clickable: true,
 	},
 
 	// Navigation arrows
 	navigation: {
-		nextEl: ".swiper-button-next",
-		prevEl: ".swiper-button-prev",
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
 	},
 	loop: true,
 	spaceBetween: 20,
@@ -39,13 +42,13 @@ const defaultArgs = {
  */
 export function newSwiper(
 	el: HTMLElement,
-	args?: SwiperOptions,
+	args?: SwiperOptions
 ): Swiper | void {
 	const newArgs = { ...defaultArgs, ...args };
 	try {
-		const swiper = new Swiper(el, newArgs);
+		const swiper = new Swiper( el, newArgs );
 		return swiper;
-	} catch (err) {
-		console.error(err);
+	} catch ( err ) {
+		console.error( err );
 	}
 }
