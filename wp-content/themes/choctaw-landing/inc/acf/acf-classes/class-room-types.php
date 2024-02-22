@@ -51,16 +51,17 @@ class Room_Types extends Card {
 	 * @param string $headline_element [optional] the Headline element (Default 'h3')
 	 */
 	protected function get_the_content( string $headline_element = 'h3' ): string {
-		$markup  = "<div class='col-12 col-lg-7 col-xl-12 pt-3 pb-5'>";
-		$markup .= "<div class='row position-relative justify-content-end justify-content-md-start'>";
+		$markup        = "<div class='col-12 col-lg-7 col-xl-12 pt-3 pb-5'>";
+		$markup       .= "<div class='row position-relative justify-content-end justify-content-md-start'>";
+		$content_class = $this->can_reserve ? 'col-12 col-md-9' : 'col-12';
 		if ( $this->can_reserve ) {
 			$markup .= '<div class="col-3 col-xxl-2 d-none d-md-block"></div>';
 		}
-		$markup .= "<div class='col-12 col-md-9'><{$headline_element} class='room-type__headline fs-2'>{$this->headline}</{$headline_element}></div>";
+		$markup .= "<div class='{$content_class}'><{$headline_element} class='room-type__headline fs-2'>{$this->headline}</{$headline_element}></div>";
 		if ( $this->can_reserve ) {
 			$markup .= "<div class='col-3 col-xxl-2 d-none d-md-block'><div class='vertical-line-rooms'></div></div>";
 		}
-		$markup .= "<div class='col-12 col-md-9'><div class='room-type__subheadline fs-6'>{$this->subheadline}</div>";
+		$markup .= "<div class='{$content_class}'><div class='room-type__subheadline fs-6'>{$this->subheadline}</div>";
 		if ( $this->can_reserve ) {
 			$markup .= "
 			<p class='py-2 d-none d-md-block'>
