@@ -95,7 +95,7 @@ class Two_Col_Section extends Generator {
 		$section_id    = $this->get_the_section_id();
 		$section_class = $this->set_the_class( 'section' );
 		$row_class     = $this->set_the_class( 'row' );
-		$markup        = "<{$this->wrapper_el} class='{$section_class} mt-5 two-col' id='{$section_id}'>";
+		$markup        = "<{$this->wrapper_el} class='{$section_class} my-3 two-col' id='{$section_id}'>";
 		$markup       .= "<div class='{$row_class}'>";
 		$markup       .= $this->get_col_1();
 		$markup       .= $this->get_col_2();
@@ -141,7 +141,7 @@ class Two_Col_Section extends Generator {
 				}
 				break;
 			case 'row':
-				$class = 'row align-items-center pt-2 pb-5';
+				$class = 'row align-items-center';
 				if ( $this->should_reverse ) {
 					$class .= ' flex-row-reverse';
 				}
@@ -210,7 +210,7 @@ class Two_Col_Section extends Generator {
 	 * @return string - The HTML markup for the subheadline and CTA.
 	 */
 	protected function get_the_subheadline(): string {
-		$markup = "<div class='col-12 col-md-9 col-xl-10'><div class='two-col__subheadline'>{$this->subheadline}</div>";
+		$markup = "<div class='col-12 col-md-9 col-xl-10'><div class='two-col__subheadline fs-6'>{$this->subheadline}</div>";
 		if ( $this->has_cta ) {
 			$markup .= $this->get_the_cta();
 		}
@@ -230,11 +230,11 @@ class Two_Col_Section extends Generator {
 		// desktop
 		$markup = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' />";
 
-		$desktop_link_class = 'arrow-link';
+		$desktop_link_class = 'arrow-link fs-5 fw-medium z-1';
 		$markup            .= "<a href='{$href}' class='{$desktop_link_class}'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
 		// mobile
-		$mobile_link_class = 'btn-default';
-		$markup           .= "<p class='py-4 d-block d-md-none'><a href='{$href}' class='{$mobile_link_class} d-inline-block'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
+		$mobile_link_class = 'btn-default d-inline-block fs-5';
+		$markup           .= "<p class='py-4 d-block d-md-none'><a href='{$href}' class='{$mobile_link_class}'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
 		return $markup;
 	}
 }

@@ -1,11 +1,13 @@
 @use "./typography/hero-headline";
+@use "bootstrap/scss/vendor/rfs" as rfs;
 
 body {
 	text-wrap: pretty;
+	word-break: normal;
 }
 
-p {
-	font-size: 1.25rem;
+[class*="fs-"] > p {
+	font-size: inherit;
 }
 
 h1,
@@ -21,11 +23,7 @@ a {
 }
 
 %arrow-links {
-	line-height: 1.75rem;
 	align-self: flex-end;
-	font-weight: 500;
-	font-size: 1.75rem;
-	z-index: 1;
 
 	&:hover,
 	&:focus {

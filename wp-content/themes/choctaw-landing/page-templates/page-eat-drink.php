@@ -33,7 +33,7 @@ foreach ( $featured_eats as $featured_eat ) {
 				<div class="swiper-button-prev"></div>
 			</div>
 			<div class="col-10">
-				<div class="swiper" id='restaurant-swiper' style="--swiper-navigation-sides-offset:20px;--swiper-pagination-color:white;--swiper-navigation-color:white">
+				<div class="swiper" id='restaurant-swiper'>
 					<div class="swiper-wrapper">
 						<?php
 						$restaurant_highlights = get_field( 'restaurant_highlights' );
@@ -50,7 +50,9 @@ foreach ( $featured_eats as $featured_eat ) {
 			</div>
 		</div>
 		<div class="row">
-			<div class="swiper-pagination"></div>
+			<div class="col position-relative">
+				<div class="swiper-pagination"></div>
+			</div>
 		</div>
 	</div>
 </div>

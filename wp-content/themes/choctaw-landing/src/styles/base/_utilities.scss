@@ -28,20 +28,14 @@
 }
 
 .vertical-line {
-	// --magic-height: 152px;
-	--magic-height: 142px;
-	border-right: 1.5px solid #414042;
-	height: calc(100% - var(--magic-height));
-	width: 58px;
+	border: 1.5px solid transparent;
+	border-right-color: #414042;
+	height: calc(100% - 132px);
+	width: 57.5px;
 	margin-top: 10px;
 
 	&-white {
-		border-right: 1.5px solid white;
-	}
-
-	&-rooms {
-		@extend .vertical-line;
-		height: calc(100% - 136px);
+		border-right-color: white;
 	}
 }
 

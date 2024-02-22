@@ -27,13 +27,13 @@ class Title_Bar extends Generator {
 
 	private function get_the_content(): string {
 		$markup  = "<div class='col-10 py-3'>";
-		$markup .= "<h2 class='fw-bold text-center'>{$this->headline}</h2>{$this->subheadline}";
+		$markup .= "<h2 class='fw-bold text-center fs-1'>{$this->headline}</h2><div class='fs-5'>{$this->subheadline}</div>";
 		$markup .= '</div>';
 		return $markup;
 	}
 
 	public function get_the_title_bar(): string {
-		$container_class  = 'container mb-5 position-relative title-bar';
+		$container_class  = 'container mb-3 position-relative title-bar';
 		$container_class .= $this->with_background ? ' with-background' : '';
 		$markup           = "<section class='{$container_class}'>";
 		$markup          .= "<div class='row justify-content-center py-5 my-3'>";

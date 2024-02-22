@@ -56,11 +56,11 @@ class Room_Types extends Card {
 		if ( $this->can_reserve ) {
 			$markup .= '<div class="col-3 col-xxl-2 d-none d-md-block"></div>';
 		}
-		$markup .= "<div class='col-12 col-md-9 py-3'><{$headline_element} class='room-type__headline'>{$this->headline}</{$headline_element}></div>";
+		$markup .= "<div class='col-12 col-md-9'><{$headline_element} class='room-type__headline fs-2'>{$this->headline}</{$headline_element}></div>";
 		if ( $this->can_reserve ) {
 			$markup .= "<div class='col-3 col-xxl-2 d-none d-md-block'><div class='vertical-line-rooms'></div></div>";
 		}
-		$markup .= "<div class='col-12 col-md-9'><div class='room-type__subheadline'>{$this->subheadline}</div>";
+		$markup .= "<div class='col-12 col-md-9'><div class='room-type__subheadline fs-6'>{$this->subheadline}</div>";
 		if ( $this->can_reserve ) {
 			$markup .= "
 			<p class='py-2 d-none d-md-block'>

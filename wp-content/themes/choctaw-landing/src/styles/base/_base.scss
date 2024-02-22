@@ -4,7 +4,7 @@
 	--font-body: #{v.$font-body};
 	--font-headings: #{v.$font-headings};
 
-	--transition-standard: 0.15s ease-in-out;
+	--transition-standard: #{v.$transition--standard};
 }
 
 hr {

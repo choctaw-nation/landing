@@ -10,15 +10,70 @@ namespace ChoctawNation\ACF;
 
 /** Used to handle ACF markup */
 class Featured_Eats extends Two_Col_Section {
+	/**
+	 * Whether the restaurant has a menu
+	 *
+	 * @var bool $has_menu
+	 */
 	private bool $has_menu;
+
+	/**
+	 * The menu link
+	 *
+	 * @var string $menu_link
+	 */
 	private string $menu_link;
+
+	/**
+	 * Whether a user can order online
+	 *
+	 * @var bool $can_order_online
+	 */
 	private bool $can_order_online;
+
+	/**
+	 * The link to order online
+	 *
+	 * @var string $online_orders_link
+	 */
 	private string $online_orders_link;
+
+	/**
+	 * Whether a user can accept reservations
+	 *
+	 * @var bool $can_accept_reservations
+	 */
 	private bool $can_accept_reservations;
+
+	/**
+	 * The link to make reservations
+	 *
+	 * @var string $reservations_link
+	 */
 	private string $reservations_link;
+
+	/**
+	 * The food genre of the restaurant
+	 *
+	 * @var string $food_genre
+	 */
 	private string $food_genre;
+
 	// private int $price;
-	private bool|array $hours;
+
+	/**
+	 * The hours of operation
+	 *
+	 * @var bool|array $hours
+	 */
+	private $hours;
+
+	/**
+	 * The classes for the col-2 content
+	 *
+	 * @var string $col_2_content_class
+	 */
+	private string $col_2_content_class;
 
 	/** Sets the Class variables based on ACF fields
 	 *
@@ -38,7 +93,8 @@ class Featured_Eats extends Two_Col_Section {
 		if ( $acf['can_accept_reservations'] ) {
 			$this->reservations_link = esc_url( $acf['reservations_link'] );
 		}
-		$this->has_cta = $this->can_accept_reservations || $this->can_order_online;
+		$this->has_cta             = $this->can_accept_reservations || $this->can_order_online;
+		$this->col_2_content_class = $this->has_cta ? 'col-md-9 col-xl-10' : 'col-12';
 	}
 
 	/** Destructures the "Subheadline" ACF Group and inits the properties
@@ -123,7 +179,7 @@ class Featured_Eats extends Two_Col_Section {
 	 */
 	protected function get_col_2( $col_class = '' ): string {
 		$col_2           = empty( $col_class ) ? $this->set_the_class( 'col-2' ) : $col_class;
-		$inner_row_class = $this->has_cta ? 'row position-relative' : 'row position-relative justify-content-md-end';
+		$inner_row_class = $this->has_cta ? 'row position-relative' : 'row position-relative justify-content-lg-end';
 		$markup          = "<div class='{$col_2}'>";
 		$markup         .= "<div class='{$inner_row_class}'>";
 		if ( $this->has_cta ) {
@@ -141,15 +197,16 @@ class Featured_Eats extends Two_Col_Section {
 
 	/** Gets the section header (headline + subheadline) */
 	private function get_the_header(): string {
-		$markup = "<div class='col-12 col-md-9 col-xl-10 mb-5'><h2>{$this->headline}</h2>{$this->subheadline}</div>";
+		$markup = "<div class='{$this->col_2_content_class}'><h2>{$this->headline}</h2></div>";
 		return $markup;
 	}
 
 	private function get_the_body(): string {
-		$markup  = '<div class="col-12 col-md-9 col-xl-10">';
-		$markup .= '<div class="row">';
+		$markup  = "<div class='{$this->col_2_content_class}'>";
+		$markup .= "<div class='row'><div class='col fs-6'>{$this->subheadline}</div></div>";
+		$markup .= '<div class="row mt-3 mt-md-5">';
 		$markup .= $this->get_the_menu();
-		$markup .= "<div class='col'>{$this->food_genre}</div>";
+		$markup .= "<div class='col fs-6'>{$this->food_genre}</div>";
 		// $markup .= $this->get_the_price();
 		$markup .= '</div>';
 		$markup .= '<hr class="my-4" />';
@@ -164,7 +221,7 @@ class Featured_Eats extends Two_Col_Section {
 	/** Returns the Menu markup or an emtpy string */
 	private function get_the_menu(): string {
 		if ( $this->has_menu ) {
-			return "<div class='col menu'><a class='featured-eats__menu-link' href='{$this->menu_link}' target='_blank' rel-'noopener noreferrer'><i class='fas fa-utensils'></i> Menu</a></div>";
+			return "<div class='col menu'><a class='featured-eats__menu-link fs-6' href='{$this->menu_link}' target='_blank' rel-'noopener noreferrer'><i class='fa-solid fa-utensils fs-5'></i> Menu</a></div>";
 		} else {
 			return '';
 		}
@@ -201,7 +258,7 @@ class Featured_Eats extends Two_Col_Section {
 		}
 		$markup = '<ul class="dining-hours ps-0 mt-3 mb-4 list-unstyled">';
 		foreach ( $this->hours as $time ) {
-			$markup .= "<li class='dining-hours__hours'><span class='dining-hours__days'>{$this->get_the_days($time)}</span><span class='dining-hours__seperator'> | </span><span class='dining-hours__times'>{$this->get_the_time($time)}</span></li>";
+			$markup .= "<li class='dining-hours__hours fs-6'><span class='dining-hours__days'>{$this->get_the_days($time)}</span><span class='dining-hours__seperator'> | </span><span class='dining-hours__times'>{$this->get_the_time($time)}</span></li>";
 		}
 		$markup .= '</ul><hr class="my-4" />';
 		return $markup;
@@ -251,7 +308,7 @@ class Featured_Eats extends Two_Col_Section {
 	 *
 	 * @param string $desktop_link_class [Optional] The class to give the anchors
 	 */
-	private function get_the_desktop_anchors( string $desktop_link_class = 'arrow-link' ): string {
+	private function get_the_desktop_anchors( string $desktop_link_class = 'arrow-link fs-5 fw-medium' ): string {
 		$markup  = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' />";
 		$anchors = array();
 		if ( $this->can_accept_reservations ) {

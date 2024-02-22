@@ -28,8 +28,8 @@ class Restaurant_Highlight extends Card {
 	 * @param string $headline_element [optional] the Headline element (Default 'h3')
 	 */
 	protected function get_the_content( string $headline_element = 'h3' ): string {
-		$markup  = "<{$headline_element} class='card__headline fs-4'>{$this->headline}</{$headline_element}>";
-		$markup .= "<div class='card__subheadline'>{$this->subheadline}</div>";
+		$markup  = "<{$headline_element} class='card__headline fs-3'>{$this->headline}</{$headline_element}>";
+		$markup .= "<div class='card__subheadline fs-6'>{$this->subheadline}</div>";
 		if ( $this->genre ) {
 			$markup .= '<hr class="my-4" /><div class="card__meta d-flex justify-content-between align-items-center">';
 			$markup .= $this->genre ? "<span class='card__meta--genre d-inline-block'>{$this->genre}</span>" : '';
