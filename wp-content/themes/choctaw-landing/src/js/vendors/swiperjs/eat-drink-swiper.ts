@@ -1,12 +1,13 @@
-import { newSwiper } from "./swiper";
+import { newSwiper } from './swiper';
 
 function eatDrinkSwiper() {
-	const el = document.getElementById("restaurant-swiper");
-	if (!el) {
-		throw new Error(`Couldn't get restaurant swiper!`);
+	const el = document.getElementById( 'restaurant-swiper' );
+	if ( ! el ) {
+		throw new Error( `Couldn't get restaurant swiper!` );
 	}
-	newSwiper(el, {
+	newSwiper( el, {
 		loop: false,
+		autoHeight: false,
 		breakpoints: {
 			991: {
 				slidesPerView: 2,
@@ -19,6 +20,6 @@ function eatDrinkSwiper() {
 				centeredSlides: false,
 			},
 		},
-	});
+	} );
 }
 eatDrinkSwiper();
