@@ -95,10 +95,9 @@
 				// grabs all children *except* the last two
 				&:not(:nth-last-child(-n + 2)) {
 					.sub-menu {
-						li {
-							@include m.media-breakpoint-up(xl) {
-								border-right: 1px solid black;
-							}
+						@include m.media-breakpoint-up(xl) {
+							border-right: 1px solid black;
+							height: 100%;
 						}
 					}
 				}
