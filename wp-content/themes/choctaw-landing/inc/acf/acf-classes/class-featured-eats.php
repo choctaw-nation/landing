@@ -331,7 +331,7 @@ class Featured_Eats extends Two_Col_Section {
 	 *
 	 * @param string $mobile_link_class [Optional] The class to give the anchors
 	 */
-	private function get_the_mobile_anchors( string $mobile_link_class = 'btn-default' ): string {
+	private function get_the_mobile_anchors( string $mobile_link_class = 'btn-default fs-6' ): string {
 		$markup  = "<p class='py-4 d-block d-md-none'>";
 		$anchors = array();
 		if ( $this->can_accept_reservations ) {

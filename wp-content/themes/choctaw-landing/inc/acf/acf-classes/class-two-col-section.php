@@ -233,7 +233,7 @@ class Two_Col_Section extends Generator {
 		$desktop_link_class = 'arrow-link fs-5 fw-medium z-1';
 		$markup            .= "<a href='{$href}' class='{$desktop_link_class}'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
 		// mobile
-		$mobile_link_class = 'btn-default d-inline-block fs-5';
+		$mobile_link_class = 'btn-default fs-6';
 		$markup           .= "<p class='py-4 d-block d-md-none'><a href='{$href}' class='{$mobile_link_class}'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
 		return $markup;
 	}

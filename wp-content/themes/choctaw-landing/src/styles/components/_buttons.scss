@@ -32,7 +32,6 @@
 		border: 2px solid var(--bs-primary);
 		padding: 0.2rem 1rem 0.5rem;
 		font-weight: 500;
-		line-height: 3;
 
 		&:hover,
 		&:focus {
@@ -72,6 +71,10 @@
 			background-color: white;
 			i {
 				color: black;
+			}
+
+			svg {
+				color: var(--bs-primary);
 			}
 		}
 

@@ -28,8 +28,6 @@
 	--swiper-pagination-color: white;
 	--swiper-pagination-bullet-inactive-opacity: 0.5;
 	.swiper {
-		height: 700px;
-
 		@include m.media-breakpoint-up(xl) {
 			height: 600px;
 		}
