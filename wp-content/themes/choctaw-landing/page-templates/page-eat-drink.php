@@ -49,7 +49,7 @@ foreach ( $featured_eats as $featured_eat ) {
 				<div class="swiper-button-next"></div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row mt-3">
 			<div class="col position-relative">
 				<div class="swiper-pagination"></div>
 			</div>
