@@ -51,29 +51,6 @@
 	}
 }
 
-.banner-bg-header {
-	&__image {
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
-		max-width: 1920px;
-		inset: 0;
-
-		&--blur {
-			background-size: 100%;
-			filter: blur(10px);
-		}
-	}
-
-	&__overlay {
-		background-color: rgba(black, 0.15);
-		mix-blend-mode: darken;
-	}
-	.text-light {
-		text-shadow: 1px 1px 2px black;
-	}
-}
-
 .zi-1020 {
 	z-index: 1020;
 }

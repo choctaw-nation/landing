@@ -19,9 +19,8 @@ if ( empty( $args['id'] ) ) {
 ?>
 <header id="<?php echo $banner_id; ?>" class="banner-bg-header position-relative container-fluid my-5 g-0">
 	<?php if ( $url ) : ?>
-	<div class="banner-bg-header--image--blur position-absolute z-1 w-100 h-100" style="background-image: url('<?php echo $url; ?>');"></div>
+	<div class="banner-bg-header__image--blur d-none d-xxl-block position-absolute z-1 w-100 h-100" style="background-image: url('<?php echo $url; ?>');"></div>
 	<div class="banner-bg-header__image position-absolute z-2 mx-auto w-100 h-100" style="background-image: url('<?php echo $url; ?>');"></div>
-	<div class="banner-bg-header__overlay position-absolute z-2 mx-auto w-100 h-100"></div>
 	<?php else : ?>
 	<div class="banner-bg-header__color position-absolute z-2 mx-auto w-100 h-100 bg-primary"></div>
 	<?php endif; ?>

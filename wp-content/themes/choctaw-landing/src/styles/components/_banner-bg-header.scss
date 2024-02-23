@@ -1,0 +1,19 @@
+.banner-bg-header {
+	&__image {
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		max-width: 1920px;
+		inset: 0;
+
+		&--blur {
+			background-size: 105%;
+			background-position: center;
+			filter: blur(10px);
+		}
+	}
+
+	.text-light {
+		text-shadow: 1px 1px 2px black;
+	}
+}
