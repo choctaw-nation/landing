@@ -48,11 +48,11 @@ class Link_Card extends Card {
 	 * @param string $headline_element [optional] the Headline element (Default 'h3')
 	 */
 	protected function get_the_markup( string $col_class, string $headline_element = 'h3' ): string {
-		$markup  = "<div class='{$col_class} card'" . ( $this->headline ? "id='{$this->get_the_id()}'" : '' ) . '>';
+		$markup  = "<div class='{$col_class} card d-flex flex-column'" . ( $this->headline ? "id='{$this->get_the_id()}'" : '' ) . '>';
 		$markup .= $this->image->get_the_image( 'pb-3 card__image' );
 		$markup .= $this->get_the_content( $headline_element );
 		if ( $this->with_button ) {
-			$markup .= "<a href='{$this->link['url']}' class='btn btn-default' {$this->target}>{$this->link['title']}</a>";
+			$markup .= "<a href='{$this->link['url']}' class='btn btn-default mt-auto align-self-start fs-6' {$this->target}>{$this->link['title']}</a>";
 		}
 		$markup .= '</div>';
 		return $markup;
@@ -85,7 +85,7 @@ class Link_Card extends Card {
 			}
 			$markup .= "</{$headline_element}>";
 		}
-		$markup .= "<div class='card__subheadline fs-6'>{$this->subheadline}</div>";
+		$markup .= "<div class='card__subheadline fs-6 mb-2'>{$this->subheadline}</div>";
 		return $markup;
 	}
 }
