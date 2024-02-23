@@ -88,9 +88,9 @@ class Hero_Section extends Generator {
 		$markup   = "<header id='header-img' class='hero container-fluid gx-0 position-relative'>";
 		if ( $this->video && $this->image ) {
 			$markup .= $this->get_the_video();
-			$markup .= $this->image->get_the_image( 'd-md-none' );
+			$markup .= $this->image->get_the_image( 'd-md-none', false );
 		} elseif ( ! $this->video && $this->image ) {
-			$markup .= $this->image->get_the_image( 'hero__image object-fit-cover d-block mx-auto h-100' );
+			$markup .= $this->image->get_the_image( 'hero__image object-fit-cover d-block mx-auto h-100', false );
 		} elseif ( $this->video && ! $this->image ) {
 			$markup .= $this->get_the_video();
 		}

@@ -64,10 +64,11 @@ class Image {
 	 * Generates the img element
 	 *
 	 * @param string $img_class the class to add
+	 * @param bool   $lazy [optional] whether to use lazy loading (Default true)
 	 * @return string the HTML
 	 */
-	public function get_the_image( string $img_class = '' ): string {
-		$markup = "<img class='{$img_class}' src='{$this->src}' srcset='{$this->srcset}' alt='{$this->alt}' loading='lazy' />";
+	public function get_the_image( string $img_class = '', bool $lazy = true ): string {
+		$markup = "<img class='{$img_class}' src='{$this->src}' srcset='{$this->srcset}' alt='{$this->alt}'" . ( $lazy ? "loading='lazy'" : '' ) . ' />';
 		return $markup;
 	}
 
@@ -75,8 +76,9 @@ class Image {
 	 * Echoes the Image element
 	 *
 	 * @param string $img_class the html class to give the image
+	 * @param bool   $lazy [optional] whether to use lazy loading (Default true)
 	 */
-	public function the_image( string $img_class = '' ) {
-		echo $this->get_the_image( $img_class );
+	public function the_image( string $img_class = '', bool $lazy = true ) {
+		echo $this->get_the_image( $img_class, $lazy );
 	}
 }
