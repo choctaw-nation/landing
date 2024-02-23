@@ -29,7 +29,7 @@ foreach ( $section_3_columns as $row ) {
 	echo '<div class="row">';
 	foreach ( $row as $col ) {
 		$col_card = new Link_Card( get_the_ID(), $col );
-		$col_card->the_card( 'col-12 col-md-6 col-lg-4 my-5 my-md-0', 'h2' );
+		$col_card->the_card( 'col-12 col-md-6 col-lg-4 my-5 my-md-0', 'h2', true );
 	}
 	echo '</div>';
 }
