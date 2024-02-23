@@ -1,58 +1,20 @@
 @use "./typography/hero-headline";
-@use "bootstrap/scss/vendor/rfs" as rfs;
+@use "./typography/headings";
 
 body {
 	text-wrap: pretty;
 	word-break: normal;
 }
 
-.h1,
-h1,
-.h2,
-h2,
-.h3,
-h3,
-.h4,
-h4,
-.h5,
-h5,
-.h6,
-h6 {
-	text-wrap: balance;
-}
 [class*="fs-"] > p {
 	font-size: inherit;
-}
-
-h1,
-.h1,
-h2,
-.h2 {
-	font-weight: bold;
-	text-transform: uppercase;
 }
 
 a {
 	transition: color var(--transition-standard);
 }
 
-%arrow-links {
-	align-self: flex-end;
-
-	&:hover,
-	&:focus {
-	}
-}
-.arrow-link {
-	@extend %arrow-links;
-
-	&-white {
-		@extend %arrow-links;
-		color: white;
-
-		&:hover,
-		&:focus {
-			color: var(--bs-primary);
-		}
-	}
+ul,
+ol {
+	margin-left: 2rem;
 }

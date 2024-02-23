@@ -1,0 +1,17 @@
+%arrow-links {
+	align-self: flex-end;
+}
+
+.arrow-link {
+	@extend %arrow-links;
+
+	&-white {
+		@extend %arrow-links;
+		color: white;
+
+		&:hover,
+		&:focus {
+			color: var(--bs-primary);
+		}
+	}
+}
