@@ -56,7 +56,7 @@ class Restaurant_Highlight extends Card {
 	 * Generates the hours of operation
 	 */
 	private function get_the_hours(): string {
-		$markup = '<div class="card__meta--hours">';
+		$markup = '<div class="card__meta--hours"><h3 class="fs-6 fw-semibold text-white">Hours</h3>';
 		foreach ( $this->hours as $hours ) {
 			$markup .= "<span class='row w-100 justify-content-between'><span class='col-auto'>" . esc_textarea( $hours['days'] ) . ':</span>&nbsp;<span class="col-auto">' . esc_textarea( $hours['times'] ) . '</span></span>';
 		}
