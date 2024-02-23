@@ -1,7 +1,7 @@
 import '../../styles/components/booking-bar.scss';
 import ToastAlert from '../bs-toast';
 
-jquery( function ( $ ) {
+jQuery( function ( $ ) {
 	// Grab the Input Field and set the initial values
 	$( '#startDate' ).daterangepicker( {
 		startDate: moment(),
