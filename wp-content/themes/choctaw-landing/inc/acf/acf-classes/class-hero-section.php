@@ -86,9 +86,15 @@ class Hero_Section extends Generator {
 	public function get_the_hero(): string {
 		$headline = $this->headline ? "<h1 class='hero-headline text-white text-uppercase d-flex flex-column w-normal {$this->headline_position}'>{$this->headline}</h1>" : '';
 		$markup   = "<header id='header-img' class='hero container-fluid gx-0 position-relative'>";
-		$markup  .= $this->get_the_video();
-		$markup  .= $this->image->get_the_image( 'd-md-none' );
-		$markup  .= "{$headline}</header>";
+		if ( $this->video && $this->image ) {
+			$markup .= $this->get_the_video();
+			$markup .= $this->image->get_the_image( 'd-md-none' );
+		} elseif ( ! $this->video && $this->image ) {
+			$markup .= $this->image->get_the_image();
+		} elseif ( $this->video && ! $this->image ) {
+			$markup .= $this->get_the_video();
+		}
+		$markup .= "{$headline}</header>";
 		return $markup;
 	}
 
