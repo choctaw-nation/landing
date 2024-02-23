@@ -2,16 +2,23 @@ import '../../styles/components/booking-bar.scss';
 import ToastAlert from '../bs-toast';
 
 jQuery( function ( $ ) {
-	// Grab the Input Field and set the initial values
-	$( '#startDate' ).daterangepicker( {
-		startDate: moment(),
-		endDate: moment().add( 2, 'days' ),
-		minDate: moment(),
+	const dateRangePickerArgs = {
+		minDate: moment( '2024-04-01' ),
 		locale: {
 			format: 'MM/DD/YYYY',
 		},
 		autoApply: true,
-	} );
+	};
+	if ( moment().isAfter( '2024-04-01' ) ) {
+		dateRangePickerArgs.startDate = moment();
+		dateRangePickerArgs.endDate = moment().add( 1, 'days' );
+	} else {
+		dateRangePickerArgs.startDate = moment( '2024-04-01' );
+		dateRangePickerArgs.endDate = moment( '2024-04-02' );
+	}
+
+	// Grab the Input Field and set the initial values
+	$( '#startDate' ).daterangepicker( dateRangePickerArgs );
 
 	// On Submit, grab the values and redirect to the booking page
 	$( '#booking-bar' ).on( 'submit', function ( ev ) {
