@@ -10,16 +10,16 @@
 	}
 }
 
-.dining-hours {
-	margin-bottom: 1.25rem;
+// .dining-hours {
+// 	margin-bottom: 1.25rem;
 
-	&__hours {
-		width: 100%;
-		display: inline-grid;
-		grid-template-columns: 1fr auto 2fr;
-		gap: 10px;
-	}
-}
+// 	&__hours {
+// 		width: 100%;
+// 		display: inline-grid;
+// 		grid-template-columns: 1fr auto 2fr;
+// 		gap: 10px;
+// 	}
+// }
 
 #containers {
 	--swiper-navigation-sides-offset: 5px;
@@ -27,6 +27,7 @@
 	--swiper-pagination-bullet-inactive-color: white;
 	--swiper-pagination-color: white;
 	--swiper-pagination-bullet-inactive-opacity: 0.5;
+
 	.swiper {
 		@include m.media-breakpoint-up(xl) {
 			height: 600px;
@@ -38,11 +39,5 @@
 			aspect-ratio: 16 / 9;
 			object-fit: cover;
 		}
-		&__headline {
-			font-size: calc(1.34375rem + 1.125vw);
-		}
-	}
-	p {
-		font-size: 1.25rem;
 	}
 }

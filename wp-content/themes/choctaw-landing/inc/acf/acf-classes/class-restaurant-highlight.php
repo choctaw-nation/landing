@@ -10,21 +10,26 @@ namespace ChoctawNation\ACF;
 
 /** A Card that highlights a Restaurant */
 class Restaurant_Highlight extends Card {
-	// private int $price;
-
 	/** The genre of the restaurant
 	 *
 	 * @var string|bool $genre
 	 */
 	private $genre;
 
+	/**
+	 * The Hours of operation
+	 *
+	 * @var ?array $hours
+	 */
+	private ?array $hours;
+
 	// phpcs:ignore
 	protected function init_props( array $acf ) {
 		$this->set_the_image( $acf['image'] );
 		$this->headline    = esc_textarea( $acf['headline'] );
 		$this->subheadline = acf_esc_html( $acf['subheadline'] );
-		// $this->price       = absint( $acf['price'] );
-		$this->genre = esc_textarea( $acf['food_genre'] );
+		$this->hours       = empty( $acf['hours'] ) ? null : $acf['hours'];
+		$this->genre       = esc_textarea( $acf['food_genre'] );
 	}
 
 	/**
@@ -38,33 +43,24 @@ class Restaurant_Highlight extends Card {
 		if ( $this->genre ) {
 			$markup .= '<hr class="my-4" /><div class="card__meta d-flex justify-content-between align-items-center">';
 			$markup .= $this->genre ? "<span class='card__meta--genre d-inline-block'>{$this->genre}</span>" : '';
-			// $markup .= $this->price ? $this->get_the_price() : '';
 			$markup .= '</div>';
 		}
-		return $markup;
-	}
-
-	/** Generates the price markup */
-	private function get_the_price(): string {
-		$grey_dollars = 4 - $this->price;
-		$markup       = "<span class='card__meta--price d-inline-block'>";
-		$markup      .= $this->get_the_dollar_signs( $this->price );
-		$markup      .= $this->get_the_dollar_signs( $grey_dollars, true );
-		$markup      .= '</span>';
-		return $markup;
-	}
-
-	/** Generates the appropriate number of dollar sign icons and handles opacity
-	 *
-	 * @param int  $num_icons the number of icons to generate
-	 * @param bool $opaque toggles the `opacity-25` class
-	 */
-	private function get_the_dollar_signs( int $num_icons, bool $opaque = false ): string {
-		$opacity = $opaque ? ' opacity-25' : '';
-		$dollars = '';
-		for ( $i = 0; $i < $num_icons; $i++ ) {
-			$dollars .= "<i class='fas fa-dollar-sign{$opacity}'></i>";
+		if ( $this->hours ) {
+			$markup .= '<hr class="my-2" />';
+			$markup .= $this->get_the_hours();
 		}
-		return $dollars;
+		return $markup;
+	}
+
+	/**
+	 * Generates the hours of operation
+	 */
+	private function get_the_hours(): string {
+		$markup = '<div class="card__meta--hours">';
+		foreach ( $this->hours as $hours ) {
+			$markup .= "<span class='row w-100 justify-content-between'><span class='col-auto'>" . esc_textarea( $hours['days'] ) . ':</span>&nbsp;<span class="col-auto">' . esc_textarea( $hours['times'] ) . '</span></span>';
+		}
+		$markup .= '</div>';
+		return $markup;
 	}
 }

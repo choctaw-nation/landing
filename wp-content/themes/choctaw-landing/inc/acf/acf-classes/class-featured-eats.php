@@ -59,8 +59,6 @@ class Featured_Eats extends Two_Col_Section {
 	 */
 	private string $food_genre;
 
-	// private int $price;
-
 	/**
 	 * The hours of operation
 	 *
@@ -108,8 +106,7 @@ class Featured_Eats extends Two_Col_Section {
 			$this->menu_link = esc_url( $acf['menu_link'] );
 		}
 		$this->food_genre = $acf['food_genre'];
-		// $this->price      = absint( $acf['price'] );
-		$this->hours = $acf['hours'] ?? null;
+		$this->hours      = $acf['hours'] ?? null;
 	}
 
 	/**
@@ -208,9 +205,8 @@ class Featured_Eats extends Two_Col_Section {
 		$markup .= '<div class="row mt-3 mt-md-5">';
 		$markup .= $this->get_the_menu();
 		$markup .= "<div class='col fs-6'>{$this->food_genre}</div>";
-		// $markup .= $this->get_the_price();
 		$markup .= '</div>';
-		$markup .= '<hr class="my-4" />';
+		$markup .= '<hr class="my-3" />';
 		$markup .= $this->get_the_hours();
 		if ( $this->has_cta ) {
 			$markup .= $this->get_the_cta();
@@ -228,69 +224,35 @@ class Featured_Eats extends Two_Col_Section {
 		}
 	}
 
-	/** Generates the price markup */
-	private function get_the_price(): string {
-		$grey_dollars = 4 - $this->price;
-		$markup       = "<div class='col'>";
-		$markup      .= $this->get_the_dollar_signs( $this->price );
-		$markup      .= $this->get_the_dollar_signs( $grey_dollars, true );
-		$markup      .= '</div>';
-		return $markup;
-	}
-
-	/** Generates the appropriate number of dollar sign icons and handles opacity
-	 *
-	 * @param int  $num_icons the number of icons to generate
-	 * @param bool $opaque toggles the `opacity-25` class
-	 */
-	private function get_the_dollar_signs( int $num_icons, bool $opaque = false ): string {
-		$opacity = $opaque ? ' opacity-25' : '';
-		$dollars = '';
-		for ( $i = 0; $i < $num_icons; $i++ ) {
-			$dollars .= "<i class='fas fa-dollar-sign{$opacity}'></i>";
-		}
-		return $dollars;
-	}
-
 	/** Generates the Eats Hours block */
 	private function get_the_hours(): string {
 		if ( false === $this->hours ) {
 			return '';
 		}
-		$markup = '<ul class="dining-hours ps-0 mt-3 mb-4 list-unstyled">';
-		foreach ( $this->hours as $time ) {
-			$markup .= "<li class='dining-hours__hours fs-6'><span class='dining-hours__days'>{$this->get_the_days($time)}</span><span class='dining-hours__separator'> | </span><span class='dining-hours__times'>{$this->get_the_time($time)}</span></li>";
+		$markup = '<h3 class="fs-5">Hours</h3><ul class="dining-hours ps-0 mb-0 list-unstyled">';
+		foreach ( $this->hours as $hour_data ) {
+			$markup .= "<li class='dining-hours__hours fs-6 row justify-content-between'>";
+			$markup .= isset( $hour_data['meals_label'] ) ? "<span class='dining-hours__label d-block col-12 fs-6 fw-semibold'>{$hour_data['meals_label']}</span>" : '';
+			$markup .= $this->get_the_hours_actual( $hour_data['hours'] );
+
+			$markup .= '</li>';
+
 		}
-		$markup .= '</ul><hr class="my-4" />';
+		$markup .= '</ul><hr class="my-3" />';
 		return $markup;
 	}
 
-	/**
-	 * Creates the Day String
-	 *
-	 * @param array $hours 1 instance of the Hours repeater field
-	 */
-	private function get_the_days( array $hours ): string {
-		$length = count( $hours );
-		if ( $length > 1 ) {
-			$last = array_key_last( $hours['days'] );
-			return "{$hours['days'][0]} &ndash; {$hours['days'][$last]}";
-		} elseif ( 1 === $length ) {
-			return $hours['days'];
-		} else {
-			return '';
+	private function get_the_hours_actual( array $hours_block ): string {
+		$total_blocks = count( $this->hours );
+		foreach ( $hours_block as $index => $hours ) {
+			$markup_class  = 'col-12 row justify-content-between';
+			$markup_class .= ( $index === $total_blocks - 1 ) ? '' : ' mb-3';
+			$markup        = "<div class='{$markup_class}'>";
+			$markup       .= "<span class='dining-hours__day col-auto fs-6'>" . esc_textarea( $hours['days'] ) . '</span>';
+			$markup       .= "<span class='dining-hours__time col-auto fs-6'>" . esc_textarea( $hours['times'] ) . '</span>';
+			$markup       .= '</div>';
 		}
-	}
-
-	/**
-	 * Creates the time String
-	 *
-	 * @param array $hours 1 instance of the Hours repeater field
-	 */
-	private function get_the_time( array $hours ): string {
-		$open  = $hours['open'];
-		$close = $hours['close'];
-		return "{$open} &ndash; {$close}";
+		return $markup;
 	}
 
 	/**

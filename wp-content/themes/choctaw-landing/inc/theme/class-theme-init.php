@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Initializes the Theme
  *
@@ -10,6 +11,7 @@ namespace ChoctawNation;
 
 /** Builds the Theme */
 class Theme_Init {
+
 	/** Constructor */
 	public function __construct() {
 		$this->load_required_files();
@@ -109,7 +111,7 @@ class Theme_Init {
 			'typekit',
 			'https://use.typekit.net/jqq3pwr.css',
 			array(),
-			null // phpcs:ignore
+            null // phpcs:ignore
 		);
 
 		$bootstrap = new Asset_Loader(
@@ -197,43 +199,43 @@ class Theme_Init {
 	 * Registers date range picker scripts and styles
 	 */
 	private function register_daterangepicker() {
-			wp_register_script(
-				'moment',
-				'https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js',
-				array(),
-				'2.18.1',
-				array( 'strategy' => 'async' )
-			);
+		wp_register_script(
+			'moment',
+			'https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js',
+			array(),
+			'2.18.1',
+			array( 'strategy' => 'async' )
+		);
 
-			wp_register_script(
-				'date-range-picker',
-				'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js',
-				array( 'moment', 'jquery', 'bootstrap' ),
-				null,
-				array( 'strategy' => 'defer' )
-			);
+		wp_register_script(
+			'date-range-picker',
+			'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js',
+			array( 'moment', 'jquery', 'bootstrap' ),
+			null,
+			array( 'strategy' => 'defer' )
+		);
 
-			wp_register_style(
-				'date-range-picker',
-				'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css',
-				array( 'bootstrap' ),
-				null
-			);
+		wp_register_style(
+			'date-range-picker',
+			'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css',
+			array( 'bootstrap' ),
+			null
+		);
 
-			$cno_date_range_picker = require_once get_stylesheet_directory() . '/dist/modules/date-range-picker.asset.php';
-			wp_register_script(
-				'cno-date-range-picker',
-				get_stylesheet_directory_uri() . '/dist/modules/date-range-picker.js',
-				array( 'date-range-picker' ),
-				$cno_date_range_picker['version'],
-				array( 'strategy' => 'defer' )
-			);
-			wp_register_style(
-				'cno-date-range-picker',
-				get_stylesheet_directory_uri() . '/dist/modules/date-range-picker.css',
-				array( 'date-range-picker' ),
-				$cno_date_range_picker['version'],
-			);
+		$cno_date_range_picker = require_once get_stylesheet_directory() . '/dist/modules/date-range-picker.asset.php';
+		wp_register_script(
+			'cno-date-range-picker',
+			get_stylesheet_directory_uri() . '/dist/modules/date-range-picker.js',
+			array( 'date-range-picker' ),
+			$cno_date_range_picker['version'],
+			array( 'strategy' => 'defer' )
+		);
+		wp_register_style(
+			'cno-date-range-picker',
+			get_stylesheet_directory_uri() . '/dist/modules/date-range-picker.css',
+			array( 'date-range-picker' ),
+			$cno_date_range_picker['version'],
+		);
 	}
 
 	/** Load Google Tag Manager in the Head */
