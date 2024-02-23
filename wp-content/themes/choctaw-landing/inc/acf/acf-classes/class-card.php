@@ -14,13 +14,13 @@ class Card extends Generator {
 	 *
 	 * @var string $headline
 	 */
-	protected string $headline;
+	protected ?string $headline;
 
 	/** The subheadline
 	 *
 	 * @var string $subheadline
 	 */
-	protected string $subheadline;
+	protected ?string $subheadline;
 
 	/** Inits acf fields to class props
 	 *
@@ -28,8 +28,8 @@ class Card extends Generator {
 	 */
 	protected function init_props( array $acf ) {
 		$this->set_the_image( $acf['image'] );
-		$this->headline    = $acf['headline'];
-		$this->subheadline = $acf['subheadline'];
+		$this->headline    = empty( $acf['headline'] ) ? null : esc_textarea( $acf['headline'] );
+		$this->subheadline = empty( $acf['subheadline'] ) ? null : acf_esc_html( $acf['subheadline'] );
 	}
 
 	/** Generates the markup
@@ -38,8 +38,7 @@ class Card extends Generator {
 	 * @param string $headline_element [optional] the Headline element (Default 'h3')
 	 */
 	protected function get_the_markup( string $col_class, string $headline_element = 'h3' ): string {
-		$id      = $this->get_the_id();
-		$markup  = "<div class='{$col_class} card' id='{$id}'>";
+		$markup  = "<div class='{$col_class} card'" . ( $this->headline ? "id='{$this->get_the_id()}'" : '' ) . '>';
 		$markup .= $this->image->get_the_image( 'pb-3 card__image' );
 		$markup .= $this->get_the_content( $headline_element );
 		$markup .= '</div>';
