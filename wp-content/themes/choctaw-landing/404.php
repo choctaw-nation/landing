@@ -2,34 +2,22 @@
 /**
  * The template for displaying 404 pages (not found)
  *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package Bootscore
+ * @package ChoctawNation
  */
 
 get_header();
 ?>
 <div id="content" class="site-content container py-5" style="margin-top: 150px;">
 	<div id="primary" class="content-area">
-
 		<main id="main" class="site-main">
-
-			<section class="error-404 not-found">
-				<div class="page-404">
-
-					<h1 class="mb-3">404</h1>
-					<!-- Remove this line and place some widgets -->
-					<p class="alert alert-info mb-4"><?php esc_html_e( 'Page not found.', 'bootscore' ); ?></p>
-					<!-- 404 Widget -->
-					<?php if ( is_active_sidebar( '404-page' ) ) : ?>
-					<div><?php dynamic_sidebar( '404-page' ); ?></div>
-					<?php endif; ?>
-					<a class="btn btn-outline-primary" href="<?php echo esc_url( home_url() ); ?>" role="button"><?php esc_html_e( 'Back Home &raquo;', 'bootscore' ); ?></a>
+			<section class="error-404 not-found row">
+				<div class="page-404 col">
+					<h1 class="mb-3 fs-2">404</h1>
+					<p class="fs-5">Page not found.</p>
+					<a href="<?php echo site_url(); ?>" class="btn btn-default">Back to home</a>
 				</div>
 			</section><!-- .error-404 -->
-
 		</main><!-- #main -->
-
 	</div><!-- #primary -->
 </div><!-- #content -->
 
