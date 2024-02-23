@@ -35,7 +35,7 @@ class Hero_Section extends Generator {
 	 */
 	private ?string $video;
 
-	//phpcs:ignore
+	// phpcs:ignore
 	protected function init_props( array $acf ) {
 		$this->headline = empty( $acf['headline'] ) ? null : acf_esc_html( $acf['headline'] );
 		$this->video    = empty( $acf['video'] ) ? null : $acf['video'];
@@ -90,7 +90,7 @@ class Hero_Section extends Generator {
 			$markup .= $this->get_the_video();
 			$markup .= $this->image->get_the_image( 'd-md-none' );
 		} elseif ( ! $this->video && $this->image ) {
-			$markup .= $this->image->get_the_image();
+			$markup .= $this->image->get_the_image( 'hero__image object-fit-cover d-block mx-auto h-100' );
 		} elseif ( $this->video && ! $this->image ) {
 			$markup .= $this->get_the_video();
 		}

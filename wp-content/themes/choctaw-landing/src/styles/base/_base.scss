@@ -12,6 +12,11 @@ hr {
 }
 
 .hero {
-	max-height: 90rem;
+	max-height: 900px;
 	margin-top: 110px;
+
+	&__image {
+		max-width: 1920px;
+		aspect-ratio: 16 / 9;
+	}
 }
