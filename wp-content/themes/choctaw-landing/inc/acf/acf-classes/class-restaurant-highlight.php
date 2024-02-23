@@ -40,8 +40,8 @@ class Restaurant_Highlight extends Card {
 	protected function get_the_markup( string $col_class, string $headline_element = 'h3' ): string {
 		$id      = $this->get_the_id();
 		$markup  = "<div class='{$col_class} card' id='{$id}'>";
-		$markup .= "<div class='ratio ratio-1x1'>";
-		$markup .= $this->image->get_the_image( 'pb-3 card__image' );
+		$markup .= "<div class='ratio ratio-1x1 pb-3'>";
+		$markup .= $this->image->get_the_image( 'card__image  object-fit-cover' );
 		$markup .= '</div>';
 		$markup .= $this->get_the_content( $headline_element );
 		$markup .= '</div>';
