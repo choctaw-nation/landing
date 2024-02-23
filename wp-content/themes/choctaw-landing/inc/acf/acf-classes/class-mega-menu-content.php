@@ -13,8 +13,25 @@ use ChoctawNation\Events\Choctaw_Event;
 
 /** The Mega Menu Content Page */
 class Mega_Menu_Content extends Generator {
+	/**
+	 * A flag indicating whether the content has a call-to-action (CTA).
+	 *
+	 * @var ?bool $has_cta
+	 */
 	private ?bool $has_cta;
+
+	/**
+	 * The ACF Link array for the call-to-action (CTA).
+	 *
+	 * @var array $cta
+	 */
 	private array $cta;
+
+	/**
+	 * The Featured Event
+	 *
+	 * @var ?\WP_Post $featured_event
+	 */
 	private ?\WP_Post $featured_event;
 
 	// phpcs:ignore

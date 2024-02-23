@@ -16,8 +16,16 @@ class Link_Card extends Card {
 	 */
 	protected ?array $link;
 
+	/** Whether to include an anchor button
+	 *
+	 * @var bool $with_button
+	 */
 	private bool $with_button;
 
+	/** The target attribute
+	 *
+	 * @var string $target
+	 */
 	private string $target;
 
 	/** Inits acf fields to class props
@@ -38,7 +46,6 @@ class Link_Card extends Card {
 	 *
 	 * @param string $col_class the column class
 	 * @param string $headline_element [optional] the Headline element (Default 'h3')
-	 * @param bool   $with_button whether to include an anchor button
 	 */
 	protected function get_the_markup( string $col_class, string $headline_element = 'h3' ): string {
 		$id      = $this->get_the_id();

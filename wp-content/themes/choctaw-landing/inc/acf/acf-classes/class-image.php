@@ -24,7 +24,7 @@ class Image {
 
 	/** The srcset, escaped
 	 *
-	 * @var string $scrset;
+	 * @var string $srcset;
 	 */
 	public string $srcset;
 
@@ -38,7 +38,8 @@ class Image {
 	/**
 	 * Constructor
 	 *
-	 * @param array $image the acf image array
+	 * @param array  $image the acf image array
+	 * @param string $size [optional] the image size (Default 'full')
 	 */
 	public function __construct( array $image, string $size = 'full' ) {
 		$this->src    = esc_url( $image['url'] );

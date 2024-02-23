@@ -11,7 +11,12 @@ namespace ChoctawNation\ACF;
 /** A Card that highlights a Restaurant */
 class Restaurant_Highlight extends Card {
 	// private int $price;
-	private string|bool $genre;
+
+	/** The genre of the restaurant
+	 *
+	 * @var string|bool $genre
+	 */
+	private $genre;
 
 	// phpcs:ignore
 	protected function init_props( array $acf ) {

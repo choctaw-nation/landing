@@ -201,6 +201,7 @@ class Featured_Eats extends Two_Col_Section {
 		return $markup;
 	}
 
+	/** Gets the section body */
 	private function get_the_body(): string {
 		$markup  = "<div class='{$this->col_2_content_class}'>";
 		$markup .= "<div class='row'><div class='col fs-6'>{$this->subheadline}</div></div>";
@@ -258,7 +259,7 @@ class Featured_Eats extends Two_Col_Section {
 		}
 		$markup = '<ul class="dining-hours ps-0 mt-3 mb-4 list-unstyled">';
 		foreach ( $this->hours as $time ) {
-			$markup .= "<li class='dining-hours__hours fs-6'><span class='dining-hours__days'>{$this->get_the_days($time)}</span><span class='dining-hours__seperator'> | </span><span class='dining-hours__times'>{$this->get_the_time($time)}</span></li>";
+			$markup .= "<li class='dining-hours__hours fs-6'><span class='dining-hours__days'>{$this->get_the_days($time)}</span><span class='dining-hours__separator'> | </span><span class='dining-hours__times'>{$this->get_the_time($time)}</span></li>";
 		}
 		$markup .= '</ul><hr class="my-4" />';
 		return $markup;

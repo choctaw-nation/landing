@@ -1,12 +1,6 @@
 @use "../abstracts/mixins" as m;
 
 .two-col {
-	&__headline {
-		// @include m.media-breakpoint-up(lg) {
-		// 	width: 80%;
-		// }
-	}
-
 	&--full-width {
 		background-size: cover;
 		background-position: bottom;
