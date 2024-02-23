@@ -32,6 +32,22 @@ class Restaurant_Highlight extends Card {
 		$this->genre       = esc_textarea( $acf['food_genre'] );
 	}
 
+	/** Generates the markup
+	 *
+	 * @param string $col_class the column class
+	 * @param string $headline_element [optional] the Headline element (Default 'h3')
+	 */
+	protected function get_the_markup( string $col_class, string $headline_element = 'h3' ): string {
+		$id      = $this->get_the_id();
+		$markup  = "<div class='{$col_class} card' id='{$id}'>";
+		$markup .= "<div class='ratio ratio-1x1'>";
+		$markup .= $this->image->get_the_image( 'pb-3 card__image' );
+		$markup .= '</div>';
+		$markup .= $this->get_the_content( $headline_element );
+		$markup .= '</div>';
+		return $markup;
+	}
+
 	/**
 	 * Generates the body of the card
 	 *

@@ -163,7 +163,9 @@ class Featured_Eats extends Two_Col_Section {
 	protected function get_col_1(): string {
 		$col_1   = $this->set_the_class( 'col-1' );
 		$markup  = "<div class='{$col_1}'>";
-		$markup .= $this->image->get_the_image( 'w-100 my-5 featured-eats__image' );
+		$markup .= "<div class='ratio ratio-1x1 w-100 my-5'>";
+		$markup .= $this->image->get_the_image( 'featured-eats__image' );
+		$markup .= '</div>';
 		$markup .= '</div>';
 		return $markup;
 	}
