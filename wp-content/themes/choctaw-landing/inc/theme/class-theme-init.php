@@ -208,7 +208,7 @@ class Theme_Init {
 			wp_register_script(
 				'date-range-picker',
 				'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js',
-				array( 'moment', 'jQuery', 'bootstrap' ),
+				array( 'moment', 'jquery', 'bootstrap' ),
 				null,
 				array( 'strategy' => 'defer' )
 			);
