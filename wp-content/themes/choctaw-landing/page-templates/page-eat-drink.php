@@ -39,7 +39,7 @@ foreach ( $featured_eats as $featured_eat ) {
 						$restaurant_highlights = get_field( 'restaurant_highlights' );
 						foreach ( $restaurant_highlights as $restaurant ) {
 							$highlight = new Restaurant_Highlight( get_the_ID(), $restaurant );
-							$highlight->the_card( 'swiper-slide', 'h2' );
+							$highlight->the_card( 'swiper-slide d-flex flex-column', 'h2' );
 						}
 						?>
 					</div>

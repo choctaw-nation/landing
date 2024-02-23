@@ -40,7 +40,7 @@ class Restaurant_Highlight extends Card {
 	protected function get_the_markup( string $col_class, string $headline_element = 'h3' ): string {
 		$id      = $this->get_the_id();
 		$markup  = "<div class='{$col_class} card' id='{$id}'>";
-		$markup .= "<div class='ratio ratio-1x1 pb-3'>";
+		$markup .= "<div class='ratio ratio-1x1 pb-3 card__image-container'>";
 		$markup .= $this->image->get_the_image( 'card__image  object-fit-cover' );
 		$markup .= '</div>';
 		$markup .= $this->get_the_content( $headline_element );
@@ -55,14 +55,14 @@ class Restaurant_Highlight extends Card {
 	 */
 	protected function get_the_content( string $headline_element = 'h3' ): string {
 		$markup  = "<{$headline_element} class='card__headline fs-3'>{$this->headline}</{$headline_element}>";
-		$markup .= "<div class='card__subheadline fs-6'>{$this->subheadline}</div>";
+		$markup .= "<div class='card__subheadline fs-6 mb-2'>{$this->subheadline}</div>";
 		if ( $this->genre ) {
 			$markup .= '<hr class="my-4" /><div class="card__meta d-flex justify-content-between align-items-center">';
 			$markup .= $this->genre ? "<span class='card__meta--genre d-inline-block'>{$this->genre}</span>" : '';
 			$markup .= '</div>';
 		}
 		if ( $this->hours ) {
-			$markup .= '<hr class="my-2" />';
+			$markup .= '<hr class="mt-auto mb-2" />';
 			$markup .= $this->get_the_hours();
 		}
 		return $markup;
