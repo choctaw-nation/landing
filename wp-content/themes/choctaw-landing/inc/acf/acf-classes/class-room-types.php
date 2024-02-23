@@ -35,8 +35,8 @@ class Room_Types extends Card {
 	protected function get_the_markup( string $col_class, string $headline_element = 'h3' ): string {
 		$col_id  = cno_get_the_section_id( $this->headline );
 		$markup  = "<div class='{$col_class} room-type' id='{$col_id}'>";
-		$markup .= '<div class="row align-items-center">';
-		$markup .= '<div class="col-12 col-lg-5 col-xl-12">';
+		$markup .= '<div class="row align-items-stretch">';
+		$markup .= '<div class="col-12 col-lg-5 col-xl-12 position-relative">';
 		$markup .= $this->image->get_the_image( 'room-type__image' );
 		$markup .= '</div>'; // close col
 		$markup .= $this->get_the_content();

@@ -1,0 +1,9 @@
+@use "../abstracts/mixins" as m;
+.room-type {
+	&__image {
+		@include m.media-breakpoint-only(lg) {
+			position: sticky;
+			top: 150px;
+		}
+	}
+}
