@@ -10,17 +10,6 @@
 	}
 }
 
-// .dining-hours {
-// 	margin-bottom: 1.25rem;
-
-// 	&__hours {
-// 		width: 100%;
-// 		display: inline-grid;
-// 		grid-template-columns: 1fr auto 2fr;
-// 		gap: 10px;
-// 	}
-// }
-
 #containers {
 	--swiper-navigation-sides-offset: 5px;
 	--swiper-navigation-color: white;
@@ -29,15 +18,8 @@
 	--swiper-pagination-bullet-inactive-opacity: 0.5;
 
 	.swiper {
-		@include m.media-breakpoint-up(xl) {
-			height: 600px;
-		}
-	}
-
-	.card {
-		&__image {
-			aspect-ratio: 16 / 9;
-			object-fit: cover;
-		}
+		// @include m.media-breakpoint-up(xl) {
+		// 	height: 600px;
+		// }
 	}
 }

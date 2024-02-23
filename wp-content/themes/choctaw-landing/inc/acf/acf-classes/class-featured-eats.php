@@ -231,11 +231,14 @@ class Featured_Eats extends Two_Col_Section {
 		if ( false === $this->hours ) {
 			return '';
 		}
-		$markup = '<h3 class="fs-5">Hours</h3><ul class="dining-hours ps-0 mb-0 list-unstyled">';
-		foreach ( $this->hours as $hour_data ) {
-			$markup .= "<li class='dining-hours__hours fs-6 row justify-content-between'>";
-			$markup .= isset( $hour_data['meals_label'] ) ? "<span class='dining-hours__label d-block col-12 fs-6 fw-semibold'>{$hour_data['meals_label']}</span>" : '';
-			$markup .= $this->get_the_hours_actual( $hour_data['hours'] );
+		$total_blocks = count( $this->hours );
+		$markup       = '<h3 class="fs-5">Hours</h3><ul class="dining-hours ps-0 mb-0 list-unstyled">';
+		foreach ( $this->hours as $index => $hour_data ) {
+			$markup_class  = 'dining-hours__rows fs-6 row justify-content-between';
+			$markup_class .= ( $index === $total_blocks - 1 ) ? '' : ' mb-3';
+			$markup       .= "<li class='{$markup_class}'>";
+			$markup       .= isset( $hour_data['meals_label'] ) ? "<span class='dining-hours__label d-block col-12 fs-6 fw-semibold'>{$hour_data['meals_label']}</span>" : '';
+			$markup       .= $this->get_the_hours_actual( $hour_data['hours'] );
 
 			$markup .= '</li>';
 
@@ -245,14 +248,13 @@ class Featured_Eats extends Two_Col_Section {
 	}
 
 	private function get_the_hours_actual( array $hours_block ): string {
-		$total_blocks = count( $this->hours );
+		$markup       = '';
+		$markup_class = 'col-12 row justify-content-between';
 		foreach ( $hours_block as $index => $hours ) {
-			$markup_class  = 'col-12 row justify-content-between';
-			$markup_class .= ( $index === $total_blocks - 1 ) ? '' : ' mb-3';
-			$markup        = "<div class='{$markup_class}'>";
-			$markup       .= "<span class='dining-hours__day col-auto fs-6'>" . esc_textarea( $hours['days'] ) . '</span>';
-			$markup       .= "<span class='dining-hours__time col-auto fs-6'>" . esc_textarea( $hours['times'] ) . '</span>';
-			$markup       .= '</div>';
+			$markup .= "<div class='{$markup_class}'>";
+			$markup .= "<span class='dining-hours__day col-auto fs-6'>" . esc_textarea( $hours['days'] ) . '</span>';
+			$markup .= "<span class='dining-hours__time col-auto fs-6'>" . esc_textarea( $hours['times'] ) . '</span>';
+			$markup .= '</div>';
 		}
 		return $markup;
 	}
