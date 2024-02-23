@@ -18,8 +18,8 @@
 	--swiper-pagination-bullet-inactive-opacity: 0.5;
 
 	.swiper {
-		// @include m.media-breakpoint-up(xl) {
-		// 	height: 600px;
-		// }
+		.swiper-slide {
+			height: unset;
+		}
 	}
 }

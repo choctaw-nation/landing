@@ -34,7 +34,7 @@ foreach ( $featured_eats as $featured_eat ) {
 			</div>
 			<div class="col-10">
 				<div class="swiper" id='restaurant-swiper'>
-					<div class="swiper-wrapper">
+					<div class="swiper-wrapper align-items-stretch">
 						<?php
 						$restaurant_highlights = get_field( 'restaurant_highlights' );
 						foreach ( $restaurant_highlights as $restaurant ) {
