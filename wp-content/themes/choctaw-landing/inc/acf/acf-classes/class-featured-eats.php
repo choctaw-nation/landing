@@ -218,7 +218,7 @@ class Featured_Eats extends Two_Col_Section {
 		return $markup;
 	}
 
-	/** Returns the Menu markup or an emtpy string */
+	/** Returns the Menu markup or an empty string */
 	private function get_the_menu(): string {
 		if ( $this->has_menu ) {
 			return "<div class='col menu'><a class='featured-eats__menu-link fs-6' href='{$this->menu_link}' target='_blank' rel-'noopener noreferrer'><i class='fa-solid fa-utensils fs-5'></i> Menu</a></div>";
@@ -309,7 +309,7 @@ class Featured_Eats extends Two_Col_Section {
 	 * @param string $desktop_link_class [Optional] The class to give the anchors
 	 */
 	private function get_the_desktop_anchors( string $desktop_link_class = 'arrow-link fs-5 fw-medium' ): string {
-		$markup  = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' />";
+		$markup  = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' loading='lazy' aria-hidden='true' />";
 		$anchors = array();
 		if ( $this->can_accept_reservations ) {
 			$anchors[] = "<a href='{$this->reservations_link}' class='{$desktop_link_class}' target='_blank' rel='noopener noreferrer'>Make Reservations</a>";

@@ -39,7 +39,7 @@ cno_enqueue_date_range_picker();
 			</div>
 		</div>
 		<div class="col-12 col-xl-3 d-flex flex-column align-items-start justify-content-end pb-3">
-			<input type='submit' value='Reserve Now' id="reserveBtn" class="btn btn-reserve" />
+			<input type='submit' value='Reserve Now' id="reserveBtn" class="btn btn-reserve fw-medium" />
 		</div>
 	</div>
 </form>

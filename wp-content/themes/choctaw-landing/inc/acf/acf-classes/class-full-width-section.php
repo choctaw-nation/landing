@@ -98,7 +98,7 @@ class Full_Width_Section extends Two_Col_Section {
 		$href               = esc_url( $this->cta['url'] );
 		$text               = esc_textarea( $this->cta['title'] );
 		$target             = $this->cta['target'];
-		$markup             = "<p class='py-4 d-none d-md-block text-light'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow arrow-white position-absolute' />";
+		$markup             = "<p class='py-4 d-none d-md-block text-light'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow arrow-white position-absolute' loading='lazy' aria-hidden='true' />";
 		$desktop_link_class = 'arrow-link arrow-link-white fw-medium fs-5 z-1';
 		$markup            .= "<a href='{$href}' class='{$desktop_link_class}'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
 		// mobile
