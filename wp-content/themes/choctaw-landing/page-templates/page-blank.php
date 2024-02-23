@@ -10,6 +10,7 @@ get_header();
 <main id="main" class="site-main container" style="margin-top: 110px;">
 	<div class="entry-content row my-5 py-5">
 		<div class="col-12">
+			<h1><?php the_title(); ?></h1>
 			<?php echo get_field( 'page_content' ); ?>
 		</div>
 	</div>
