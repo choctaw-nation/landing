@@ -33,7 +33,17 @@ use ChoctawNation\Mega_Menu;
 		<header id="masthead" class="site-header fixed-top">
 			<div class="header-bar position-relative">
 				<div class="header-bg position-absolute top-0 w-100 h-100 z-n1">
-					<?php echo wp_get_attachment_image( 16, 'full', false, array( 'class' => 'w-100 h-100 object-fit-cover' ) ); ?>
+					<?php
+					echo wp_get_attachment_image(
+						16,
+						'full',
+						false,
+						array(
+							'class'   => 'w-100 h-100 object-fit-cover skip-lazy',
+							'loading' => 'eager',
+						)
+					);
+					?>
 				</div>
 				<nav id="nav-main" class="navbar navbar-expand-xl py-0">
 					<div class="container">
@@ -46,7 +56,7 @@ use ChoctawNation\Mega_Menu;
 						</button>
 
 						<div class="offcanvas offcanvas-end pb-3 pb-lg-0" tabindex="-1" id="offcanvas-navbar"
-							style='background-image: url(<?php echo wp_get_attachment_url( 16, 'full' ); ?>)'>
+							 style='background-image: url(<?php echo wp_get_attachment_url( 16, 'full' ); ?>)'>
 							<div class="offcanvas-header border-bottom border-2 border-white">
 								<ul class="navbar-nav ">
 									<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-18">

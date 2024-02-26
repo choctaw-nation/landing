@@ -2,7 +2,7 @@
 
 .title-bar {
 	&.with-background {
-		background: url("../../img/light-gray-map-background.jpg");
+		background: url("../../img/bg-images/light-gray-map-background.webp");
 
 		@include m.media-breakpoint-up(lg) {
 			margin-top: -90px;

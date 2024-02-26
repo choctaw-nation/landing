@@ -2,7 +2,7 @@
 @use "./daterangepicker";
 
 #booking-bar {
-	background: url("../../../img/brown-basket-bg.jpg");
+	background: url("../../../img/bg-images/brown-basket-bg.webp");
 	color: white;
 
 	@include m.media-breakpoint-up(lg) {
