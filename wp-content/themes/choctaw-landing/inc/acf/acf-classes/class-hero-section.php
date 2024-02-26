@@ -77,7 +77,7 @@ class Hero_Section extends Generator {
 	 * Get the video markup with a responsive container
 	 */
 	private function get_the_video(): string {
-		return "<div class='ratio ratio-21x9 h-100 d-none d-md-block'>{$this->video}</div>";
+		return "<div class='ratio ratio-21x9 h-100 d-none d-md-block mx-auto  hero__bg-container'>{$this->video}</div>";
 	}
 
 	/**
@@ -88,9 +88,11 @@ class Hero_Section extends Generator {
 		$markup   = "<header id='header-img' class='hero container-fluid gx-0 position-relative'>";
 		if ( $this->video && $this->image ) {
 			$markup .= $this->get_the_video();
-			$markup .= $this->image->get_the_image( 'd-md-none', false );
+			$markup .= $this->image->get_the_image( 'd-md-none skip-lazy', false );
 		} elseif ( ! $this->video && $this->image ) {
-			$markup .= $this->image->get_the_image( 'hero__image object-fit-cover d-block mx-auto h-100', false );
+			$markup .= "<div class='ratio ratio-21x9 mx-auto hero__bg-container'>";
+			$markup .= $this->image->get_the_image( 'hero__image object-fit-cover skip-lazy', false );
+			$markup .= '</div>';
 		} elseif ( $this->video && ! $this->image ) {
 			$markup .= $this->get_the_video();
 		}
