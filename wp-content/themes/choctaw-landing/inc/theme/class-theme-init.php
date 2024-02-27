@@ -37,11 +37,10 @@ class Theme_Init {
 			'title-bar',
 			'two-col-section',
 			'room-types',
-			'featured-eats',
 			'full-width-section',
-			'restaurant-highlight',
 			'mega-menu-content',
 			'link-card',
+			'featured-eat',
 			'eat-and-drink',
 		);
 		foreach ( $acf_classes as $acf_class ) {

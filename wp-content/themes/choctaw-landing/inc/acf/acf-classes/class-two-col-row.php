@@ -19,11 +19,6 @@ class Two_Col_Row extends Featured_Eat {
 	 */
 	private string $col_2_content_class;
 
-
-
-
-
-
 	/**
 	 * Generates the markup
 	 *

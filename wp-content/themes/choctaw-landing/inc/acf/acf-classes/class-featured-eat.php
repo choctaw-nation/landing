@@ -8,7 +8,13 @@
 
 namespace ChoctawNation\ACF;
 
-abstract class Featured_Eat {
+/**
+ * Featured Eat Post Type Class.
+ *
+ * @param \WP_Post $post the post
+ * @param bool     $should_reverse whether to reverse the order of the columns
+ */
+class Featured_Eat {
 	/**
 	 * The post
 	 *
@@ -65,12 +71,26 @@ abstract class Featured_Eat {
 	 */
 	protected string $description;
 
+	/**
+	 * Whether online orders are accepted
+	 *
+	 * @var bool $has_cta
+	 */
+	protected bool $has_cta;
+
+	/**
+	 * The classes for the col-2 content
+	 *
+	 * @var string $col_2_content_class
+	 */
+	protected string $col_2_content_class;
+
 	/** Sets the Class variables based on ACF fields
 	 *
 	 * @param \WP_Post $post the post
 	 * @param bool     $should_reverse whether to reverse the order of the columns
 	 */
-	public function construct( \WP_Post $post, bool $should_reverse ) {
+	public function __construct( \WP_Post $post, bool $should_reverse ) {
 		$this->post           = $post;
 		$this->headline       = get_the_title( $post );
 		$this->should_reverse = $should_reverse;
@@ -86,7 +106,7 @@ abstract class Featured_Eat {
 	}
 
 	/** A wrapper for the global 'cno_get_the_section_id' function */
-	protected function get_the_section_id(): string {
+	public function get_the_section_id(): string {
 		if ( function_exists( 'cno_get_the_section_id' ) ) {
 			return cno_get_the_section_id( $this->headline );
 		} else {
@@ -102,18 +122,67 @@ abstract class Featured_Eat {
 	 * @param array $acf the ACF fields
 	 */
 	private function set_the_meta( array $acf ) {
-		$this->menu_link          = empty( $acf['menu_link'] ) ? null : esc_url( $acf['menu_link'] );
-		$this->online_orders_link = empty( $acf['online_orders_link'] ) ? null : esc_url( $acf['online_orders_link'] );
-		$this->food_genre         = empty( $acf['food_genre'] ) ? null : esc_textarea( $acf['food_genre'] );
+		$this->menu_link           = empty( $acf['menu_link'] ) ? null : esc_url( $acf['menu_link'] );
+		$this->online_orders_link  = empty( $acf['online_orders_link'] ) ? null : esc_url( $acf['online_orders_link'] );
+		$this->food_genre          = empty( $acf['food_genre'] ) ? null : esc_textarea( $acf['food_genre'] );
+		$this->has_cta             = ! empty( $acf['online_orders_link'] );
+		$this->col_2_content_class = $this->has_cta ? 'col-md-9 col-xl-10' : 'col-12';
+	}
+
+	/**
+	 * Generate the markup for col-1 (column 1).
+	 */
+	public function get_col_1(): string {
+		$markup  = "<div class='col-12 col-lg-5'>";
+		$markup .= "<div class='ratio ratio-1x1 w-100 my-5'>";
+		$markup .= $this->get_the_image( 'featured-eats__image ' );
+		$markup .= '</div>';
+		$markup .= '</div>';
+		return $markup;
+	}
+
+	private function get_the_image( $img_class = '' ): string {
+		return get_the_post_thumbnail(
+			$this->post,
+			'full',
+			array(
+				'class'   => "{$img_class} object-fit-cover",
+				'loading' => 'lazy',
+			)
+		);
+	}
+
+	/**
+	 * Generate the markup for col-2 (column 2).
+	 */
+	public function get_col_2(): string {
+		$markup          = "<div class='col-12 col-lg-7'>";
+		$inner_row_class = $this->has_cta ? 'row position-relative' : 'row position-relative justify-content-lg-end';
+		$markup         .= "<div class='{$inner_row_class}'>";
+		if ( $this->has_cta ) {
+			$markup .= "<div class='col-3 col-xl-2 d-none d-md-block'></div>";
+		}
+		$markup .= $this->get_the_header();
+		if ( $this->has_cta ) {
+			$markup .= "<div class='col-3 col-xl-2 d-none d-md-block'><div class='vertical-line'></div></div>";
+		}
+		$markup .= $this->get_the_body();
+		$markup .= '</div>';
+		$markup .= '</div>';
+		return $markup;
 	}
 
 	/** Generates the Eats Hours block */
-	protected function get_the_hours(): string {
+	public function get_the_hours( $with_title = true ): string {
 		if ( false === $this->hours ) {
 			return '';
 		}
 		$total_blocks = count( $this->hours );
-		$markup       = '<h3 class="fs-5">Hours</h3><ul class="dining-hours ps-0 mb-0 list-unstyled">';
+		$markup       = '';
+		if ( $with_title ) {
+			$markup .= "<h3 class='fs-6 fw-semibold'>Hours</h3>";
+		}
+		$markup .= '<ul class="dining-hours ps-0 mb-0 list-unstyled">';
 		foreach ( $this->hours as $index => $hour_data ) {
 			$markup_class  = 'dining-hours__rows fs-6 row justify-content-between';
 			$markup_class .= ( $index === $total_blocks - 1 ) ? '' : ' mb-3';
@@ -131,12 +200,102 @@ abstract class Featured_Eat {
 	private function get_the_hours_actual( array $hours_block ): string {
 		$markup       = '';
 		$markup_class = 'col-12 row justify-content-between';
-		foreach ( $hours_block as $index => $hours ) {
+		foreach ( $hours_block as  $hours ) {
 			$markup .= "<div class='{$markup_class}'>";
 			$markup .= "<span class='dining-hours__day col-auto fs-6'>" . esc_textarea( $hours['days'] ) . '</span>';
 			$markup .= "<span class='dining-hours__time col-auto fs-6'>" . esc_textarea( $hours['times'] ) . '</span>';
 			$markup .= '</div>';
 		}
+		return $markup;
+	}
+
+	/** Gets the section header (headline + subheadline) */
+	public function get_the_header(): string {
+		$markup = "<div class='{$this->col_2_content_class}'><h2>{$this->headline}</h2></div>";
+		return $markup;
+	}
+
+	/** Gets the section body */
+	public function get_the_body(): string {
+		$markup  = "<div class='{$this->col_2_content_class}'>";
+		$markup .= "<div class='row'><div class='col fs-6'>{$this->description}</div></div>";
+		$markup .= '<div class="row mt-3 mt-md-5">';
+		$markup .= $this->get_the_menu();
+		if ( $this->food_genre ) {
+			$markup .= "<div class='col fs-6'>{$this->food_genre}</div>";
+		}
+		$markup .= '</div>';
+		$markup .= '<hr class="my-3" />';
+		$markup .= $this->get_the_hours();
+		if ( $this->has_cta ) {
+			$markup .= $this->get_the_cta();
+		}
+		$markup .= '</div>';
+		return $markup;
+	}
+
+	/** Returns the Menu markup or an empty string */
+	public function get_the_menu(): string {
+		if ( $this->menu_link ) {
+			return "<div class='col menu'><a class='featured-eats__menu-link fs-6' href='{$this->menu_link}' target='_blank' rel-'noopener noreferrer'><i class='fa-solid fa-utensils fs-5'></i> Menu</a></div>";
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Generate the HTML markup for the Call to Action (CTA) element.
+	 *
+	 * @return string - The HTML markup for the CTA.
+	 */
+	public function get_the_cta(): string {
+		$markup  = $this->get_the_desktop_anchors();
+		$markup .= $this->get_the_mobile_anchors();
+		return $markup;
+	}
+
+	/**
+	 * Generates the anchors markup for the desktop view
+	 */
+	public function get_the_desktop_anchors(): string {
+		$markup = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' loading='lazy' aria-hidden='true' />";
+		if ( $this->online_orders_link ) {
+			$markup .= "<a href='{$this->online_orders_link}' class='arrow-link fs-5 fw-medium' target='_blank' rel='noopener noreferrer'>Order Online</a>";
+		}
+		$markup .= '</p>';
+		return $markup;
+	}
+
+	/**
+	 *  Generates the anchors markup for the mobile view
+	 */
+	public function get_the_mobile_anchors(): string {
+		$markup = "<p class='py-4 d-block d-md-none'>";
+		if ( $this->online_orders_link ) {
+			$markup .= "<a href='{$this->online_orders_link}' class='btn-default fs-6' target='_blank' rel='noopener noreferrer'>Order Online</a>";
+		}
+		$markup .= '</p>';
+		return $markup;
+	}
+
+	public function get_the_slide(): string {
+		$id      = $this->get_the_section_id();
+		$markup  = "<div class='swiper-slide d-flex flex-column' id='{$id}'>";
+		$markup .= "<div class='ratio ratio-1x1 pb-3 card__image-container'>";
+		$markup .= $this->get_the_image( 'card__image' );
+		$markup .= '</div>';
+		$markup .= "<h2 class='card__headline text-white fs-3'>{$this->headline}</h2>";
+		$markup .= "<div class='card__subheadline fs-6 mb-2'>{$this->description}</div>";
+		if ( $this->food_genre ) {
+			$markup .= '<hr class="my-4" /><div class="card__meta d-flex justify-content-between align-items-center">';
+			$markup .= $this->food_genre ? "<span class='card__meta--genre d-inline-block'>{$this->food_genre}</span>" : '';
+			$markup .= '</div>';
+		}
+		if ( $this->hours ) {
+			$markup .= '<hr class="mt-auto mb-2" />';
+			$markup .= $this->get_the_hours( false );
+		}
+		$markup .= '</div>';
 		return $markup;
 	}
 }
