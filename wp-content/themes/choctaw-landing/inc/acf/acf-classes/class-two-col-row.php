@@ -9,62 +9,8 @@
 namespace ChoctawNation\ACF;
 
 /** Used to handle ACF markup */
-class Featured_Eats extends Two_Col_Section {
-	/**
-	 * Whether the restaurant has a menu
-	 *
-	 * @var bool $has_menu
-	 */
-	private bool $has_menu;
+class Two_Col_Row extends Featured_Eat {
 
-	/**
-	 * The menu link
-	 *
-	 * @var string $menu_link
-	 */
-	private string $menu_link;
-
-	/**
-	 * Whether a user can order online
-	 *
-	 * @var bool $can_order_online
-	 */
-	private bool $can_order_online;
-
-	/**
-	 * The link to order online
-	 *
-	 * @var string $online_orders_link
-	 */
-	private string $online_orders_link;
-
-	/**
-	 * Whether a user can accept reservations
-	 *
-	 * @var bool $can_accept_reservations
-	 */
-	private bool $can_accept_reservations;
-
-	/**
-	 * The link to make reservations
-	 *
-	 * @var string $reservations_link
-	 */
-	private string $reservations_link;
-
-	/**
-	 * The food genre of the restaurant
-	 *
-	 * @var string $food_genre
-	 */
-	private string $food_genre;
-
-	/**
-	 * The hours of operation
-	 *
-	 * @var bool|array $hours
-	 */
-	private $hours;
 
 	/**
 	 * The classes for the col-2 content
@@ -72,42 +18,6 @@ class Featured_Eats extends Two_Col_Section {
 	 * @var string $col_2_content_class
 	 */
 	private string $col_2_content_class;
-
-	/** Sets the Class variables based on ACF fields
-	 *
-	 * @param array $acf the ACF fields
-	 */
-	protected function init_props( array $acf ) {
-		$this->set_the_image( $acf['image'] );
-		$this->destructure_subheadline( $acf['subheadline'] );
-		$this->headline         = esc_textarea( $acf['headline'] );
-		$this->should_reverse   = $acf['should_reverse'];
-		$this->can_order_online = $acf['can_order_online'];
-		if ( $acf['can_order_online'] ) {
-			$this->online_orders_link = esc_url( $acf['online_orders_link'] );
-		}
-
-		$this->can_accept_reservations = $acf['can_accept_reservations'];
-		if ( $acf['can_accept_reservations'] ) {
-			$this->reservations_link = esc_url( $acf['reservations_link'] );
-		}
-		$this->has_cta             = $this->can_accept_reservations || $this->can_order_online;
-		$this->col_2_content_class = $this->has_cta ? 'col-md-9 col-xl-10' : 'col-12';
-	}
-
-	/** Destructures the "Subheadline" ACF Group and inits the properties
-	 *
-	 * @param array $acf the `subheadline` Group ACF Field
-	 */
-	private function destructure_subheadline( array $acf ) {
-		$this->subheadline = acf_esc_html( $acf['subheadline_text'] );
-		$this->has_menu    = $acf['has_menu'];
-		if ( $this->has_menu ) {
-			$this->menu_link = esc_url( $acf['menu_link'] );
-		}
-		$this->food_genre = $acf['food_genre'];
-		$this->hours      = $acf['hours'] ?? null;
-	}
 
 	/**
 	 * Generates the markup
