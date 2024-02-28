@@ -29,11 +29,11 @@ $news = new News( get_the_ID() );
 					<?php endif; ?>
 				</div>
 			</div>
+			<?php if ( $news->has_photo ) : ?>
 			<div class="row">
 				<div class="col">
-					<?php
-					if ( $news->has_photo ) {
-						echo "<div class='ratio ratio-16x9'>";
+					<div class="ratio ratio-16x9">
+						<?php
 						$news->the_photo(
 							'choctaw-news-single',
 							array(
@@ -41,15 +41,17 @@ $news = new News( get_the_ID() );
 								'loading' => 'lazy',
 							)
 						);
-						echo '</div>';
-						echo "<div class='photo-meta mt-3'>";
+						?>
+					</div>
+					<div class="photo-meta mt-3">
+						<?php
 						$news->the_photo_credit();
 						$news->the_photo_caption();
-						echo '</div>';
-					}
-					?>
+						?>
+					</div>
 				</div>
 			</div>
+			<?php endif; ?>
 		</header>
 		<aside class="article__published-date mb-5">
 			<?php $news->the_published_date(); ?>
