@@ -1,53 +1,58 @@
 # Overview
 
-A new project, started by Blake & being handed-off to KJ.
+The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
-## v2.2.2
+## v1.0.0
+
+-   Release! 🎉
+-   Reset Changelog to back-version all previous updates as `0.x.x.x`
+
+## v0.2.2.2
 
 -   Fix header styles
 
-## v2.2.1
+## v0.2.2.1
 
 -   Fix booking url bug
 
-## v2.1.0
+## v0.2.1.0
 
 -   Allow dropdown toggle visibility on the header
 
-## v2.0.0
+## v0.2.0.0
 
 -   **Breaking Change:** Migrated Events into Repo and changed link structure
 -   **Breaking Change:** Swapped "Entertainment" for "Events" and updated link structure
 
-## v1.0.3
+## v0.1.0.3
 
 -   First official release!
 -   All accessibility issue solved, awaiting actual content.
 
-## v0.2.5
+## v0.0.2.5
 
 -   Partial fix to [#11](https://github.com/choctaw-nation/landing/issues/11) accessibility ([see comment](https://github.com/choctaw-nation/landing/issues/11#issuecomment-1792691926)), but still some issues to solve for full usability.
 
-## v0.2.4
+## v0.0.2.4
 
 -   Adds Gathering Page Template
 
-## v0.2.3
+## v0.0.2.3
 
 -   Update sections to use Swiper
 
-## v0.2.2
+## v0.0.2.2
 
 -   Updated weather widget to use custom fields to handle data fetching and rate limiting with the weather API
 
-## v0.2.1
+## v0.0.2.1
 
 -   Added a wrapper for `Two_Col_Section::get_the_section_id` to not throw errors
 -   Removed superfluous scss (outside of `src` folder).
 
-## v0.2
+## v0.0.2
 
 -   bug fixes and improvements (see [Github Issue #1](https://github.com/choctaw-nation/landing/issues/1))
 -   Init Bootstrap Toasts
@@ -75,14 +80,14 @@ A new project, started by Blake & being handed-off to KJ.
 
 ---
 
-## v0.1.1
+## v0.0.1.1
 
 -   Remove WooCommerce Styles from SCSS compiler
 -   Rename theme & match version control (with further checks for WP + PHP version).
 
 ---
 
-## v0.1
+## v0.0.1
 
 -   Init github repo
 -   init package manager configs

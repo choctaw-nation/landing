@@ -5,6 +5,7 @@
 $primary: v.$color-primary;
 $secondary: v.$color-secondary;
 $dark: #231f20;
+$yellow: #f5dc5b;
 
 /**
 * Typography
@@ -59,7 +60,7 @@ $dropdown-border-radius: 0;
 
 $navbar-light-color: white;
 $navbar-light-active-color: white;
-$navbar-light-hover-color: $secondary;
+$navbar-light-hover-color: $yellow;
 
 $navbar-light-icon-color: white;
 $navbar-light-toggler-border-color: white;
