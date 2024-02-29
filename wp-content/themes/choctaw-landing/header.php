@@ -8,6 +8,7 @@
 
 use ChoctawNation\Mega_Menu;
 
+$favicon_base = get_stylesheet_directory_uri() . '/img/favicon';
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -17,11 +18,11 @@ use ChoctawNation\Mega_Menu;
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<!-- Favicons -->
-	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon/favicon-16x16.png">
-	<link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon/site.webmanifest">
-	<link rel="mask-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon/safari-pinned-tab.svg" color="#0d6efd">
+	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo "{$favicon_base}/apple-touch-icon.png"; ?>">
+	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo "{$favicon_base}/favicon-32x32.png"; ?>">
+	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo "{$favicon_base}/favicon-16x16.png"; ?>">
+	<link rel="manifest" href="<?php echo "{$favicon_base}/site.webmanifest"; ?>">
+	<link rel="mask-icon" href="<?php echo "{$favicon_base}/safari-pinned-tab.svg"; ?>" color="#0d6efd">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="theme-color" content="#ffffff">
 	<?php wp_head(); ?>
@@ -56,7 +57,7 @@ use ChoctawNation\Mega_Menu;
 						</button>
 
 						<div class="offcanvas offcanvas-end pb-3 pb-lg-0" tabindex="-1" id="offcanvas-navbar"
-							 style='background-image: url(<?php echo wp_get_attachment_url( 16, 'full' ); ?>)'>
+							style='background-image: url(<?php echo wp_get_attachment_url( 16, 'full' ); ?>)'>
 							<div class="offcanvas-header border-bottom border-2 border-white">
 								<ul class="navbar-nav ">
 									<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-18">
