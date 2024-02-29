@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Initializes the Theme
  *

@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.0.1
+
+-   Remove manual declaration of GTM scripts in favor of Google Site Kit
+-   Bump package dependencies and rebuild site assets
+
 ## v1.0.0
 
 -   Release! 🎉
