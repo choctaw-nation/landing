@@ -152,10 +152,6 @@ class Theme_Init {
 			)
 		);
 
-		if ( 'prod' === $_ENV['CNO_ENV'] ) {
-			$this->load_google_tag_manager();
-		}
-
 		$this->register_swipers();
 		$this->register_daterangepicker();
 	}
@@ -235,26 +231,6 @@ class Theme_Init {
 			get_stylesheet_directory_uri() . '/dist/modules/date-range-picker.css',
 			array( 'date-range-picker' ),
 			$cno_date_range_picker['version'],
-		);
-	}
-
-	/** Load Google Tag Manager in the Head */
-	private function load_google_tag_manager() {
-		add_action(
-			'wp_head',
-			function () {
-				echo "<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NHND93MH');</script><!-- End Google Tag Manager -->";
-
-				// Facebook
-				echo '<meta name="facebook-domain-verification" content="p7k8b3wboq8ytze35uncny0182e3jz" />';
-			}
-		);
-
-		add_action(
-			'wp_body_open',
-			function () {
-				echo '<!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NHND93MH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->';
-			}
 		);
 	}
 
