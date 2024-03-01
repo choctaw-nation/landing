@@ -66,10 +66,10 @@
 		font-size: 1.15rem;
 		cursor: inherit;
 		line-height: 1.25;
-		color: white;
 		z-index: 1;
 		outline: none;
 		--bs-form-select-bg-img: none;
+
 		&::-ms-expand {
 			display: none;
 		}
@@ -79,6 +79,7 @@
 		display: block;
 		position: relative;
 		padding: 0;
+		color: white;
 		height: 43px;
 		border: 2px solid white;
 		border-radius: 0;
