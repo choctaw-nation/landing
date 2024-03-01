@@ -1,7 +1,7 @@
-const defaultConfig = require("@wordpress/scripts/config/webpack.config.js");
+const defaultConfig = require( '@wordpress/scripts/config/webpack.config.js' );
 
-const THEME_NAME = "choctaw-landing";
-const THEME_DIR = `/wp-content/themes/${THEME_NAME}`;
+const THEME_NAME = 'choctaw-landing';
+const THEME_DIR = `/wp-content/themes/${ THEME_NAME }`;
 
 /**
  * For index.ts (located `~/src/js/folder-name/index.ts)`)
@@ -23,18 +23,19 @@ module.exports = {
 		entry: () => {
 			return {
 				// Define custom entry points here
-				global: `.${THEME_DIR}/src/index.js`,
-				"vendors/bootstrap": `.${THEME_DIR}/src/js/vendors/bootstrap.js`,
-				"modules/date-range-picker": `.${THEME_DIR}/src/js/vendors/date-range-picker.js`,
-				"modules/swiper/eat-drink-swiper": `.${THEME_DIR}/src/js/vendors/swiperjs/eat-drink-swiper.ts`,
-				"modules/swiper/events-swiper": `.${THEME_DIR}/src/js/vendors/swiperjs/events-swiper.ts`,
+				global: `.${ THEME_DIR }/src/index.js`,
+				'vendors/bootstrap': `.${ THEME_DIR }/src/js/vendors/bootstrap.js`,
+				'modules/date-range-picker': `.${ THEME_DIR }/src/js/vendors/date-range-picker.js`,
+				headerBar: `.${ THEME_DIR }/src/js/HeaderBar.ts`,
+				'modules/swiper/eat-drink-swiper': `.${ THEME_DIR }/src/js/vendors/swiperjs/eat-drink-swiper.ts`,
+				'modules/swiper/events-swiper': `.${ THEME_DIR }/src/js/vendors/swiperjs/events-swiper.ts`,
 				...addEntries( appNames, 'pages' ),
 				...addEntries( styleSheets, 'styles' ),
 			};
 		},
 
 		output: {
-			path: __dirname + `${THEME_DIR}/dist`,
+			path: __dirname + `${ THEME_DIR }/dist`,
 			filename: `[name].js`,
 		},
 	},
@@ -71,8 +72,8 @@ function addEntries( array, type ) {
 	} );
 	return entries;
 }
-function snakeToCamel(str) {
-	return str.replace(/([-_][a-z])/g, (group) =>
-		group.toUpperCase().replace("-", "").replace("_", ""),
+function snakeToCamel( str ) {
+	return str.replace( /([-_][a-z])/g, ( group ) =>
+		group.toUpperCase().replace( '-', '' ).replace( '_', '' )
 	);
 }
