@@ -67,11 +67,16 @@
 		cursor: inherit;
 		line-height: 1.25;
 		z-index: 1;
+		color: white;
 		outline: none;
 		--bs-form-select-bg-img: none;
 
 		&::-ms-expand {
 			display: none;
+		}
+
+		option {
+			color: black;
 		}
 	}
 
