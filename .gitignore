@@ -45,6 +45,7 @@ local-xdebuginfo.php
 /wp-content/plugins/*
 !/wp-content/plugins/cno-plugin-events
 !/wp-content/plugins/cno-plugin-news
+!/wp-content/plugins/cno-plugin-header-alert
 /wp-content/themes/twenty*/
 /wp-content/upgrade/
 /wp-content/upgrade-temp-backup/

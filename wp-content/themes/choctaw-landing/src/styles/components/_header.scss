@@ -1,6 +1,7 @@
 @use "../abstracts/mixins" as m;
 @use "./header/mega-menu";
 @use "./header/navbar";
+@use "./header/alert-bar";
 
 .header-bar {
 	font-family: var(--font-headings);
