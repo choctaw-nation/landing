@@ -26,7 +26,6 @@ module.exports = {
 				global: `.${ THEME_DIR }/src/index.js`,
 				'vendors/bootstrap': `.${ THEME_DIR }/src/js/vendors/bootstrap.js`,
 				'modules/date-range-picker': `.${ THEME_DIR }/src/js/vendors/date-range-picker.js`,
-				headerBar: `.${ THEME_DIR }/src/js/HeaderBar.ts`,
 				'modules/swiper/eat-drink-swiper': `.${ THEME_DIR }/src/js/vendors/swiperjs/eat-drink-swiper.ts`,
 				'modules/swiper/events-swiper': `.${ THEME_DIR }/src/js/vendors/swiperjs/events-swiper.ts`,
 				...addEntries( appNames, 'pages' ),
