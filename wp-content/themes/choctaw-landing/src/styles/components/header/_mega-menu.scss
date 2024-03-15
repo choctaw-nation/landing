@@ -23,6 +23,10 @@
 .mega-menu {
 	--bs-navbar-color: var(--bs-dark);
 
+	.dropdown-item.nav-link:hover {
+		color: var(--bs-secondary);
+	}
+
 	&:hover {
 		.btn-group {
 			& > a {
