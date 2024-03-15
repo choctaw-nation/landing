@@ -27,6 +27,8 @@
 }
 
 .offcanvas {
+	height: 100dvh;
+
 	.btn-close {
 		filter: var(--bs-btn-close-white-filter);
 	}
