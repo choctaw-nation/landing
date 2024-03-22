@@ -56,14 +56,14 @@ $title_bar->the_title_bar();
 					$image   = get_the_post_thumbnail_url( $event, 'large' );
 					?>
 				<div class="swiper-slide h-100 events-list__item" style="background-image:url('<?php echo $image; ?>')">
-					<a href="<?php echo get_the_permalink( $event ); ?>">
-						<div class="d-flex flex-column justify-content-end h-100 event">
-							<h3 class='event__title'><?php $feature->the_name(); ?></h3>
-							<p class='event__meta'><i class="fa-solid fa-calendar"></i>
-								<?php echo ( $feature->has_time ) ? $feature->get_the_start_date_time( 'D, m/d/Y @ g:i a' ) : $feature->get_the_start_date( 'D, m/d/Y' ); ?></p>
-							<!-- <a class='event__tickets' href="#"><i class="fa-solid fa-ticket"></i> Tickets</a> -->
-						</div>
-					</a>
+					<!-- <a href="<?php // echo get_the_permalink( $event ); ?>"> -->
+					<div class="d-flex flex-column justify-content-end h-100 event">
+						<h3 class='event__title'><?php $feature->the_name(); ?></h3>
+						<p class='event__meta'><i class="fa-solid fa-calendar"></i>
+							<?php echo ( $feature->has_time ) ? $feature->get_the_start_date_time( 'D, m/d/Y @ g:i a' ) : $feature->get_the_start_date( 'D, m/d/Y' ); ?></p>
+						<!-- <a class='event__tickets' href="#"><i class="fa-solid fa-ticket"></i> Tickets</a> -->
+					</div>
+					<!-- </a> -->
 				</div>
 				<?php endforeach; ?>
 			</div>
@@ -71,7 +71,6 @@ $title_bar->the_title_bar();
 			<div class="swiper-button-next"></div>
 			<div class="swiper-pagination"></div>
 		</div>
-
 	</div>
 	<div class="col-12 text-center py-5 text-uppercase">
 		<a href="/events/all-events">View All Events <i class="fa-regular fa-circle-right"></i></a>
@@ -79,7 +78,9 @@ $title_bar->the_title_bar();
 </section>
 <?php
 $event_callouts = get_field( 'event_callouts' );
-$banner         = new Image( $event_callouts['banner'] );
+if ( ! empty( $event_callouts['banner'] ) ) {
+	$banner = new Image( $event_callouts['banner'] );
+}
 foreach ( $event_callouts['callouts'] as $callout ) {
 	if ( $callout['is_image_full_width'] ) {
 		$two_col_section = new Full_Width_Section( get_the_ID(), $callout );
