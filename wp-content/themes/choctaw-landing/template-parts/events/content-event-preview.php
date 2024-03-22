@@ -22,9 +22,9 @@ if ( $event_details ) {
 			<?php if ( has_post_thumbnail() ) : ?>
 			<?php $content_col_class .= ' col-lg-8'; ?>
 			<div class="col-lg-4">
-				<a href="<?php the_permalink(); ?>" class="ratio ratio-16x9">
+				<div class="ratio ratio-16x9">
 					<?php the_post_thumbnail( 'choctaw-events-preview', array( 'class' => 'object-fit-cover' ) ); ?>
-				</a>
+				</div>
 			</div>
 			<?php endif; ?>
 			<div class="<?php echo $content_col_class; ?>">
@@ -32,7 +32,7 @@ if ( $event_details ) {
 					<?php $event->the_dates(); ?>
 				</div>
 				<h2 class="post-preview__title">
-					<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+					<?php the_title(); ?>
 				</h2>
 				<?php
 				if ( $event->venue ) {
