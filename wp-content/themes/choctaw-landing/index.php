@@ -33,16 +33,16 @@ get_header();
 			<div class="row">
 				<div class="col">
 					<?php
-				$args      = array(
-					'posts_per_page'      => 2,
-					'post__in'            => get_option( 'sticky_posts' ),
-					'ignore_sticky_posts' => 2,
-				);
-				$the_query = new WP_Query( $args );
-				if ( $the_query->have_posts() ) :
-					while ( $the_query->have_posts() ) :
-						$the_query->the_post();
-						?>
+					$args      = array(
+						'posts_per_page'      => 2,
+						'post__in'            => get_option( 'sticky_posts' ),
+						'ignore_sticky_posts' => 2,
+					);
+					$the_query = new WP_Query( $args );
+					if ( $the_query->have_posts() ) :
+						while ( $the_query->have_posts() ) :
+							$the_query->the_post();
+							?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 						<div class="card horizontal mb-4">
@@ -75,23 +75,23 @@ get_header();
 										<?php if ( 'post' === get_post_type() ) : ?>
 										<p class="meta small mb-2 text-body-tertiary">
 											<?php
-									bootscore_date();
-									bootscore_author();
-									bootscore_comments();
-									bootscore_edit();
-									?>
+											bootscore_date();
+											bootscore_author();
+											bootscore_comments();
+											bootscore_edit();
+											?>
 										</p>
 										<?php endif; ?>
 
 										<p class="card-text">
 											<a class="text-body text-decoration-none" href="<?php the_permalink(); ?>">
-												<?php echo strip_tags( get_the_excerpt() ); ?>
+												<?php echo wp_strip_all_tags( get_the_excerpt() ); ?>
 											</a>
 										</p>
 
 										<p class="card-text">
 											<a class="read-more" href="<?php the_permalink(); ?>">
-												<?php _e( 'Read more »', 'bootscore' ); ?>
+												<?php _( 'Read more »', 'bootscore' ); ?>
 											</a>
 										</p>
 
@@ -103,11 +103,9 @@ get_header();
 						</div>
 
 					</article>
-					<?php
-					endwhile;
-				endif;
-				wp_reset_postdata();
-				?>
+					<?php endwhile; ?>
+					<?php endif; ?>
+					<?php wp_reset_postdata(); ?>
 				</div>
 
 				<!-- col -->
@@ -119,15 +117,15 @@ get_header();
 				<div class="<?php echo bootscore_main_col_class(); ?>">
 					<!-- Grid Layout -->
 					<?php if ( have_posts() ) : ?>
-					<?php
-				while ( have_posts() ) :
-					the_post();
-					?>
-					<?php
-					if ( is_sticky() ) {
-						continue; // ignore sticky posts
-					}
-					?>
+						<?php
+						while ( have_posts() ) :
+							the_post();
+							?>
+							<?php
+							if ( is_sticky() ) {
+								continue; // ignore sticky posts
+							}
+							?>
 
 					<div class="card horizontal mb-4">
 						<div class="row g-0">
@@ -152,23 +150,23 @@ get_header();
 									<?php if ( 'post' === get_post_type() ) : ?>
 									<p class="meta small mb-2 text-body-tertiary">
 										<?php
-							bootscore_date();
-							bootscore_author();
-							bootscore_comments();
-							bootscore_edit();
-							?>
+										bootscore_date();
+										bootscore_author();
+										bootscore_comments();
+										bootscore_edit();
+										?>
 									</p>
 									<?php endif; ?>
 
 									<p class="card-text">
 										<a class="text-body text-decoration-none" href="<?php the_permalink(); ?>">
-											<?php echo strip_tags( get_the_excerpt() ); ?>
+											<?php echo wp_strip_all_tags( get_the_excerpt() ); ?>
 										</a>
 									</p>
 
 									<p class="card-text">
 										<a class="read-more" href="<?php the_permalink(); ?>">
-											<?php _e( 'Read more »', 'bootscore' ); ?>
+											<?php _( 'Read more »', 'bootscore' ); ?>
 										</a>
 									</p>
 
