@@ -4,15 +4,10 @@ Theme URI: https://github.com/choctaw-nation/landing
 Author: Choctaw Nation of Oklahoma
 Author URI: https://www.choctawnation.com
 Description:  A custom theme for the Choctaw Landing Theme
-Version: 1.0.6
+Version: 1.0.7
 License: GNU General Public License v2 or later
 Text Domain: cno
 Requires at least: 6.0
 Requires PHP: 8.2
-Tested up to: 6.4.2
-*/
-
-/**
-* All style editing is done with scss files and compiled before push with `npm run build`
-* This file can be used for quick fixes
+Tested up to: 6.4.3
 */

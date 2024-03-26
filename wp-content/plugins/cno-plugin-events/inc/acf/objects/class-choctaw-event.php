@@ -206,7 +206,7 @@ class Choctaw_Event {
 	}
 
 	/**
-	 * Sets the class's "Category" and "Veneus" props
+	 * Sets the class's "Category" and "Venues" props
 	 */
 	private function set_the_terms() {
 		$categories = get_the_terms( $this->event_id, 'category' );
@@ -490,6 +490,6 @@ class Choctaw_Event {
 	 * Echoes the excerpt
 	 */
 	public function the_excerpt() {
-		echo $this->get_the_excerpt();
+		return $this->get_the_excerpt();
 	}
 }
