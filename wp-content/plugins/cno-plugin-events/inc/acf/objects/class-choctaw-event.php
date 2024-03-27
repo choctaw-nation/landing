@@ -176,10 +176,16 @@ class Choctaw_Event {
 			$this->end_date   = empty( $date_time['end_date'] ) ? null : \DateTime::createFromFormat( 'm/d/Y', $date_time['end_date'], $timezone );
 			$this->end_time   = null;
 		} else {
-			$this->start_date = \DateTime::createFromFormat( 'm/d/Y g:i a', $date_time['start_date'] . ' ' . $date_time['start_time'], $timezone );
-			$this->start_time = \DateTime::createFromFormat( 'm/d/Y g:i a', $date_time['start_date'] . ' ' . $date_time['start_time'], $timezone );
-			$this->end_date   = empty( $date_time['end_date'] ) ? null : \DateTime::createFromFormat( 'm/d/Y g:i a', $date_time['end_date'] . ' ' . $date_time['end_time'], $timezone );
-			$this->end_time   = empty( $date_time['end_date'] ) ? null : \DateTime::createFromFormat( 'm/d/Y g:i a', $date_time['end_date'] . ' ' . $date_time['end_time'], $timezone );
+			if ( ! empty( $date_time['start_time'] ) ) {
+				$this->start_date = \DateTime::createFromFormat( 'm/d/Y g:i a', $date_time['start_date'] . ' ' . $date_time['start_time'], $timezone );
+				$this->start_time = \DateTime::createFromFormat( 'm/d/Y g:i a', $date_time['start_date'] . ' ' . $date_time['start_time'], $timezone );
+			} else {
+				$this->start_date = \DateTime::createFromFormat( 'm/d/Y', $date_time['start_date'], $timezone );
+				$this->start_time = null;
+			}
+
+			$this->end_date = empty( $date_time['end_date'] ) ? null : \DateTime::createFromFormat( 'm/d/Y g:i a', $date_time['end_date'] . ' ' . $date_time['end_time'], $timezone );
+			$this->end_time = empty( $date_time['end_date'] ) ? null : \DateTime::createFromFormat( 'm/d/Y g:i a', $date_time['end_date'] . ' ' . $date_time['end_time'], $timezone );
 		}
 		if ( $this->end_date && $this->start_date > $this->end_date && $this->start_date !== $this->end_date ) {
 			$this->is_multiday_event = true;
@@ -331,7 +337,7 @@ class Choctaw_Event {
 	 * Returns Start and End times. If times are the same, only start is returned.
 	 *
 	 * @param string $format time format for the output
-	 * @param bool   $hide_minutes if minutes should be hidden in when equal to 0
+	 * @param bool   $hide_minutes if minutes should be hidden when equal to 0
 	 * @return string
 	 */
 	public function get_the_times( $format = 'g:i a', $hide_minutes = false ): string {
@@ -345,11 +351,11 @@ class Choctaw_Event {
 			$start_mins = $this->get_the_start_date_time( 'i' );
 			$end_mins   = $this->get_the_end_date_time( 'i' );
 
-			if ( $start_mins === '00' ) {
+			if ( '00' === $start_mins ) {
 				$start_format = str_replace( ':i', '', $start_format );
 			}
 
-			if ( $end_mins === '00' ) {
+			if ( '00' === $end_mins ) {
 				$end_format = str_replace( ':i', '', $end_format );
 			}
 		}

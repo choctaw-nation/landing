@@ -16,7 +16,7 @@ $event = new Choctaw_Event( get_field( 'event_details' ), get_the_ID() );
 <div class="container my-5 py-5">
 	<nav arial-label="breadcrumb">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="/events/all-events">All Events</a></li>
+			<li class="breadcrumb-item"><a href="/events">All Events</a></li>
 			<li class="breadcrumb-item active" aria-current="page"><?php echo $event->get_the_name(); ?></li>
 		</ol>
 	</nav>

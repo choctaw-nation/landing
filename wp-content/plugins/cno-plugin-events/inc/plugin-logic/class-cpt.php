@@ -59,7 +59,7 @@ class CPT {
 	private string $rewrite;
 
 	/**
-	 * Generates the CPT (and its "Venues" Taxonomy) with optional $slug
+	 * Generates the CPT (and its category Taxonomy) with optional $slug
 	 *
 	 * @param string $slug default "choctaw-events"
 	 * @param string $rewrite default "events"
@@ -80,7 +80,7 @@ class CPT {
 		$args = array(
 			'labels'              => $this->cpt_labels,
 			'public'              => true,
-			'has_archive'         => 'events/all-events',
+			'has_archive'         => true,
 			'show_in_rest'        => true,
 			'show_in_graphql'     => true,
 			'graphql_single_name' => 'choctawEvent',

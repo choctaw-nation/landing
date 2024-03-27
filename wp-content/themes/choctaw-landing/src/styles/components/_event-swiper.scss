@@ -1,0 +1,23 @@
+#featured-events {
+	--swiper-pagination-color: var(--bs-primary);
+	--swiper-navigation-color: var(--bs-primary);
+	--swiper-navigation-sides-offset: 2px;
+}
+
+.events-list {
+	.swiper {
+		height: 500px;
+	}
+
+	&__item {
+		height: 450px;
+	}
+}
+
+.event {
+	background-image: linear-gradient(
+		to bottom,
+		transparent 40%,
+		var(--bs-primary) 85%
+	);
+}

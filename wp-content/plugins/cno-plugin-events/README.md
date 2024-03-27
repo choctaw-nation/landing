@@ -4,9 +4,9 @@ A WordPress Plugin for Event Displays.
 
 # Changelog
 
-## v3.0.4
+## v3.1.0
 
-- Update the archive slug to be 'events/all-events'
+-   Adds automatic event expiry with a cron job `expire_choctaw_event_posts`. Handled in the `class-admin-handler` file.
 
 ## v3.0.3
 

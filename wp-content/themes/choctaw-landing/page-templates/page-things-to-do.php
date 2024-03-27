@@ -28,7 +28,9 @@ $weather_widget_photo = new Image( get_field( 'weather_widget_photo' ) );
 		<?php get_template_part( 'template-parts/aside', 'weather-widget' ); ?>
 	</div>
 </aside>
-
+<div class="offset-topo-bg py-5">
+	<?php get_template_part( 'template-parts/events/content', 'featured-events-swiper' ); ?>
+</div>
 <section id="featured-activities">
 	<?php
 	$featured_activities = get_field( 'featured_activities' );
