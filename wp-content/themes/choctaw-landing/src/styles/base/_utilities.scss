@@ -16,14 +16,19 @@
 	}
 }
 
-.offset-topo-bg:after {
-	content: "";
-	position: absolute;
-	background: url("../../img/bg-images/light-gray-map-background.webp");
-	width: 100%;
-	height: 700px;
-	left: 0;
-	z-index: -1;
+.offset-topo-bg {
+	position: relative;
+
+	&::after {
+		content: "";
+		position: absolute;
+		background: url("../../img/bg-images/light-gray-map-background.webp");
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		z-index: -1;
+	}
 }
 
 .vertical-line {
