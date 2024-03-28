@@ -11,10 +11,8 @@ use ChoctawNation\ACF\Two_Col_Section;
 
 get_header();
 $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
-
 $hero->the_hero();
 get_template_part( 'template-parts/form', 'booking-module' );
-
 
 $sections = get_field( 'page_content' );
 foreach ( $sections as $section ) {
