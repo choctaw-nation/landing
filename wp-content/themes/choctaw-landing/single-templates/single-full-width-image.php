@@ -39,10 +39,10 @@ get_header();
 							<p class="entry-meta">
 								<small class="text-body-tertiary">
 									<?php
-					bootscore_date();
-					bootscore_author();
-					bootscore_comment_count();
-					?>
+									bootscore_date();
+									bootscore_author();
+									bootscore_comment_count();
+									?>
 								</small>
 							</p>
 							<?php the_content(); ?>
@@ -54,9 +54,9 @@ get_header();
 							</div>
 							<!-- Related posts using bS Swiper plugin -->
 							<?php
-				if ( function_exists( 'bootscore_related_posts' ) ) {
-					bootscore_related_posts();}
-				?>
+							if ( function_exists( 'bootscore_related_posts' ) ) {
+								bootscore_related_posts();}
+							?>
 							<nav aria-label="bS page navigation">
 								<ul class="pagination justify-content-center">
 									<li class="page-item">

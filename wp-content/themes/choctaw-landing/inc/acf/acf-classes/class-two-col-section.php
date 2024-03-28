@@ -76,7 +76,12 @@ class Two_Col_Section extends Generator {
 	 * @param array $acf the ACF fields
 	 */
 	protected function init_props( array $acf ) {
-		$this->set_the_image( $acf['image'] );
+		if ( empty( $acf['image'] ) ) {
+			$this->image = null;
+		} else {
+			$this->set_the_image( $acf['image'] );
+
+		}
 		$this->headline    = esc_textarea( $acf['headline'] );
 		$this->subheadline = acf_esc_html( $acf['subheadline'] );
 		$this->has_cta     = $acf['has_cta'];
@@ -95,12 +100,14 @@ class Two_Col_Section extends Generator {
 		$section_id    = $this->get_the_section_id();
 		$section_class = $this->set_the_class( 'section' );
 		$row_class     = $this->set_the_class( 'row' );
-		$markup        = "<{$this->wrapper_el} class='{$section_class} my-3 two-col' id='{$section_id}'>";
+		$markup        = "<{$this->wrapper_el} class='{$section_class}' id='{$section_id}'><div class='container my-3 two-col'>";
 		$markup       .= "<div class='{$row_class}'>";
-		$markup       .= $this->get_col_1();
-		$markup       .= $this->get_col_2();
-		$markup       .= '</div>';
-		$markup       .= "</{$this->wrapper_el}>";
+		if ( $this->image ) {
+			$markup .= $this->get_col_1();
+		}
+		$markup .= $this->get_col_2();
+		$markup .= '</div>'; // end row
+		$markup .= "</div></{$this->wrapper_el}>";
 		return $markup;
 	}
 
@@ -135,7 +142,7 @@ class Two_Col_Section extends Generator {
 		$class = '';
 		switch ( $el ) {
 			case 'section':
-				$class = 'container';
+				$class = '';
 				if ( $this->has_topography_bg ) {
 					$class .= ' offset-topo-bg';
 				}
