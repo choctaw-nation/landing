@@ -9,7 +9,7 @@
 get_header();
 ?>
 <div class="container mb-5 py-5" style="margin-top:110px">
-	<h1>News</h1>
+	<h1>Newsroom</h1>
 	<?php if ( have_posts() ) : ?>
 	<section class="results">
 		<ol class="list-unstyled">

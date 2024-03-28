@@ -11,6 +11,7 @@ use ChoctawNation\News\News;
 $news = new News( $post->ID );
 ?>
 <li class="row my-4">
+	<?php if ( $news->has_photo ) : ?>
 	<div class="col-lg-5">
 		<div class="ratio ratio-16x9">
 			<?php
@@ -23,6 +24,7 @@ $news = new News( $post->ID );
 			?>
 		</div>
 	</div>
+	<?php endif; ?>
 	<div class="col d-flex flex-column">
 		<a href="<?php the_permalink(); ?>">
 			<?php the_title( '<h2>', '</h2>' ); ?>
