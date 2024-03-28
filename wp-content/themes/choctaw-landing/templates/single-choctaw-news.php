@@ -60,7 +60,7 @@ $news = new News( get_the_ID() );
 			<?php $news->the_article(); ?>
 			<?php if ( $news->has_external_link ) : ?>
 			<a href="<?php $news->the_external_article_link(); ?>" target="_blank" rel="noopener noreferrer"
-			   class="article__external-link d-block border border-1 bg-light-subtle p-4 my-5 w-auto">
+				class="article__external-link d-block border border-1 bg-light-subtle p-4 my-5 w-auto">
 				<aside class='external-link'>
 					<h2 class="external-link__headline">Read the Full Article</h2>
 					<span class='external-link__title h3'><?php $news->the_external_article_title(); ?></span>
