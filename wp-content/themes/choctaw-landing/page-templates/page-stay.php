@@ -57,7 +57,7 @@ $room_images = get_field( 'room_images' );
 	</div>
 	<div class="row d-lg-none justify-content-center">
 		<div class="col-auto text-center p-0">
-			<a href="#" class="btn btn-primary rounded-0 text-capitalize fs-5">Book Now</a>
+			<a href="https://book.rguest.com/onecart/wbe/offers/1180/choctaw-landing" class="btn btn-primary rounded-0 text-capitalize fs-5" target="_blank">Book Now</a>
 		</div>
 	</div>
 </section>
