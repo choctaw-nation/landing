@@ -35,3 +35,17 @@ add_filter(
 		return 'low';
 	}
 );
+
+/**
+ * Modifies the news archive slug to be newsroom
+ *
+ * @param array  $args the post type arguments
+ * @param string $post_type the post type name
+ */
+function cno_modify_news_archive_slug( $args, $post_type ) {
+	if ( 'choctaw-news' === $post_type ) {
+		$args['has_archive'] = 'newsroom';
+	}
+	return $args;
+}
+add_filter( 'register_post_type_args', 'cno_modify_news_archive_slug', 10, 2 );
