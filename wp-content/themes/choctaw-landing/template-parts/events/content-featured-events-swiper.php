@@ -45,10 +45,10 @@ if ( empty( $all_events ) ) {
 ?>
 <section id="featured-events" class="container events">
 	<div class="row events-list">
-		<div class="col-1 position-relative d-lg-none">
+		<div class="col-1 position-relative">
 			<div class="swiper-button-prev"></div>
 		</div>
-		<div class="swiper col-10 col-lg-12" id='events-swiper'>
+		<div class="swiper col-10" id='events-swiper'>
 			<div class="swiper-wrapper">
 				<?php
 				foreach ( $all_events as $event ) :
@@ -78,7 +78,7 @@ if ( empty( $all_events ) ) {
 				<?php endforeach; ?>
 			</div>
 		</div>
-		<div class="col-1 position-relative d-lg-none">
+		<div class="col-1 position-relative">
 			<div class="swiper-button-next"></div>
 		</div>
 	</div>
