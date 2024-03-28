@@ -35,7 +35,6 @@ class Theme_Init {
 			'mega-menu-content',
 			'title-bar',
 			'two-col-section',
-			'room-types',
 			'full-width-section',
 			'mega-menu-content',
 			'link-card',

@@ -31,9 +31,9 @@ class Full_Width_Section extends Two_Col_Section {
 	 */
 	public function get_the_markup(): string {
 		$section_id = cno_get_the_section_id( $this->headline );
-		$bg_img     = $this->image->src;
-		$markup     = "<{$this->wrapper_el} id='{$section_id}' class='container-fluid py-5 two-col two-col--full-width' style='background-image:url({$bg_img})'>";
-		$markup    .= "<div class='container pt-5'><div class='row py-5'>";
+		$markup     = "<{$this->wrapper_el} id='{$section_id}' class='container-fluid px-0 py-5 two-col two-col--full-width position-relative'>";
+		$markup    .= "<div class='position-absolute z-n1 top-0 w-100 h-100'>{$this->image->get_the_image('object-fit-cover h-100 w-100 two-col--full-width-image')}</div>";
+		$markup    .= "<div class='position-relative z-1 container pt-5'><div class='row py-5'>";
 		$markup    .= $this->get_fullwidth_content_col();
 		$markup    .= '</div></div>';
 		$markup    .= "</{$this->wrapper_el}>";
@@ -70,7 +70,7 @@ class Full_Width_Section extends Two_Col_Section {
 	 * @return string - The HTML markup for the headline.
 	 */
 	protected function get_the_headline(): string {
-		return "<div class='col-9 col-lg-10'><h2 class='text-light'>{$this->headline}</h2></div>";
+		return "<div class='col-9 col-lg-10'><h2 class='text-white'>{$this->headline}</h2></div>";
 	}
 
 	/** For use inside of full-width sections */
@@ -80,7 +80,7 @@ class Full_Width_Section extends Two_Col_Section {
 			$markup .= '<div class="col-3 col-lg-2 d-none d-md-block"><div class="vertical-line vertical-line-white"></div></div>';
 		}
 		$markup .= '<div class="col-9 col-lg-10">';
-		$markup .= "<div class='two-col__subheadline fs-6'>{$this->subheadline}</div>";
+		$markup .= "<div class='two-col__subheadline fs-6 text-white'>{$this->subheadline}</div>";
 		if ( $this->has_cta ) {
 			$markup .= $this->get_the_cta();
 		}
