@@ -1,3 +1,6 @@
 [submodule "wp-content/plugins/cno-plugin-news"]
 	path = wp-content/plugins/cno-plugin-news
 	url = https://github.com/choctaw-nation/cno-plugin-news.git
+[submodule "wp-content/plugins/cno-plugin-header-alert"]
+	path = wp-content/plugins/cno-plugin-header-alert
+	url = https://github.com/choctaw-nation/cno-plugin-header-alert.git
