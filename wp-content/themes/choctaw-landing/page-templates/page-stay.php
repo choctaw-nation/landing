@@ -45,7 +45,8 @@ get_template_part(
 	'template-parts/content',
 	'banner-header',
 	array(
-		'url' => $banner->src,
+		'url'    => $banner->src,
+		'srcset' => $banner->srcset,
 	)
 );
 ?>
