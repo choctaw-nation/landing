@@ -1,3 +1,6 @@
+import 'moment';
+import 'daterangepicker/daterangepicker.css';
+import 'daterangepicker/daterangepicker';
 import '../../styles/components/booking-bar.scss';
 import ToastAlert from '../bs-toast';
 
