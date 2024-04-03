@@ -4,6 +4,21 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.0.8
+
+-   Update packages
+-   Add `margin-top:110px` back to the `.hero` class now that the alert banner bar is removed
+-   Bundle daterangepicker css
+-   Add a `visually-hidden` H1 on the homepage
+-   Swap `Title_Bar` `h2` for `h1`
+-   Add Moment & Date Range Picker asset `import` statements in the CNO version of the file
+
+    -   Removed CDN enqueue from `theme_init` for Date Range Picker since it's now bundled + minified
+    -   Removed Moment from enqueue as it ships with WordPress
+    -   Updated `dependencies` for the style/script enqueue to use the `*.asset.php` file
+
+-   TODO: Make the .hero class or the alert-banner-bar plugin styles more resilient
+
 ## v1.0.2
 
 -   Fix favicon URI path issue
