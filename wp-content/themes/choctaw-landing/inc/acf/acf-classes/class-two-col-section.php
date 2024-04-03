@@ -230,7 +230,7 @@ class Two_Col_Section extends Generator {
 		$text   = esc_textarea( $this->cta['title'] );
 		$target = $this->cta['target'];
 		// desktop
-		$markup = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' loading='lazy' aria-hidden='true' />";
+		$markup = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' loading='lazy' aria-hidden='true' alt='' />";
 
 		$desktop_link_class = 'arrow-link fs-5 fw-medium z-1';
 		$markup            .= "<a href='{$href}' class='{$desktop_link_class}'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";

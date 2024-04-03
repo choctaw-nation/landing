@@ -24,7 +24,7 @@ if ( empty( $args['id'] ) ) {
 		<img src="<?php echo $url; ?>" class='w-100 h-100 object-fit-cover mx-auto d-block' <?php echo $srcset ? "srcset='{$srcset}'" : ''; ?> aria-hidden="true" loading='lazy' />
 	</div>
 	<img src="<?php echo $url; ?>" class='position-relative w-100 h-100 z-2 object-fit-cover mx-auto d-block' style='max-width:1920px' <?php echo $srcset ? "srcset='{$srcset}'" : ''; ?>
-		 aria-hidden="true" loading='lazy' />
+		aria-hidden="true" loading='lazy' />
 	<?php else : ?>
 	<div class="banner-bg-header__color position-absolute z-2 mx-auto w-100 h-100 bg-primary"></div>
 	<?php endif; ?>
