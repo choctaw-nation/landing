@@ -8,6 +8,9 @@
 
 namespace ChoctawNation\ACF;
 
+/**
+ * Eat and Drink Object
+ */
 class Eat_And_Drink {
 	/**
 	 * The sections
@@ -43,7 +46,12 @@ class Eat_And_Drink {
 	}
 
 
-	public function get_the_section() {
+	/**
+	 * Returns the section
+	 *
+	 * @return string
+	 */
+	public function get_the_section(): string {
 		$markup = '';
 		$slides = '';
 		foreach ( $this->posts as $index => $section ) {
@@ -64,6 +72,9 @@ class Eat_And_Drink {
 		return $markup;
 	}
 
+	/**
+	 * Echoes the section
+	 */
 	public function the_section() {
 		echo $this->get_the_section();
 	}
@@ -100,6 +111,11 @@ class Eat_And_Drink {
 		return $markup;
 	}
 
+	/**
+	 * Get the swiper slides
+	 *
+	 * @return string
+	 */
 	private function get_the_swiper_slides(): string {
 		return $this->featured_eat->get_the_slide();
 	}

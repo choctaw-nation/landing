@@ -1,72 +1,27 @@
 <?php
 /**
- * Template Post Type: post
+ * Single.php
  *
- * @package Bootscore
+ * @package ChoctawNation
  */
 
 get_header();
 ?>
 
-<div id="content" class="site-content <?php echo bootscore_container_class(); ?> py-5 mt-4">
-	<div id="primary" class="content-area">
-
-		<!-- Hook to add something nice -->
-		<?php bs_after_primary(); ?>
-
-		<?php the_breadcrumb(); ?>
-
-		<div class="row">
-			<div class="<?php echo bootscore_main_col_class(); ?>">
-
-				<main id="main" class="site-main">
-
-					<header class="entry-header">
-						<?php the_post(); ?>
-						<?php bootscore_category_badge(); ?>
-						<h1><?php the_title(); ?></h1>
-						<p class="entry-meta">
-							<small class="text-body-tertiary">
-								<?php
-								bootscore_date();
-								bootscore_author();
-								bootscore_comment_count();
-								?>
-							</small>
-						</p>
-						<?php bootscore_post_thumbnail(); ?>
-					</header>
-
-					<div class="entry-content">
-						<?php the_content(); ?>
-					</div>
-
-					<footer class="entry-footer clear-both">
-						<div class="mb-4">
-							<?php bootscore_tags(); ?>
-						</div>
-						<!-- Related posts using bS Swiper plugin -->
-						<nav aria-label="bS page navigation">
-							<ul class="pagination justify-content-center">
-								<li class="page-item">
-									<?php previous_post_link( '%link' ); ?>
-								</li>
-								<li class="page-item">
-									<?php next_post_link( '%link' ); ?>
-								</li>
-							</ul>
-						</nav>
-						<?php comments_template(); ?>
-					</footer>
-
-				</main>
-
-			</div>
-			<?php get_sidebar(); ?>
+<article class="container" style="margin-top: var(--header-offset);">
+	<div class="row justify-content-center my-5 py-5">
+		<div class="col-12 col-lg-10">
+			<?php
+			if ( has_post_thumbnail() ) {
+				the_post_thumbnail( 'full', array( 'class' => 'img-fluid object-fit-cover' ) );
+			}
+			the_title( '<h1>', '</h1>' );
+			the_content();
+			?>
 		</div>
-
 	</div>
-</div>
+
+</article>
 
 <?php
 get_footer();
