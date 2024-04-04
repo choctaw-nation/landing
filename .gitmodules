@@ -4,3 +4,6 @@
 [submodule "wp-content/plugins/cno-plugin-header-alert"]
 	path = wp-content/plugins/cno-plugin-header-alert
 	url = https://github.com/choctaw-nation/cno-plugin-header-alert.git
+[submodule "wp-content/plugins/cno-plugin-events"]
+	path = wp-content/plugins/cno-plugin-events
+	url = https://github.com/choctaw-nation/cno-plugin-events.git
