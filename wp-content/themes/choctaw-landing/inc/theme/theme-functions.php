@@ -35,3 +35,31 @@ add_filter(
 		return 'low';
 	}
 );
+
+
+
+/**
+ * Redirects single custom post types to the archive page with the hash of the post slug.
+ */
+function cno_redirect_single_templates() {
+	$cpts_to_redirect = array(
+		array(
+			'post_type' => 'choctaw-events',
+			'location'  => get_post_type_archive_link( 'choctaw-events' ),
+		),
+		array(
+			'post_type' => 'eat-and-drink',
+			'location'  => site_url( '/eat-drink' ),
+		),
+	);
+	foreach ( $cpts_to_redirect as $cpt ) {
+		if ( is_singular( $cpt['post_type'] ) ) {
+			$post = get_post();
+			if ( $post ) {
+				wp_safe_redirect( $cpt['location'] );
+				exit;
+			}
+		}
+	}
+}
+add_action( 'template_redirect', 'cno_redirect_single_templates' );
