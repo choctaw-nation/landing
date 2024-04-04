@@ -4,6 +4,13 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.0.11
+
+-   Add redirects to prevent `single-*` templates from being viewed
+-   Prep the Newsroom by updating slugs
+-   Fix bugs
+-   Update plugins with submodules
+
 ## v1.0.8
 
 -   Update packages
