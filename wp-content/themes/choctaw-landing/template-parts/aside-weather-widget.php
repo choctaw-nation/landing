@@ -25,7 +25,7 @@ $weather_data         = $weather->get_the_weather();
 		<?php echo 'Weather Widget Error: ' . $weather_data->get_error_message( 'weather_widget' ); ?>
 	</div>
 	<?php else : ?>
-	<?php
+		<?php
 		$icon_generator = new Bootstrap_Icons();
 		$today_index    = array_values( $weather_data )[0]->get_the_day();
 		$today          = $weather_data[ $today_index ];
@@ -67,7 +67,7 @@ $weather_data         = $weather->get_the_weather();
 			<div class="row justify-content-evenly flex-sm-nowrap">
 				<?php $total = count( $weather_data ); ?>
 				<?php for ( $i = 1; $i < $total; $i++ ) : ?>
-				<?php
+					<?php
 					$day_index = array_values( $weather_data )[ $i ]->get_the_day();
 					$day       = $weather_data[ $day_index ];
 					?>
