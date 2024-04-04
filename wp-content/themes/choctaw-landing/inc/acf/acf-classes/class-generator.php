@@ -44,11 +44,9 @@ abstract class Generator {
 	/**
 	 * Sets the class property $image to a new ACF_Image
 	 *
-	 * @param array $image the ACF Image array
+	 * @param array|false $image the ACF Image array
 	 */
-	protected function set_the_image( array $image ) {
-		if ( is_array( $image ) ) {
-			$this->image = new Image( $image );
-		}
+	protected function set_the_image( $image ) {
+		$this->image = is_array( $image ) ? new Image( $image ) : null;
 	}
 }
