@@ -12,6 +12,10 @@
 			]
 		}
 	],
+	"scripts": {
+		"phpcs": "phpcs wp-content/themes/choctaw-landing/**/*.php",
+		"phpcbf": "phpcbf wp-content/themes/choctaw-landing/**/*.php"
+	},
 	"config": {
 		"allow-plugins": {
 			"composer/installers": true,
