@@ -1,6 +1,6 @@
 {
 	"name": "choctaw-landing",
-	"version": "3.0.2",
+	"version": "3.0.1",
 	"description": "A custom wp theme for choctaw-landing",
 	"prettier": "@wordpress/prettier-config",
 	"browserslist": [
