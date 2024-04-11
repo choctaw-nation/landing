@@ -13,7 +13,7 @@ get_header();
 wp_enqueue_script( 'choctaw-events-add-to-calendar' );
 $event = new Choctaw_Event( get_field( 'event_details' ), get_the_ID() );
 ?>
-<div class="container my-5 py-5" style="margin-top: 110px;">
+<div class="container my-5 py-5" style="margin-top: var(--header-offset);">
 	<nav arial-label="breadcrumb">
 		<ol class="breadcrumb m-0">
 			<li class="breadcrumb-item"><a href="/events/all-events">All Events</a></li>

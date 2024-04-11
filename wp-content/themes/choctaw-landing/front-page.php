@@ -10,6 +10,7 @@ use ChoctawNation\ACF\Hero_Section;
 use ChoctawNation\ACF\Two_Col_Section;
 
 get_header();
+echo "<h1 class='visually-hidden'>Choctaw Landing</h1>";
 $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $hero->the_hero();
 get_template_part( 'template-parts/form', 'booking-module' );

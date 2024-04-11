@@ -405,27 +405,6 @@ if ( ! function_exists( 'bootscore_pw_form' ) ) :
 endif;
 // Password protected form END
 
-
-// Allow HTML in term (category, tag) descriptions
-foreach ( array( 'pre_term_description' ) as $filter ) {
-	remove_filter( $filter, 'wp_filter_kses' );
-	if ( ! current_user_can( 'unfiltered_html' ) ) {
-		add_filter( $filter, 'wp_filter_post_kses' );
-	}
-}
-
-foreach ( array( 'term_description' ) as $filter ) {
-	remove_filter( $filter, 'wp_kses_data' );
-}
-// Allow HTML in term (category, tag) descriptions END
-
-
-// Allow HTML in author bio
-remove_filter( 'pre_user_description', 'wp_filter_kses' );
-add_filter( 'pre_user_description', 'wp_filter_post_kses' );
-// Allow HTML in author bio END
-
-
 // Hook after #primary
 function bs_after_primary() {
 	do_action( 'bs_after_primary' );
@@ -453,20 +432,6 @@ add_filter( 'use_widgets_block_editor', '__return_false' );
 // Disable Gutenberg blocks in widgets (WordPress 5.8) END
 
 
-/*
- * Simple short code for inserting font awesome icons on Gutenberg leveli
- * (instead of heaving to insert HTML code into a block on HTML editing mode)
- */
-function bsfaCode( $atts ) {
-	$atts = (array) $atts;
-	$vstr = '';
-	foreach ( $atts as $value ) {
-		$vstr = $vstr . " $value";
-	}
-
-	return '<i class="' . $vstr . '"></i>';
-}
-add_shortcode( 'bsfa', 'bsfaCode' );
 
 // Allow SVG
 add_filter(

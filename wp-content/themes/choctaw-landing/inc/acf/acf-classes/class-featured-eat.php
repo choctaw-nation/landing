@@ -141,6 +141,11 @@ class Featured_Eat {
 		return $markup;
 	}
 
+	/**
+	 * Get the image
+	 *
+	 * @param string $img_class the image class
+	 */
 	private function get_the_image( $img_class = '' ): string {
 		return get_the_post_thumbnail(
 			$this->post,
@@ -172,7 +177,11 @@ class Featured_Eat {
 		return $markup;
 	}
 
-	/** Generates the Eats Hours block */
+	/** Generates the Eats Hours block
+	 *
+	 * @param bool $with_title whether to include the title
+	 * @return string
+	 */
 	public function get_the_hours( $with_title = true ): string {
 		if ( false === $this->hours ) {
 			return '';
@@ -197,6 +206,11 @@ class Featured_Eat {
 		return $markup;
 	}
 
+	/** Generates the actual hours markup
+	 *
+	 * @param array $hours_block the hours block
+	 * @return string
+	 * */
 	private function get_the_hours_actual( array $hours_block ): string {
 		$markup       = '';
 		$markup_class = 'col-12 row justify-content-between';
@@ -278,6 +292,11 @@ class Featured_Eat {
 		return $markup;
 	}
 
+	/**
+	 * Get the slide (if used inside a swiper container)
+	 *
+	 * @return string
+	 */
 	public function get_the_slide(): string {
 		$id      = $this->get_the_section_id();
 		$markup  = "<div class='swiper-slide d-flex flex-column' id='{$id}'>";
