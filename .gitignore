@@ -42,10 +42,7 @@ local-xdebuginfo.php
 /wp-content/aiowps_backups/
 /wp-content/cache/
 /wp-content/mu-plugins/
-/wp-content/plugins/*
-!/wp-content/plugins/cno-plugin-events
-!/wp-content/plugins/cno-plugin-news
-!/wp-content/plugins/cno-plugin-header-alert
+/wp-content/plugins
 /wp-content/themes/twenty*/
 /wp-content/upgrade/
 /wp-content/upgrade-temp-backup/

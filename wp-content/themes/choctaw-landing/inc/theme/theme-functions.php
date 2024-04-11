@@ -20,11 +20,7 @@ function cno_get_the_section_id( string $str ): string {
 
 /** Adds Date Range Picker Assets to the head of the page */
 function cno_enqueue_date_range_picker() {
-	$daterangepicker_scripts = array( 'date-range-picker', 'moment', 'cno-date-range-picker' );
-	foreach ( $daterangepicker_scripts as $script ) {
-		wp_enqueue_script( $script );
-	}
-	wp_enqueue_style( 'date-range-picker' );
+	wp_enqueue_script( 'cno-date-range-picker' );
 	wp_enqueue_style( 'cno-date-range-picker' );
 }
 
@@ -36,16 +32,62 @@ add_filter(
 	}
 );
 
+
 /**
- * Modifies the news archive slug to be newsroom
+ * Modifies archive slugs of custom post types.
  *
  * @param array  $args the post type arguments
  * @param string $post_type the post type name
  */
-function cno_modify_news_archive_slug( $args, $post_type ) {
-	if ( 'choctaw-news' === $post_type ) {
-		$args['has_archive'] = 'newsroom';
+function cno_modify_post_type_archive_slugs( $args, $post_type ) {
+	$post_type_slugs = array(
+		'choctaw-events' => 'all-events',
+		'choctaw-news'   => 'newsroom',
+	);
+
+	if ( array_key_exists( $post_type, $post_type_slugs ) ) {
+		$args['has_archive'] = $post_type_slugs[ $post_type ];
 	}
 	return $args;
 }
-add_filter( 'register_post_type_args', 'cno_modify_news_archive_slug', 10, 2 );
+add_filter( 'register_post_type_args', 'cno_modify_post_type_archive_slugs', 10, 2 );
+
+/**
+ * Modifies the slug of the news post type.
+ *
+ * @param array  $args the post type arguments
+ * @param string $post_type the post type name
+ */
+function cno_modify_news_slugs( $args, $post_type ) {
+	if ( 'choctaw-news' === $post_type ) {
+		$args['rewrite']['slug'] = 'newsroom';
+	}
+	return $args;
+}
+add_filter( 'register_post_type_args', 'cno_modify_news_slugs', 10, 2 );
+
+/**
+ * Redirects single custom post types to the archive page with the hash of the post slug.
+ */
+function cno_redirect_single_templates() {
+	$cpts_to_redirect = array(
+		array(
+			'post_type' => 'choctaw-events',
+			'location'  => get_post_type_archive_link( 'choctaw-events' ),
+		),
+		array(
+			'post_type' => 'eat-and-drink',
+			'location'  => site_url( '/eat-drink' ),
+		),
+	);
+	foreach ( $cpts_to_redirect as $cpt ) {
+		if ( is_singular( $cpt['post_type'] ) ) {
+			$post = get_post();
+			if ( $post ) {
+				wp_safe_redirect( $cpt['location'] );
+				exit;
+			}
+		}
+	}
+}
+add_action( 'template_redirect', 'cno_redirect_single_templates', 20, 1 );

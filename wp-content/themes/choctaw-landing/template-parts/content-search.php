@@ -43,13 +43,13 @@
 
 					<p class="card-text">
 						<a class="text-body text-decoration-none" href="<?php the_permalink(); ?>">
-							<?php echo strip_tags( get_the_excerpt() ); ?>
+							<?php echo wp_strip_all_tags( get_the_excerpt() ); ?>
 						</a>
 					</p>
 
 					<p class="card-text">
 						<a class="read-more" href="<?php the_permalink(); ?>">
-							<?php _e( 'Read more »', 'bootscore' ); ?>
+							Read more »
 						</a>
 					</p>
 

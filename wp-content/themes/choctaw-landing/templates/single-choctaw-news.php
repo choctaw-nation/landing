@@ -13,9 +13,9 @@ wp_enqueue_script( 'cno-news' );
 get_header();
 $news = new News( get_the_ID() );
 ?>
-<div class="container mb-5 py-5" style="margin-top:110px">
+<div class="container mb-5 py-5" style="margin-top: var(--header-offset);">
 	<nav arial-label="breadcrumb" class="my-4">
-		<a href="<?php echo site_url( '/newsroom' ); ?>" class='fs-6 fw-bold'>All News</a>
+		<a href="<?php echo get_post_type_archive_link( 'choctaw-news' ); ?>" class='fs-6 fw-bold'>All News</a>
 	</nav>
 	<article <?php post_class( 'article' ); ?> id="<?php echo 'post-' . get_the_ID(); ?>">
 		<header class="article__header">
