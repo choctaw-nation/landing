@@ -42,7 +42,11 @@ class Hero_Section extends Generator {
 		if ( $this->video ) {
 			$this->handle_video_params();
 		}
-		$this->set_the_image( $acf['image'] );
+		if ( ! empty( $acf['image'] ) ) {
+			$this->set_the_image( $acf['image'] );
+		} else {
+			$this->image = null;
+		}
 		$this->headline_position = 'position-absolute z-3 center';
 	}
 
@@ -84,19 +88,32 @@ class Hero_Section extends Generator {
 	 * Generate the markup for the hero section
 	 */
 	public function get_the_hero(): string {
-		$headline = $this->headline ? "<h1 class='hero-headline text-white text-uppercase d-flex flex-column w-normal {$this->headline_position}'>{$this->headline}</h1>" : '';
-		$markup   = "<header id='header-img' class='hero container-fluid gx-0 position-relative'>";
+		$has_media_bg       = $this->video || $this->image;
+		$headline_classes   = array( 'hero-headline', 'text-uppercase', 'd-flex', 'flex-column' );
+		$headline_classes[] = $has_media_bg ? "text-white {$this->headline_position}" : 'text-primary';
+		$headline_classes   = implode( ' ', $headline_classes );
+		$headline           = $this->headline ? "<h1 class='{$headline_classes}'>{$this->headline}</h1>" : '';
+		$markup             = "<header id='header-img'" . ( $has_media_bg ? '' : " class='position-relative d-flex justify-content-center align-items-center' style='height:clamp(20vw,30vw,40vw);'" ) . '>';
+		$markup            .= $has_media_bg ? $this->get_the_hero_bg() : '';
+		$markup            .= "{$headline}</header>";
+		return $markup;
+	}
+
+	/**
+	 * Get the hero background markup. Returns a video, an image, both, or a blank container with a bg color.
+	 */
+	private function get_the_hero_bg(): string {
+		$markup = '';
 		if ( $this->video && $this->image ) {
-			$markup .= $this->get_the_video();
+			$markup  = $this->get_the_video();
 			$markup .= $this->image->get_the_image( 'd-md-none skip-lazy', false );
 		} elseif ( ! $this->video && $this->image ) {
-			$markup .= "<div class='ratio ratio-21x9 mx-auto hero__bg-container'>";
+			$markup  = "<div class='ratio ratio-21x9 mx-auto hero__bg-container'>";
 			$markup .= $this->image->get_the_image( 'hero__image object-fit-cover skip-lazy', false );
 			$markup .= '</div>';
 		} elseif ( $this->video && ! $this->image ) {
-			$markup .= $this->get_the_video();
+			$markup = $this->get_the_video();
 		}
-		$markup .= "{$headline}</header>";
 		return $markup;
 	}
 

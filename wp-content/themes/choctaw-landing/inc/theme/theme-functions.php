@@ -20,11 +20,7 @@ function cno_get_the_section_id( string $str ): string {
 
 /** Adds Date Range Picker Assets to the head of the page */
 function cno_enqueue_date_range_picker() {
-	$daterangepicker_scripts = array( 'date-range-picker', 'moment', 'cno-date-range-picker' );
-	foreach ( $daterangepicker_scripts as $script ) {
-		wp_enqueue_script( $script );
-	}
-	wp_enqueue_style( 'date-range-picker' );
+	wp_enqueue_script( 'cno-date-range-picker' );
 	wp_enqueue_style( 'cno-date-range-picker' );
 }
 

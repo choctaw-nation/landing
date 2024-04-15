@@ -1,12 +1,7 @@
 @use "../abstracts/mixins" as m;
 
 .two-col {
-	&--full-width {
-		background-size: cover;
-		background-position: bottom;
-
-		.two-col__subheadline p {
-			color: white;
-		}
+	&--full-width-image {
+		object-position: center bottom;
 	}
 }

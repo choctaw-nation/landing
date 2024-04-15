@@ -28,7 +28,9 @@ $weather_widget_photo = new Image( get_field( 'weather_widget_photo' ) );
 		<?php get_template_part( 'template-parts/aside', 'weather-widget' ); ?>
 	</div>
 </aside>
-
+<div class="offset-topo-bg py-5">
+	<?php get_template_part( 'template-parts/events/content', 'featured-events-swiper' ); ?>
+</div>
 <section id="featured-activities">
 	<?php
 	$featured_activities = get_field( 'featured_activities' );
@@ -41,19 +43,21 @@ $weather_widget_photo = new Image( get_field( 'weather_widget_photo' ) );
 
 <?php
 $attractions = get_field( 'attractions' );
-$banner      = new Image( $attractions['banner_image'] );
-get_template_part(
-	'template-parts/content',
-	'banner-header',
-	array(
-		'url'   => $banner->src,
-		'title' => array(
-			'text' => 'Area Attractions',
-		),
-	)
-);
-
+if ( ! empty( $attractions['banner_image'] ) ) {
+	$banner = new Image( $attractions['banner_image'] );
+	get_template_part(
+		'template-parts/content',
+		'banner-header',
+		array(
+			'url'   => $banner->src,
+			'title' => array(
+				'text' => 'Area Attractions',
+			),
+		)
+	);
+}
 ?>
+<?php if ( ! empty( $attractions['attractions_columns'] ) ) : ?>
 <section id="area-attractions-list" class="container my-5">
 	<?php
 	$attractions_columns = $attractions['attractions_columns'];
@@ -67,7 +71,6 @@ get_template_part(
 	}
 	?>
 </section>
-
-
-<?php
+	<?php
+endif;
 get_footer();

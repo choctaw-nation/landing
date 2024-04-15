@@ -15,7 +15,6 @@ $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $hero->the_hero();
 get_template_part( 'template-parts/form', 'booking-module' );
 
-
 $sections = get_field( 'page_content' );
 foreach ( $sections as $section ) {
 	if ( $section['is_image_full_width'] ) {

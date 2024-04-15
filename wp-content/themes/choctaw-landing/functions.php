@@ -3,7 +3,6 @@
  * The Functions
  *
  * @package ChoctawNation
- * @since 0.2
  */
 
 use ChoctawNation\Theme_Init;

@@ -4,6 +4,14 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.1.0
+
+-   Refactored Events swiper to be powered by "Featured" tag and usable in multiple places
+-   Added Image swiper for Room photos
+-   Optimized background image loading
+-   Built a new Meet & Gather page template
+-   Added better handling if content doesn't exist in certain ACF fields (doesn't break site)
+
 ## v1.0.11
 
 -   Add redirects to prevent `single-*` templates from being viewed
