@@ -1,7 +1,6 @@
 #weather-widget {
 	color: white;
 	padding: 1rem;
-	font-size: 1.15rem;
 
 	.bi {
 		--size: 2.25rem;
@@ -9,26 +8,12 @@
 		height: var(--size);
 	}
 
-	.row {
-		background: url("../../img/bg-images/brown-basket-bg.webp");
-		background-size: cover;
-	}
-
 	.day {
 		font-weight: 700;
-		font-size: 1rem;
 	}
 
-	h2,
-	.h2 {
-		color: white;
-		font-size: 5rem;
-		.bi {
-			--size: 3rem;
-		}
-	}
-	p {
-		font-size: 1rem;
+	.bi {
+		--size: 3rem;
 	}
 
 	small {

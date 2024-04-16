@@ -2,7 +2,6 @@
 @use "./daterangepicker";
 
 #booking-bar {
-	background: url("../../../img/bg-images/brown-basket-bg.webp");
 	color: white;
 
 	@include m.media-breakpoint-up(lg) {
@@ -17,12 +16,7 @@
 		padding-left: 1rem;
 	}
 
-	h2,
-	.h2 {
-		color: white;
-	}
 	.form-arrow {
-		position: absolute;
 		right: 15px;
 		top: 13px;
 		z-index: 0;
@@ -36,11 +30,8 @@
 		position: relative;
 		border: 2px solid white;
 		border-radius: 0;
-		color: white;
 		background: none;
 		padding: 0.5rem;
-		font-size: 1.15rem;
-		line-height: 1.25;
 		z-index: 1;
 		cursor: pointer;
 
@@ -54,8 +45,8 @@
 		}
 	}
 
+	// A reset of styles, including removing the default dropdown arrow
 	select {
-		// A reset of styles, including removing the default dropdown arrow
 		appearance: none;
 		background-color: transparent;
 		border: none;
@@ -63,9 +54,7 @@
 		margin: 0;
 		width: 100%;
 		font-family: inherit;
-		font-size: 1.15rem;
 		cursor: inherit;
-		line-height: 1.25;
 		z-index: 1;
 		color: white;
 		outline: none;

@@ -112,7 +112,7 @@ class Theme_Init {
             null // phpcs:ignore
 		);
 
-		$bootstrap = new Asset_Loader(
+		new Asset_Loader(
 			'bootstrap',
 			Enqueue_Type::both,
 			'vendors',
@@ -122,7 +122,7 @@ class Theme_Init {
 			),
 		);
 
-		$global_scripts = new Asset_Loader(
+		new Asset_Loader(
 			'global',
 			Enqueue_Type::both,
 			null,

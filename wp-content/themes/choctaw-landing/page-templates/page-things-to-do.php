@@ -21,9 +21,9 @@ $weather_widget_photo = new Image( get_field( 'weather_widget_photo' ) );
 ?>
 
 <aside id="weather" class="container">
-	<div class="row pt-2 pb-5">
-		<div class="col-12 col-xl-6 col-xxl-8 py-3">
-			<?php $weather_widget_photo->the_image( 'w-100' ); ?>
+	<div class="row pt-2 pb-5 row-gap-4">
+		<div class="col-12 col-lg-6 col-xl-8">
+			<?php $weather_widget_photo->the_image( 'w-100 h-100 object-fit-cover' ); ?>
 		</div>
 		<?php get_template_part( 'template-parts/aside', 'weather-widget' ); ?>
 	</div>
