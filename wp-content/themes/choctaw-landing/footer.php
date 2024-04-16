@@ -9,25 +9,21 @@
 
 ?>
 
-<footer class="pt-5">
-
+<footer class="pt-5 position-relative">
+	<img class="position-absolute top-0 w-100 h-100 z-n1" src="<?php echo get_stylesheet_directory_uri() . '/img/bg-images/footer-bg.webp'; ?>" alt="" aria-hidden="true" loading="lazy" />
 	<div class="border-top py-5">
 		<div class="container">
-
 			<!-- Top Footer Widget -->
 			<?php if ( is_active_sidebar( 'top-footer' ) ) : ?>
 				<?php dynamic_sidebar( 'top footer' ); ?>
 			<?php endif; ?>
-
-			<div class="row">
-
+			<div class=" row">
 				<!-- Footer 1 Widget -->
 				<div class="col-md-6 col-lg-4">
 					<?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
 						<?php dynamic_sidebar( 'footer-1' ); ?>
 					<?php endif; ?>
 				</div>
-
 				<div class="col-md-6 col-lg-8">
 					<div class="row justify-content-around">
 						<!-- Footer 2 Widget -->
@@ -35,9 +31,7 @@
 							<?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
 								<?php dynamic_sidebar( 'footer-2' ); ?>
 							<?php endif; ?>
-						</div>
-
-						<!-- Footer 3 Widget -->
+						</div <!-- Footer 3 Widget -->
 						<div class="col-sm-6 col-md-12 col-lg-4">
 							<?php if ( is_active_sidebar( 'footer-3' ) ) : ?>
 								<?php dynamic_sidebar( 'footer-3' ); ?>
@@ -45,12 +39,9 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
-
 		</div>
 	</div>
-
 	<div class="footer-info pt-3">
 		<div class="container">
 			<div class="row align-items-center">
@@ -79,11 +70,10 @@
 </footer>
 
 <!-- To top button -->
-<a href="#" class="btn btn-diamond-white border-0 shadow top-button position-fixed zi-1020 mb-5"><i class="fa-solid fa-chevron-up"></i><span class="visually-hidden-focusable">To
-		top</span></a>
-
-
-
+<a href="#" class="btn btn-diamond-white border-0 shadow top-button position-fixed zi-1020 mb-5">
+	<i class="fa-solid fa-chevron-up"></i>
+	<span class="visually-hidden-focusable">To top</span>
+</a>
 <?php wp_footer(); ?>
 
 </body>

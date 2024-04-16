@@ -2,32 +2,16 @@
 
 footer {
 	background-image: linear-gradient(
-			to bottom,
-			rgba(1, 1, 1, 0.2),
-			rgba(1, 1, 1, 0.2)
-		),
-		url("../../img/bg-images/footer-bg.webp");
-	background-size: cover;
-	background-position: center;
+		to bottom,
+		rgba(1, 1, 1, 0.2),
+		rgba(1, 1, 1, 0.2)
+	);
 	color: white;
 
 	.widget-title {
 		color: white;
 	}
 
-	h2 {
-		padding-bottom: 1rem;
-	}
-
-	p,
-	ul,
-	ol,
-	a,
-	li {
-		font-size: 1rem;
-		font-weight: 400;
-		letter-spacing: 0.1rem;
-	}
 	a {
 		color: white;
 		text-decoration: none;
@@ -58,6 +42,7 @@ footer {
 
 	.footer-info {
 		background-color: var(--bs-dark);
+
 		@include m.media-breakpoint-down(lg) {
 			text-align: center;
 		}

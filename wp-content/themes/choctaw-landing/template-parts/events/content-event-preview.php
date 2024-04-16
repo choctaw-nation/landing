@@ -20,10 +20,18 @@ if ( $event_details ) {
 		<div class="row">
 			<?php $content_col_class = 'post-preview my-3 my-lg-0'; ?>
 			<?php if ( has_post_thumbnail() ) : ?>
-				<?php $content_col_class .= ' col-lg-8'; ?>
+			<?php $content_col_class .= ' col-lg-8'; ?>
 			<div class="col-lg-4">
 				<div class="ratio ratio-16x9">
-					<?php the_post_thumbnail( 'choctaw-events-preview', array( 'class' => 'object-fit-cover' ) ); ?>
+					<?php
+					the_post_thumbnail(
+						'choctaw-events-preview',
+						array(
+							'class'   => 'object-fit-cover w-100 h-100',
+							'loading' => 'lazy',
+						)
+					);
+					?>
 				</div>
 			</div>
 			<?php endif; ?>
@@ -36,7 +44,7 @@ if ( $event_details ) {
 				</h2>
 				<?php
 				if ( $event->venue ) {
-					echo '<p class="post-preview__location my-2 fw-bold fs-5">';
+					echo '<p class="post-preview__location my-2 fw-bold fs-5">Venue: ';
 					$event->venue->the_name();
 					echo '</p>';
 				}

@@ -63,9 +63,11 @@ class Mega_Menu_Content extends Generator {
 	public function get_the_content(): string {
 		$markup = '';
 		if ( $this->featured_event ) {
-			$markup = $this->get_the_featured_event();
+			$markup .= $this->get_the_featured_event();
 		} else {
-			$markup = $this->image->get_the_image( 'mega-menu__image object-fit-cover w-100' );
+			$markup .= '<div class="<div class="ratio ratio-1x1">';
+			$markup .= $this->image->get_the_image( 'mega-menu__image object-fit-cover w-100' );
+			$markup .= '</div>';
 			if ( $this->has_cta ) {
 				$markup .= $this->get_the_cta();
 			}
@@ -86,7 +88,7 @@ class Mega_Menu_Content extends Generator {
 		);
 		$details   = $this->get_the_event_details();
 		$permalink = get_the_permalink( $this->featured_event );
-		return "<a href='{$permalink}' class='mega-menu__event p-0 d-block position-relative'>{$image}{$details}</a>";
+		return "<a href='{$permalink}' class='mega-menu__event p-0 d-block position-relative'><div class='ratio ratio-1x1'>{$image}</div>{$details}</a>";
 	}
 
 	/** Generates the Event Details (inside the `.mega-menu__event-details` container) */

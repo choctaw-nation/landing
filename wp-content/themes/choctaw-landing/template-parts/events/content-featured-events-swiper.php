@@ -87,7 +87,7 @@ if ( empty( $all_events ) ) {
 			<div class="swiper-pagination"></div>
 		</div>
 		<div class="col-12 text-center text-uppercase">
-			<a href="/events/all-events">View All Events <i class="fa-regular fa-circle-right"></i></a>
+			<a href="<?php echo get_post_type_archive_link( 'choctaw-events' ); ?>">View All Events <i class="fa-regular fa-circle-right"></i></a>
 		</div>
 	</div>
 </section>

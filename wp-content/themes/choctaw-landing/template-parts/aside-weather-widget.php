@@ -19,13 +19,15 @@ $things_to_do_page_id = 49;
 $weather              = new Weather_Widget( $things_to_do_page_id );
 $weather_data         = $weather->get_the_weather();
 ?>
-<div id="weather-widget" class="col-12 col-xl-6 col-xxl-4 text-center py-3 px-4">
+<div id="weather-widget" class="col-12 col-lg-6 col-xl-4 text-center position-relative overflow-hidden d-flex flex-column align-items-stretch">
+	<img src="<?php echo get_stylesheet_directory_uri() . '/img/bg-images/brown-basket-bg.webp'; ?>" alt="" aria-hidden="true" class="position-absolute z-n1 top-0 w-100 h-100"
+		 loading="lazy" />
 	<?php if ( is_wp_error( $weather_data ) ) : ?>
 	<div class="alert alert-warning">
 		<?php echo 'Weather Widget Error: ' . $weather_data->get_error_message( 'weather_widget' ); ?>
 	</div>
 	<?php else : ?>
-		<?php
+	<?php
 		$icon_generator = new Bootstrap_Icons();
 		$today_index    = array_values( $weather_data )[0]->get_the_day();
 		$today          = $weather_data[ $today_index ];
@@ -34,7 +36,7 @@ $weather_data         = $weather->get_the_weather();
 		<div class="col-12 justify-content-around d-flex flex-column">
 			<div class="row">
 				<div class="col">
-					<h2 class="my-3"><?php $today->the_icon(); ?> <?php $today->the_temp(); ?>°</h2>
+					<h2 class="my-3 text-white"><?php $today->the_icon(); ?> <?php $today->the_temp(); ?>°</h2>
 					<div class="mb-2"><?php $today->the_full_date(); ?></div>
 					<div class="mb-2 text-capitalize"><?php $today->the_description(); ?></div>
 				</div>
@@ -67,7 +69,7 @@ $weather_data         = $weather->get_the_weather();
 			<div class="row justify-content-evenly flex-sm-nowrap">
 				<?php $total = count( $weather_data ); ?>
 				<?php for ( $i = 1; $i < $total; $i++ ) : ?>
-					<?php
+				<?php
 					$day_index = array_values( $weather_data )[ $i ]->get_the_day();
 					$day       = $weather_data[ $day_index ];
 					?>
