@@ -48,4 +48,4 @@ cno_enqueue_date_range_picker();
 		</div>
 	</div>
 </form>
-<?php get_template_part( 'template - parts / alert', 'bootstrap - toast' ); ?>
+<?php get_template_part( 'template-parts/alert', 'bootstrap-toast' ); ?>
