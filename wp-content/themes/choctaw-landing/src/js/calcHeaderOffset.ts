@@ -8,4 +8,11 @@ export default function calcHeaderOffset( defaultOffset: number = 130 ) {
 		'--header-offset',
 		`${ headerHeight || defaultOffset }px`
 	);
+
+	// Warn if the header offset is not found
+	if (
+		! document.documentElement.style.getPropertyValue( '--header-offset' )
+	) {
+		console.warn( 'Header offset not found.' );
+	}
 }
