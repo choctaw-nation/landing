@@ -13,29 +13,34 @@
 	<img class="position-absolute top-0 w-100 h-100 z-n1" src="<?php echo get_stylesheet_directory_uri() . '/img/bg-images/footer-bg.webp'; ?>" alt="" aria-hidden="true" loading="lazy" />
 	<div class="border-top py-5">
 		<div class="container">
-			<!-- Top Footer Widget -->
-			<?php if ( is_active_sidebar( 'top-footer' ) ) : ?>
-				<?php dynamic_sidebar( 'top footer' ); ?>
-			<?php endif; ?>
+			<?php
+			if ( is_active_sidebar( 'top-footer' ) ) {
+				dynamic_sidebar( 'top footer' );
+			}
+			?>
 			<div class=" row">
-				<!-- Footer 1 Widget -->
 				<div class="col-md-6 col-lg-4">
-					<?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
-						<?php dynamic_sidebar( 'footer-1' ); ?>
-					<?php endif; ?>
+					<?php
+					if ( is_active_sidebar( 'footer-1' ) ) {
+						dynamic_sidebar( 'footer-1' );
+					}
+					?>
 				</div>
 				<div class="col-md-6 col-lg-8">
 					<div class="row justify-content-around">
-						<!-- Footer 2 Widget -->
 						<div class="col-sm-6 col-md-12 col-lg-4">
-							<?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
-								<?php dynamic_sidebar( 'footer-2' ); ?>
-							<?php endif; ?>
-						</div <!-- Footer 3 Widget -->
+							<?php
+							if ( is_active_sidebar( 'footer-2' ) ) {
+								dynamic_sidebar( 'footer-2' );
+							}
+							?>
+						</div>
 						<div class="col-sm-6 col-md-12 col-lg-4">
-							<?php if ( is_active_sidebar( 'footer-3' ) ) : ?>
-								<?php dynamic_sidebar( 'footer-3' ); ?>
-							<?php endif; ?>
+							<?php
+							if ( is_active_sidebar( 'footer-3' ) ) {
+								dynamic_sidebar( 'footer-3' );
+							}
+							?>
 						</div>
 					</div>
 				</div>
@@ -49,7 +54,6 @@
 					<p class="m-0"><span class="cr-symbol">&copy;</span>&nbsp;<?php echo gmdate( 'Y' ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.</p>
 				</div>
 				<div class="col-12 col-md-5 pb-3">
-					<!-- Bootstrap 5 Nav Walker Footer Menu -->
 					<?php
 					wp_nav_menu(
 						array(

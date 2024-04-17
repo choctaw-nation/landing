@@ -1,1 +1,1 @@
-(()=>{"use strict";!function(e=130){const t=document.getElementById("masthead")?.offsetHeight;document.documentElement.style.setProperty("--header-offset",`${t||e}px`)}()})();
+(()=>{"use strict";!function(e=130){const t=document.getElementById("masthead")?.offsetHeight;document.documentElement.style.setProperty("--header-offset",`${t||e}px`),document.documentElement.style.getPropertyValue("--header-offset")||console.warn("Header offset not found.")}()})();
