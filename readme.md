@@ -4,6 +4,15 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.1.2
+
+-   Added console warning if CSS Custom Property `header-offset` isn't set with JS.
+-   Updated featured events swiper layout
+
+## v1.1.1
+
+-   Update newsroom styles and layout
+
 ## v1.1.0
 
 -   Refactored Events swiper to be powered by "Featured" tag and usable in multiple places
