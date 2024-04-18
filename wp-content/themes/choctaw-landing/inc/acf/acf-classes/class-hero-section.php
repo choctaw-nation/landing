@@ -57,7 +57,6 @@ class Hero_Section extends Generator {
 		$iframe = $this->video;
 		preg_match( '/src="(.+?)"/', $iframe, $matches );
 		$src = $matches[1];
-		// $iframe = preg_replace('/title=".*?"/i', '', $iframe);
 
 		// Add extra parameters to src and replace HTML.
 		$params  = array(
