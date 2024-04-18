@@ -36,20 +36,21 @@ if ( $event_details ) {
 			</div>
 			<?php endif; ?>
 			<div class="<?php echo $content_col_class; ?>">
-				<div class="post-preview__dates">
-					<?php $event->the_dates(); ?>
+				<div class="post-preview__dates fs-5">
+					<?php $event->the_dates( 'M j, Y' ); ?>
+					<?php $event->the_times( 'g:iA' ); ?>
 				</div>
 				<h2 class="post-preview__title">
 					<?php the_title(); ?>
 				</h2>
 				<?php
-				if ( $event->venue ) {
+				if ( $event->has_venue ) {
 					echo '<p class="post-preview__location my-2 fw-bold fs-5">Venue: ';
-					$event->venue->the_name();
+					$event->the_venue_name();
 					echo '</p>';
 				}
 				if ( $event->has_excerpt ) {
-					echo '<div class="post-preview__excerpt">';
+					echo '<div class="post-preview__excerpt fs-6">';
 					$event->the_excerpt();
 					echo '</div>';
 				}
