@@ -1,16 +1,40 @@
 %btn {
-	border: 1px solid transparent;
-	border-radius: 0;
-	color: black;
-	transition: 0.3s;
-	text-decoration: none;
+	border: 2px solid transparent;
+	transition: all var(--transition-standard);
 
 	&:hover {
 		color: white;
 	}
+
 	&:focus-visible {
 		outline: var(--color-primary) 2px solid;
 		outline-offset: 2px;
-		border: 2px solid white;
+		border-color: white;
+	}
+}
+
+%diamond-button {
+	@extend %btn;
+	padding: 0.5rem 1rem;
+	transform: rotateZ(45deg);
+	border-color: white;
+
+	svg {
+		color: white;
+		transform: rotateZ(-45deg);
+		transition: 0.3s;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: white;
+		i {
+			color: black;
+		}
+
+		svg {
+			color: var(--bs-primary);
+		}
 	}
 }
