@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.2.0
+
+-   Adds a new ACF field to `/stay` to allow a user to upload property map image/pdf
+-   Refactor Buttons to reduce CSS in favor of customized Bootstrap classes
+
 ## v1.1.2
 
 -   Added console warning if CSS Custom Property `header-offset` isn't set with JS.

@@ -32,6 +32,6 @@ $news = new News( $post->ID );
 		<div class="fs-6 mb-3">
 			<?php $news->the_excerpt(); ?>
 		</div>
-		<a href="<?php the_permalink(); ?>" class="btn btn-default d-block align-self-start mt-auto align-self-start fs-5">Read More</a>
+		<a href="<?php the_permalink(); ?>" class="btn btn-outline-primary pb-2 d-block align-self-start mt-auto align-self-start fs-5">Read More</a>
 	</div>
 </li>

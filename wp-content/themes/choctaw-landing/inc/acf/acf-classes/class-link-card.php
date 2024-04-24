@@ -52,7 +52,7 @@ class Link_Card extends Card {
 		$markup .= $this->image->get_the_image( 'pb-3 card__image' );
 		$markup .= $this->get_the_content( $headline_element );
 		if ( $this->with_button ) {
-			$markup .= "<a href='{$this->link['url']}' class='btn btn-default mt-auto align-self-start fs-6' {$this->target}>{$this->link['title']}</a>";
+			$markup .= "<a href='{$this->link['url']}' class='btn btn-outline-primary pb-2 mt-auto align-self-start fs-6' {$this->target}>{$this->link['title']}</a>";
 		}
 		$markup .= '</div>';
 		return $markup;
