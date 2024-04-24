@@ -4,7 +4,7 @@
         "title": "Page Template — Blank",
         "fields": [
             {
-                "key": "field_65d78d56982ef",
+                "key": "field_660478b2c5591",
                 "label": "Page Content",
                 "name": "page_content",
                 "aria-label": "",
@@ -17,11 +17,10 @@
                     "class": "",
                     "id": ""
                 },
-                "show_in_graphql": 0,
                 "default_value": "",
                 "tabs": "all",
-                "toolbar": "full",
-                "media_upload": 1,
+                "toolbar": "basic",
+                "media_upload": 0,
                 "delay": 0
             }
         ],
@@ -42,10 +41,6 @@
         "hide_on_screen": "",
         "active": true,
         "description": "",
-        "show_in_rest": 0,
-        "show_in_graphql": 0,
-        "graphql_field_name": "pageTemplate—Blank",
-        "map_graphql_types_from_location_rules": 0,
-        "graphql_types": ""
+        "show_in_rest": 0
     }
 ]

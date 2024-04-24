@@ -128,6 +128,11 @@
                 {
                     "param": "page_template",
                     "operator": "!=",
+                    "value": "default"
+                },
+                {
+                    "param": "page_template",
+                    "operator": "!=",
                     "value": "page-templates\/page-blank.php"
                 }
             ]
@@ -142,10 +147,6 @@
         ],
         "active": true,
         "description": "",
-        "show_in_rest": 0,
-        "show_in_graphql": 0,
-        "graphql_field_name": "globalPageOptionHero",
-        "map_graphql_types_from_location_rules": 0,
-        "graphql_types": ""
+        "show_in_rest": 0
     }
 ]
