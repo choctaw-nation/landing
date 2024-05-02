@@ -1,0 +1,23 @@
+[
+    {
+        "key": "ui_options_page_66339d4af2d75",
+        "title": "Events Archive Settings",
+        "active": true,
+        "menu_order": 0,
+        "page_title": "Events Archive Settings",
+        "menu_slug": "events-archive-settings",
+        "parent_slug": "none",
+        "advanced_configuration": 1,
+        "icon_url": "dashicons-calendar-alt",
+        "menu_title": "",
+        "position": "",
+        "redirect": 0,
+        "description": "Settings for the Events Archive",
+        "update_button": "Update",
+        "updated_message": "Options Updated",
+        "capability": "edit_posts",
+        "data_storage": "options",
+        "post_id": "",
+        "autoload": 0
+    }
+]
