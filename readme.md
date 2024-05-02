@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.3.0
+
+-   Added a new Options Page (and fields) to power the Events Archive floating image
+
 ## v1.2.0
 
 -   Adds a new ACF field to `/stay` to allow a user to upload property map image/pdf
