@@ -8,23 +8,28 @@
 
 get_header();
 ?>
-<div class="container my-5 py-5">
-	<div class="container my-5 py-5">
+<div class="container py-5" style="margin-top: var(--header-offset)" ;>
+	<div class="row flex-row-reverse">
 		<?php if ( have_posts() ) : ?>
-		<section class="events-list__container">
+		<div class="col-lg-4 position-relative">
+			<figure class="ratio ratio-16x9 position-sticky top-0">an Image!</figure>
+		</div>
+		<div class="col-lg-8">
 			<h1 class="mb-5">Upcoming Events</h1>
-			<ol class="list-unstyled events-list">
+			<ul class="list-unstyled events-list">
 				<?php
 				while ( have_posts() ) {
 					the_post();
 					get_template_part( 'template-parts/events/content', 'event-preview' );
 				}
 				?>
-			</ol>
-			<?php else : ?>
+			</ul>
+		</div>
+		<?php else : ?>
+		<div class="col">
 			<p>No events found.</p>
-			<?php endif; ?>
-		</section>
+		</div>
+		<?php endif; ?>
 	</div>
 </div>
 <?php
