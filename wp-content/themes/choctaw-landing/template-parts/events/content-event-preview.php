@@ -10,7 +10,7 @@ use ChoctawNation\Events\Choctaw_Event;
 
 $event_details = get_field( 'event_details' );
 if ( $event_details ) {
-	$event = new Choctaw_Event( get_field( 'event_details' ), get_the_ID() );
+	$event = new Choctaw_Event( $event_details, get_the_ID() );
 } else {
 	return;
 }

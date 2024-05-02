@@ -10,36 +10,34 @@ use ChoctawNation\Events\Choctaw_Event;
 wp_enqueue_script( 'events-swiper' );
 wp_enqueue_style( 'events-swiper' );
 
-$featured_events = new WP_Query(
-	array(
-		'post_type'      => 'choctaw-events',
-		'posts_per_page' => 6,
-		'meta_key'       => 'event_details_time_and_date_start_date',
-		'orderby'        => 'meta_value_num',
-		'order'          => 'ASC',
-		'tax_query'      => array(
-			array(
-				'taxonomy' => 'post_tag',
-				'field'    => 'slug',
-				'terms'    => 'featured',
-			),
+$base_args            = array(
+	'post_type'      => 'choctaw-events',
+	'posts_per_page' => 6,
+	'meta_key'       => 'event_details_time_and_date_start_date',
+	'orderby'        => 'meta_value_num',
+	'order'          => 'ASC',
+);
+$featured_events_args = array(
+	...$base_args,
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'post_tag',
+			'field'    => 'slug',
+			'terms'    => 'featured',
 		),
-	)
+	),
 );
-$featured_events = $featured_events->posts;
-wp_reset_postdata();
-$further_events = new WP_Query(
-	array(
-		'post_type'      => 'choctaw-events',
-		'posts_per_page' => 6 - count( $featured_events ),
-		'meta_key'       => 'event_details_time_and_date_start_date',
-		'orderby'        => 'meta_value_num',
-		'order'          => 'ASC',
-		'post__not_in'   => wp_list_pluck( $featured_events, 'ID' ),
-	)
+$featured_events      = get_posts( $featured_events_args );
+$further_events_args  = array(
+	'posts_per_page' => 6 - count( $featured_events ),
+	'post__not_in'   => wp_list_pluck( $featured_events, 'ID' ),
+	...$base_args,
 );
-$all_events     = array_merge( $featured_events, $further_events->posts );
-if ( empty( $all_events ) ) {
+
+$further_events = get_posts( $further_events_args );
+$events         = array_merge( $featured_events, $further_events );
+
+if ( empty( $events ) ) {
 	return;
 }
 ?>
@@ -51,11 +49,11 @@ if ( empty( $all_events ) ) {
 		<div class="swiper col-10" id='events-swiper'>
 			<div class="swiper-wrapper">
 				<?php
-				foreach ( $all_events as $event ) :
+				foreach ( $events as $event ) :
 					$event   = is_array( $event ) ? $event['featured_event'] : $event;
 					$feature = new Choctaw_Event( get_field( 'event_details', $event->ID ), $event->ID );
 					?>
-				<div class="swiper-slide d-flex flex-column justify-content-center">
+				<div class="swiper-slide d-flex flex-column">
 					<?php
 					if ( has_post_thumbnail( $event ) ) {
 						echo "<figure class='ratio ratio-16x9'>" . get_the_post_thumbnail(
@@ -69,14 +67,13 @@ if ( empty( $all_events ) ) {
 
 					}
 					?>
-					<div class="d-flex flex-column justify-content-end h-100 event pb-2 w-100">
+					<div class="d-flex flex-column h-auto event pb-2 w-100">
 						<h3 class='event__title fs-5 fw-bold mb-1 text-uppercase'><?php $feature->the_name(); ?></h3>
 						<p class="event__meta fs-6 mb-0"><i class="text-primary fa-solid fa-calendar"></i>
 							<?php
 							$feature->the_dates( 'l, M j, Y' );
 							if ( $feature->has_time ) {
 								echo ! empty( $feature->get_the_times() ) ? ( ' • ' . $feature->get_the_times( 'g:iA' ) ) : '';
-
 							}
 							?>
 						</p>
@@ -92,12 +89,12 @@ if ( empty( $all_events ) ) {
 			<div class="swiper-button-next"></div>
 		</div>
 	</div>
-	<div class="row my-5">
-		<div class="col position-relative">
+	<div class="row position-relative mt-5">
+		<div class="col">
 			<div class="swiper-pagination"></div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row mt-3">
 		<div class="col text-center text-uppercase">
 			<a href="<?php echo get_post_type_archive_link( 'choctaw-events' ); ?>">View All Events <i class="fa-regular fa-circle-right"></i></a>
 		</div>
