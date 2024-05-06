@@ -63,7 +63,7 @@ class Hero_Section extends Generator {
 			'controls' => 0,
 			'hd'       => 1,
 			'autohide' => 1,
-			'loop'     => 1,
+			'loop'     => 0,
 			'muted'    => 1,
 			'autoplay' => 1,
 		);
