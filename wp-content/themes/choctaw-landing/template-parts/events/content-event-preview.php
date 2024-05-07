@@ -16,7 +16,7 @@ if ( $event_details ) {
 }
 ?>
 <li class="event-preview__container col p-3 d-flex h-auto">
-	<div class="event-preview border border-primary border-1 shadow d-flex flex-column h-100">
+	<div class="event-preview border border-primary border-1 shadow d-flex flex-column h-100 w-100">
 		<?php if ( has_post_thumbnail() ) : ?>
 		<div class="ratio ratio-16x9 mb-3">
 			<?php
