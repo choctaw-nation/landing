@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.4.0
+
+-   Added Room Types repeater fields on /meet-gather page
+
 ## v1.3.0
 
 -   Added a new Options Page (and fields) to power the Events Archive floating image

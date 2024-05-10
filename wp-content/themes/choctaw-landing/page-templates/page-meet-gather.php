@@ -33,7 +33,10 @@ if ( ! empty( $sections ) ) {
 		$two_col_section->the_section();
 	}
 }
-?>
+
+if ( have_rows( 'rooms' ) ) {
+	get_template_part( 'template-parts/content', 'room-details' );
+} ?>
 <?php $contact_form = get_field( 'contact_form' ); ?>
 <?php if ( $contact_form ) : ?>
 <section class="container my-4">
