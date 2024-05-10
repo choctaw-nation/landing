@@ -13,8 +13,8 @@
 		}
 	],
 	"scripts": {
-		"phpcs": "phpcs wp-content/themes/choctaw-landing/**/*.php",
-		"phpcbf": "phpcbf wp-content/themes/choctaw-landing/**/*.php"
+		"phpcs": "phpcs wp-content/themes/choctaw-landing/ --ignore=wp-content/themes/choctaw-landing/dist/ --extensions=php",
+		"phpcbf": "phpcbf wp-content/themes/choctaw-landing/ --ignore=wp-content/themes/choctaw-landing/dist/ --extensions=php"
 	},
 	"config": {
 		"allow-plugins": {

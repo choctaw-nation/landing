@@ -32,6 +32,10 @@ class Navwalker extends \Walker_Nav_Menu {
 	 */
 	protected $current_item;
 
+	/** Bootstrap Dropdown alignment values
+	 *
+	 * @var array $dropdown_menu_alignment_values
+	 */
 	protected $dropdown_menu_alignment_values = array(
 		'dropdown-menu-start',
 		'dropdown-menu-end',
