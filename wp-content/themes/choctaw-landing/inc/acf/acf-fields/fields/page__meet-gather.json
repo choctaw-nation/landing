@@ -279,6 +279,143 @@
                 ]
             },
             {
+                "key": "field_663e8c02d2e76",
+                "label": "Room Details",
+                "name": "rooms",
+                "aria-label": "",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "table",
+                "pagination": 0,
+                "min": 0,
+                "max": 0,
+                "collapsed": "",
+                "button_label": "Add Row",
+                "rows_per_page": 20,
+                "sub_fields": [
+                    {
+                        "key": "field_663e8c29d2e77",
+                        "label": "Room Name",
+                        "name": "room_name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_663e8c02d2e76"
+                    },
+                    {
+                        "key": "field_663e8c37d2e78",
+                        "label": "Square Footage",
+                        "name": "sq_ft",
+                        "aria-label": "",
+                        "type": "number",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "min": 1,
+                        "max": "",
+                        "placeholder": "",
+                        "step": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_663e8c02d2e76"
+                    },
+                    {
+                        "key": "field_663e8c8cd2e7b",
+                        "label": "Capacities",
+                        "name": "capacities",
+                        "aria-label": "",
+                        "type": "repeater",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "table",
+                        "pagination": 0,
+                        "min": 0,
+                        "max": 0,
+                        "collapsed": "",
+                        "button_label": "Add Row",
+                        "rows_per_page": 20,
+                        "sub_fields": [
+                            {
+                                "key": "field_663e8c9fd2e7c",
+                                "label": "Capacity Label",
+                                "name": "capacity_label",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "Conference \/ Boardroom",
+                                "prepend": "",
+                                "append": "",
+                                "parent_repeater": "field_663e8c8cd2e7b"
+                            },
+                            {
+                                "key": "field_663e8cb7d2e7d",
+                                "label": "Capacity",
+                                "name": "capacity",
+                                "aria-label": "",
+                                "type": "number",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "min": 1,
+                                "max": "",
+                                "placeholder": "",
+                                "step": "",
+                                "prepend": "",
+                                "append": "",
+                                "parent_repeater": "field_663e8c8cd2e7b"
+                            }
+                        ],
+                        "parent_repeater": "field_663e8c02d2e76"
+                    }
+                ]
+            },
+            {
                 "key": "field_66058167d5b52",
                 "label": "Contact Form",
                 "name": "contact_form",
