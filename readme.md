@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.1.3
+
+-   Fix booking form bg-image
+
 ## v1.1.2
 
 -   Added console warning if CSS Custom Property `header-offset` isn't set with JS.
