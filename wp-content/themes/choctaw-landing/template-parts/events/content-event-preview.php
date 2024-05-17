@@ -34,14 +34,14 @@ if ( $event_details ) {
 			<h2 class="post-preview__title fs-3 mb-0">
 				<?php the_title(); ?>
 			</h2>
-			<div class="post-preview__dates fs-6 mb-3">
-				<?php $event->the_dates( 'M j, Y' ); ?>
+			<div class="post-preview__dates fs-6 mb-3 fw-bold">
+				<?php $event->the_dates( 'M j, Y' ); ?> @
 				<?php $event->the_times( 'g:iA' ); ?>
 			</div>
 
 			<?php
 			if ( $event->has_venue ) {
-				echo '<p class="post-preview__location fw-bold fs-6">Venue: ';
+				echo '<p class="post-preview__location fs-6">Venue: ';
 				$event->the_venue_name();
 				echo '</p>';
 			}
