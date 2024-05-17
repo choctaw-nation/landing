@@ -104,5 +104,41 @@ get_template_part(
 	</div>
 </section>
 
-<?php
+<?php $property_map_fields = get_field( 'property_map' ); ?>
+<?php if ( ! empty( $property_map_fields['preview_image'] ) ) : ?>
+	<?php $property_map = new Image( $property_map_fields['preview_image'] ); ?>
+<section class="container my-5">
+	<div class="row row-gap-4">
+		<div class="col-lg-8 flex-grow-1">
+			<figure data-bs-toggle="modal" data-bs-target="#property-map-modal">
+				<?php $property_map->the_image( 'w-100 h-100 object-fit-contain' ); ?>
+			</figure>
+		</div>
+		<?php if ( ! empty( $property_map_fields['downloadable_pdf'] ) ) : ?>
+		<div class="col-lg-4 d-flex flex-column justify-content-center">
+			<a href="<?php echo $property_map_fields['downloadable_pdf']['url']; ?>" class='btn btn-primary text-capitalize fs-5 align-self-center align-self-lg-start' target='_blank'>
+				View Property Map (PDF)
+			</a>
+		</div>
+		<?php endif; ?>
+	</div>
+</section>
+<div class="modal fade" tabindex="-1" id="property-map-modal" aria-labelledby="property-map-modal-title">
+	<div class="modal-dialog modal-dialog-centered modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="property-map-modal-title">Property Map</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<?php $property_map->the_image( 'w-100 h-100 object-fit-contain' ); ?>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+	<?php
+endif;
 get_footer();

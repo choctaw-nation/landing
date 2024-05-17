@@ -286,7 +286,7 @@ class Featured_Eat {
 	public function get_the_mobile_anchors(): string {
 		$markup = "<p class='py-4 d-block d-md-none'>";
 		if ( $this->online_orders_link ) {
-			$markup .= "<a href='{$this->online_orders_link}' class='btn-default fs-6' target='_blank' rel='noopener noreferrer'>Order Online</a>";
+			$markup .= "<a href='{$this->online_orders_link}' class='btn btn-outline-primary pb-2 fs-6' target='_blank' rel='noopener noreferrer'>Order Online</a>";
 		}
 		$markup .= '</p>';
 		return $markup;

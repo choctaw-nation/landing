@@ -1,97 +1,63 @@
 @use "../abstracts/buttons";
 @use "bootstrap/scss/vendor/rfs" as rfs;
 
-.btn {
-	&-primary {
+$standard-buttons: ("primary", "secondary");
+@each $color in $standard-buttons {
+	.btn-#{$color} {
 		color: white;
-	}
-
-	&-white {
-		@extend %btn;
-		background: white;
-		border-color: white;
-	}
-
-	&-reserve {
-		@extend %btn;
-		color: var(--bs-secondary);
-		background: white;
-		height: 43px;
-		border: 2px solid white;
 
 		&:hover,
+		&:active,
 		&:focus {
-			border: 2px solid white;
+			background-color: white;
+			color: var(--bs-#{$color});
 		}
 	}
-
-	&-default {
-		@extend %btn;
-		color: var(--bs-primary);
-		border: 2px solid var(--bs-primary);
-		padding: 0.2rem 1rem 0.5rem;
-		font-weight: 500;
+	.btn-outline-#{$color} {
+		border-color: var(--bs-#{$color});
+		color: var(--bs-#{$color});
 
 		&:hover,
+		&:active,
 		&:focus {
-			background: var(--bs-primary);
+			background-color: var(--bs-#{$color});
 			color: white;
-			border: 2px solid var(--bs-primary);
 		}
 	}
+}
 
-	&-secondary {
-		@extend %btn;
-		color: white;
-		border: 2px solid white;
-		padding: 0.5rem 1rem;
-		font-weight: 500;
+.btn-reserve {
+	@extend %btn;
+	color: var(--bs-secondary);
+	background: white;
+	height: 43px;
+	border-color: white;
 
-		&:hover,
-		&:focus {
-			background: white;
-			color: var(--bs-primary);
-		}
-	}
-
-	&-diamond {
-		@extend %btn;
-		transform: rotateZ(45deg);
+	&:hover,
+	&:focus,
+	&:active {
 		border-color: white;
+	}
+}
+
+.btn-diamond {
+	@extend %diamond-button;
+
+	&--white {
+		@extend %diamond-button;
+		background-color: white;
 
 		svg {
-			color: white;
-			transform: rotateZ(-45deg);
-			transition: 0.3s;
+			color: var(--bs-primary);
 		}
 
 		&:hover,
-		&:focus {
-			background-color: white;
-			i {
-				color: black;
-			}
+		&:focus,
+		&:active {
+			background: var(--bs-primary);
 
 			svg {
-				color: var(--bs-primary);
-			}
-		}
-
-		&-white {
-			@extend .btn-diamond;
-			background-color: white;
-
-			svg {
-				color: var(--bs-primary);
-			}
-
-			&:hover,
-			&:focus {
-				background: var(--bs-primary);
-
-				svg {
-					color: white;
-				}
+				color: white;
 			}
 		}
 	}
@@ -101,15 +67,16 @@ input[type="submit"].gform_button.button {
 	@extend %btn;
 	color: var(--bs-primary);
 	background-color: transparent;
-	border: 2px solid var(--bs-primary);
+	border-color: var(--bs-primary);
 	padding: 0.2rem 1rem 0.5rem;
 	font-weight: 500;
-	@include rfs.font-size(1.2rem);
+	@include rfs.font-size(1.6rem);
 
 	&:hover,
-	&:focus {
-		background: var(--bs-primary);
+	&:focus,
+	&:active {
+		background-color: var(--bs-primary);
 		color: white;
-		border: 2px solid var(--bs-primary);
+		border-color: var(--bs-primary);
 	}
 }

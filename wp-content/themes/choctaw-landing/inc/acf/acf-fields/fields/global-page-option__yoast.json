@@ -1,0 +1,46 @@
+[
+    {
+        "key": "group_6526c3d39ab09",
+        "title": "Global Page Options - Yoast",
+        "fields": [
+            {
+                "key": "field_6526c3d3204f4",
+                "label": "Archive Content",
+                "name": "archive_content",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "Character Limit: 155 <a href=\"https:\/\/yoast.com\/meta-descriptions\/#:~:text=Keep%20it%20up%20to%20155%20characters,-The%20right%20length&text=You%20should%20take%20enough%20space,like%20in%20the%20example%20below.\" target=\"_blank\">Read Why<\/a>",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": 155,
+                "rows": "",
+                "placeholder": "",
+                "new_lines": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ]
+        ],
+        "menu_order": 10,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0
+    }
+]

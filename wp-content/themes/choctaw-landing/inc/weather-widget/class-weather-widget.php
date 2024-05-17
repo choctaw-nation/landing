@@ -129,7 +129,7 @@ class Weather_Widget extends API {
 
 	/** Sets `$this->data` to the Weather or sets `$this->error` to the error message */
 	private function the_weather() {
-		// $data = $this->get_test_data();
+		// $data = $this->get_test_data(); phpcs:ignore Squiz.PHP.CommentedOutCode.Found
 		$data = $this->get_weather_data();
 
 		if ( isset( $data ) && is_array( $data ) ) {

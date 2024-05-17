@@ -16,7 +16,7 @@ hr {
 	margin-top: var(--header-offset);
 
 	&__bg-container {
-		margin-top: 110px;
+		margin-top: var(--header-offset, 110px);
 		max-width: 1920px;
 	}
 

@@ -11,7 +11,9 @@ use ChoctawNation\News\News;
 
 wp_enqueue_script( 'cno-news' );
 get_header();
-$news = new News( get_the_ID(), array( 1076, 1074 ) );
+$nation_boilerplate_id  = 1021;
+$landing_boilerplate_id = 1022;
+$news                   = new News( get_the_ID(), array( $landing_boilerplate_id, $nation_boilerplate_id ) );
 
 ?>
 <article <?php post_class( array( 'article', 'container', 'mb-5', 'py-5' ) ); ?> id="<?php echo 'post-' . get_the_ID(); ?>" style="margin-top: var(--header-offset);">

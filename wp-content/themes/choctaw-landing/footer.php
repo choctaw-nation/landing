@@ -74,7 +74,7 @@
 </footer>
 
 <!-- To top button -->
-<a href="#" class="btn btn-diamond-white border-0 shadow top-button position-fixed zi-1020 mb-5">
+<a href="#" class="btn btn-diamond--white border-0 shadow top-button position-fixed zi-1020 mb-5">
 	<i class="fa-solid fa-chevron-up"></i>
 	<span class="visually-hidden-focusable">To top</span>
 </a>

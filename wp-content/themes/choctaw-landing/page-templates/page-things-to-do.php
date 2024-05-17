@@ -3,7 +3,6 @@
  * Template Name: Things To Do
  *
  * @package ChoctawNation
- * @since 0.2
  */
 
 use ChoctawNation\ACF\Card;

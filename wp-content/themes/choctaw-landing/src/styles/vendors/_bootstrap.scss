@@ -91,7 +91,25 @@ $offcanvas-color: white;
 
 // ================================================
 
+/**
+* Buttons
+*/
+
+$btn-border-width: 2px;
+
+$btn-padding-x: 1rem;
+$btn-padding-y: 0.32rem;
+
+$btn-font-weight: 500;
+
+// ================================================
+
+/**
+* Options
+*/
+
 $enable-dark-mode: false;
+$enable-rounded: false;
 
 // ================================================
 
