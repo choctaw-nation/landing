@@ -16,6 +16,10 @@ The WP Theme for the Choctaw Landing page.
 
 -   Adds a new ACF field to `/stay` to allow a user to upload property map image/pdf
 -   Refactor Buttons to reduce CSS in favor of customized Bootstrap classes
+-   
+## v1.1.3
+
+-   Fix booking form bg-image
 
 ## v1.1.2
 

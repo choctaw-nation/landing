@@ -9,7 +9,7 @@
 
 cno_enqueue_date_range_picker();
 ?>
-<form id="booking-bar" class="container position-relative overflow-hidden z-3">
+<form id="booking-bar" class="container position-relative overflow-hidden z-3 p-0">
 	<img src="
 	<?php
 	echo get_stylesheet_directory_uri() . '/img/bg-images/brown-basket-bg.webp';
