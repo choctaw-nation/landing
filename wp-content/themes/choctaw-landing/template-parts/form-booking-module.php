@@ -4,7 +4,6 @@
  * Powered by JS Libraries Moment, jQuery and Date Range Picker.
  *
  * @package ChoctawNation
- * @since 0.2
  */
 
 cno_enqueue_date_range_picker();

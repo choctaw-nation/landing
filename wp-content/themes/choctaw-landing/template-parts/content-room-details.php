@@ -15,7 +15,7 @@
 		</div>
 		<div class="row row-cols-1 row-cols-md-2 row-gap-4">
 			<?php while ( have_rows( 'rooms' ) ) : ?>
-			<?php the_row(); ?>
+				<?php the_row(); ?>
 			<div class='col'>
 				<div class="room h-100 w-100 border border-1 border-primary rounded-0 shadow p-3">
 					<h3 class="fs-4 mb-4"><?php the_sub_field( 'room_name' ); ?> (<?php the_sub_field( 'sq_ft' ); ?> sq. ft.)</h3>
