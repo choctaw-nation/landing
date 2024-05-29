@@ -29,6 +29,11 @@
 .mega-menu {
 	--bs-navbar-color: var(--bs-dark);
 
+	@include m.media-breakpoint-up(lg) {
+		display: flex;
+		align-items: center;
+	}
+
 	.dropdown-item.nav-link:hover {
 		color: var(--bs-secondary);
 	}
@@ -52,8 +57,19 @@
 
 	.btn-group {
 		width: 100%;
-		flex-wrap: wrap;
+		// flex-wrap: wrap;
 		column-gap: 10px;
+
+		@include m.media-breakpoint-down(lg) {
+			display: grid;
+			grid-template-columns: 140px 40px;
+
+			.mega-menu__container.show {
+				grid-row: 2 / 3;
+				grid-column: 1 / -1;
+			}
+		}
+
 		@include m.media-breakpoint-up(xl) {
 			column-gap: 0;
 		}

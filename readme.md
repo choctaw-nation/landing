@@ -8,6 +8,8 @@ The WP Theme for the Choctaw Landing page.
 
 -   Update weather widget bg
 -   Update nav spacing
+-   Refactor header offset function into a class and attach a method to the `window.resize` event
+-   Update booking bar bg
 
 ## v1.4.0
 

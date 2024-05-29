@@ -45,19 +45,19 @@ $favicon_base = get_stylesheet_directory_uri() . '/img/favicon';
 					);
 					?>
 			</div>
-			<nav id="nav-main" class="navbar navbar-expand-xl py-0">
-				<div class="container">
-					<a class="navbar-brand sm p-3" href="<?php echo esc_url( home_url() ); ?>">
+			<nav id="nav-main" class="navbar navbar-expand-lg">
+				<div class="container-xl">
+					<a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
 						<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo/logo.svg" alt="Choctaw Landing Logo" class="logo">
 					</a>
-					<button class="btn btn-diamond d-xl-none ms-1 ms-md-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar" aria-controls="offcanvas-navbar">
+					<button class="btn btn-diamond d-lg-none ms-1 ms-md-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar" aria-controls="offcanvas-navbar">
 						<i class="fa-solid fa-bars"></i>
 						<span class="visually-hidden-focusable">Menu</span>
 					</button>
 
 					<div class="offcanvas offcanvas-end pb-3 pb-lg-0" tabindex="-1" id="offcanvas-navbar" style='background-image: url(<?php echo wp_get_attachment_url( 16, 'full' ); ?>)'>
 						<div class="offcanvas-header border-bottom border-2 border-white">
-							<ul class="navbar-nav ">
+							<ul class="navbar-nav">
 								<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-18">
 									<a href="/" class="nav-link ">Home</a>
 								</li>
@@ -70,7 +70,7 @@ $favicon_base = get_stylesheet_directory_uri() . '/img/favicon';
 										array(
 											'theme_location' => 'main-menu',
 											'container'   => false,
-											'menu_class'  => 'navbar-nav ms-auto justify-content-xl-end align-items-xl-center',
+											'menu_class'  => 'navbar-nav ms-auto justify-content-xl-end align-items-xl-center column-gap-lg-2 column-gap-xl-3',
 											'menu_id'     => 'cno-navbar',
 											'fallback_cb' => '__return_false',
 											'depth'       => 3,
