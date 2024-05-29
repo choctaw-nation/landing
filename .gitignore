@@ -44,6 +44,7 @@ local-xdebuginfo.php
 /wp-content/mu-plugins/
 /wp-content/plugins
 /wp-content/themes/twenty*/
+/wp-content/themes/*/dist/
 /wp-content/upgrade/
 /wp-content/upgrade-temp-backup/
 /wp-content/uploads/
