@@ -77,7 +77,7 @@ class Mega_Menu extends Navwalker {
 		$output .= $this->get_the_anchor_element();
 		// if is title, add split-toggle dropdown button
 		if ( $this->is_top_level ) {
-			$output .= '<button type="button" class="btn dropdown-toggle dropdown-toggle-split ps-0 pe-3" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button>';
+			$output .= '<button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button>';
 		}
 	}
 
