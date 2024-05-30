@@ -4,6 +4,13 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.4.4
+
+-   Update weather widget bg
+-   Update nav spacing
+-   Refactor header offset function into a class and attach a method to the `window.resize` event
+-   Update booking bar bg
+
 ## v1.4.0
 
 -   Added Room Types repeater fields on /meet-gather page
@@ -16,7 +23,8 @@ The WP Theme for the Choctaw Landing page.
 
 -   Adds a new ACF field to `/stay` to allow a user to upload property map image/pdf
 -   Refactor Buttons to reduce CSS in favor of customized Bootstrap classes
--   
+-
+
 ## v1.1.3
 
 -   Fix booking form bg-image

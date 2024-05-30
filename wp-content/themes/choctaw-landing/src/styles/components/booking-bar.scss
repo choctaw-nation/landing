@@ -2,8 +2,6 @@
 @use "./daterangepicker";
 
 #booking-bar {
-	color: white;
-
 	@include m.media-breakpoint-up(lg) {
 		margin-top: -90px;
 	}

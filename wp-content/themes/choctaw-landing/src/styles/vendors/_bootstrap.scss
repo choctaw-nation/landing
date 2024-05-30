@@ -74,7 +74,12 @@ $navbar-light-hover-color: $yellow;
 $navbar-light-icon-color: white;
 $navbar-light-toggler-border-color: white;
 
-$navbar-nav-link-padding-x: 0.25rem;
+$navbar-nav-link-padding-x: 0rem;
+$navbar-padding-y: $spacer;
+$navbar-padding-x: $spacer * 0.5;
+
+$caret-width: 0.5rem;
+$caret-spacing: $caret-width * 1.6;
 
 // NAV
 $nav-link-font-size: 1.6rem;

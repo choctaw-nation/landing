@@ -1,15 +1,14 @@
 .banner-bg-header {
+	max-height: 60rem;
+
 	&__image {
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
 		max-width: 1920px;
-		inset: 0;
+		max-height: inherit;
+		object-fit: cover;
 
 		&--blur {
-			background-size: 105%;
-			background-position: center;
 			filter: blur(10px);
+			transform: scale(1.1);
 		}
 	}
 

@@ -80,7 +80,7 @@ class Hero_Section extends Generator {
 	 * Get the video markup with a responsive container
 	 */
 	private function get_the_video(): string {
-		return "<div class='ratio ratio-21x9 h-100 d-none d-md-block mx-auto'>{$this->video}</div>";
+		return "<div class='ratio ratio-21x9 h-100 d-none d-md-block'>{$this->video}</div>";
 	}
 
 	/**
@@ -92,7 +92,7 @@ class Hero_Section extends Generator {
 		$headline_classes[] = $has_media_bg ? "text-white {$this->headline_position}" : 'text-primary';
 		$headline_classes   = implode( ' ', $headline_classes );
 		$headline           = $this->headline ? "<h1 class='{$headline_classes}'>{$this->headline}</h1>" : '';
-		$markup             = "<header id='header-img'" . ( $has_media_bg ? " class='hero__bg-container'" : " class='position-relative d-flex justify-content-center align-items-center hero__bg-container' style='height:clamp(20vw,30vw,40vw);'" ) . '>';
+		$markup             = "<header id='header-img'" . ( $has_media_bg ? " class='hero__bg-container mx-auto'" : " class='position-relative d-flex justify-content-center align-items-center hero__bg-container' style='height:clamp(20vw,30vw,40vw);'" ) . '>';
 		$markup            .= $has_media_bg ? $this->get_the_hero_bg() : '';
 		$markup            .= "{$headline}</header>";
 		return $markup;
@@ -107,7 +107,7 @@ class Hero_Section extends Generator {
 			$markup  = $this->get_the_video();
 			$markup .= $this->image->get_the_image( 'd-md-none skip-lazy', false );
 		} elseif ( ! $this->video && $this->image ) {
-			$markup  = "<div class='ratio ratio-21x9 mx-auto'>";
+			$markup  = "<div class='ratio ratio-21x9'>";
 			$markup .= $this->image->get_the_image( 'hero__image object-fit-cover skip-lazy', false );
 			$markup .= '</div>';
 		} elseif ( $this->video && ! $this->image ) {
