@@ -11,6 +11,10 @@ The WP Theme for the Choctaw Landing page.
 -   Refactor header offset function into a class and attach a method to the `window.resize` event
 -   Update booking bar bg
 
+## v1.4.3
+
+-   If no events, hide the featured event swiper's `topo-bg` div.
+
 ## v1.4.0
 
 -   Added Room Types repeater fields on /meet-gather page
