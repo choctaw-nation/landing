@@ -83,6 +83,9 @@
 		}
 
 		@include m.media-breakpoint-down(lg) {
+			aspect-ratio: 1;
+			width: 3rem;
+
 			&::after {
 				margin-inline-start: 0;
 			}
