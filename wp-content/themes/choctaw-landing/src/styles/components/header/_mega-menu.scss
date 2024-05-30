@@ -56,12 +56,12 @@
 
 	.btn-group {
 		width: 100%;
-		// flex-wrap: wrap;
 		column-gap: 10px;
 
 		@include m.media-breakpoint-down(lg) {
 			display: grid;
-			grid-template-columns: 140px 40px;
+			grid-template-columns: 14rem 4rem;
+			justify-content: space-between;
 
 			.mega-menu__container.show {
 				grid-row: 2 / 3;
@@ -123,7 +123,7 @@
 						@include m.media-breakpoint-up(lg) {
 							border-right: 1px solid black;
 							height: 100%;
-							padding-inline-end: 1.6rem;
+							min-width: calc(100% + 1.6rem);
 						}
 					}
 				}
