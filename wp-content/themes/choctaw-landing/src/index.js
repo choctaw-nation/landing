@@ -1,4 +1,2 @@
-import calcHeaderOffset from './js/calcHeaderOffset';
+import './js/HeaderOffsetGenerator';
 import './styles/main.scss';
-
-calcHeaderOffset();

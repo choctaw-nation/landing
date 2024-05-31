@@ -1,6 +1,7 @@
 #weather-widget {
-	color: white;
-	padding: 1rem;
+	.bg-image {
+		width: calc(100% - var(--bs-gutter-x));
+	}
 
 	.bi {
 		--size: 2.25rem;
