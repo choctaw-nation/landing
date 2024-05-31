@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.5.0
+
+-   Added lightbox + carousel to `/stay` image gallery
+
 ## v1.4.3
 
 -   If no events, hide the featured event swiper's `topo-bg` div.
