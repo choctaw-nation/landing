@@ -4,6 +4,13 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.5.1
+
+-   Swap lightbox engine from bs5-lightbox to simplelightbox
+
+## v1.5.0
+
+-   Added lightbox + carousel to `/stay` image gallery
 
 ## v1.5.0
 

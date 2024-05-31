@@ -24,8 +24,8 @@
 	"homepage": "https://github.com/choctaw-nation/landing#readme",
 	"dependencies": {
 		"bootstrap": "^5.3.3",
-		"bs5-lightbox": "^1.8.3",
 		"daterangepicker": "^3.1.0",
+		"simplelightbox": "^2.14.3",
 		"swiper": "^11.1.4"
 	},
 	"devDependencies": {
