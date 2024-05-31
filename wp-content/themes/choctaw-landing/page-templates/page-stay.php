@@ -33,7 +33,7 @@ $room_images = get_field( 'room_images' );
 			<div class="swiper-wrapper">
 				<?php foreach ( $room_images as $room_image ) : ?>
 				<div class="swiper-slide">
-					<figure class="ratio ratio-1x1">
+					<a href="<?php echo $room_image['url']; ?>" class="ratio ratio-1x1 lightbox-init" data-gallery="rooms-gallery">
 						<?php
 						echo wp_get_attachment_image(
 							$room_image['ID'],
@@ -42,10 +42,11 @@ $room_images = get_field( 'room_images' );
 							array(
 								'loading' => 'lazy',
 								'class'   => 'object-fit-cover w-100 h-100',
+
 							)
 						);
 						?>
-					</figure>
+					</a>
 				</div>
 				<?php endforeach; ?>
 			</div>
