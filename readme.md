@@ -4,6 +4,14 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+
+## v1.4.4
+
+-   Update weather widget bg
+-   Update nav spacing
+-   Refactor header offset function into a class and attach a method to the `window.resize` event
+-   Update booking bar bg
+
 ## v1.4.3
 
 -   If no events, hide the featured event swiper's `topo-bg` div.

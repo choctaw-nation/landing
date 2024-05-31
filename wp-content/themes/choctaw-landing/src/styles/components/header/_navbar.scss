@@ -71,3 +71,24 @@
 		font-weight: bold;
 	}
 }
+
+#cno-navbar {
+	.dropdown-toggle-split {
+		border: 1px solid white;
+		display: grid;
+		place-content: center;
+
+		@include m.media-breakpoint-up(lg) {
+			border: none;
+		}
+
+		@include m.media-breakpoint-down(lg) {
+			aspect-ratio: 1;
+			width: 3rem;
+
+			&::after {
+				margin-inline-start: 0;
+			}
+		}
+	}
+}
