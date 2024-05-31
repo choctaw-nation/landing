@@ -33,7 +33,7 @@ $room_images = get_field( 'room_images' );
 			<div class="swiper-wrapper">
 				<?php foreach ( $room_images as $room_image ) : ?>
 				<div class="swiper-slide">
-					<a href="<?php echo $room_image['url']; ?>" class="ratio ratio-1x1 lightbox-init" data-gallery="rooms-gallery">
+					<figure class="ratio ratio-1x1 lightbox-init">
 						<?php
 						echo wp_get_attachment_image(
 							$room_image['ID'],
@@ -46,7 +46,7 @@ $room_images = get_field( 'room_images' );
 							)
 						);
 						?>
-					</a>
+					</figure>
 				</div>
 				<?php endforeach; ?>
 			</div>
@@ -55,11 +55,6 @@ $room_images = get_field( 'room_images' );
 			<div class="swiper-button-next"></div>
 		</div>
 		<?php endif; ?>
-	</div>
-	<div class="row d-lg-none justify-content-center">
-		<div class="col-auto text-center p-0">
-			<a href="https://book.rguest.com/onecart/wbe/offers/1180/choctaw-landing" class="btn btn-primary rounded-0 text-capitalize fs-5" target="_blank">Book Now</a>
-		</div>
 	</div>
 </section>
 
@@ -107,7 +102,7 @@ get_template_part(
 
 <?php $property_map_fields = get_field( 'property_map' ); ?>
 <?php if ( ! empty( $property_map_fields['preview_image'] ) ) : ?>
-	<?php $property_map = new Image( $property_map_fields['preview_image'] ); ?>
+<?php $property_map = new Image( $property_map_fields['preview_image'] ); ?>
 <section class="container my-5">
 	<div class="row row-gap-4">
 		<div class="col-lg-8 flex-grow-1">
@@ -140,6 +135,6 @@ get_template_part(
 		</div>
 	</div>
 </div>
-	<?php
+<?php
 endif;
 get_footer();
