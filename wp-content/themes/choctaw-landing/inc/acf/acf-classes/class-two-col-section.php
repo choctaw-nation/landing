@@ -58,6 +58,20 @@ class Two_Col_Section extends Generator {
 	 */
 	private bool $has_topography_bg;
 
+	/**
+	 * Whether or not the section has needs a modal added.
+	 *
+	 * @var bool $has_modal
+	 */
+	public bool $has_modal;
+
+	/**
+	 * The modal generator object.
+	 *
+	 * @var Modal_Generator $modal
+	 */
+	private Modal_Generator $modal;
+
 	/** Inits the class
 	 *
 	 * @param int    $post_id the post id

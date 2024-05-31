@@ -4,11 +4,13 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.6.0
+
+-   Added option to fire a modal on `/things-to-do` page
 
 ## v1.5.0
 
 -   Added lightbox + carousel to `/stay` image gallery
-
 
 ## v1.4.4
 
@@ -16,7 +18,6 @@ The WP Theme for the Choctaw Landing page.
 -   Update nav spacing
 -   Refactor header offset function into a class and attach a method to the `window.resize` event
 -   Update booking bar bg
-
 
 ## v1.4.3
 

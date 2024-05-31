@@ -277,6 +277,35 @@
                         "parent_repeater": "field_652825734edc6"
                     },
                     {
+                        "key": "field_6659d967c90eb",
+                        "label": "Link as Modal Trigger",
+                        "name": "has_modal",
+                        "aria-label": "",
+                        "type": "true_false",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_652825735147d",
+                                    "operator": "==",
+                                    "value": "1"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "Use Link as Modal Trigger?",
+                        "default_value": 0,
+                        "ui_on_text": "",
+                        "ui_off_text": "",
+                        "ui": 1,
+                        "parent_repeater": "field_652825734edc6"
+                    },
+                    {
                         "key": "field_6528257351480",
                         "label": "Link",
                         "name": "cta",
@@ -299,6 +328,117 @@
                             "id": ""
                         },
                         "return_format": "array",
+                        "parent_repeater": "field_652825734edc6"
+                    },
+                    {
+                        "key": "field_6659d9a2c90ed",
+                        "label": "Modal Sections",
+                        "name": "modal_sections",
+                        "aria-label": "",
+                        "type": "flexible_content",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_652825735147d",
+                                    "operator": "==",
+                                    "value": "1"
+                                },
+                                {
+                                    "field": "field_6659d967c90eb",
+                                    "operator": "==",
+                                    "value": "1"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layouts": {
+                            "layout_6659d9d815e07": {
+                                "key": "layout_6659d9d815e07",
+                                "name": "video",
+                                "label": "Video",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_6659d9eac90ef",
+                                        "label": "Vimeo Video",
+                                        "name": "vimeo_video",
+                                        "aria-label": "",
+                                        "type": "oembed",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "width": "",
+                                        "height": ""
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            },
+                            "layout_6659da16c90f1": {
+                                "key": "layout_6659da16c90f1",
+                                "name": "headline_text",
+                                "label": "Headline + Text",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_6659da2ec90f3",
+                                        "label": "Headline",
+                                        "name": "headline",
+                                        "aria-label": "",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "maxlength": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": ""
+                                    },
+                                    {
+                                        "key": "field_6659da40c90f4",
+                                        "label": "Text",
+                                        "name": "text",
+                                        "aria-label": "",
+                                        "type": "wysiwyg",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "tabs": "all",
+                                        "toolbar": "basic",
+                                        "media_upload": 0,
+                                        "delay": 0
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            }
+                        },
+                        "min": 1,
+                        "max": "",
+                        "button_label": "Add Section",
                         "parent_repeater": "field_652825734edc6"
                     }
                 ]
@@ -381,6 +521,7 @@
                                     "id": ""
                                 },
                                 "layout": "row",
+                                "parent_repeater": "field_652825734edc9",
                                 "sub_fields": [
                                     {
                                         "key": "field_652825735de15",
@@ -447,8 +588,7 @@
                                         "media_upload": 0,
                                         "delay": 0
                                     }
-                                ],
-                                "parent_repeater": "field_652825734edc9"
+                                ]
                             },
                             {
                                 "key": "field_6528262ad64ed",
@@ -465,6 +605,7 @@
                                     "id": ""
                                 },
                                 "layout": "row",
+                                "parent_repeater": "field_652825734edc9",
                                 "sub_fields": [
                                     {
                                         "key": "field_6528262ad64ee",
@@ -531,8 +672,7 @@
                                         "media_upload": 0,
                                         "delay": 0
                                     }
-                                ],
-                                "parent_repeater": "field_652825734edc9"
+                                ]
                             },
                             {
                                 "key": "field_6528262dd64f1",
@@ -549,6 +689,7 @@
                                     "id": ""
                                 },
                                 "layout": "row",
+                                "parent_repeater": "field_652825734edc9",
                                 "sub_fields": [
                                     {
                                         "key": "field_6528262dd64f2",
@@ -615,8 +756,7 @@
                                         "media_upload": 0,
                                         "delay": 0
                                     }
-                                ],
-                                "parent_repeater": "field_652825734edc9"
+                                ]
                             },
                             {
                                 "key": "field_65282632d64f5",
@@ -633,6 +773,7 @@
                                     "id": ""
                                 },
                                 "layout": "row",
+                                "parent_repeater": "field_652825734edc9",
                                 "sub_fields": [
                                     {
                                         "key": "field_65282632d64f6",
@@ -699,8 +840,7 @@
                                         "media_upload": 0,
                                         "delay": 0
                                     }
-                                ],
-                                "parent_repeater": "field_652825734edc9"
+                                ]
                             }
                         ]
                     }
