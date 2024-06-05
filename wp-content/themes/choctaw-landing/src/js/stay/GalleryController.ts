@@ -56,37 +56,19 @@ type LightboxOptions = {
 
 export default class GalleryController {
 	/**
-	 * The Gallery Container
+	 * The Offset % for the elements
 	 */
-	private gallery: HTMLElement | null = null;
-
-	/**
-	 * The Current Slide
-	 */
-	private slide: HTMLElement;
+	private OFFSET = 5 / 100;
 
 	private slidePosition: {
 		top: number;
 		left: number;
-	};
-
-	/**
-	 * The Current Slide Image Width
-	 */
-	private imageWidth: number;
-
-	/**
-	 * The Current Slide Image Height
-	 */
-	private imageHeight: number;
-
-	/**
-	 * The Viewport Size
-	 */
-	private viewport: {
 		width: number;
-		height: number;
 	};
+
+	private close: HTMLButtonElement;
+	private nav: NodeListOf< HTMLButtonElement >;
+	private slide: HTMLElement;
 
 	/**
 	 * Constructor
@@ -96,11 +78,12 @@ export default class GalleryController {
 	 */
 	constructor( selector: string, options?: LightboxOptions ) {
 		const lightbox = new SimpleLightBox( selector, options );
-		const events = [ 'shown', 'change' ];
+		const events = [ 'shown' ];
 		events.forEach( ( event ) => {
 			lightbox.on( event + '.simplelightbox', ( ev ) => {
 				try {
 					this.initProperties();
+					this.calcSlidePosition();
 					this.positionCloseButton();
 					this.positionNavIcons();
 				} catch ( err ) {
@@ -109,13 +92,9 @@ export default class GalleryController {
 			} );
 		} );
 		window.addEventListener( 'resize', () => {
-			try {
-				this.initProperties();
-				this.positionCloseButton();
-				this.positionNavIcons();
-			} catch ( err ) {
-				console.error( err );
-			}
+			this.calcSlidePosition();
+			this.positionCloseButton();
+			this.positionNavIcons();
 		} );
 		return lightbox;
 	}
@@ -124,104 +103,65 @@ export default class GalleryController {
 	 * Initialize the class properties with the current slide
 	 */
 	private initProperties() {
-		this.viewport = {
-			width: window.innerWidth,
-			height: window.innerHeight,
-		};
-
-		if ( ! this.gallery ) {
-			const gallery =
-				document.querySelector< HTMLElement >( '.simple-lightbox' );
-			if ( ! gallery ) {
-				throw new Error( 'No gallery container found' );
-			}
-			this.gallery = gallery;
+		const gallery =
+			document.querySelector< HTMLElement >( '.simple-lightbox' );
+		if ( ! gallery ) {
+			throw new Error( 'No gallery container found' );
 		}
-		const slide = this.gallery.querySelector< HTMLElement >( '.sl-image' );
+
+		const slide = gallery.querySelector< HTMLElement >( '.sl-image' );
 		if ( ! slide ) {
 			throw new Error( 'No slide found in the gallery container' );
 		}
 		this.slide = slide;
+		const close = gallery.querySelector< HTMLButtonElement >( '.sl-close' );
+		if ( ! close ) return;
+		this.close = close;
+		const nav = gallery.querySelectorAll< HTMLButtonElement >(
+			'.sl-navigation button'
+		);
+		if ( ! nav ) return;
+		this.nav = nav;
+	}
+
+	/**
+	 * Calculate the position of the slide
+	 */
+	private calcSlidePosition() {
 		this.slidePosition = {
-			top: slide.style.top
-				? parseInt( slide.style.top )
-				: slide.offsetTop,
-			left: slide.style.left
-				? parseInt( slide.style.left )
-				: slide.offsetLeft,
+			top: this.slide.style.top
+				? parseInt( this.slide.style.top )
+				: this.slide.offsetTop,
+			left: this.slide.style.left
+				? parseInt( this.slide.style.left )
+				: this.slide.offsetLeft,
+			width: this.slide.style.width
+				? parseInt( this.slide.style.width )
+				: this.slide.offsetWidth,
 		};
-		const image = slide.querySelector< HTMLImageElement >( 'img' );
-		if ( ! image ) {
-			throw new Error( 'No image found in the slide' );
-		}
-		this.imageWidth = image.width;
-		this.imageHeight = image.height;
 	}
 
 	/**
 	 * Position the close button
 	 */
 	private positionCloseButton() {
-		const buttonOffset = 5 / 100;
 		const buttonSize = 44;
-		const close =
-			this.gallery!.querySelector< HTMLButtonElement >( '.sl-close' );
-		if ( ! close ) return;
-
-		close.style.top = this.calcOffset(
-			this.slidePosition.top - this.imageHeight * buttonOffset,
-			buttonSize,
-			'height'
-		);
-		close.style.left = this.calcOffset(
-			this.slidePosition.left +
-				this.imageWidth +
-				this.imageWidth * buttonOffset,
-			buttonSize,
-			'width'
-		);
+		// this.close.style.top = `${ this.slidePosition.top - buttonSize }px`;
+		const left =
+			this.slidePosition.left + this.slidePosition.width + buttonSize;
+		const browser = window.innerWidth - buttonSize;
+		this.close.style.left = `${ left > browser ? browser : left }px`;
 	}
 
 	private positionNavIcons() {
-		const navOffset = 5 / 100;
-		const navSize = 22.609;
-		const nav = this.gallery!.querySelectorAll< HTMLButtonElement >(
-			'.sl-navigation button'
-		);
-		if ( ! nav ) return;
-		nav.forEach( ( button, index ) => {
+		const navSize = 30;
+		this.nav.forEach( ( button, index ) => {
 			const inset = [ 'left', 'right' ];
 			const idealPosition = this.slidePosition.left - navSize;
-			button.style[ inset[ index ] ] = this.calcOffset(
-				idealPosition,
-				navSize,
-				'width'
-			);
+			button.style[ inset[ index ] ] = `${
+				this.slidePosition.left - navSize
+			}px`;
 		} );
 		return '';
-	}
-
-	/**
-	 * Returns the proper position for elements so they never go beyond the viewport
-	 *
-	 * @param {number} position The position of the close button
-	 * @param {number} elSize The size of the element
-	 * @param {string} axis The axis to calculate the offset for
-	 * @returns {string} The offset for the element as px or %
-	 */
-	private calcOffset(
-		position: number,
-		elSize: number,
-		axis: 'width' | 'height'
-	): string {
-		const offset = 5 / 100;
-		const viewportOffset =
-			elSize + this.viewport[ axis ] - this.viewport[ axis ] * offset;
-		const positionActual = position - elSize;
-		if ( positionActual > viewportOffset || positionActual < 0 ) {
-			return `${ offset * 100 }%`;
-		} else {
-			return `${ positionActual }px`;
-		}
 	}
 }
