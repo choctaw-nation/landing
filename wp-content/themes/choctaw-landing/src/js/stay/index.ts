@@ -1,4 +1,3 @@
-import 'bootstrap/js/dist/modal';
 import { newSwiper } from '../vendors/swiperjs/swiper';
 import GalleryController from './GalleryController';
 
@@ -13,7 +12,5 @@ new GalleryController( '.swiper-slide .lightbox-init img', {
 		`<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>`,
 	],
 	sourceAttr: 'src',
-	widthRatio: 0.8,
-	heightRatio: 0.8,
 	captions: false,
 } );
