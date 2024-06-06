@@ -224,6 +224,7 @@ class Theme_Init {
 	public function cno_theme_support() {
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'title-tag' );
+		add_image_size( 'rooms-gallery-thumb', '850', '850' );
 
 		register_nav_menus(
 			array(
