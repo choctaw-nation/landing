@@ -5,3 +5,20 @@
 [data-bs-target="#property-map-modal"] {
 	cursor: pointer;
 }
+
+#rooms-gallery-modal {
+	--bs-modal-bg: transparent;
+	--bs-modal-border-width: 0;
+	--bs-modal-padding: 0;
+
+	--bs-modal-header-padding: 1.6rem 0;
+	--bs-modal-header-border-width: 0;
+
+	--swiper-navigation-color: white;
+	--swiper-navigation-sides-offset: 10px;
+
+	.btn-close {
+		filter: invert(1);
+		opacity: 1;
+	}
+}
