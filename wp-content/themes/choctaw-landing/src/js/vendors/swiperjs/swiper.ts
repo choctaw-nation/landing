@@ -5,7 +5,7 @@ import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss/a11y';
 import 'swiper/scss/keyboard';
-import { SwiperOptions } from 'swiper/types/swiper-options';
+import { SwiperOptions } from 'swiper/types';
 
 const defaultArgs = {
 	modules: [ Navigation, Pagination, A11y, Keyboard ],
@@ -38,7 +38,7 @@ const defaultArgs = {
  *
  * @param {HTMLElement} el the element to create a slider on
  * @param {SwiperOptions} args Swiper Options
- * @returns swiper instance
+ * @returns {Swiper} swiper instance
  */
 export function newSwiper(
 	el: HTMLElement,

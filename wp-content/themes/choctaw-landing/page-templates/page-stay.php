@@ -27,38 +27,77 @@ $room_images = get_field( 'room_images' );
 	<?php if ( $room_images ) : ?>
 	<div class="row">
 		<div class="col-1 position-relative p-0">
-			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-prev swiper-button-gallery-prev"></div>
 		</div>
 		<div class="swiper col-10" id="rooms-gallery">
 			<div class="swiper-wrapper">
 				<?php foreach ( $room_images as $room_image ) : ?>
 				<div class="swiper-slide">
-					<a href="<?php echo $room_image['url']; ?>" class="ratio ratio-1x1 lightbox-init lightbox-init" data-gallery="rooms-gallery">
+					<figure class="ratio ratio-1x1 lightbox-init mb-0">
 						<?php
 						echo wp_get_attachment_image(
 							$room_image['ID'],
-							'full',
+							'rooms-gallery-thumb',
 							false,
 							array(
-								'loading' => 'lazy',
-								'class'   => 'object-fit-cover w-100 h-100',
-
-
+								'loading'   => 'lazy',
+								'class'     => 'object-fit-cover w-100 h-100',
+								'data-hash' => 'room-' . $room_image['ID'],
 							)
 						);
 						?>
-					</a>
+					</figure>
 				</div>
 				<?php endforeach; ?>
 			</div>
 		</div>
 		<div class="col-1 position-relative p-0">
-			<div class="swiper-button-next"></div>
+			<div class="swiper-button-next swiper-button-gallery-next"></div>
 		</div>
 		<?php endif; ?>
 	</div>
 </section>
-
+<div class="modal fade" id="rooms-gallery-modal" tabindex="-1" aria-label="Rooms Gallery Lightbox" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-xl-down">
+		<div class="modal-content container">
+			<div class="modal-header row justify-content-center">
+				<div class="col-10 d-flex justify-content-end">
+					<button type="button" class="btn-close p-0" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+			</div>
+			<div class="modal-body row">
+				<div class="col-1 position-relative d-flex align-items-center">
+					<div class="swiper-button-modal-prev swiper-button-prev"></div>
+				</div>
+				<div class="swiper col-10 d-flex align-items-center" id="rooms-gallery-modal-swiper">
+					<div class="swiper-wrapper">
+						<?php foreach ( $room_images as $room_image ) : ?>
+						<div class="swiper-slide">
+							<figure class="ratio ratio-1x1">
+								<?php
+								echo wp_get_attachment_image(
+									$room_image['ID'],
+									'full',
+									false,
+									array(
+										'loading'   => 'lazy',
+										'class'     => 'object-fit-cover w-100 h-100',
+										'data-hash' => 'room-' . $room_image['ID'],
+									)
+								);
+								?>
+							</figure>
+						</div>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				<div class="col-1 position-relative d-flex align-items-center">
+					<div class="swiper-button-modal-next swiper-button-next"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <?php
 $amenities_group = get_field( 'amenities' );
 $banner          = new Image( $amenities_group['amenities_banner'] );
@@ -103,7 +142,7 @@ get_template_part(
 
 <?php $property_map_fields = get_field( 'property_map' ); ?>
 <?php if ( ! empty( $property_map_fields['preview_image'] ) ) : ?>
-<?php $property_map = new Image( $property_map_fields['preview_image'] ); ?>
+	<?php $property_map = new Image( $property_map_fields['preview_image'] ); ?>
 <section class="container my-5">
 	<div class="row row-gap-4">
 		<div class="col-lg-8 flex-grow-1">
@@ -136,6 +175,6 @@ get_template_part(
 		</div>
 	</div>
 </div>
-<?php
+	<?php
 endif;
 get_footer();
