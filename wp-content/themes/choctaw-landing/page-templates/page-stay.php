@@ -57,7 +57,7 @@ $room_images = get_field( 'room_images' );
 	</div>
 </section>
 <div class="modal fade" id="rooms-gallery-modal" tabindex="-1" aria-label="Rooms Gallery Lightbox" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-xl-down">
+	<div class="modal-dialog modal-dialog-centered modal-fullscreen">
 		<div class="modal-content container">
 			<div class="modal-header row justify-content-center">
 				<div class="col-10 d-flex justify-content-end">
@@ -140,7 +140,7 @@ get_template_part(
 
 <?php $property_map_fields = get_field( 'property_map' ); ?>
 <?php if ( ! empty( $property_map_fields['preview_image'] ) ) : ?>
-	<?php $property_map = new Image( $property_map_fields['preview_image'] ); ?>
+<?php $property_map = new Image( $property_map_fields['preview_image'] ); ?>
 <section class="container my-5">
 	<div class="row row-gap-4">
 		<div class="col-lg-8 flex-grow-1">
@@ -173,6 +173,6 @@ get_template_part(
 		</div>
 	</div>
 </div>
-	<?php
+<?php
 endif;
 get_footer();

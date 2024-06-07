@@ -8,12 +8,12 @@
 
 cno_enqueue_date_range_picker();
 ?>
-<form id="booking-bar" class="container position-relative z-3 p-0 text-white">
+<form id="booking-bar" class="container position-relative z-3 p-0 text-white overflow-hidden">
 	<img src="
 	<?php
 	echo get_stylesheet_directory_uri() . '/img/bg-images/brown-basket-bg.webp';
 	?>
-	" class="top-0 w-100 h-100 position-absolute z-n1" alt="" aria-hidden="true" loading="lazy" />
+	" class="top-0 w-100 h-auto position-absolute z-n1" alt="" aria-hidden="true" loading="lazy" />
 	<div class="row py-5 px-3 position-relative z-2 row-gap-3">
 		<div class="col-12 col-xl-4 d-flex flex-column align-items-center justify-content-end">
 			<h2 class="fw-bold text-uppercase text-white mb-0" aria-label="Stay with us">Stay With Us</h2>
