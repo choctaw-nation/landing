@@ -1,6 +1,6 @@
-import Swiper from 'swiper';
 import { newSwiper } from '../vendors/swiperjs/swiper';
 import Modal from 'bootstrap/js/dist/modal';
+import Swiper from 'swiper/types';
 
 const roomSwiper = document.getElementById( 'rooms-gallery' );
 
@@ -18,6 +18,10 @@ if ( roomSwiper ) {
 
 	if ( roomsGalleryModal ) {
 		roomSwiper.addEventListener( 'click', ( ev ) => {
+			const clickedSlide = ev.target
+				.closest( '.swiper-slide' )
+				.getAttribute( 'data-swiper-slide-index' );
+			// window.location.hash = slide;
 			const modal = new Modal( roomsGalleryModal );
 			modal.show();
 
@@ -33,7 +37,13 @@ if ( roomSwiper ) {
 						enabled: true,
 						onlyInViewport: true,
 					},
+					hashNavigation: {
+						watchState: true,
+						replaceState: true,
+					},
 				} ) as Swiper;
+				swiper.init();
+				swiper.activeIndex = parseInt( clickedSlide );
 				swiper.el.focus();
 			}
 		} );

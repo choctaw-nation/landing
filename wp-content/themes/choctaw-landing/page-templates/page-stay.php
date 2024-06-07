@@ -40,9 +40,8 @@ $room_images = get_field( 'room_images' );
 							'rooms-gallery-thumb',
 							false,
 							array(
-								'loading'   => 'lazy',
-								'class'     => 'object-fit-cover w-100 h-100',
-								'data-hash' => 'room-' . $room_image['ID'],
+								'loading' => 'lazy',
+								'class'   => 'object-fit-cover w-100 h-100',
 							)
 						);
 						?>
@@ -62,7 +61,7 @@ $room_images = get_field( 'room_images' );
 		<div class="modal-content container">
 			<div class="modal-header row justify-content-center">
 				<div class="col-10 d-flex justify-content-end">
-					<button type="button" class="btn-close p-0" data-bs-dismiss="modal" aria-label="Close"></button>
+					<button type="button" class="btn-close fs-5 p-0" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 			</div>
 			<div class="modal-body row">
@@ -80,9 +79,8 @@ $room_images = get_field( 'room_images' );
 									'full',
 									false,
 									array(
-										'loading'   => 'lazy',
-										'class'     => 'object-fit-cover w-100 h-100',
-										'data-hash' => 'room-' . $room_image['ID'],
+										'loading' => 'lazy',
+										'class'   => 'object-fit-cover w-100 h-100',
 									)
 								);
 								?>
