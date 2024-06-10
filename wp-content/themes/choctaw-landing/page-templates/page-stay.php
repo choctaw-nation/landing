@@ -27,32 +27,31 @@ $room_images = get_field( 'room_images' );
 	<?php if ( $room_images ) : ?>
 	<div class="row">
 		<div class="col-1 position-relative p-0">
-			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-prev swiper-button-gallery-prev"></div>
 		</div>
 		<div class="swiper col-10" id="rooms-gallery">
 			<div class="swiper-wrapper">
 				<?php foreach ( $room_images as $room_image ) : ?>
 				<div class="swiper-slide">
-					<a href="<?php echo $room_image['url']; ?>" class="ratio ratio-1x1 lightbox-init" data-gallery="rooms-gallery">
+					<figure class="ratio ratio-1x1 lightbox-init mb-0">
 						<?php
 						echo wp_get_attachment_image(
 							$room_image['ID'],
-							'full',
+							'rooms-gallery-thumb',
 							false,
 							array(
 								'loading' => 'lazy',
 								'class'   => 'object-fit-cover w-100 h-100',
-
 							)
 						);
 						?>
-					</a>
+					</figure>
 				</div>
 				<?php endforeach; ?>
 			</div>
 		</div>
 		<div class="col-1 position-relative p-0">
-			<div class="swiper-button-next"></div>
+			<div class="swiper-button-next swiper-button-gallery-next"></div>
 		</div>
 		<?php endif; ?>
 	</div>

@@ -1,0 +1,13 @@
+.sl-overlay {
+	background-color: black;
+}
+
+.simple-lightbox {
+	--swiper-navigation-color: white;
+	--swiper-navigation-sides-offset: 0px;
+
+	.sl-close {
+		color: white;
+		font-size: 6.4rem;
+	}
+}
