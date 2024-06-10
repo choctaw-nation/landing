@@ -271,17 +271,17 @@
                         },
                         "message": "Add Link",
                         "default_value": 0,
-                        "ui": 0,
-                        "ui_on_text": "",
-                        "ui_off_text": "",
+                        "ui_on_text": "Show Link",
+                        "ui_off_text": "Hide Link",
+                        "ui": 1,
                         "parent_repeater": "field_652825734edc6"
                     },
                     {
-                        "key": "field_6528257351480",
-                        "label": "Link",
-                        "name": "cta",
+                        "key": "field_6667349407d19",
+                        "label": "Modal Trigger",
+                        "name": "has_modal",
                         "aria-label": "",
-                        "type": "link",
+                        "type": "true_false",
                         "instructions": "",
                         "required": 0,
                         "conditional_logic": [
@@ -298,7 +298,214 @@
                             "class": "",
                             "id": ""
                         },
+                        "message": "Link Type",
+                        "default_value": 0,
+                        "ui_on_text": "Modal Trigger",
+                        "ui_off_text": "Link",
+                        "ui": 1,
+                        "parent_repeater": "field_652825734edc6"
+                    },
+                    {
+                        "key": "field_6528257351480",
+                        "label": "Link",
+                        "name": "cta",
+                        "aria-label": "",
+                        "type": "link",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_652825735147d",
+                                    "operator": "==",
+                                    "value": "1"
+                                },
+                                {
+                                    "field": "field_6667349407d19",
+                                    "operator": "!=",
+                                    "value": "1"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
                         "return_format": "array",
+                        "parent_repeater": "field_652825734edc6"
+                    },
+                    {
+                        "key": "field_666734f007d1b",
+                        "label": "Modal Settings",
+                        "name": "modal_settings",
+                        "aria-label": "",
+                        "type": "group",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_652825735147d",
+                                    "operator": "==",
+                                    "value": "1"
+                                },
+                                {
+                                    "field": "field_6667349407d19",
+                                    "operator": "==",
+                                    "value": "1"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_66673700ff494",
+                                "label": "Button Text",
+                                "name": "modal_trigger_text",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "Button text to launch modal",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "Learn More",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": ""
+                            },
+                            {
+                                "key": "field_6667350e07d1d",
+                                "label": "Modal Title",
+                                "name": "modal_title",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": ""
+                            },
+                            {
+                                "key": "field_6667351607d1e",
+                                "label": "Modal Body",
+                                "name": "is_video",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "Modal Contents",
+                                "default_value": 0,
+                                "ui_on_text": "Video",
+                                "ui_off_text": "Text",
+                                "ui": 1
+                            },
+                            {
+                                "key": "field_6667357807d20",
+                                "label": "Video",
+                                "name": "video",
+                                "aria-label": "",
+                                "type": "oembed",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_6667351607d1e",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "width": "",
+                                "height": ""
+                            },
+                            {
+                                "key": "field_666734f907d1c",
+                                "label": "Headline",
+                                "name": "headline",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_6667351607d1e",
+                                            "operator": "!=",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": ""
+                            },
+                            {
+                                "key": "field_6667356207d1f",
+                                "label": "Modal Content",
+                                "name": "modal_content",
+                                "aria-label": "",
+                                "type": "wysiwyg",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_6667351607d1e",
+                                            "operator": "!=",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "tabs": "all",
+                                "toolbar": "full",
+                                "media_upload": 1,
+                                "delay": 0
+                            }
+                        ],
                         "parent_repeater": "field_652825734edc6"
                     }
                 ]

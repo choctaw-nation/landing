@@ -10,7 +10,10 @@ use ChoctawNation\ACF\Hero_Section;
 use ChoctawNation\ACF\Image;
 use ChoctawNation\ACF\Title_Bar;
 use ChoctawNation\ACF\Two_Col_Section;
+use ChoctawNation\Asset_Loader;
+use ChoctawNation\Enqueue_Type;
 
+new Asset_Loader( 'thingsToDo', Enqueue_Type::script, 'pages' );
 get_header();
 $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $hero->the_hero();
@@ -33,9 +36,16 @@ $weather_widget_photo = new Image( get_field( 'weather_widget_photo' ) );
 <section id="featured-activities">
 	<?php
 	$featured_activities = get_field( 'featured_activities' );
+	$has_modal           = array();
 	foreach ( $featured_activities as $featured_activity ) {
 		$feature = new Two_Col_Section( get_the_ID(), $featured_activity, 'div' );
 		$feature->the_section();
+		if ( $feature->has_modal ) {
+			$has_modal[] = true;
+		}
+	}
+	if ( ! empty( $has_modal ) ) {
+		get_template_part( 'template-parts/content', 'modal' );
 	}
 	?>
 </section>

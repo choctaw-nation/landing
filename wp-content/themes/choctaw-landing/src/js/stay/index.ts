@@ -1,6 +1,6 @@
 import { newSwiper } from '../vendors/swiperjs/swiper';
 import Modal from 'bootstrap/js/dist/modal';
-import Swiper from 'swiper/types';
+import { Swiper } from 'swiper/types';
 
 const roomSwiper = document.getElementById( 'rooms-gallery' );
 

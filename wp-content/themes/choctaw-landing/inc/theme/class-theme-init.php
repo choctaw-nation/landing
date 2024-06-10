@@ -34,6 +34,7 @@ class Theme_Init {
 			'hero-section',
 			'mega-menu-content',
 			'title-bar',
+			'modal-generator',
 			'two-col-section',
 			'full-width-section',
 			'mega-menu-content',

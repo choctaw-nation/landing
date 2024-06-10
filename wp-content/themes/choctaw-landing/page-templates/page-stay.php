@@ -111,6 +111,7 @@ get_template_part(
 <section id='featured-amenities' class="container-fluid gx-0">
 	<?php
 	$featured_amenities = $amenities_group['featured_amenities'];
+
 	foreach ( $featured_amenities as $featured_amenity ) {
 		$feature = new Two_Col_Section( get_the_ID(), $featured_amenity, 'div' );
 		$feature->the_section();
@@ -140,7 +141,7 @@ get_template_part(
 
 <?php $property_map_fields = get_field( 'property_map' ); ?>
 <?php if ( ! empty( $property_map_fields['preview_image'] ) ) : ?>
-<?php $property_map = new Image( $property_map_fields['preview_image'] ); ?>
+	<?php $property_map = new Image( $property_map_fields['preview_image'] ); ?>
 <section class="container my-5">
 	<div class="row row-gap-4">
 		<div class="col-lg-8 flex-grow-1">
@@ -173,6 +174,6 @@ get_template_part(
 		</div>
 	</div>
 </div>
-<?php
+	<?php
 endif;
 get_footer();
