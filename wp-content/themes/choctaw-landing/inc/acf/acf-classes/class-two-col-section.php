@@ -282,7 +282,7 @@ class Two_Col_Section extends Generator {
 			'mobile'  => 'btn btn-outline-primary pb-2 fs-6',
 		);
 		if ( $this->has_modal ) {
-			$link_classes['desktop'] .= ' border-0 bg-transparent fs-6 fw-medium text-primary';
+			$link_classes['desktop'] .= ' border-0 bg-transparent fw-medium text-primary';
 		}
 		return "<{$element} class='{$link_classes[$type]}'{$link_attributes}>{$text}</{$element}>";
 	}
