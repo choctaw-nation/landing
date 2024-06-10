@@ -56,11 +56,6 @@ $room_images = get_field( 'room_images' );
 		</div>
 		<?php endif; ?>
 	</div>
-	<div class="row d-lg-none justify-content-center">
-		<div class="col-auto text-center p-0">
-			<a href="https://book.rguest.com/onecart/wbe/offers/1180/choctaw-landing" class="btn btn-primary rounded-0 text-capitalize fs-5" target="_blank">Book Now</a>
-		</div>
-	</div>
 </section>
 
 <?php
@@ -78,6 +73,7 @@ get_template_part(
 <section id='featured-amenities' class="container-fluid gx-0">
 	<?php
 	$featured_amenities = $amenities_group['featured_amenities'];
+
 	foreach ( $featured_amenities as $featured_amenity ) {
 		$feature = new Two_Col_Section( get_the_ID(), $featured_amenity, 'div' );
 		$feature->the_section();
