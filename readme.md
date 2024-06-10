@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.6.0
+
+-   Added ability to fire a modal on `/things-to-do` featured sections
+
 ## v1.5.0
 
 -   Added lightbox + carousel to `/stay` image gallery
