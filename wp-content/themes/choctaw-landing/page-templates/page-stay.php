@@ -56,7 +56,46 @@ $room_images = get_field( 'room_images' );
 		<?php endif; ?>
 	</div>
 </section>
-
+<div class="modal fade" id="rooms-gallery-modal" tabindex="-1" aria-label="Rooms Gallery Lightbox" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-fullscreen">
+		<div class="modal-content container">
+			<div class="modal-header row justify-content-center">
+				<div class="col-10 d-flex justify-content-end">
+					<button type="button" class="btn-close fs-5 p-0" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+			</div>
+			<div class="modal-body row">
+				<div class="col-1 position-relative d-flex align-items-center">
+					<div class="swiper-button-modal-prev swiper-button-prev"></div>
+				</div>
+				<div class="swiper col-10 d-flex align-items-center" id="rooms-gallery-modal-swiper">
+					<div class="swiper-wrapper">
+						<?php foreach ( $room_images as $room_image ) : ?>
+						<div class="swiper-slide">
+							<figure class="ratio ratio-1x1">
+								<?php
+								echo wp_get_attachment_image(
+									$room_image['ID'],
+									'full',
+									false,
+									array(
+										'loading' => 'lazy',
+										'class'   => 'object-fit-cover w-100 h-100',
+									)
+								);
+								?>
+							</figure>
+						</div>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				<div class="col-1 position-relative d-flex align-items-center">
+					<div class="swiper-button-modal-next swiper-button-next"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <?php
 $amenities_group = get_field( 'amenities' );
 $banner          = new Image( $amenities_group['amenities_banner'] );
