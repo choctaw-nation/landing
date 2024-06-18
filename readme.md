@@ -7,6 +7,7 @@ The WP Theme for the Choctaw Landing page.
 ## v1.6.0
 
 -   Added ability to fire a modal on `/things-to-do` featured sections
+-   Added [new image sizes](https://github.com/choctaw-nation/landing/wiki/Images) and updated classes to use them
 
 ## v1.5.0
 

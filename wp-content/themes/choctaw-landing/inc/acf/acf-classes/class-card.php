@@ -27,7 +27,7 @@ class Card extends Generator {
 	 * @param array $acf the acf array
 	 */
 	protected function init_props( array $acf ) {
-		$this->set_the_image( $acf['image'] );
+		$this->set_the_image( $acf['image'],'card' );
 		$this->headline    = empty( $acf['headline'] ) ? null : esc_textarea( $acf['headline'] );
 		$this->subheadline = empty( $acf['subheadline'] ) ? null : acf_esc_html( $acf['subheadline'] );
 	}

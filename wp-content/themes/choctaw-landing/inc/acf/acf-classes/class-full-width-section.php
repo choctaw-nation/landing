@@ -15,7 +15,7 @@ class Full_Width_Section extends Two_Col_Section {
 	 * @param array $acf the ACF fields
 	 */
 	protected function init_props( array $acf ) {
-		$this->set_the_image( $acf['image'] );
+		$this->set_the_image( $acf['image'], 'banner' );
 		$this->headline    = esc_textarea( $acf['headline'] );
 		$this->subheadline = acf_esc_html( $acf['subheadline'] );
 		$this->has_cta     = $acf['has_cta'];
