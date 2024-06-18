@@ -35,6 +35,13 @@ class Hero_Section extends Generator {
 	 */
 	private ?string $video;
 
+	/**
+	 * The mobile hero image
+	 *
+	 * @var ?Image $mobile_image
+	 */
+	private ?Image $mobile_hero;
+
 	// phpcs:ignore
 	protected function init_props( array $acf ) {
 		$this->headline = empty( $acf['headline'] ) ? null : acf_esc_html( $acf['headline'] );
@@ -42,11 +49,7 @@ class Hero_Section extends Generator {
 		if ( $this->video ) {
 			$this->handle_video_params();
 		}
-		if ( ! empty( $acf['image'] ) ) {
-			$this->set_the_image( $acf['image'] );
-		} else {
-			$this->image = null;
-		}
+		$this->set_images( $acf );
 		$this->headline_position = 'position-absolute z-3 center';
 	}
 
@@ -77,10 +80,36 @@ class Hero_Section extends Generator {
 	}
 
 	/**
+	 * Set the image properties
+	 *
+	 * @param array $acf the ACF fields
+	 */
+	private function set_images( array $acf ): void {
+		$this->image       = null;
+		$this->mobile_hero = null;
+		$props             = array(
+			'image'        => array(
+				'name' => 'image',
+				'size' => 'hero-desktop',
+			),
+			'mobile_image' => array(
+				'name' => 'mobile_hero',
+				'size' => 'full',
+			),
+		);
+		foreach ( $props as $acf_key => $prop ) {
+			$prop_name = $prop['name'];
+			if ( ! empty( $acf[ $acf_key ] ) ) {
+				$this->$prop_name = new Image( $acf[ $acf_key ], $prop['size'] );
+			}
+		}
+	}
+
+	/**
 	 * Get the video markup with a responsive container
 	 */
 	private function get_the_video(): string {
-		return "<div class='ratio ratio-21x9 h-100 d-none d-md-block'>{$this->video}</div>";
+		return $this->video;
 	}
 
 	/**
@@ -102,17 +131,16 @@ class Hero_Section extends Generator {
 	 * Get the hero background markup. Returns a video, an image, both, or a blank container with a bg color.
 	 */
 	private function get_the_hero_bg(): string {
-		$markup = '';
+		$markup = "<div class='ratio ratio-21x9'>";
 		if ( $this->video && $this->image ) {
-			$markup  = $this->get_the_video();
+			$markup .= $this->get_the_video();
 			$markup .= $this->image->get_the_image( 'd-md-none skip-lazy', false );
 		} elseif ( ! $this->video && $this->image ) {
-			$markup  = "<div class='ratio ratio-21x9'>";
 			$markup .= $this->image->get_the_image( 'hero__image object-fit-cover skip-lazy', false );
-			$markup .= '</div>';
 		} elseif ( $this->video && ! $this->image ) {
 			$markup = $this->get_the_video();
 		}
+		$markup .= '</div>';
 		return $markup;
 	}
 

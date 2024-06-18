@@ -45,8 +45,9 @@ abstract class Generator {
 	 * Sets the class property $image to a new ACF_Image
 	 *
 	 * @param array|false $image the ACF Image array
+	 * @param string      $size [optional] the image size (Default 'full')
 	 */
-	protected function set_the_image( $image ) {
-		$this->image = is_array( $image ) ? new Image( $image ) : null;
+	protected function set_the_image( $image, string $size = 'full' ) {
+		$this->image = is_array( $image ) ? new Image( $image, $size ) : null;
 	}
 }

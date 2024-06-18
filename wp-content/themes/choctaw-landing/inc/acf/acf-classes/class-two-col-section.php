@@ -93,7 +93,7 @@ class Two_Col_Section extends Generator {
 		if ( empty( $acf['image'] ) ) {
 			$this->image = null;
 		} else {
-			$this->set_the_image( $acf['image'] );
+			$this->set_the_image( $acf['image'], 'two-col' );
 
 		}
 		$this->headline    = esc_textarea( $acf['headline'] );
