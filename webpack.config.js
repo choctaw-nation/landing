@@ -9,7 +9,7 @@ const THEME_DIR = `/wp-content/themes/${ THEME_NAME }`;
  *
  * !Be sure to import page scss in these files!
  */
-const appNames = [ 'stay' ];
+const appNames = [ 'stay', 'things-to-do' ];
 
 /**
  * For SCSS files (no leading `_`)

@@ -71,21 +71,19 @@ $room_images = get_field( 'room_images' );
 				<div class="swiper col-10 d-flex align-items-center" id="rooms-gallery-modal-swiper">
 					<div class="swiper-wrapper">
 						<?php foreach ( $room_images as $room_image ) : ?>
-						<div class="swiper-slide">
-							<figure class="ratio ratio-1x1">
-								<?php
+						<figure class="swiper-slide mb-0 d-flex flex-column justify-content-center ratio ratio-1x1">
+							<?php
 								echo wp_get_attachment_image(
 									$room_image['ID'],
-									'full',
+									'container-swiper',
 									false,
 									array(
 										'loading' => 'lazy',
-										'class'   => 'object-fit-cover w-100 h-100',
+										'class'   => 'object-fit-scale w-100 h-auto',
 									)
 								);
-								?>
-							</figure>
-						</div>
+							?>
+						</figure>
 						<?php endforeach; ?>
 					</div>
 				</div>
@@ -111,6 +109,7 @@ get_template_part(
 <section id='featured-amenities' class="container-fluid gx-0">
 	<?php
 	$featured_amenities = $amenities_group['featured_amenities'];
+
 	foreach ( $featured_amenities as $featured_amenity ) {
 		$feature = new Two_Col_Section( get_the_ID(), $featured_amenity, 'div' );
 		$feature->the_section();
@@ -140,7 +139,7 @@ get_template_part(
 
 <?php $property_map_fields = get_field( 'property_map' ); ?>
 <?php if ( ! empty( $property_map_fields['preview_image'] ) ) : ?>
-<?php $property_map = new Image( $property_map_fields['preview_image'] ); ?>
+	<?php $property_map = new Image( $property_map_fields['preview_image'] ); ?>
 <section class="container my-5">
 	<div class="row row-gap-4">
 		<div class="col-lg-8 flex-grow-1">
@@ -173,6 +172,6 @@ get_template_part(
 		</div>
 	</div>
 </div>
-<?php
+	<?php
 endif;
 get_footer();

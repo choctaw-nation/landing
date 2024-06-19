@@ -34,6 +34,7 @@ class Theme_Init {
 			'hero-section',
 			'mega-menu-content',
 			'title-bar',
+			'modal-generator',
 			'two-col-section',
 			'full-width-section',
 			'mega-menu-content',
@@ -224,14 +225,35 @@ class Theme_Init {
 	public function cno_theme_support() {
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'title-tag' );
-		add_image_size( 'rooms-gallery-thumb', '850', '850' );
-
+		$this->register_image_sizes();
 		register_nav_menus(
 			array(
 				'main-menu'   => 'Main Menu',
 				'footer-menu' => 'Footer Menu',
 			)
 		);
+	}
+
+	/**
+	 * Registers image sizes
+	 */
+	private function register_image_sizes(): void {
+		$image_sizes = array(
+			'two-col'             => array( 1392 ),
+			'rooms-gallery-thumb' => array( 850 ),
+			'card'                => array( 1038 ),
+			'container-swiper'    => array( 1594 ),
+			'banner'              => array( 3840, 1200 ), // 16:5
+			'hero-desktop'        => array( 3840, 1646 ), // 21:9
+		);
+
+		foreach ( $image_sizes as $name => $size ) {
+			if ( count( $size ) === 1 ) {
+				add_image_size( $name, $size[0], $size[0] );
+			} else {
+				add_image_size( $name, $size[0], $size[1] );
+			}
+		}
 	}
 
 	/** Remove post type support from posts types. */

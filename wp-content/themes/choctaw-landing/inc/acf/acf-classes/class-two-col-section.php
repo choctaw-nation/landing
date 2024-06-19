@@ -58,6 +58,20 @@ class Two_Col_Section extends Generator {
 	 */
 	private bool $has_topography_bg;
 
+	/**
+	 * Whether or not the section has needs a modal added.
+	 *
+	 * @var bool $has_modal
+	 */
+	public bool $has_modal;
+
+	/**
+	 * The modal generator object.
+	 *
+	 * @var Modal_Generator $modal
+	 */
+	private Modal_Generator $modal;
+
 	/** Inits the class
 	 *
 	 * @param int    $post_id the post id
@@ -79,7 +93,7 @@ class Two_Col_Section extends Generator {
 		if ( empty( $acf['image'] ) ) {
 			$this->image = null;
 		} else {
-			$this->set_the_image( $acf['image'] );
+			$this->set_the_image( $acf['image'], 'two-col' );
 
 		}
 		$this->headline    = esc_textarea( $acf['headline'] );
@@ -87,6 +101,17 @@ class Two_Col_Section extends Generator {
 		$this->has_cta     = $acf['has_cta'];
 		if ( $acf['has_cta'] ) {
 			$this->cta = $acf['cta'];
+			if ( isset( $acf['has_modal'] ) ) {
+				$this->has_modal = $acf['has_modal'];
+				if ( $this->has_modal ) {
+					$this->modal = new Modal_Generator( $acf['modal_settings'] );
+				}
+			} else {
+				$this->has_modal = false;
+			}
+		} else {
+			$this->cta       = array();
+			$this->has_modal = false;
 		}
 		$this->should_reverse    = $acf['should_reverse'];
 		$this->has_topography_bg = $acf['has_topography_bg'];
@@ -233,17 +258,59 @@ class Two_Col_Section extends Generator {
 	 * @return string - The HTML markup for the CTA.
 	 */
 	protected function get_the_cta(): string {
-		$href   = esc_url( $this->cta['url'] );
-		$text   = esc_textarea( $this->cta['title'] );
-		$target = $this->cta['target'];
-		// desktop
-		$markup = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' loading='lazy' aria-hidden='true' alt='' />";
-
-		$desktop_link_class = 'arrow-link fs-5 fw-medium z-1';
-		$markup            .= "<a href='{$href}' class='{$desktop_link_class}'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
-		// mobile
-		$mobile_link_class = 'btn btn-outline-primary pb-2 fs-6';
-		$markup           .= "<p class='py-4 d-block d-md-none'><a href='{$href}' class='{$mobile_link_class}'" . ( empty( $target ) ? '' : "target='{$target}'" ) . ">{$text}</a></p>";
+		$markup  = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' loading='lazy' aria-hidden='true' alt='' />";
+		$markup .= $this->get_the_link( 'desktop' );
+		$markup .= '</p>';
+		$markup .= "<p class='py-4 d-block d-md-none'>";
+		$markup .= $this->get_the_link( 'mobile' );
+		$markup .= '</p>';
 		return $markup;
+	}
+
+	/**
+	 * Generate the HTML markup for the link element.
+	 *
+	 * @param string $type The type of link ('desktop' or 'mobile').
+	 * @return string The HTML markup for the link.
+	 */
+	private function get_the_link( string $type ): string {
+		$link_attributes = $this->get_the_attributes();
+		$text            = $this->has_modal ? $this->modal->modal_trigger_text : esc_textarea( $this->cta['title'] );
+		$element         = $this->has_modal ? 'button' : 'a';
+		$link_classes    = array(
+			'desktop' => 'arrow-link fs-5 fw-medium z-1',
+			'mobile'  => 'btn btn-outline-primary pb-2 fs-6',
+		);
+		if ( $this->has_modal ) {
+			$link_classes['desktop'] .= ' border-0 bg-transparent fw-medium text-primary';
+		}
+		return "<{$element} class='{$link_classes[$type]}'{$link_attributes}>{$text}</{$element}>";
+	}
+
+	/**
+	 * Generate the HTML markup for the link attributes.
+	 *
+	 * @return string The HTML markup for the link attributes.
+	 */
+	private function get_the_attributes(): string {
+		$link_attributes = array();
+		if ( $this->has_modal ) {
+			$link_attributes['role']                = 'button';
+			$link_attributes['data-bs-toggle']      = 'modal';
+			$link_attributes['data-bs-target']      = '#the-modal';
+			$link_attributes['data-modal-title']    = $this->modal->modal_title;
+			$link_attributes['data-modal-headline'] = $this->modal->headline;
+			$link_attributes['data-modal-content']  = $this->modal->modal_content;
+			$link_attributes['data-modal-video']    = $this->modal->video;
+
+		} else {
+			$link_attributes['href']   = esc_url( $this->cta['url'] );
+			$link_attributes['target'] = $this->cta['target'];
+		}
+		$attributes_str = '';
+		foreach ( $link_attributes as $attr => $value ) {
+			$attributes_str .= " {$attr}='" . esc_attr( $value ) . "'";
+		}
+		return $attributes_str;
 	}
 }
