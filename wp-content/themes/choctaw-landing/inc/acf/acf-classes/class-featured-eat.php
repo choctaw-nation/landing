@@ -122,8 +122,8 @@ class Featured_Eat {
 	 * @param array $acf the ACF fields
 	 */
 	private function set_the_meta( array $acf ) {
-		$this->menu_link           = empty( $acf['menu_link'] ) ? null : esc_url( $acf['menu_link'] );
-		$this->online_orders_link  = empty( $acf['online_orders_link'] ) ? null : esc_url( $acf['online_orders_link'] );
+		$this->menu_link           = empty( $acf['menu_link'] ) ? null : trailingslashit( esc_url( $acf['menu_link'] ) );
+		$this->online_orders_link  = empty( $acf['online_orders_link'] ) ? null : trailingslashit( esc_url( $acf['online_orders_link'] ) );
 		$this->food_genre          = empty( $acf['food_genre'] ) ? null : esc_textarea( $acf['food_genre'] );
 		$this->has_cta             = ! empty( $acf['online_orders_link'] );
 		$this->col_2_content_class = $this->has_cta ? 'col-md-9 col-xl-10' : 'col-12';

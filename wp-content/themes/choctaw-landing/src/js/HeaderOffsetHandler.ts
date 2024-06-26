@@ -1,7 +1,7 @@
 /**
  * Calculates the height of the header and sets a CSS variable (`--header-offset`) with the value.
  */
-new ( class HeaderOffsetGenerator {
+new ( class HeaderOffsetHandler {
 	/**
 	 * The header element to calculate the offset from.
 	 */
@@ -13,6 +13,11 @@ new ( class HeaderOffsetGenerator {
 	private defaultOffset = 130;
 
 	/**
+	 * The calculated height of the header (#masthead).
+	 */
+	private headerHeight: number;
+
+	/**
 	 * Creates a new instance of the HeaderOffsetGenerator class.
 	 */
 	constructor() {
@@ -20,6 +25,9 @@ new ( class HeaderOffsetGenerator {
 		if ( masthead ) {
 			this.masthead = masthead;
 		}
+		document.addEventListener( 'DOMContentLoaded', () =>
+			this.handleScrollBehavior()
+		);
 		this.setOffset();
 		window.addEventListener( 'resize', () => this.setOffset() );
 	}
@@ -28,10 +36,10 @@ new ( class HeaderOffsetGenerator {
 	 * Sets the offset value as a CSS variable.
 	 */
 	private setOffset() {
-		const headerHeight = this.masthead.offsetHeight;
+		this.headerHeight = this.masthead.offsetHeight;
 		document.documentElement.style.setProperty(
 			'--header-offset',
-			`${ headerHeight || this.defaultOffset }px`
+			`${ this.headerHeight || this.defaultOffset }px`
 		);
 		if (
 			! document.documentElement.style.getPropertyValue(
@@ -39,6 +47,24 @@ new ( class HeaderOffsetGenerator {
 			)
 		) {
 			console.warn( 'Header offset not found.' );
+		}
+	}
+
+	private handleScrollBehavior() {
+		const target = window.location.hash;
+		if ( target ) {
+			setTimeout( () => {
+				const targetElement =
+					document.querySelector< HTMLElement >( target );
+				if ( targetElement ) {
+					window.scrollTo( {
+						top:
+							targetElement.offsetTop - this.headerHeight ||
+							this.defaultOffset,
+						behavior: 'smooth',
+					} );
+				}
+			}, 0 );
 		}
 	}
 } )();
