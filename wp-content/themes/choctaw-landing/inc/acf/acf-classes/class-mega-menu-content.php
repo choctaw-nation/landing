@@ -110,7 +110,7 @@ class Mega_Menu_Content extends Generator {
 	 * @return string - The HTML markup for the CTA.
 	 */
 	private function get_the_cta(): string {
-		$href   = esc_url( $this->cta['url'] );
+		$href   = trailingslashit( esc_url( $this->cta['url'] ) );
 		$text   = esc_textarea( $this->cta['title'] );
 		$target = $this->cta['target'];
 		$cta    = "<a href='{$href}' class='mega-menu__btn mt-3 d-inline-block text-uppercase text-center' target='{$target}'>{$text}</a>";
