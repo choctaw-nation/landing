@@ -141,9 +141,25 @@ class Two_Col_Section extends Generator {
 		if ( function_exists( 'cno_get_the_section_id' ) ) {
 			return cno_get_the_section_id( $this->headline );
 		} else {
-			$lowercase  = strtolower( $this->headline );
-			$snake_case = preg_replace( '/\s+/', '-', $lowercase );
-			return $snake_case;
+			$decoded = html_entity_decode( $this->headline );
+			// Convert to ASCII
+			$ascii_string = iconv( 'UTF-8', 'ASCII//TRANSLIT', $this->headline );
+
+			// Remove apostrophes
+			$no_apostrophes = preg_replace( '/[\']/', '', $ascii_string );
+
+			// Replace ampersands with "and"
+			$replace_ampersands = preg_replace( '/[&]/', 'and', $no_apostrophes );
+
+			// Replace non-alphanumeric characters with hyphens
+			$hyphenated = preg_replace( '/[^A-Za-z0-9-]+/', '-', $replace_ampersands );
+
+			// Consolidate multiple hyphens into one
+			$consolidated_hyphens = preg_replace( '/[\s-]+/', '-', $hyphenated );
+
+			// Trim hyphens from the start and end, and convert to lowercase
+			$cleaned_string = strtolower( trim( $consolidated_hyphens, '-' ) );
+			return $cleaned_string;
 		}
 	}
 
