@@ -320,7 +320,7 @@ class Two_Col_Section extends Generator {
 			$link_attributes['data-modal-video']    = $this->modal->video;
 
 		} else {
-			$link_attributes['href']   = trailingslashit( esc_url( $this->cta['url'] ) );
+			$link_attributes['href']   = user_trailingslashit( esc_url( $this->cta['url'] ) );
 			$link_attributes['target'] = $this->cta['target'];
 		}
 		$attributes_str = '';
