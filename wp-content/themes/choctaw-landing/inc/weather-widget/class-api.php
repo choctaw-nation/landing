@@ -41,18 +41,6 @@ class API {
 		}
 	}
 
-	/** For testing only. */
-	protected function get_test_data() {
-		$response = file_get_contents( __DIR__ . '/sample-response.json', true );
-		$data     = json_decode( $response, true );
-		$data     = $this->check_errors( $data );
-
-		if ( is_array( $data ) ) {
-			return $data['list'];
-		} else {
-			return $data;
-		}
-	}
 
 	/** Checks for errors and returns the appropriate message (or data)
 	 *
