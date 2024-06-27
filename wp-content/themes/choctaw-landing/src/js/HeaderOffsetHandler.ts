@@ -101,6 +101,9 @@ new ( class HeaderOffsetHandler {
 				this.trailingSlashHandler( window.location.pathname )
 			)
 		) {
+			if ( ! href.includes( '#' ) ) {
+				return;
+			}
 			ev.preventDefault();
 			if (
 				href ===
