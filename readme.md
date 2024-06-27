@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+
+## v1.6.3
+
+-   Fixed a bug that disallowed users from using top-level navs as expected.
+
 ## v1.6.2
 
 -   Updated `meta` tags for event `singles` for better SEO
