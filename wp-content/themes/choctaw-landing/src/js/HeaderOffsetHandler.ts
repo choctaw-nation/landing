@@ -63,7 +63,7 @@ new ( class HeaderOffsetHandler {
 		if ( target ) {
 			setTimeout( () => {
 				const targetElement = document.querySelector< HTMLElement >(
-					target.slice( 0, -1 )
+					this.trailingSlashHandler( target )
 				);
 				if ( targetElement ) {
 					window.scrollTo( {
@@ -97,7 +97,9 @@ new ( class HeaderOffsetHandler {
 		const href = target.getAttribute( 'href' );
 		if (
 			href &&
-			href.includes( window.location.pathname.slice( 0, -1 ) )
+			href.includes(
+				this.trailingSlashHandler( window.location.pathname )
+			)
 		) {
 			ev.preventDefault();
 			if (
@@ -109,5 +111,18 @@ new ( class HeaderOffsetHandler {
 			window.history.pushState( null, '', href );
 			this.handleScrollBehavior( `#${ href.split( '#' )[ 1 ] }` );
 		}
+	}
+
+	/**
+	 * Removes the trailing slash from the href value.
+	 *
+	 * @param href The href value to remove the trailing slash from.
+	 * @return The href value without the trailing
+	 */
+	private trailingSlashHandler( href: string ): string {
+		if ( href.charAt( href.length - 1 ) === '/' ) {
+			return href.slice( 0, -1 );
+		}
+		return href;
 	}
 } )();

@@ -95,7 +95,7 @@ class Full_Width_Section extends Two_Col_Section {
 	 * @return string - The HTML markup for the CTA.
 	 */
 	protected function get_the_cta(): string {
-		$href               = trailingslashit( esc_url( $this->cta['url'] ) );
+		$href               = user_trailingslashit( esc_url( $this->cta['url'] ) );
 		$text               = esc_textarea( $this->cta['title'] );
 		$target             = $this->cta['target'];
 		$markup             = "<p class='py-4 d-none d-md-block text-light'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow arrow-white position-absolute' loading='lazy' aria-hidden='true' />";

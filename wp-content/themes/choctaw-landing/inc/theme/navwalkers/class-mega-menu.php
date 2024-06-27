@@ -165,7 +165,7 @@ class Mega_Menu extends Navwalker {
 			'title'  => $this->current_item->attr_title,
 			'target' => $this->current_item->target,
 			'rel'    => $this->current_item->xfn,
-			'href'   => trailingslashit( $this->current_item->url ),
+			'href'   => user_trailingslashit( $this->current_item->url ),
 			'class'  => $active_class,
 		);
 
