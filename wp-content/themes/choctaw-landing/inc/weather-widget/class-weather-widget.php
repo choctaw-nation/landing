@@ -36,11 +36,6 @@ class Weather_Widget extends API {
 	 */
 	private ?array $data;
 
-	/** Whether enough time has passed to get the weather
-	 *
-	 * @var bool $can_get_weather
-	 */
-	private bool $can_get_weather;
 
 	/** Standard DateTime String format
 	 *
@@ -48,58 +43,20 @@ class Weather_Widget extends API {
 	 */
 	private string $date_format;
 
-	/**
-	 * When the weather data was last updated as `d/m/Y g:i a` in UTC Timezone
+	/** The length of time to cache the weather data
 	 *
-	 * @var $last_updated string
+	 * @var int $cache_length
 	 */
-	private \DateTime $last_updated;
-
-	/**
-	 * When the weather data was last updated as `d/m/Y g:i a` in UTC Timezone
-	 *
-	 * @var $last_updated string
-	 */
-	private \DateTime $latest_update;
-
-	/**
-	 * An error message or data structure
-	 *
-	 * @var $error
-	 */
-	private $error;
+	private int $cache_length;
 
 	/** Inits the class
 	 *
 	 * @param int $page_id the ID of the page that loads the Weather Widget. Used to set/get "last_updated" custom field
 	 */
 	public function __construct( int $page_id ) {
-		$this->page_id     = $page_id;
-		$this->date_format = 'm/d/Y g:i a';
-		$this->get_handle_update_headers();
-		$this->can_get_weather = $this->can_fetch();
-	}
-
-	/** Gets the `last_updated` custom field value and `now()` and sets them both to their variables as `\DateTime` objects */
-	private function get_handle_update_headers() {
-		$last_updated = get_post_meta( $this->page_id, 'last_updated', true );
-		$utc          = new \DateTimeZone( 'UTC' );
-		if ( empty( $last_updated ) ) {
-			$this->last_updated = new \DateTime( 'now', $utc );
-		} else {
-			$this->last_updated = new \DateTime( $last_updated, $utc );
-		}
-		$this->latest_update = new \DateTime( 'now', $utc );
-	}
-
-	/** Checks that at least 1 hour has passed between data fetches */
-	private function can_fetch(): bool {
-		$interval = $this->last_updated->diff( $this->latest_update );
-		if ( $interval->h >= 1 || $interval->days > 0 ) {
-			return true;
-		} else {
-			return false;
-		}
+		$this->page_id      = $page_id;
+		$this->date_format  = 'm/d/Y g:i a';
+		$this->cache_length = 60 * 60 * 24;
 	}
 
 	/**
@@ -110,19 +67,16 @@ class Weather_Widget extends API {
 	public function get_the_weather() {
 		/** The stored weather data
 		 *
-		 * @var Weather[] $weather_data
+		 * @var Weather[]|false $weather_data
 		 */
-		$weather_data = get_post_meta( $this->page_id, 'weather_data', true );
-		if ( $this->can_get_weather || ! is_array( $weather_data ) ) {
-			$this->the_weather();
+		$weather_data = get_transient( 'weather_widget_weather_data' );
+		if ( false === $weather_data ) {
+			$data = $this->get_weather_data();
+
 			if ( $this->data ) {
-				$weather_data = update_post_meta( $this->page_id, 'weather_data', $this->data );
-				$this->set_last_updated();
+				set_transient( 'weather_widget_weather_data', $this->data, $this->cache_length );
 				return $this->data;
 			}
-		}
-		if ( $this->error ) {
-			return new \WP_Error( 'weather_widget', $this->error );
 		}
 		return $weather_data;
 	}
@@ -145,15 +99,6 @@ class Weather_Widget extends API {
 		} else {
 			$this->data  = null;
 			$this->error = $data ?? 'No weather data found!';
-		}
-	}
-
-	/** Sets */
-	private function set_last_updated() {
-		$timestamp = $this->latest_update->format( $this->date_format );
-		$val       = update_post_meta( $this->page_id, 'last_updated', $timestamp );
-		if ( false === $val ) {
-			echo 'Something went wrong updating the last_updated header';
 		}
 	}
 }

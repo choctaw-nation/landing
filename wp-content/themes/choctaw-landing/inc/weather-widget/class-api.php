@@ -3,7 +3,6 @@
  * API Class
  *
  * @package ChoctawNation
- * @since 0.2
  */
 
 namespace ChoctawNation;
