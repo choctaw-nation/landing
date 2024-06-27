@@ -23,8 +23,22 @@ class Theme_Init {
 
 	/** Load required files. */
 	private function load_required_files() {
-		$base_path = get_template_directory() . '/inc';
-		require_once $base_path . '/theme/theme-functions.php';
+		$base_path   = get_template_directory() . '/inc';
+		$theme_files = array( 'theme-functions', 'class-allow-svg' );
+		foreach ( $theme_files as $theme_file ) {
+			require_once $base_path . "/theme/{$theme_file}.php";
+		}
+		new Allow_SVG();
+
+		$plugin_handlers = array(
+			'cno-plugins'   => 'CNO_Plugins',
+			'yoast-handler' => 'Yoast_Handler',
+		);
+		foreach ( $plugin_handlers as $path => $name ) {
+			require_once $base_path . "/theme/plugin-handlers/class-{$path}.php";
+			$class_name = __NAMESPACE__ . '\\Plugins\\' . $name;
+			new $class_name();
+		}
 
 		$acf_classes = array(
 			'image',
@@ -55,9 +69,6 @@ class Theme_Init {
 		foreach ( $navwalkers as $navwalker ) {
 			require_once $base_path . '/theme/navwalkers/class-' . $navwalker . '.php';
 		}
-
-		require_once $base_path . '/theme/class-allow-svg.php';
-		$svg = new Allow_SVG();
 	}
 
 	/** Remove comments, pings and trackbacks support from posts types. */

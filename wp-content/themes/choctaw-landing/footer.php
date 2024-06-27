@@ -10,7 +10,8 @@
 ?>
 
 <footer class="pt-5 position-relative">
-	<img class="position-absolute top-0 w-100 h-100 z-n1" src="<?php echo get_stylesheet_directory_uri() . '/img/bg-images/footer-bg.webp'; ?>" alt="" aria-hidden="true" loading="lazy" />
+	<img class="position-absolute top-0 w-100 h-100 z-n1 object-fit-cover" src="<?php echo get_stylesheet_directory_uri() . '/img/bg-images/footer-bg.webp'; ?>" alt="" aria-hidden="true"
+		loading="lazy" />
 	<div class="border-top py-5">
 		<div class="container">
 			<?php

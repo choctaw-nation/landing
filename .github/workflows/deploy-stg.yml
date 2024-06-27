@@ -1,4 +1,4 @@
-name: Deploy to WP Engine (Staging)
+name: Deploy to Staging
 on:
     push:
         branches:
