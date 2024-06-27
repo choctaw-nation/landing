@@ -2,7 +2,6 @@
 /**
  * The Single Display for the Events
  *
- * @since 1.0
  * @package ChoctawNation
  * @subpackage News
  */

@@ -4,10 +4,15 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.6.2
+
+-   Updated `meta` tags for event `singles` for better SEO
+-   Refactored `theme-functions` and `Theme_Init` for cleaner, OOP-style handling of hooks/filters for plugins (e.g. modifying CNO plugins and Yoast)
+
 ## v1.6.1
 
 -   Fix a bug where nav menu anchors were overshooting the content on page scroll.
--   `trailingslashit` function is now used profusely.
+-   `user_trailingslashit` function is now used profusely.
 
 ## v1.6.0
 
