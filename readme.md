@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.6.3
+
+-   Update the weather widget to use the Transients API and to average the weather data (or get the highest amount if no average).
+
 ## v1.6.2
 
 -   Updated `meta` tags for event `singles` for better SEO

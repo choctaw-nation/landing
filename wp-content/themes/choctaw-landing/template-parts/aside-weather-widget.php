@@ -7,29 +7,20 @@
  * @since 0.2
  */
 
-use ChoctawNation\Weather_Widget;
+use ChoctawNation\WeatherWidget\Weather_Widget;
 
-// Include the Weather Widget Class
-require_once get_stylesheet_directory() . '/inc/weather-widget/class-weather-widget.php';
-
-// Include the Bootstrap Icons
-require_once get_stylesheet_directory() . '/inc/weather-widget/class-bootstrap-icons.php';
-
-$things_to_do_page_id = 49;
-$weather              = new Weather_Widget( $things_to_do_page_id );
-$weather_data         = $weather->get_the_weather();
+$weather = new Weather_Widget();
 ?>
 <div id="weather-widget" class="col-12 col-lg-6 col-xl-4 text-center position-relative overflow-hidden d-flex flex-column align-items-stretch text-white">
 	<img src="<?php echo get_stylesheet_directory_uri() . '/img/bg-images/brown-basket-bg.webp'; ?>" alt="" aria-hidden="true" class="position-absolute z-n1 bg-image h-100" loading="lazy" />
-	<?php if ( is_wp_error( $weather_data ) ) : ?>
+	<?php if ( $weather->has_error() ) : ?>
 	<div class="alert alert-warning">
-		<?php echo 'Weather Widget Error: ' . $weather_data->get_error_message( 'weather_widget' ); ?>
+		<?php echo 'Weather Widget Error: ' . $weather->get_error_message( 'weather_widget' ); ?>
 	</div>
 	<?php else : ?>
 		<?php
 		$icon_generator = new Bootstrap_Icons();
-		$today_index    = array_values( $weather_data )[0]->get_the_day();
-		$today          = $weather_data[ $today_index ];
+		$today          = $weather->today();
 		?>
 	<div class="row position-relative h-100">
 		<div class="col-12 justify-content-around d-flex flex-column">
@@ -66,7 +57,10 @@ $weather_data         = $weather->get_the_weather();
 			</div>
 
 			<div class="row justify-content-evenly flex-sm-nowrap">
-				<?php $total = count( $weather_data ); ?>
+				<?php
+				$weather_data = $weather->get_the_weather_data();
+				$total        = count( $weather_data );
+				?>
 				<?php for ( $i = 1; $i < $total; $i++ ) : ?>
 					<?php
 					$day_index = array_values( $weather_data )[ $i ]->get_the_day();

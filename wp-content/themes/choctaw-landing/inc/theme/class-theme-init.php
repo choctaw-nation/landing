@@ -69,6 +69,17 @@ class Theme_Init {
 		foreach ( $navwalkers as $navwalker ) {
 			require_once $base_path . '/theme/navwalkers/class-' . $navwalker . '.php';
 		}
+
+		$weather_widget_files = array(
+			'api',
+			'bootstrap-icons',
+			'weather',
+			'weather-handler',
+			'weather-widget',
+		);
+		foreach ( $weather_widget_files as $weather_widget_file ) {
+			require_once $base_path . "/weather-widget/class-{$weather_widget_file}.php";
+		}
 	}
 
 	/** Remove comments, pings and trackbacks support from posts types. */
