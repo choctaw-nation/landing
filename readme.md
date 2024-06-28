@@ -7,6 +7,7 @@ The WP Theme for the Choctaw Landing page.
 ## v1.6.3
 
 -   Update the weather widget to use the Transients API and to average the weather data (or get the highest amount if no average).
+-   Fixed a bug that disallowed users from using top-level navs as expected.
 
 ## v1.6.2
 
