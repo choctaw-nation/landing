@@ -3,10 +3,10 @@
  * API Class
  *
  * @package ChoctawNation
- * @since 0.2
+ * @subpackage WeatherWidget
  */
 
-namespace ChoctawNation;
+namespace ChoctawNation\WeatherWidget;
 
 /**
  * Handles the API
@@ -28,8 +28,7 @@ class API {
 		$weather_url = $this->base_url . '&appid=' . WEATHER_API_KEY;
 		$response    = wp_remote_get( $weather_url );
 		if ( is_wp_error( $response ) ) {
-			$error_message = $response->get_error_message();
-			return $error_message;
+			return $response->get_error_message();
 		} else {
 			$data = json_decode( wp_remote_retrieve_body( $response ), true );
 			$data = $this->check_errors( $data );
@@ -45,8 +44,9 @@ class API {
 	/** Checks for errors and returns the appropriate message (or data)
 	 *
 	 * @param mixed $data the data
+	 * @return string|array the error message string or the data array
 	 */
-	private function check_errors( $data ) {
+	private function check_errors( $data ): string|array {
 		if ( gettype( $data ) === 'string' ) {
 			return $data;
 		} elseif ( is_array( $data ) && '200' !== $data['cod'] ) {
