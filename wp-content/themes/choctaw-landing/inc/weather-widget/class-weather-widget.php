@@ -3,157 +3,147 @@
  * Handles the Weather Widget
  *
  * @package ChoctawNation
+ * @subpackage WeatherWidget
  * @since 0.2
- * @see ChoctawNation\Weather
  */
 
-namespace ChoctawNation;
+namespace ChoctawNation\WeatherWidget;
 
-use ChoctawNation\API;
-use ChoctawNation\Weather;
-
-// require API class
-require_once __DIR__ . '/class-api.php';
-
-// require Weather class
-require_once __DIR__ . '/class-weather.php';
+use ChoctawNation\WeatherWidget\Weather;
+use ChoctawNation\WeatherWidget\API;
+use WP_Error;
 
 /**
  *  Gets the forecast and creates an accessible array of weather data.
  */
 class Weather_Widget extends API {
-	/** The ID of the page that loads the Weather Widget.
-	 * Used to set/get "last_updated" custom field
+	/** The length of time to cache the weather data
 	 *
-	 * @var int $page_id
+	 * @var int $cache_length
 	 */
-	private int $page_id;
+	private int $cache_length = 60 * 60 * 24; // 1 Day
 
 	/**
-	 * Array of weather data for current week
+	 * The sorted Weather data as an associative array (e.g. 'Fri' => `Weather_Handler`)
 	 *
-	 * @var Weather[] $data;
+	 * @var array $data
 	 */
-	private ?array $data;
-
-	/** Whether enough time has passed to get the weather
-	 *
-	 * @var bool $can_get_weather
-	 */
-	private bool $can_get_weather;
-
-	/** Standard DateTime String format
-	 *
-	 * @var string $date_format
-	 */
-	private string $date_format;
+	private array $data;
 
 	/**
-	 * When the weather data was last updated as `d/m/Y g:i a` in UTC Timezone
+	 * Whether or not there was an error
 	 *
-	 * @var $last_updated string
+	 * @var bool $has_error
 	 */
-	private \DateTime $last_updated;
+	private bool $has_error = false;
 
 	/**
-	 * When the weather data was last updated as `d/m/Y g:i a` in UTC Timezone
+	 * The error message
 	 *
-	 * @var $last_updated string
+	 * @var string $error
 	 */
-	private \DateTime $latest_update;
+	private string $error;
 
 	/**
-	 * An error message or data structure
-	 *
-	 * @var $error
+	 * The Weather_Widget constructor.
 	 */
-	private $error;
-
-	/** Inits the class
-	 *
-	 * @param int $page_id the ID of the page that loads the Weather Widget. Used to set/get "last_updated" custom field
-	 */
-	public function __construct( int $page_id ) {
-		$this->page_id     = $page_id;
-		$this->date_format = 'm/d/Y g:i a';
-		$this->get_handle_update_headers();
-		$this->can_get_weather = $this->can_fetch();
-	}
-
-	/** Gets the `last_updated` custom field value and `now()` and sets them both to their variables as `\DateTime` objects */
-	private function get_handle_update_headers() {
-		$last_updated = get_post_meta( $this->page_id, 'last_updated', true );
-		$utc          = new \DateTimeZone( 'UTC' );
-		if ( empty( $last_updated ) ) {
-			$this->last_updated = new \DateTime( 'now', $utc );
-		} else {
-			$this->last_updated = new \DateTime( $last_updated, $utc );
-		}
-		$this->latest_update = new \DateTime( 'now', $utc );
-	}
-
-	/** Checks that at least 1 hour has passed between data fetches */
-	private function can_fetch(): bool {
-		$interval = $this->last_updated->diff( $this->latest_update );
-		if ( $interval->h >= 1 || $interval->days > 0 ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	 * Gets the Weather data and returns an associative array of Weather objects sorted by Day (e.g. 'Fri'), else returns a \WP_Error if there was an error.
-	 *
-	 * @return Weather[]|\WP_Error
-	 */
-	public function get_the_weather() {
-		/** The stored weather data
+	public function __construct() {
+		/**
+		 * The Weather data or WP_Error
 		 *
-		 * @var Weather[] $weather_data
+		 * @var $data array|WP_Error
 		 */
-		$weather_data = get_post_meta( $this->page_id, 'weather_data', true );
-		if ( $this->can_get_weather || ! is_array( $weather_data ) ) {
-			$this->the_weather();
-			if ( $this->data ) {
-				$weather_data = update_post_meta( $this->page_id, 'weather_data', $this->data );
-				$this->set_last_updated();
-				return $this->data;
-			}
+		$data = $this->get_the_weather();
+		if ( is_wp_error( $data ) ) {
+			$this->data      = array();
+			$this->has_error = true;
+			$this->error     = $data->get_error_message();
+		} else {
+			$this->data = $data;
 		}
-		if ( $this->error ) {
-			return new \WP_Error( 'weather_widget', $this->error );
+	}
+
+	/**
+	 * Returns the error status
+	 *
+	 * @return bool the error status
+	 */
+	public function has_error(): bool {
+		return $this->has_error;
+	}
+
+	/**
+	 * Returns the error message
+	 *
+	 * @return string the error message
+	 */
+	public function get_error_message(): string {
+		if ( $this->has_error ) {
+			return $this->error;
+		} else {
+			return '';
+		}
+	}
+
+
+	/**
+	 * Gets the Weather data and returns an associative array of Weather objects sorted by Day (e.g. 'Fri')
+	 *
+	 * @return array The Weather data as an associative array
+	 */
+	private function get_the_weather(): array|WP_Error {
+		$weather_data = get_transient( 'weather_widget_weather_data' );
+		if ( false === $weather_data ) {
+			$data = $this->get_weather_data();
+			if ( $data && is_array( $data ) ) {
+				$weather_data = $this->create_data_array( $data );
+				set_transient( 'weather_widget_weather_data', $weather_data, $this->cache_length );
+			} else {
+				return new WP_Error( 'weather_data_error', $data );
+			}
 		}
 		return $weather_data;
 	}
 
-	/** Sets `$this->data` to the Weather or sets `$this->error` to the error message */
-	private function the_weather() {
-		$data = $this->get_weather_data();
-
-		if ( isset( $data ) && is_array( $data ) ) {
-			$this->data = array();
-			foreach ( $data as $index => $weather_data ) {
-				$weather = new Weather( $weather_data );
-				$day     = $weather->date_obj->format( 'D' );
-				if ( array_key_exists( $day, $this->data ) ) {
-					continue;
-				} else {
-					$this->data[ $day ] = $weather;
-				}
+	/**
+	 * Handles the data from the API
+	 *
+	 * @param array $data_points the data from the API
+	 * @return array the data as an associative array
+	 */
+	private function create_data_array( array $data_points ): array {
+		$weather_data = array();
+		foreach ( $data_points as $data_point ) {
+			$weather = new Weather( $data_point );
+			$day     = $weather->date_obj->format( 'D' );
+			if ( array_key_exists( $day, $weather_data ) ) {
+				array_push( $weather_data[ $day ], $weather );
+			} else {
+				$weather_data[ $day ] = array( $weather );
 			}
-		} else {
-			$this->data  = null;
-			$this->error = $data ?? 'No weather data found!';
 		}
+		foreach ( $weather_data as $day => $weather ) {
+			$weather_data[ $day ] = new Weather_Handler( $weather_data[ $day ] );
+		}
+		return $weather_data;
 	}
 
-	/** Sets */
-	private function set_last_updated() {
-		$timestamp = $this->latest_update->format( $this->date_format );
-		$val       = update_post_meta( $this->page_id, 'last_updated', $timestamp );
-		if ( false === $val ) {
-			echo 'Something went wrong updating the last_updated header';
-		}
+	/**
+	 * Returns the Weather data for today
+	 *
+	 * @return Weather_Handler the Weather data for today
+	 */
+	public function today(): Weather_Handler {
+		$today_index = array_keys( $this->data )[0];
+		return $this->data[ $today_index ];
+	}
+
+	/**
+	 * Returns the Weather data
+	 *
+	 * @return array the Weather data
+	 */
+	public function get_the_weather_data(): array {
+		return $this->data;
 	}
 }
