@@ -1,7 +1,11 @@
+document.addEventListener( 'DOMContentLoaded', () => {
+	new HeaderOffsetHandler();
+} );
+
 /**
  * Calculates the height of the header and sets a CSS variable (`--header-offset`) with the value.
  */
-new ( class HeaderOffsetHandler {
+class HeaderOffsetHandler {
 	/**
 	 * The header element to calculate the offset from.
 	 */
@@ -31,7 +35,9 @@ new ( class HeaderOffsetHandler {
 		this.setOffset();
 		window.addEventListener( 'resize', () => this.setOffset() );
 		this.masthead.addEventListener( 'click', ( ev ) => {
-			this.handleNavClick( ev );
+			if ( 'no' === window.cnoSiteData.isHomePage ) {
+				this.handleNavClick( ev );
+			}
 		} );
 	}
 
@@ -128,4 +134,4 @@ new ( class HeaderOffsetHandler {
 		}
 		return href;
 	}
-} )();
+}
