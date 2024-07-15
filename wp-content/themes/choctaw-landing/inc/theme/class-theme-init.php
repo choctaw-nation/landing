@@ -154,7 +154,14 @@ class Theme_Init {
 				'styles'  => array( 'bootstrap' ),
 			)
 		);
-		wp_localize_script( 'global', 'cnoSiteData', array( 'rootUrl' => home_url() ) );
+		wp_localize_script(
+			'global',
+			'cnoSiteData',
+			array(
+				'rootUrl'    => home_url(),
+				'isHomePage' => is_front_page() ? 'yes' : 'no',
+			)
+		);
 
 		// style.css
 		wp_enqueue_style(
