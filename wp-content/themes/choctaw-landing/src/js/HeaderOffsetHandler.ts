@@ -45,7 +45,8 @@ class HeaderOffsetHandler {
 	 * Sets the offset value as a CSS variable and updates the headerHeight property.
 	 */
 	private setOffset() {
-		this.headerHeight = this.masthead.offsetHeight + 20;
+		const EXTRA_OFFSET = 20;
+		this.headerHeight = this.masthead.offsetHeight + EXTRA_OFFSET;
 		document.documentElement.style.setProperty(
 			'--header-offset',
 			`${ this.headerHeight || this.defaultOffset }px`
