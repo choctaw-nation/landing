@@ -45,7 +45,7 @@ class HeaderOffsetHandler {
 	 * Sets the offset value as a CSS variable and updates the headerHeight property.
 	 */
 	private setOffset() {
-		this.headerHeight = this.masthead.offsetHeight;
+		this.headerHeight = this.masthead.offsetHeight + 20;
 		document.documentElement.style.setProperty(
 			'--header-offset',
 			`${ this.headerHeight || this.defaultOffset }px`
@@ -90,6 +90,8 @@ class HeaderOffsetHandler {
 	private calcOffset( target: HTMLElement ): number {
 		const targetTop = target.getBoundingClientRect().top + window.scrollY;
 		const offset = targetTop - ( this.headerHeight || this.defaultOffset );
+		console.log( this.headerHeight );
+		console.log( offset );
 		return offset;
 	}
 
