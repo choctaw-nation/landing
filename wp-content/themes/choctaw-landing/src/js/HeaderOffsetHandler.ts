@@ -90,9 +90,10 @@ class HeaderOffsetHandler {
 	 */
 	private calcOffset( target: HTMLElement ): number {
 		const targetTop = target.getBoundingClientRect().top + window.scrollY;
-		const offset = targetTop - ( this.headerHeight || this.defaultOffset );
-		console.log( this.headerHeight );
-		console.log( offset );
+		const EXTRA_OFFSET = 50;
+		const offset =
+			targetTop -
+			( ( this.headerHeight || this.defaultOffset ) - EXTRA_OFFSET );
 		return offset;
 	}
 

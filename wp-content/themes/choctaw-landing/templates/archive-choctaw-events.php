@@ -31,7 +31,7 @@ if ( ! empty( $floating_images ) ) {
 		</div>
 	</div>
 	<?php if ( have_posts() ) : ?>
-	<ul class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 row-gap-5 align-items-stretch list-unstyled events-list">
+	<ul class="row row-cols-auto gap-3 gx-0 align-items-stretch list-unstyled events-list mb-0">
 		<?php
 		while ( have_posts() ) {
 			the_post();
