@@ -4,6 +4,15 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.6.6
+
+-   Updated layout for `/all-events` to a masonry grid
+-   Fixed a bug with the header offset. White bar is removed and nav items should scroll to appropriate place.
+-   Updated npm packages to remove security vulnerabilities
+-   Updated `composer.lock` to use latest configs
+-   Added new CSS `.text-transform-none` class to `_utilities.scss`
+-   Fixed mega-menu bug where hover would fail on desktop screens
+
 ## v1.6.5
 
 -   Further fixed a bug that disallowed users from using top-level navs as expected.

@@ -29,11 +29,14 @@ class HeaderOffsetHandler {
 		if ( masthead ) {
 			this.masthead = masthead;
 		}
-		this.setOffset();
-		document.addEventListener( 'DOMContentLoaded', () =>
-			this.handleScrollBehavior()
-		);
+
+		document.addEventListener( 'DOMContentLoaded', () => {
+			this.setOffset();
+			this.handleScrollBehavior();
+		} );
+
 		window.addEventListener( 'resize', () => this.setOffset() );
+
 		this.masthead.addEventListener( 'click', ( ev ) => {
 			if ( 'no' === window.cnoSiteData.isHomePage ) {
 				this.handleNavClick( ev );
