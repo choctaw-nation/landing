@@ -29,11 +29,14 @@ class HeaderOffsetHandler {
 		if ( masthead ) {
 			this.masthead = masthead;
 		}
-		document.addEventListener( 'DOMContentLoaded', () =>
-			this.handleScrollBehavior()
-		);
-		this.setOffset();
+
+		document.addEventListener( 'DOMContentLoaded', () => {
+			this.setOffset();
+			this.handleScrollBehavior();
+		} );
+
 		window.addEventListener( 'resize', () => this.setOffset() );
+
 		this.masthead.addEventListener( 'click', ( ev ) => {
 			if ( 'no' === window.cnoSiteData.isHomePage ) {
 				this.handleNavClick( ev );
@@ -45,8 +48,7 @@ class HeaderOffsetHandler {
 	 * Sets the offset value as a CSS variable and updates the headerHeight property.
 	 */
 	private setOffset() {
-		const EXTRA_OFFSET = 20;
-		this.headerHeight = this.masthead.offsetHeight + EXTRA_OFFSET;
+		this.headerHeight = this.masthead.offsetHeight;
 		document.documentElement.style.setProperty(
 			'--header-offset',
 			`${ this.headerHeight || this.defaultOffset }px`
@@ -90,9 +92,10 @@ class HeaderOffsetHandler {
 	 */
 	private calcOffset( target: HTMLElement ): number {
 		const targetTop = target.getBoundingClientRect().top + window.scrollY;
-		const offset = targetTop - ( this.headerHeight || this.defaultOffset );
-		console.log( this.headerHeight );
-		console.log( offset );
+		const EXTRA_OFFSET = 50;
+		const offset =
+			targetTop -
+			( ( this.headerHeight || this.defaultOffset ) - EXTRA_OFFSET );
 		return offset;
 	}
 
