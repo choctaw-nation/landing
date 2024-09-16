@@ -1,18 +1,20 @@
 <?php
 /**
  * Handles the Weather Data.
+ * Represents one object of weather data from the Open Weather API Response's $list array.
  *
  * @package ChoctawNation
+ * @subpackage WeatherWidget
  * @since 0.2
  */
 
-namespace ChoctawNation;
+namespace ChoctawNation\WeatherWidget;
 
 use Bootstrap_Icons;
 use DateTime;
 use DateTimeZone;
 
-/** Handles the weather data from the Open Weather API Response */
+/** Handles a single object of weather data from the Open Weather API Response's $list array. */
 class Weather {
 	/**
 	 * The pretty date format for the date
@@ -90,7 +92,7 @@ class Weather {
 	 * @param array $data the weather data from the Open Weather API
 	 */
 	public function __construct( array $data ) {
-		$this->set_the_date( $data['dt'] );
+		$this->set_the_date( $data['dt_txt'] );
 		$this->set_main_props( $data['main'] );
 		$this->set_the_weather( $data['weather'][0] );
 		if ( isset( $data['wind'] ) ) {
@@ -104,10 +106,10 @@ class Weather {
 	/**
 	 * Sets the date properties
 	 *
-	 * @param int $date the date from the Open Weather API
+	 * @param string $date the text date from the Open Weather API
 	 */
-	private function set_the_date( int $date ) {
-		$utc                    = DateTime::createFromFormat( 'U', $date, new DateTimeZone( 'UTC' ) );
+	private function set_the_date( string $date ) {
+		$utc                    = DateTime::createFromFormat( 'Y-m-d H:i:s', $date, new DateTimeZone( 'UTC' ) );
 		$local                  = new DateTimeZone( 'America/Chicago' );
 		$central                = $utc->setTimezone( $local );
 		$this->pretty_full_date = $central->format( $this->pretty_date_format );
@@ -121,8 +123,8 @@ class Weather {
 	 * @param array $main the main data from the Open Weather API
 	 */
 	private function set_main_props( array $main ) {
-		if ( isset( $main['temp'] ) ) {
-			$this->temp = round( $main['temp'] );
+		if ( isset( $main['temp_max'] ) ) {
+			$this->temp = round( $main['temp_max'] );
 		}
 		if ( isset( $main['humidity'] ) ) {
 			$this->humidity = round( $main['humidity'] );
@@ -277,7 +279,7 @@ class Weather {
 	 *
 	 * @return string
 	 */
-	public function get_chance_of_rain(): string {
+	public function get_the_chance_of_rain(): string {
 		return $this->chance_of_rain;
 	}
 

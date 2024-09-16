@@ -40,6 +40,17 @@ class Theme_Init {
 			new $class_name();
 		}
 
+		$weather_widget_files = array(
+			'api',
+			'bootstrap-icons',
+			'weather',
+			'weather-handler',
+			'weather-widget',
+		);
+		foreach ( $weather_widget_files as $weather_widget_file ) {
+			require_once $base_path . "/weather-widget/class-{$weather_widget_file}.php";
+		}
+
 		$acf_classes = array(
 			'image',
 			'generator',
@@ -143,7 +154,14 @@ class Theme_Init {
 				'styles'  => array( 'bootstrap' ),
 			)
 		);
-		wp_localize_script( 'global', 'cnoSiteData', array( 'rootUrl' => home_url() ) );
+		wp_localize_script(
+			'global',
+			'cnoSiteData',
+			array(
+				'rootUrl'    => home_url(),
+				'isHomePage' => is_front_page() ? 'yes' : 'no',
+			)
+		);
 
 		// style.css
 		wp_enqueue_style(

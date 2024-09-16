@@ -1,7 +1,11 @@
+document.addEventListener( 'DOMContentLoaded', () => {
+	new HeaderOffsetHandler();
+} );
+
 /**
  * Calculates the height of the header and sets a CSS variable (`--header-offset`) with the value.
  */
-new ( class HeaderOffsetHandler {
+class HeaderOffsetHandler {
 	/**
 	 * The header element to calculate the offset from.
 	 */
@@ -25,13 +29,18 @@ new ( class HeaderOffsetHandler {
 		if ( masthead ) {
 			this.masthead = masthead;
 		}
-		document.addEventListener( 'DOMContentLoaded', () =>
-			this.handleScrollBehavior()
-		);
-		this.setOffset();
+
+		document.addEventListener( 'DOMContentLoaded', () => {
+			this.setOffset();
+			this.handleScrollBehavior();
+		} );
+
 		window.addEventListener( 'resize', () => this.setOffset() );
+
 		this.masthead.addEventListener( 'click', ( ev ) => {
-			this.handleNavClick( ev );
+			if ( 'no' === window.cnoSiteData.isHomePage ) {
+				this.handleNavClick( ev );
+			}
 		} );
 	}
 
@@ -83,7 +92,10 @@ new ( class HeaderOffsetHandler {
 	 */
 	private calcOffset( target: HTMLElement ): number {
 		const targetTop = target.getBoundingClientRect().top + window.scrollY;
-		const offset = targetTop - ( this.headerHeight || this.defaultOffset );
+		const EXTRA_OFFSET = 50;
+		const offset =
+			targetTop -
+			( ( this.headerHeight || this.defaultOffset ) - EXTRA_OFFSET );
 		return offset;
 	}
 
@@ -101,6 +113,9 @@ new ( class HeaderOffsetHandler {
 				this.trailingSlashHandler( window.location.pathname )
 			)
 		) {
+			if ( ! href.includes( '#' ) ) {
+				return;
+			}
 			ev.preventDefault();
 			if (
 				href ===
@@ -125,4 +140,4 @@ new ( class HeaderOffsetHandler {
 		}
 		return href;
 	}
-} )();
+}

@@ -4,6 +4,32 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.6.7
+
+-   Update Github Actions
+-   Test with WP version 6.6.2
+
+## v1.6.6
+
+-   Updated layout for `/all-events` to a masonry grid
+-   Fixed a bug with the header offset. White bar is removed and nav items should scroll to appropriate place.
+-   Updated npm packages to remove security vulnerabilities
+-   Updated `composer.lock` to use latest configs
+-   Added new CSS `.text-transform-none` class to `_utilities.scss`
+-   Fixed mega-menu bug where hover would fail on desktop screens
+
+## v1.6.5
+
+-   Further fixed a bug that disallowed users from using top-level navs as expected.
+
+## v1.6.4
+
+-   Update the weather widget to use the Transients API and to average the weather data (or get the highest amount if no average).
+
+## v1.6.3
+
+-   Fixed a bug that disallowed users from using top-level navs as expected.
+
 ## v1.6.2
 
 -   Updated `meta` tags for event `singles` for better SEO

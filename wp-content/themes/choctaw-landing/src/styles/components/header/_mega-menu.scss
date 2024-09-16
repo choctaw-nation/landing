@@ -113,7 +113,7 @@
 	// Double ampersand used for higher specificity selection
 	& &__container {
 		@include m.media-breakpoint-up(lg) {
-			margin-top: 3.6rem;
+			margin-top: 3.5rem;
 			gap: 10px;
 
 			.dropdown-menu-end {
