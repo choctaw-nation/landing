@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.6.7
+
+-   Update Github Actions
+-   Test with WP version 6.6.2
+
 ## v1.6.6
 
 -   Updated layout for `/all-events` to a masonry grid
