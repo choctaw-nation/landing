@@ -6,8 +6,7 @@ The WP Theme for the Choctaw Landing page.
 
 ## v1.6.7
 
--   Update Github Actions
--   Test with WP version 6.6.2
+-   Update packages and deploys
 
 ## v1.6.6
 

@@ -28,11 +28,11 @@
 		"swiper": "^11.1.14"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^29.0.0",
+		"@wordpress/scripts": "^30.0.2",
 		"bootstrap-icons": "^1.11.3",
 		"eslint-config-react-app": "^7.0.1"
 	},
 	"overrides": {
-		"ws": "^8.18.0"
+		"puppeteer-core": "^23.0.0"
 	}
 }
