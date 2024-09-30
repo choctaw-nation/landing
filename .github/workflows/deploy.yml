@@ -1,0 +1,40 @@
+name: Deploy to WP Engine
+on:
+    push:
+        branches: [dev, stg, main]
+
+jobs:
+    deploy-prod:
+        name: Deploy to Production
+        if: github.ref == 'refs/heads/main'
+        uses: choctaw-nation/shared-github-actions/.github/workflows/deploy.yml@main
+        with:
+            WPE_ENV: choctawlanding
+            theme_name: choctaw-landing
+        secrets: inherit
+
+    deploy-stg:
+        name: Deploy to Staging
+        if: github.ref == 'refs/heads/stg'
+        uses: choctaw-nation/shared-github-actions/.github/workflows/deploy.yml@main
+        with:
+            WPE_ENV: choctawlandstg
+            theme_name: choctaw-landing
+        secrets: inherit
+
+    deploy-dev:
+        name: Deploy to Development
+        if: github.ref == 'refs/heads/dev'
+        uses: choctaw-nation/shared-github-actions/.github/workflows/deploy.yml@main
+        with:
+            WPE_ENV: choctawlandev
+            theme_name: choctaw-landing
+        secrets: inherit
+
+    # test-dev:
+    #     name: Run Playwright Tests on Development
+    #     needs: deploy-dev
+    #     uses: ./.github/workflows/playwright.yml
+    #     with:
+    #         ref: ${{ github.ref }}
+    #     secrets: inherit
