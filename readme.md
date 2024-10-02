@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.7.0
+
+-   Update page-mercantile to handle empty content sections
+-   Add ability for homepage CTA for sections to fire a modal
+
 ## v1.6.7
 
 -   Update packages and deploys
