@@ -28,6 +28,7 @@ module.exports = {
 				'modules/date-range-picker': `.${ THEME_DIR }/src/js/vendors/date-range-picker.js`,
 				'modules/swiper/eat-drink-swiper': `.${ THEME_DIR }/src/js/vendors/swiperjs/eat-drink-swiper.ts`,
 				'modules/swiper/events-swiper': `.${ THEME_DIR }/src/js/vendors/swiperjs/events-swiper.ts`,
+				'modules/two-col-modal-handler': `.${ THEME_DIR }/src/js/TwoColModalHandler.ts`,
 				...addEntries( appNames, 'pages' ),
 				...addEntries( styleSheets, 'styles' ),
 			};
