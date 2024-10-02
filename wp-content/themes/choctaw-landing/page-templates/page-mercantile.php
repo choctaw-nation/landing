@@ -22,18 +22,20 @@ $title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
 $title_bar->the_title_bar();
 
 // SECTION 3
-echo "<section id='section-3' class='container'>";
-$section_3         = get_field( 'section_3' );
-$section_3_columns = $section_3['section_3_columns'];
-foreach ( $section_3_columns as $row ) {
-	echo '<div class="row">';
-	foreach ( $row as $col ) {
-		$col_card = new Link_Card( get_the_ID(), $col );
-		$col_card->the_card( 'col-12 col-md-6 col-lg-4 my-5 my-md-0', 'h2', true );
+$section_3 = get_field( 'section_3' );
+if ( $section_3 && ! empty( $section_3['section_3_columns'] ) ) {
+	echo "<section id='section-3' class='container'>";
+	$section_3_columns = $section_3['section_3_columns'];
+	foreach ( $section_3_columns as $row ) {
+		echo '<div class="row">';
+		foreach ( $row as $col ) {
+			$col_card = new Link_Card( get_the_ID(), $col );
+			$col_card->the_card( 'col-12 col-md-6 col-lg-4 my-5 my-md-0', 'h2', true );
+		}
+		echo '</div>';
 	}
-	echo '</div>';
+	echo '</section>';
 }
-echo '</section>';
 
 // SECTION 4 (TWO-COL REPEATER)
 $features = get_field( 'features' );
@@ -41,5 +43,4 @@ foreach ( $features as $feature ) {
 	$feat = new Two_Col_Section( get_the_ID(), $feature );
 	$feat->the_section();
 }
-
 get_footer();
