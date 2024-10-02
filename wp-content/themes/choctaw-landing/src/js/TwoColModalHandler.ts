@@ -91,13 +91,20 @@ new ( class HandleModal {
 		const { headline, content, video, title } = this.modalContent;
 		const { title: modalTitle, body: modalBody } = this.modalElements;
 		if ( title ) {
-			modalTitle.innerHTML = title;
+			modalTitle.innerHTML = title || '';
 		}
 		if ( video ) {
 			modalBody.innerHTML = `<div class="ratio ratio-16x9">${ video }</
 			</div>`;
 		} else {
-			modalBody.innerHTML = `<h2 class="fs-5">${ headline }</h2><div class="fs-6">${ content }</div>`;
+			let markup = '';
+			if ( headline ) {
+				markup += `<h2 class="fs-5">${ headline }</h2>`;
+			}
+			if ( content ) {
+				markup += `<div class="fs-6">${ content }</div>`;
+			}
+			modalBody.innerHTML = markup;
 		}
 	}
 } )();
