@@ -100,7 +100,7 @@ class Two_Col_Section extends Generator {
 		$this->subheadline = acf_esc_html( $acf['subheadline'] );
 		$this->has_cta     = $acf['has_cta'];
 		if ( $acf['has_cta'] ) {
-			$this->cta = $acf['cta'];
+			$this->cta = $acf['cta'] ?? array();
 			if ( isset( $acf['has_modal'] ) ) {
 				$this->has_modal = $acf['has_modal'];
 				if ( $this->has_modal ) {
