@@ -38,7 +38,8 @@ class Link_Card extends Card {
 		$this->subheadline = acf_esc_html( $acf['subheadline'] );
 		$this->link        = empty( $acf['link'] ) || ! is_array( $acf['link'] ) ? null : $acf['link'];
 		if ( $this->link ) {
-			$this->target = $this->link['target'] ? " target='{$this->link['target']}'" : "target='{$this->link['target']}'";
+			$this->with_button = true;
+			$this->target      = $this->link['target'] ? " target='{$this->link['target']}'" : "target='{$this->link['target']}'";
 		}
 	}
 
@@ -51,7 +52,7 @@ class Link_Card extends Card {
 		$markup  = "<div class='{$col_class} card d-flex flex-column'" . ( $this->headline ? "id='{$this->get_the_id()}'" : '' ) . '>';
 		$markup .= $this->image->get_the_image( 'pb-3 card__image' );
 		$markup .= $this->get_the_content( $headline_element );
-		if ( $this->with_button ) {
+		if ( $this->link && $this->with_button ) {
 			$markup .= "<a href='{$this->link['url']}' class='btn btn-outline-primary pb-2 mt-auto align-self-start fs-6' {$this->target}>{$this->link['title']}</a>";
 		}
 		$markup .= '</div>';
