@@ -36,8 +36,8 @@ class Link_Card extends Card {
 		$this->set_the_image( $acf['image'] );
 		$this->headline    = empty( $acf['headline'] ) ? null : esc_textarea( $acf['headline'] );
 		$this->subheadline = acf_esc_html( $acf['subheadline'] );
-		$this->link        = $acf['link'];
-		if ( $acf['link'] ) {
+		$this->link        = empty( $acf['link'] ) || ! is_array( $acf['link'] ) ? null : $acf['link'];
+		if ( $this->link ) {
 			$this->target = $this->link['target'] ? " target='{$this->link['target']}'" : "target='{$this->link['target']}'";
 		}
 	}
