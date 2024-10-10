@@ -8,6 +8,7 @@ The WP Theme for the Choctaw Landing page.
 
 -   Fixed a bug where an optional value (in ACF fields) was causing pages to break if not filled out correctly
 
+
 ## v1.7.0
 
 -   Update page-mercantile to handle empty content sections
