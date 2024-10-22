@@ -14,10 +14,10 @@ $content = new Featured_Eat( $post, false )
 ?>
 <main <?php post_class( 'd-flex flex-column row-gap-5 mb-5' ); ?>>
 	<?php if ( $content->hero_image ) : ?>
-	<header id="header-img" class="position-relative d-flex justify-content-center align-items-center hero__bg-container" style="height:clamp(20vw,30vw,40vw);">
+	<header id="header-img" class="position-relative d-flex justify-content-center align-items-center hero__bg-container mx-auto" style="height:clamp(20vw,30vw,40vw);">
 		<?php $content->hero_image->the_image( 'hero__image object-fit-cover skip-lazy' ); ?>
 	</header>
-		<?php
+	<?php
 		$acf_fields = array(
 			'headline'    => get_the_title(),
 			'subheadline' => get_field( 'description' ),
@@ -26,7 +26,7 @@ $content = new Featured_Eat( $post, false )
 		$title_bar->the_title_bar();
 		?>
 	<?php else : ?>
-	<section class="text-bg-secondary hero__bg-container py-5">
+	<section class="text-bg-secondary hero__bg-container mx-auto py-5">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
@@ -57,7 +57,7 @@ $content = new Featured_Eat( $post, false )
 				</div>
 			</div>
 			<?php foreach ( $content->specials as $index => $special ) : ?>
-				<?php $should_reverse = 0 === $index % 2 ? '' : ' flex-row-reverse'; ?>
+			<?php $should_reverse = 0 === $index % 2 ? '' : ' flex-row-reverse'; ?>
 			<div class="<?php echo "row justify-content-center{$should_reverse}"; ?>">
 				<?php if ( $special->get_the_image() ) : ?>
 				<div class="col">
