@@ -64,6 +64,7 @@ class Theme_Init {
 			'full-width-section',
 			'mega-menu-content',
 			'link-card',
+			'fb-specials',
 			'featured-eat',
 			'eat-and-drink',
 		);
