@@ -272,14 +272,20 @@ class Featured_Eat {
 		return $markup;
 	}
 
+
+	/** Returns the Menu link or null */
+	public function get_the_menu_link(): ?string {
+		return $this->menu_link;
+	}
+
 	/** Returns the Menu markup or an empty string */
 	public function get_the_menu(): string {
-		if ( $this->menu_link ) {
-			return "<div class='col menu'><a class='featured-eats__menu-link fs-6' href='{$this->menu_link}' target='_blank' rel-'noopener noreferrer'><i class='fa-solid fa-utensils fs-5'></i> Menu</a></div>";
-		} else {
+		if ( ! $this->menu_link ) {
 			return '';
 		}
+		return "<div class='col menu'><a class='featured-eats__menu-link fs-6' href='{$this->menu_link}' target='_blank' rel='noopener noreferrer'><i class='fa-solid fa-utensils fs-5'></i> Menu</a></div>";
 	}
+
 
 	/**
 	 * Generate the HTML markup for the Call to Action (CTA) element.

@@ -7,7 +7,7 @@
 
 ?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 86.5 163" style="enable-background:new 0 0 86.5 163;"
-	 class="arrow-svg" xml:space="preserve">
+	class="arrow-svg" xml:space="preserve">
 	<style type="text/css">
 	.st0 {
 		display: none;

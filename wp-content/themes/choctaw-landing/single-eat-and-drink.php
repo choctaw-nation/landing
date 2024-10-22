@@ -17,7 +17,7 @@ $content = new Featured_Eat( $post, false )
 	<header id="header-img" class="position-relative d-flex justify-content-center align-items-center hero__bg-container" style="height:clamp(20vw,30vw,40vw);">
 		<?php $content->hero_image->the_image( 'hero__image object-fit-cover skip-lazy' ); ?>
 	</header>
-	<?php
+		<?php
 		$acf_fields = array(
 			'headline'    => get_the_title(),
 			'subheadline' => get_field( 'description' ),
@@ -37,22 +37,27 @@ $content = new Featured_Eat( $post, false )
 		</div>
 	</section>
 	<?php endif; ?>
-	<div class="container">
-		<section class="row justify-content-center" id="hours">
-			<div class="col">
-				<h2>Hours</h2>
+	<div class="container d-flex flex-column row-gap-5">
+		<section class="row row-gap-4" id="details">
+			<div class="col-12">
+				<h2>Details</h2>
 				<?php echo $content->get_the_hours( false ); ?>
+			</div>
+			<div class="col-auto">
+				<a class="featured-eats__menu-link fs-6 btn btn-outline-primary px-4 py-2" href="<?php echo $content->get_the_menu_link(); ?>" target="_blank" rel="noopener noreferrer">
+					<i class="fa-solid fa-utensils fs-5"></i> View Menu
+				</a>
 			</div>
 		</section>
 		<?php if ( $content->specials ) : ?>
 		<section class="d-flex flex-column row-gap-5" id="specials">
 			<div class="row">
 				<div class="col text-center">
-					<h2>Specials</h2>
+					<h2 class="h1">Specials</h2>
 				</div>
 			</div>
 			<?php foreach ( $content->specials as $index => $special ) : ?>
-			<?php $should_reverse = 0 === $index % 2 ? '' : ' flex-row-reverse'; ?>
+				<?php $should_reverse = 0 === $index % 2 ? '' : ' flex-row-reverse'; ?>
 			<div class="<?php echo "row justify-content-center{$should_reverse}"; ?>">
 				<?php if ( $special->get_the_image() ) : ?>
 				<div class="col">
