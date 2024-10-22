@@ -58,7 +58,7 @@ $content = new Featured_Eat( $post, false )
 			</div>
 			<?php foreach ( $content->specials as $index => $special ) : ?>
 			<?php $should_reverse = 0 === $index % 2 ? '' : ' flex-row-reverse'; ?>
-			<div class="<?php echo "row justify-content-center{$should_reverse}"; ?>">
+			<div class="<?php echo "row justify-content-center align-items-center{$should_reverse}"; ?>">
 				<?php if ( $special->get_the_image() ) : ?>
 				<div class="col">
 					<figure class="mb-0 ratio ratio-1x1">
