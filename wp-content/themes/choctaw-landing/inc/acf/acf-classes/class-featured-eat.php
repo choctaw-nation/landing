@@ -8,19 +8,21 @@
 
 namespace ChoctawNation\ACF;
 
+use WP_Post;
+
 /**
  * Featured Eat Post Type Class.
  *
- * @param \WP_Post $post the post
+ * @param WP_Post $post the post
  * @param bool     $should_reverse whether to reverse the order of the columns
  */
 class Featured_Eat {
 	/**
 	 * The post
 	 *
-	 * @var \WP_Post $post
+	 * @var WP_Post $post
 	 */
-	protected \WP_Post $post;
+	protected WP_Post $post;
 
 	/**
 	 * The Headline
@@ -85,12 +87,27 @@ class Featured_Eat {
 	 */
 	protected string $col_2_content_class;
 
-	/** Sets the Class variables based on ACF fields
+	/**
+	 * The hero image
 	 *
-	 * @param \WP_Post $post the post
-	 * @param bool     $should_reverse whether to reverse the order of the columns
+	 * @var ?Image $hero_image
 	 */
-	public function __construct( \WP_Post $post, bool $should_reverse ) {
+	public ?Image $hero_image;
+
+	/**
+	 * The specials
+	 *
+	 * @var ?FB_Specials[] $specials
+	 */
+	public ?array $specials;
+
+	/**
+	 * Sets the Class variables based on ACF fields
+	 *
+	 * @param WP_Post $post the post
+	 * @param bool    $should_reverse whether to reverse the order of the columns
+	 */
+	public function __construct( WP_Post $post, bool $should_reverse ) {
 		$this->post           = $post;
 		$this->headline       = get_the_title( $post );
 		$this->should_reverse = $should_reverse;
@@ -102,7 +119,14 @@ class Featured_Eat {
 		$this->description = acf_esc_html( get_field( 'description', $this->post ) );
 		$meta              = get_field( 'meta_details', $this->post );
 		$this->set_the_meta( $meta );
-		$this->hours = empty( get_field( 'hours', $this->post ) ) ? null : get_field( 'hours', $this->post );
+		$this->hours      = empty( get_field( 'hours', $this->post ) ) ? null : get_field( 'hours', $this->post );
+		$this->hero_image = empty( get_field( 'hero_image', $this->post ) ) ? null : new Image( get_field( 'hero_image', $this->post ) );
+		$specials         = empty( get_field( 'related_specials', $this->post ) ) ? null : get_field( 'related_specials', $this->post );
+		if ( $specials ) {
+			foreach ( $specials as $special ) {
+				$this->specials[] = new FB_Specials( $special );
+			}
+		}
 	}
 
 	/** A wrapper for the global 'cno_get_the_section_id' function */
@@ -248,14 +272,20 @@ class Featured_Eat {
 		return $markup;
 	}
 
+
+	/** Returns the Menu link or null */
+	public function get_the_menu_link(): ?string {
+		return $this->menu_link;
+	}
+
 	/** Returns the Menu markup or an empty string */
 	public function get_the_menu(): string {
-		if ( $this->menu_link ) {
-			return "<div class='col menu'><a class='featured-eats__menu-link fs-6' href='{$this->menu_link}' target='_blank' rel-'noopener noreferrer'><i class='fa-solid fa-utensils fs-5'></i> Menu</a></div>";
-		} else {
+		if ( ! $this->menu_link ) {
 			return '';
 		}
+		return "<div class='col menu'><a class='featured-eats__menu-link fs-6' href='{$this->menu_link}' target='_blank' rel='noopener noreferrer'><i class='fa-solid fa-utensils fs-5'></i> Menu</a></div>";
 	}
+
 
 	/**
 	 * Generate the HTML markup for the Call to Action (CTA) element.

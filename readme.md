@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.8.0
+
+-   Site now handles F&B Specials!
+
 ## v1.7.1
 
 -   Fixed a bug where an optional value (in ACF fields) was causing pages to break if not filled out correctly
