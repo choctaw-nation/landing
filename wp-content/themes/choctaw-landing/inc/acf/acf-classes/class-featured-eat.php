@@ -117,8 +117,7 @@ class Featured_Eat {
 	/** Inits the ACF properties */
 	protected function init_props() {
 		$this->description = acf_esc_html( get_field( 'description', $this->post ) );
-		$meta              = get_field( 'meta_details', $this->post );
-		$this->set_the_meta( $meta );
+
 		$this->hours      = empty( get_field( 'hours', $this->post ) ) ? null : get_field( 'hours', $this->post );
 		$this->hero_image = empty( get_field( 'hero_image', $this->post ) ) ? null : new Image( get_field( 'hero_image', $this->post ) );
 		$specials         = empty( get_field( 'related_specials', $this->post ) ) ? null : get_field( 'related_specials', $this->post );
@@ -126,7 +125,11 @@ class Featured_Eat {
 			foreach ( $specials as $special ) {
 				$this->specials[] = new FB_Specials( $special );
 			}
+		} else {
+			$this->specials = null;
 		}
+		$meta = get_field( 'meta_details', $this->post );
+		$this->set_the_meta( $meta );
 	}
 
 	/** A wrapper for the global 'cno_get_the_section_id' function */
@@ -150,7 +153,7 @@ class Featured_Eat {
 		$this->online_orders_link  = empty( $acf['online_orders_link'] ) ? null : user_trailingslashit( esc_url( $acf['online_orders_link'] ) );
 		$this->food_genre          = empty( $acf['food_genre'] ) ? null : esc_textarea( $acf['food_genre'] );
 		$this->has_cta             = ! empty( $acf['online_orders_link'] );
-		$this->col_2_content_class = $this->has_cta ? 'col-md-9 col-xl-10' : 'col-12';
+		$this->col_2_content_class = $this->has_cta || $this->specials ? 'col-md-9 col-xl-10' : 'col-12';
 	}
 
 	/**
@@ -192,7 +195,7 @@ class Featured_Eat {
 			$markup .= "<div class='col-3 col-xl-2 d-none d-md-block'></div>";
 		}
 		$markup .= $this->get_the_header();
-		if ( $this->has_cta ) {
+		if ( $this->has_cta || $this->specials ) {
 			$markup .= "<div class='col-3 col-xl-2 d-none d-md-block'><div class='vertical-line'></div></div>";
 		}
 		$markup .= $this->get_the_body();
@@ -249,14 +252,22 @@ class Featured_Eat {
 
 	/** Gets the section header (headline + subheadline) */
 	public function get_the_header(): string {
-		$markup = "<div class='{$this->col_2_content_class}'><h2>{$this->headline}</h2></div>";
+		$col_class = $this->has_cta || $this->specials ? 'offset-md-3 offset-xl-2 col-md-9 col-xl-10' : 'col-12';
+		$markup    = "<div class='{$col_class}'><h2>{$this->headline}</h2></div>";
 		return $markup;
 	}
 
 	/** Gets the section body */
 	public function get_the_body(): string {
 		$markup  = "<div class='{$this->col_2_content_class}'>";
-		$markup .= "<div class='row'><div class='col fs-6'>{$this->description}</div></div>";
+		$markup .= "<div class='row'><div class='col fs-6'>{$this->description}</div>";
+		if ( $this->has_cta || $this->specials ) {
+			$markup .= $this->get_the_cta();
+		}
+		$markup .= '</div>';
+		if ( $this->has_cta || $this->specials ) {
+			$markup .= '</div>';
+		}
 		$markup .= '<div class="row mt-3 mt-md-5">';
 		$markup .= $this->get_the_menu();
 		if ( $this->food_genre ) {
@@ -265,9 +276,7 @@ class Featured_Eat {
 		$markup .= '</div>';
 		$markup .= '<hr class="my-3" />';
 		$markup .= $this->get_the_hours();
-		if ( $this->has_cta ) {
-			$markup .= $this->get_the_cta();
-		}
+
 		$markup .= '</div>';
 		return $markup;
 	}
@@ -303,11 +312,49 @@ class Featured_Eat {
 	 */
 	public function get_the_desktop_anchors(): string {
 		$markup = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' loading='lazy' aria-hidden='true' />";
-		if ( $this->online_orders_link ) {
-			$markup .= "<a href='{$this->online_orders_link}' class='arrow-link fs-5 fw-medium' target='_blank' rel='noopener noreferrer'>Order Online</a>";
+		$anchor = $this->get_the_anchor_settings();
+		if ( $anchor['href'] && $anchor['text'] ) {
+			$markup .= "<a href='{$anchor['href']}' class='arrow-link fs-5 fw-medium' target='{$anchor['target']}' rel='noopener noreferrer'>{$anchor['text']}</a>";
 		}
 		$markup .= '</p>';
 		return $markup;
+	}
+
+	/**
+	 * Get the anchor settings
+	 *
+	 * @return array
+	 */
+	private function get_the_anchor_settings(): array {
+		$cta_options = array(
+			'online_orders_link' => array(
+				'href'   => $this->online_orders_link,
+				'text'   => 'Order Online',
+				'target' => '_blank',
+			),
+			'specials'           => array(
+				'href'   => get_the_permalink( $this->post ),
+				'text'   => 'View Specials',
+				'target' => '_self',
+			),
+		);
+
+		$href = null;
+		$text = null;
+
+		foreach ( $cta_options as $key => $option ) {
+			if ( $this->$key ) {
+				$href   = $option['href'];
+				$text   = $option['text'];
+				$target = $option['target'];
+				break;
+			}
+		}
+		return array(
+			'href'   => $href,
+			'text'   => $text,
+			'target' => $target,
+		);
 	}
 
 	/**
@@ -315,8 +362,9 @@ class Featured_Eat {
 	 */
 	public function get_the_mobile_anchors(): string {
 		$markup = "<p class='py-4 d-block d-md-none'>";
-		if ( $this->online_orders_link ) {
-			$markup .= "<a href='{$this->online_orders_link}' class='btn btn-outline-primary pb-2 fs-6' target='_blank' rel='noopener noreferrer'>Order Online</a>";
+		$anchor = $this->get_the_anchor_settings();
+		if ( $anchor['href'] && $anchor['text'] ) {
+			$markup .= "<a href='{$anchor['href']}' class='btn btn-outline-primary fs-6' target='{$anchor['target']}' rel='noopener noreferrer'>{$anchor['text']}</a>";
 		}
 		$markup .= '</p>';
 		return $markup;
