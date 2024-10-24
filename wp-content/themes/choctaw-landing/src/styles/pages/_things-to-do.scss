@@ -1,2 +1,40 @@
+@use "bootstrap/scss/vendor/rfs" as rfs;
 @use "../components/title-bar";
 @use "../components/weather-widget";
+
+%federated_headings {
+	font-weight: 400;
+	font-family: var(--font-body);
+	text-transform: none;
+	line-height: calc(2ex + 6px);
+	text-wrap: pretty;
+}
+
+#casino-promotions {
+	--bs-heading-color: white;
+	--swiper-pagination-color: white;
+	--swiper-pagination-bullet-inactive-color: white;
+	--swiper-navigation-color: white;
+
+	.swiper {
+		h2 {
+			@include rfs.font-size(1.6rem * 1.728); // h4
+			@extend %federated_headings;
+		}
+
+		h4 {
+			@include rfs.font-size(1.6rem * 1.44); // h5
+			@extend %federated_headings;
+		}
+
+		h5 {
+			@include rfs.font-size(calc(m * 1.2)); // h6
+			@extend %federated_headings;
+		}
+
+		p {
+			text-wrap: pretty;
+			line-height: calc(2ex + 6px);
+		}
+	}
+}
