@@ -95,6 +95,15 @@ class FB_Specials {
 	}
 
 	/**
+	 * Check if the post has an image
+	 *
+	 * @return bool
+	 */
+	public function has_image(): bool {
+		return has_post_thumbnail( $this->post_id );
+	}
+
+	/**
 	 * Get the image
 	 *
 	 * @param string     $size the image size
@@ -116,5 +125,14 @@ class FB_Specials {
 	 */
 	public function the_image( string $size = 'full', ?array $args = null ): void {
 		echo $this->get_the_image( $size, $args );
+	}
+
+	/**
+	 * Get the related posts
+	 *
+	 * @return array|null
+	 */
+	public function get_the_related_posts(): ?array {
+		return get_field( 'related_post', $this->post_id );
 	}
 }
