@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.9.0
+
+-   Added new "Specials" options on eat and drink
+
 ## v1.8.1
 
 -   Fixed `<header>` margin on `single-eat-and-drink.php` layout
