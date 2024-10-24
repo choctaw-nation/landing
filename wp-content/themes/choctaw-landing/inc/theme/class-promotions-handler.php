@@ -11,9 +11,9 @@ namespace ChoctawNation;
 use WP_Error;
 
 /**
- * Class Promotion_Handler
+ * Class Promotions_Handler
  */
-class Promotion_Handler {
+class Promotions_Handler {
 	/**
 	 * The transient key for the promotions.
 	 *
@@ -52,8 +52,8 @@ class Promotion_Handler {
 	private function get_latest_promotions(): array|false|WP_Error|null {
 		$promotions = get_transient( $this->transient_key );
 		if ( $promotions ) {
-		$this->has_promotions = true;
-		return $promotions;
+			$this->has_promotions = true;
+			return $promotions;
 		}
 		$api_url  = $this->build_api_url();
 		$response = wp_remote_get( $api_url );
@@ -125,10 +125,10 @@ class Promotion_Handler {
 		usort(
 			$promotions,
 			function ( $a, $b ) {
-				if ( $a['location'] === 'All Locations' ) {
+				if ( 'All Locations' === $a['location'] ) {
 					return 1;
 				}
-				if ( $b['location'] === 'All Locations' ) {
+				if ( 'All Locations' === $b['location'] ) {
 					return -1;
 				}
 				return 0;

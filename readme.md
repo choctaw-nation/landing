@@ -7,6 +7,9 @@ The WP Theme for the Choctaw Landing page.
 ## v1.9.0
 
 -   Added new "Specials" options on eat and drink
+-   Added new Promotions Swiper on /things-to-do
+-   Updated /events to use the Featured Events Swiper (as seen on /things-to-do)
+-   Updated spacing on /events
 
 ## v1.8.1
 

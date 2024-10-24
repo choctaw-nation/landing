@@ -18,10 +18,7 @@ $card_classes = array(
 );
 
 $is_horizontal = 'horizontal' === $orientation;
-if ( ! $is_horizontal ) {
-	// $card_classes[] = 'd-flex';
-	// $card_classes[] = 'flex-column';
-} else {
+if ( $is_horizontal ) {
 	$horizontal_classes = array(
 		'row',
 		'row-cols-md-2',
