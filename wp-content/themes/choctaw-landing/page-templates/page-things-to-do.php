@@ -40,6 +40,9 @@ $weather_widget_photo = new Image( get_field( 'weather_widget_photo' ) );
 	foreach ( $featured_activities as $featured_activity ) {
 		$feature = new Two_Col_Section( get_the_ID(), $featured_activity, 'div' );
 		$feature->the_section();
+		if ( 'Casino' === $featured_activity['headline'] ) {
+			get_template_part( 'template-parts/aside', 'casino-promotions' );
+		}
 		if ( $feature->has_modal ) {
 			$has_modal[] = true;
 		}

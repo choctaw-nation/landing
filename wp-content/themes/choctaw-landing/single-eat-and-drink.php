@@ -17,7 +17,7 @@ $content = new Featured_Eat( $post, false )
 	<header id="header-img" class="position-relative d-flex justify-content-center align-items-center hero__bg-container mx-auto" style="height:clamp(20vw,30vw,40vw);">
 		<?php $content->hero_image->the_image( 'hero__image object-fit-cover skip-lazy' ); ?>
 	</header>
-	<?php
+		<?php
 		$acf_fields = array(
 			'headline'    => get_the_title(),
 			'subheadline' => get_field( 'description' ),
@@ -57,7 +57,7 @@ $content = new Featured_Eat( $post, false )
 				</div>
 			</div>
 			<?php foreach ( $content->specials as $index => $special ) : ?>
-			<?php $should_reverse = 0 === $index % 2 ? '' : ' flex-row-reverse'; ?>
+				<?php $should_reverse = 0 === $index % 2 ? '' : ' flex-row-reverse'; ?>
 			<div class="<?php echo "row justify-content-center align-items-center{$should_reverse}"; ?>">
 				<?php if ( $special->get_the_image() ) : ?>
 				<div class="col">

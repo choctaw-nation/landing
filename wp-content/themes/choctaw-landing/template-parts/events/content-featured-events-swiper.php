@@ -41,7 +41,7 @@ if ( empty( $events ) ) {
 	return;
 }
 ?>
-<div class="offset-topo-bg py-5">
+<div class="offset-topo-bg py-5 my-5">
 	<section id="featured-events" class="container">
 		<div class="row events-list">
 			<div class="col-1 position-relative">
