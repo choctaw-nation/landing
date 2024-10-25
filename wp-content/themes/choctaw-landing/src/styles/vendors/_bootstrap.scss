@@ -16,8 +16,7 @@ $font-family-monospace:
 	"Courier New",
 	monospace;
 
-$font-size-root: 62.5%; // Assuming browser is set to 16px, this will make 1rem = 10px
-$font-size-base: 1.6rem; // Sets the base font size to 16px
+$font-size-base: 1rem;
 
 // LINKS
 $link-decoration: none;
@@ -43,21 +42,13 @@ $h6-font-size: $font-size-base * 1.2;
 // ================================================
 
 /**
-* Spacing
-*/
-$grid-gutter-width: 2.4rem; // 24px
-$spacer: 1.6rem; // 16px
-
-// ================================================
-
-/**
 * Dropdown
 */
 
 $dropdown-color: $dark;
 $dropdown-link-color: $primary;
 $dropdown-link-hover-color: $secondary;
-$dropdown-font-size: 1.25rem;
+$dropdown-font-size: 0.78125rem;
 $dropdown-border-width: 0;
 $dropdown-border-radius: 0;
 
@@ -78,11 +69,10 @@ $navbar-nav-link-padding-x: 0rem;
 $navbar-padding-y: 0;
 // $navbar-padding-x: $spacer * 0.5;
 
-$caret-width: 0.5rem;
-$caret-spacing: $caret-width * 1.6;
+$caret-width: 0.3125rem;
 
 // NAV
-$nav-link-font-size: 1.6rem;
+$nav-link-font-size: 1rem;
 $nav-link-color: $dark;
 
 // ================================================
@@ -91,7 +81,7 @@ $nav-link-color: $dark;
 * Offcanvas
 */
 
-$offcanvas-horizontal-width: 30rem;
+$offcanvas-horizontal-width: 18.75rem;
 $offcanvas-bg-color: $primary;
 $offcanvas-color: white;
 
@@ -103,8 +93,8 @@ $offcanvas-color: white;
 
 $btn-border-width: 2px;
 
-$btn-padding-x: 1rem;
-$btn-padding-y: 0.32rem;
+$btn-padding-x: 0.625rem;
+$btn-padding-y: 0.2rem;
 
 $btn-font-weight: 500;
 
