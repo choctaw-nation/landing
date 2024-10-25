@@ -4,6 +4,35 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.1.0
+
+-   Update Events `single.php` page template
+-   Update Events swiper to use 9:16 images
+-   Add new ACF fields
+-   Clean up spacing & double-arrow styles
+
+## v2.0.1
+
+-   Update Bootstrap to use font-base of 1rem = 16px (was previously 1rem = 10px).
+-   Tighten up spacing on two-col elements when wrapping to 1 column
+-   Use svg instead of image for double-arrow
+
+## v1.9.2
+
+-   When "View Specials" CTA is present, anchor now takes a user directly to the specials section
+-   Links are wrapped in `user_trailingslashit`
+
+## v1.9.1
+
+-   Updated the look of /specials single when no hero image is provided
+
+## v1.9.0
+
+-   Added new "Specials" options on eat and drink
+-   Added new Promotions Swiper on /things-to-do
+-   Updated /events to use the Featured Events Swiper (as seen on /things-to-do)
+-   Updated spacing on /events
+
 ## v1.8.1
 
 -   Fixed `<header>` margin on `single-eat-and-drink.php` layout

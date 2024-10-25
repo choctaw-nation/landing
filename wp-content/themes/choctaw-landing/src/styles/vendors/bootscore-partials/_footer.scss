@@ -3,17 +3,12 @@ Footer
 --------------------------------------------------------------*/
 
 // Make the footer stick to the bottom
-html,
-body,
-#page {
-  height: 100%;
-}
 
 #page {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 #content {
-  flex: 1;
+	flex: 1;
 }

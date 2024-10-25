@@ -24,7 +24,11 @@ class Theme_Init {
 	/** Load required files. */
 	private function load_required_files() {
 		$base_path   = get_template_directory() . '/inc';
-		$theme_files = array( 'theme-functions', 'class-allow-svg' );
+		$theme_files = array(
+			'theme-functions',
+			'class-allow-svg',
+			'class-promotions-handler',
+		);
 		foreach ( $theme_files as $theme_file ) {
 			require_once $base_path . "/theme/{$theme_file}.php";
 		}

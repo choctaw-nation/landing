@@ -125,7 +125,7 @@ class Two_Col_Section extends Generator {
 		$section_id    = $this->get_the_section_id();
 		$section_class = $this->set_the_class( 'section' );
 		$row_class     = $this->set_the_class( 'row' );
-		$markup        = "<{$this->wrapper_el} class='{$section_class}' id='{$section_id}'><div class='container my-3 two-col'>";
+		$markup        = "<{$this->wrapper_el} class='{$section_class}' id='{$section_id}'><div class='container two-col'>";
 		$markup       .= "<div class='{$row_class}'>";
 		if ( $this->image ) {
 			$markup .= $this->get_col_1();
@@ -138,29 +138,7 @@ class Two_Col_Section extends Generator {
 
 	/** A wrapper for the global 'cno_get_the_section_id' function */
 	protected function get_the_section_id(): string {
-		if ( function_exists( 'cno_get_the_section_id' ) ) {
-			return cno_get_the_section_id( $this->headline );
-		} else {
-			$decoded = html_entity_decode( $this->headline );
-			// Convert to ASCII
-			$ascii_string = iconv( 'UTF-8', 'ASCII//TRANSLIT', $this->headline );
-
-			// Remove apostrophes
-			$no_apostrophes = preg_replace( '/[\']/', '', $ascii_string );
-
-			// Replace ampersands with "and"
-			$replace_ampersands = preg_replace( '/[&]/', 'and', $no_apostrophes );
-
-			// Replace non-alphanumeric characters with hyphens
-			$hyphenated = preg_replace( '/[^A-Za-z0-9-]+/', '-', $replace_ampersands );
-
-			// Consolidate multiple hyphens into one
-			$consolidated_hyphens = preg_replace( '/[\s-]+/', '-', $hyphenated );
-
-			// Trim hyphens from the start and end, and convert to lowercase
-			$cleaned_string = strtolower( trim( $consolidated_hyphens, '-' ) );
-			return $cleaned_string;
-		}
+		return cno_get_the_section_id( $this->headline );
 	}
 
 	/**
@@ -189,7 +167,7 @@ class Two_Col_Section extends Generator {
 				}
 				break;
 			case 'row':
-				$class = 'row align-items-center';
+				$class = 'row align-items-center row-gap-3';
 				if ( $this->should_reverse ) {
 					$class .= ' flex-row-reverse';
 				}
@@ -198,7 +176,7 @@ class Two_Col_Section extends Generator {
 				$class = 'col-12 col-lg-5';
 				break;
 			case 'col-2':
-				$class = 'col-12 col-lg-7';
+				$class = 'col';
 				break;
 		}
 		return $class;
@@ -214,7 +192,7 @@ class Two_Col_Section extends Generator {
 	protected function get_col_1(): string {
 		$col_1   = $this->set_the_class( 'col-1' );
 		$markup  = "<div class='{$col_1}'>";
-		$markup .= "<div class='ratio ratio-1x1 my-5'>";
+		$markup .= "<div class='ratio ratio-1x1 mb-0'>";
 		$markup .= $this->image->get_the_image( 'object-fit-cover' );
 		$markup .= '</div>';
 		$markup .= '</div>';
@@ -229,7 +207,7 @@ class Two_Col_Section extends Generator {
 	 */
 	protected function get_col_2( $col_class = '' ): string {
 		$col_2           = empty( $col_class ) ? $this->set_the_class( 'col-2' ) : $col_class;
-		$inner_row_class = $this->has_cta ? 'row position-relative' : 'row position-relative justify-content-md-end';
+		$inner_row_class = $this->has_cta ? 'row position-relative' : 'row position-relative justify-content-lg-end';
 		$markup          = "<div class='{$col_2}'>";
 		$markup         .= "<div class='{$inner_row_class}'>";
 		if ( $this->has_cta ) {
@@ -251,7 +229,7 @@ class Two_Col_Section extends Generator {
 	 * @return string - The HTML markup for the headline.
 	 */
 	protected function get_the_headline(): string {
-		return "<div class='col-12 col-md-9 col-xl-10'><h2 class='two-col__headline'>{$this->headline}</h2></div>";
+		return "<div class='col-12 col-md-9 col-xl-10 flex-grow-1'><h2 class='two-col__headline'>{$this->headline}</h2></div>";
 	}
 
 	/**
@@ -260,7 +238,7 @@ class Two_Col_Section extends Generator {
 	 * @return string - The HTML markup for the subheadline and CTA.
 	 */
 	protected function get_the_subheadline(): string {
-		$markup = "<div class='col-12 col-md-9 col-xl-10'><div class='two-col__subheadline fs-6'>{$this->subheadline}</div>";
+		$markup = "<div class='col-12 col-md-9 col-xl-10 flex-grow-1'><div class='two-col__subheadline fs-6'>{$this->subheadline}</div>";
 		if ( $this->has_cta ) {
 			$markup .= $this->get_the_cta();
 		}
@@ -274,12 +252,15 @@ class Two_Col_Section extends Generator {
 	 * @return string - The HTML markup for the CTA.
 	 */
 	protected function get_the_cta(): string {
-		$markup  = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' loading='lazy' aria-hidden='true' alt='' />";
-		$markup .= $this->get_the_link( 'desktop' );
-		$markup .= '</p>';
-		$markup .= "<p class='py-4 d-block d-md-none'>";
-		$markup .= $this->get_the_link( 'mobile' );
-		$markup .= '</p>';
+		ob_start();
+		get_template_part( 'template-parts/ui/content', 'double-arrow' );
+		$double_arrow_content = ob_get_clean();
+		$markup               = "<div class='mt-4 d-none d-md-block'><figure class='mb-0 arrow position-absolute'>{$double_arrow_content}</figure>";
+		$markup              .= $this->get_the_link( 'desktop' );
+		$markup              .= '</div>';
+		$markup              .= "<div class='mt-4 d-block d-md-none'>";
+		$markup              .= $this->get_the_link( 'mobile' );
+		$markup              .= '</div>';
 		return $markup;
 	}
 

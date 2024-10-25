@@ -18,12 +18,12 @@ if ( empty( $args['id'] ) ) {
 	$banner_id = isset( $args['id'] ) ?: 'id="' . $args['id'] . '"';
 }
 ?>
-<div <?php echo $banner_id; ?> class="banner-bg-header position-relative container-fluid my-5 g-0 overflow-hidden d-flex flex-column">
-	<?php if ( $url ) : ?>
-	<img src="<?php echo $url; ?>" class="banner-bg-header__image--blur d-none d-xxl-block position-absolute z-n1 object-fit-cover w-100 h-100"
-		<?php echo $srcset ? "srcset='{$srcset}'" : ''; ?> aria-hidden="true" alt="" loading="lazy" />
-	<img src="<?php echo $url; ?>" class="banner-bg-header__image mx-auto w-100 h-auto" <?php echo $srcset ? "srcset='{$srcset}'" : ''; ?> aria-hidden="true" alt="" loading="lazy" />
-	<?php else : ?>
-	<div class="banner-bg-header__color position-absolute z-2 mx-auto w-100 h-100 bg-primary"></div>
-	<?php endif; ?>
+<div <?php echo $banner_id; ?> class="banner-bg-header position-relative container-fluid g-0 overflow-hidden d-flex flex-column">
+    <?php if ( $url ) : ?>
+    <img src="<?php echo $url; ?>" class="banner-bg-header__image--blur d-none d-xxl-block position-absolute z-n1 object-fit-cover w-100 h-100"
+         <?php echo $srcset ? "srcset='{$srcset}'" : ''; ?> aria-hidden="true" alt="" loading="lazy" />
+    <img src="<?php echo $url; ?>" class="banner-bg-header__image mx-auto w-100 h-auto" <?php echo $srcset ? "srcset='{$srcset}'" : ''; ?> aria-hidden="true" alt="" loading="lazy" />
+    <?php else : ?>
+    <div class="banner-bg-header__color position-absolute z-2 mx-auto w-100 h-100 bg-primary"></div>
+    <?php endif; ?>
 </div>

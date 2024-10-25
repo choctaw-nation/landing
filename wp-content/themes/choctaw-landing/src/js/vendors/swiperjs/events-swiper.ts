@@ -6,7 +6,7 @@ function eventsSwiper() {
 		throw new Error( `Couldn't get events swiper!` );
 	}
 	newSwiper( el, {
-		autoHeight: false,
+		autoHeight: true,
 		loop: false,
 		breakpoints: {
 			991: {

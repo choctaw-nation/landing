@@ -1,4 +1,10 @@
 import 'bootstrap/js/dist/modal';
+import Swiper from 'swiper';
+import { Navigation, Pagination, A11y } from 'swiper/modules';
+import 'swiper/scss';
+import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
+import 'swiper/scss/a11y';
 
 new ( class HandleModal {
 	/**
@@ -101,3 +107,33 @@ new ( class HandleModal {
 		}
 	}
 } )();
+
+const swiperEl = document.querySelector< HTMLElement >(
+	'#casino-promotions .swiper'
+);
+if ( swiperEl ) {
+	new Swiper( swiperEl, {
+		modules: [ Navigation, Pagination, A11y ],
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		},
+		grabCursor: true,
+		lazyPreloadPrevNext: 1,
+		loop: false,
+		breakpoints: {
+			767: {
+				slidesPerView: 2,
+				spaceBetween: 20,
+			},
+			1200: {
+				slidesPerView: 3,
+				spaceBetween: 30,
+			},
+		},
+	} );
+}
