@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.9.2
+
+-   When "View Specials" CTA is present, anchor now takes a user directly to the specials section
+-   Links are wrapped in `user_trailingslashit`
+
 ## v1.9.1
 
 -   Updated the look of /specials single when no hero image is provided
