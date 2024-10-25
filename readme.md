@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v1.9.1
+
+-   Updated the look of /specials single when no hero image is provided
+
 ## v1.9.0
 
 -   Added new "Specials" options on eat and drink
