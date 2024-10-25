@@ -55,7 +55,7 @@ class FB_Specials {
 	/**
 	 * Get the description
 	 */
-	public function get_the_description(): string {
+	public function get_the_description(): ?string {
 		return acf_esc_html( get_field( 'description', $this->post_id ) );
 	}
 
@@ -69,7 +69,7 @@ class FB_Specials {
 	/**
 	 * Get the price
 	 */
-	public function get_the_price(): string {
+	public function get_the_price(): ?string {
 		return esc_textarea( get_field( 'price', $this->post_id ) );
 	}
 

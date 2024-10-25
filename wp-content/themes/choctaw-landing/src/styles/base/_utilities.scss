@@ -31,9 +31,8 @@
 }
 
 .vertical-line {
-	border: 1.5px solid transparent;
-	border-right-color: #414042;
-	width: 57.5px;
+	border-right: 1.5px solid var(--bs-dark);
+	width: 58px;
 	margin-top: 10px;
 	height: calc(100% - 80px);
 

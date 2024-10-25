@@ -101,6 +101,16 @@ $btn-font-weight: 500;
 // ================================================
 
 /**
+* Pagination
+*/
+
+$pagination-border-color: $primary;
+$pagination-hover-color: white;
+$pagination-hover-bg: $primary;
+
+// ================================================
+
+/**
 * Options
 */
 
@@ -111,6 +121,14 @@ $enable-rounded: false;
 
 @import "bootstrap/scss/variables";
 // @import "bootstrap/scss/variables-dark";
+
+$aspect-ratios: map-merge(
+	$aspect-ratios,
+	(
+		"9x16": calc(16 / 9 * 100%),
+	)
+);
+
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";

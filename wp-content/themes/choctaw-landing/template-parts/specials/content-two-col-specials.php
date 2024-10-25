@@ -19,23 +19,27 @@ $should_reverse = 0 === $index % 2 ? '' : ' flex-row-reverse';
     <?php endif; ?>
     <div class="col-lg-7">
         <div class="row justify-content-lg-end">
-            <div class="col-lg-9 col-xl-10">
+            <div class="col-lg-9 col-xl-10 <?php echo ! empty( $special->get_the_price() ) ? '' : 'flex-grow-1'; ?>">
                 <h3 class="mb-0"><?php $special->the_title(); ?></h3>
             </div>
         </div>
         <div class="row position-relative">
+            <?php if ( ! empty( $special->get_the_price() ) ) : ?>
             <div class="col-3 col-xl-2 d-none d-md-block">
                 <div class="vertical-line"></div>
             </div>
+            <?php endif; ?>
             <div class="col">
                 <p class="h5 text-secondary"><?php $special->the_date(); ?></p>
                 <div class="fs-5"><?php $special->the_description(); ?></div>
-                <div class="mt-3 d-none d-md-block">
+                <?php if ( ! empty( $special->get_the_price() ) ) : ?>
+                <div class="mt-4 d-none d-md-block">
                     <figure class="mb-0 arrow position-absolute">
                         <?php get_template_part( 'template-parts/ui/content', 'double-arrow' ); ?>
                     </figure>
                     <p class="h5 fw-bold mb-0"><?php $special->the_price(); ?></p>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
 
