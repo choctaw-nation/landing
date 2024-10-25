@@ -86,7 +86,7 @@ class Eat_And_Drink {
 	 */
 	private function get_the_row( $should_reverse ): string {
 		$section_id = $this->featured_eat->get_the_section_id();
-		$row_class  = 'row align-items-center';
+		$row_class  = 'row align-items-center row-gap-3';
 		if ( $should_reverse ) {
 			$row_class .= ' flex-row-reverse';
 		}

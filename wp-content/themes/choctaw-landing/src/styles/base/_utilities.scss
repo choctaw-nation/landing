@@ -33,25 +33,40 @@
 .vertical-line {
 	border: 1.5px solid transparent;
 	border-right-color: #414042;
-	height: calc(100% - 122px);
 	width: 57.5px;
 	margin-top: 10px;
+	height: calc(100% - 80px);
 
 	&-white {
 		border-right-color: white;
 	}
 }
 
-.arrow {
-	height: 163px;
+%arrow_styles {
+	height: 165px;
 	width: 70.5px;
 	left: 33.5px;
 	z-index: 2;
 	margin-top: -63px;
+}
+
+.arrow {
+	@extend %arrow_styles;
 
 	&-white {
 		filter: brightness(100) saturate(100%);
 	}
+}
+
+figure.arrow {
+	@extend %arrow_styles;
+	height: unset;
+	bottom: -52px;
+}
+
+.arrow-svg {
+	width: 71px;
+	left: 34px;
 }
 
 .zi-1020 {

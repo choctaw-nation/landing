@@ -4,6 +4,12 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.0.1
+
+-   Update Bootstrap to use font-base of 1rem = 16px (was previously 1rem = 10px).
+-   Tighten up spacing on two-col elements when wrapping to 1 column
+-   Use svg instead of image for double-arrow
+
 ## v1.9.2
 
 -   When "View Specials" CTA is present, anchor now takes a user directly to the specials section
