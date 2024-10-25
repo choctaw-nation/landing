@@ -273,7 +273,7 @@ class Featured_Eat {
 				'target' => '_blank',
 			),
 			'specials'           => array(
-				'href'   => get_the_permalink( $this->post ),
+				'href'   => get_the_permalink( $this->post ) . '#specials',
 				'text'   => 'View Specials',
 				'target' => '_self',
 			),
@@ -291,7 +291,7 @@ class Featured_Eat {
 			}
 		}
 		return array(
-			'href'   => $href,
+			'href'   => user_trailingslashit( $href ),
 			'text'   => $text,
 			'target' => $target,
 		);
@@ -384,7 +384,7 @@ class Featured_Eat {
 		$markup .= "<h2 class='card__headline text-white fs-3'>{$this->headline}</h2>";
 		$markup .= "<div class='card__subheadline fs-6 mb-2'>{$this->description}</div>";
 		if ( $this->specials ) {
-			$markup .= '<a href="' . get_the_permalink( $this->post ) . '" class="btn btn-light my-3 align-self-start fs-6">View Specials</a>';
+			$markup .= '<a href="' . user_trailingslashit( get_the_permalink( $this->post ) . '#specials' ) . '" class="btn btn-light my-3 align-self-start fs-6">View Specials</a>';
 		}
 		if ( $this->food_genre ) {
 			$markup .= '<hr class="my-4" /><div class="card__meta d-flex justify-content-between align-items-center">';
