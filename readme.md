@@ -4,6 +4,13 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.1.0
+
+-   Update Events `single.php` page template
+-   Update Events swiper to use 9:16 images
+-   Add new ACF fields
+-   Clean up spacing & double-arrow styles
+
 ## v2.0.1
 
 -   Update Bootstrap to use font-base of 1rem = 16px (was previously 1rem = 10px).

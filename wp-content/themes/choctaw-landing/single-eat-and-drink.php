@@ -19,7 +19,7 @@ $content = new Featured_Eat( $post, false )
 		get_template_part( 'template-parts/specials/section', 'no-hero', array( 'content' => $content ) );
 	}
 	?>
-    <div class="container d-flex flex-column row-gap-5">
+    <div class="container">
         <section class="row row-gap-4" id="details">
             <div class="col-12">
                 <h2>Details</h2>
@@ -31,28 +31,28 @@ $content = new Featured_Eat( $post, false )
                 </a>
             </div>
         </section>
-        <?php if ( $content->specials ) : ?>
-        <section class="d-flex flex-column row-gap-5" id="specials">
-            <div class="row">
-                <div class="col text-center">
-                    <h2 class="h1">Specials</h2>
-                </div>
-            </div>
-            <?php
-			foreach ( $content->specials as $index => $special ) {
-				get_template_part(
-					'template-parts/specials/content',
-					'two-col-specials',
-					array(
-						'special' => $special,
-						'index'   => $index,
-					)
-				);
-			}
-			?>
-        </section>
-        <?php endif; ?>
     </div>
+    <?php if ( $content->specials ) : ?>
+    <section class="container d-flex flex-column row-gap-5" id="specials">
+        <div class="row">
+            <div class="col text-center">
+                <h2 class="h1">Specials</h2>
+            </div>
+        </div>
+        <?php
+		foreach ( $content->specials as $index => $special ) {
+			get_template_part(
+				'template-parts/specials/content',
+				'two-col-specials',
+				array(
+					'special' => $special,
+					'index'   => $index,
+				)
+			);
+		}
+		?>
+    </section>
+    <?php endif; ?>
 </main>
 <?php
 get_footer();
