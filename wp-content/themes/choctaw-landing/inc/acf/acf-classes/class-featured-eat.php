@@ -251,12 +251,15 @@ class Featured_Eat {
 	 * Generates the anchors markup for the desktop view
 	 */
 	public function get_the_desktop_anchors(): string {
-		$markup = "<p class='py-4 d-none d-md-block'><img src='/wp-content/uploads/2023/08/double-arrow.svg' class='arrow position-absolute' loading='lazy' aria-hidden='true' />";
-		$anchor = $this->get_the_anchor_settings();
+		ob_start();
+		get_template_part( 'template-parts/ui/content', 'double-arrow' );
+		$double_arrow_content = ob_get_clean();
+		$markup               = "<div class='mt-4 d-none d-md-block'><figure class='mb-0 arrow position-absolute'>{$double_arrow_content}</figure>";
+		$anchor               = $this->get_the_anchor_settings();
 		if ( $anchor['href'] && $anchor['text'] ) {
 			$markup .= "<a href='{$anchor['href']}' class='arrow-link fs-5 fw-medium' target='{$anchor['target']}' rel='noopener noreferrer'>{$anchor['text']}</a>";
 		}
-		$markup .= '</p>';
+		$markup .= '</div>';
 		return $markup;
 	}
 
