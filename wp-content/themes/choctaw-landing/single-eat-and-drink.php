@@ -7,36 +7,18 @@
  */
 
 use ChoctawNation\ACF\Featured_Eat;
-use ChoctawNation\ACF\Title_Bar;
 
 get_header();
 $content = new Featured_Eat( $post, false )
 ?>
 <main <?php post_class( 'd-flex flex-column row-gap-5 mb-5' ); ?>>
-	<?php if ( $content->hero_image ) : ?>
-	<header id="header-img" class="position-relative d-flex justify-content-center align-items-center hero__bg-container mx-auto" style="height:clamp(20vw,30vw,40vw);">
-		<?php $content->hero_image->the_image( 'hero__image object-fit-cover skip-lazy' ); ?>
-	</header>
-		<?php
-		$acf_fields = array(
-			'headline'    => get_the_title(),
-			'subheadline' => get_field( 'description' ),
-		);
-		$title_bar  = new Title_Bar( get_the_ID(), $acf_fields );
-		$title_bar->the_title_bar();
-		?>
-	<?php else : ?>
-	<section class="text-bg-secondary hero__bg-container mx-auto py-5">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-10 text-center">
-					<h1 class="text-white"><?php the_title(); ?></h1>
-					<div class="fs-5 text-white"><?php the_field( 'description' ); ?></div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<?php endif; ?>
+	<?php
+	if ( $content->hero_image ) {
+		get_template_part( 'template-parts/specials/section', 'hero', array( 'content' => $content ) );
+	} else {
+		get_template_part( 'template-parts/specials/section', 'no-hero', array( 'content' => $content ) );
+	}
+	?>
 	<div class="container d-flex flex-column row-gap-5">
 		<section class="row row-gap-4" id="details">
 			<div class="col-12">
