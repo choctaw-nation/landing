@@ -18,17 +18,17 @@
 
 	.swiper {
 		h2 {
-			@include rfs.font-size(1.6rem * 1.728); // h4
+			@include rfs.font-size(1.728rem); // h4
 			@extend %federated_headings;
 		}
 
 		h4 {
-			@include rfs.font-size(1.6rem * 1.44); // h5
+			@include rfs.font-size(1.44rem); // h5
 			@extend %federated_headings;
 		}
 
 		h5 {
-			@include rfs.font-size(calc(m * 1.2)); // h6
+			@include rfs.font-size(1.2rem); // h6
 			@extend %federated_headings;
 		}
 
