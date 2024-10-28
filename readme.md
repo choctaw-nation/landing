@@ -4,6 +4,12 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.1.1
+
+-   Add "View All" to promos
+-   Update Spacing on promos
+-   Update text content on promos
+
 ## v2.1.0
 
 -   Update Events `single.php` page template

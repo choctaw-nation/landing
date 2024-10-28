@@ -80,7 +80,15 @@ class Promotions_Handler {
 		$base_url   = 'https://www.choctawcasinos.com/wp-json/wp/v2/promotions';
 		$url_params = array(
 			'casino_location' => array( 25, 56 ),
-			'_fields'         => array( 'id', 'title', 'content', 'acf', 'link', 'status', '_embedded', '_links' ),
+			'_fields'         => array(
+				'id',
+				'title',
+				'acf',
+				'link',
+				'_embedded',
+				'_links',
+				'excerpt',
+			),
 			'_embed'          => array( 'wp:featuredmedia', 'wp:term' ),
 		);
 
@@ -109,9 +117,8 @@ class Promotions_Handler {
 				$pretty_promo             = array();
 				$pretty_promo['title']    = $promotion['title']['rendered'];
 				$pretty_promo['id']       = $promotion['id'];
-				$pretty_promo['content']  = $promotion['content']['rendered'];
+				$pretty_promo['content']  = $promotion['excerpt']['rendered'];
 				$pretty_promo['link']     = $promotion['link'];
-				$pretty_promo['status']   = $promotion['status'];
 				$pretty_promo['acf']      = $promotion['acf'];
 				$pretty_promo['location'] = $promotion['_embedded']['wp:term'][0][0]['name'];
 				$pretty_promo['image']    = array(
