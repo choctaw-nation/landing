@@ -6,7 +6,7 @@
 	font-weight: 400;
 	font-family: var(--font-body);
 	text-transform: none;
-	line-height: calc(2ex + 6px);
+	line-height: calc(2ex + 4px);
 	text-wrap: pretty;
 }
 
@@ -34,7 +34,7 @@
 
 		p {
 			text-wrap: pretty;
-			line-height: calc(2ex + 6px);
+			line-height: calc(2ex + 4px);
 		}
 	}
 }
