@@ -45,7 +45,7 @@ if ( empty( $events ) ) {
     <section id="featured-events" class="container">
         <div class="row events-list align-items-stretch">
             <div class="col-1 position-relative">
-                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-prev events-swiper-button-prev"></div>
             </div>
             <div class="swiper h-100 col-10" id='events-swiper'>
                 <div class="swiper-wrapper">
@@ -74,10 +74,10 @@ if ( empty( $events ) ) {
                         <p class="event__meta fs-6 mb-0 text-white"><i class="fa-solid fa-calendar"></i>
                             <?php
 								$feature->the_dates( 'l, M j, Y' );
-								if ( $feature->has_time ) {
-									echo ! empty( $feature->get_the_times() ) ? ( ' • ' . $feature->get_the_times( 'g:iA' ) ) : '';
-								}
-								?>
+							if ( $feature->has_time ) {
+								echo ! empty( $feature->get_the_times() ) ? ( ' • ' . $feature->get_the_times( 'g:iA' ) ) : '';
+							}
+							?>
                         </p>
                         <?php if ( $feature->has_venue ) : ?>
                         <p class="event__meta fs-6 mb-0 text-white"><i class=" fa-solid fa-map-marker-alt"></i> <?php $feature->the_venue_name(); ?></p>
@@ -91,12 +91,12 @@ if ( empty( $events ) ) {
                 </div>
             </div>
             <div class="col-1 position-relative">
-                <div class="swiper-button-next"></div>
+                <div class="swiper-button-next events-swiper-button-next"></div>
             </div>
         </div>
         <div class="row position-relative mt-5">
             <div class="col">
-                <div class="swiper-pagination"></div>
+                <div class="swiper-pagination events-swiper-pagination"></div>
             </div>
         </div>
         <div class="row mt-3">

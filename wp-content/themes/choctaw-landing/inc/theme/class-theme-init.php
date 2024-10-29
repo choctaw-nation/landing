@@ -212,14 +212,14 @@ class Theme_Init {
 		wp_register_script(
 			'events-swiper',
 			get_stylesheet_directory_uri() . '/dist/modules/swiper/events-swiper.js',
-			array( 'bootstrap' ),
+			array( 'global' ),
 			$events_swiper['version'],
 			array( 'strategy' => 'defer' )
 		);
 		wp_register_style(
 			'events-swiper',
 			get_stylesheet_directory_uri() . '/dist/modules/swiper/events-swiper.css',
-			array( 'bootstrap' ),
+			array( 'global' ),
 			$events_swiper['version'],
 		);
 	}
