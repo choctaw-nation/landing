@@ -115,11 +115,11 @@ if ( swiperEl ) {
 	new Swiper( swiperEl, {
 		modules: [ Navigation, Pagination, A11y ],
 		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
+			nextEl: '.casino-promos-button-next',
+			prevEl: '.casino-promos-button-prev',
 		},
 		pagination: {
-			el: '.swiper-pagination',
+			el: '.casino-promos-pagination',
 			clickable: true,
 		},
 		grabCursor: true,
