@@ -13,8 +13,8 @@ use ChoctawNation\ACF\Two_Col_Section;
 use ChoctawNation\Asset_Loader;
 use ChoctawNation\Enqueue_Type;
 
-new Asset_Loader( 'thingsToDo', Enqueue_Type::script, 'pages' );
 get_header();
+new Asset_Loader( 'thingsToDo', Enqueue_Type::both, 'pages' );
 $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $hero->the_hero();
 $title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
@@ -22,19 +22,19 @@ $title_bar->the_title_bar();
 $weather_widget_photo = new Image( get_field( 'weather_widget_photo' ) );
 ?>
 <div class="d-flex flex-column my-5 row-gap-5">
-    <aside id="weather" class="container">
-        <div class="row row-gap-3">
-            <div class="col col-lg-6 col-xl-8">
-                <?php $weather_widget_photo->the_image( 'w-100 h-100 object-fit-cover' ); ?>
-            </div>
-            <?php get_template_part( 'template-parts/aside', 'weather-widget' ); ?>
-        </div>
-    </aside>
+	<aside id="weather" class="container">
+		<div class="row row-gap-3">
+			<div class="col col-lg-6 col-xl-8">
+				<?php $weather_widget_photo->the_image( 'w-100 h-100 object-fit-cover' ); ?>
+			</div>
+			<?php get_template_part( 'template-parts/aside', 'weather-widget' ); ?>
+		</div>
+	</aside>
 
-    <?php get_template_part( 'template-parts/events/content', 'featured-events-swiper' ); ?>
+	<?php get_template_part( 'template-parts/events/content', 'featured-events-swiper' ); ?>
 
-    <section class="d-flex flex-column row-gap-5" id="featured-activities">
-        <?php
+	<section class="d-flex flex-column row-gap-5" id="featured-activities">
+		<?php
 		$featured_activities = get_field( 'featured_activities' );
 		$has_modal           = array();
 		foreach ( $featured_activities as $featured_activity ) {
@@ -51,9 +51,9 @@ $weather_widget_photo = new Image( get_field( 'weather_widget_photo' ) );
 			get_template_part( 'template-parts/content', 'modal' );
 		}
 		?>
-    </section>
+	</section>
 
-    <?php
+	<?php
 	$attractions = get_field( 'attractions' );
 	if ( ! empty( $attractions['banner_image'] ) ) {
 		$banner = new Image( $attractions['banner_image'] );
@@ -69,9 +69,9 @@ $weather_widget_photo = new Image( get_field( 'weather_widget_photo' ) );
 		);
 	}
 	?>
-    <?php if ( ! empty( $attractions['attractions_columns'] ) ) : ?>
-    <section id="area-attractions-list" class="container my-5">
-        <?php
+	<?php if ( ! empty( $attractions['attractions_columns'] ) ) : ?>
+	<section id="area-attractions-list" class="container my-5">
+		<?php
 		$attractions_columns = $attractions['attractions_columns'];
 		foreach ( $attractions_columns as $row ) {
 			echo '<div class="row">';
@@ -82,8 +82,8 @@ $weather_widget_photo = new Image( get_field( 'weather_widget_photo' ) );
 			echo '</div>';
 		}
 		?>
-    </section>
-    <?php endif; ?>
+	</section>
+	<?php endif; ?>
 </div>
 <?php
 get_footer();

@@ -125,14 +125,16 @@ if ( swiperEl ) {
 		grabCursor: true,
 		lazyPreloadPrevNext: 1,
 		loop: false,
+		spaceBetween: 10,
 		breakpoints: {
 			767: {
 				slidesPerView: 2,
+				slidesPerGroup: 2,
 				spaceBetween: 20,
 			},
 			1200: {
 				slidesPerView: 3,
-				spaceBetween: 30,
+				slidesPerGroup: 3,
 			},
 		},
 	} );

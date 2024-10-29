@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as v;
+
 // Required
 @import "bootstrap/scss/functions";
 
@@ -38,7 +39,6 @@ $h3-font-size: $font-size-base * 2.074;
 $h4-font-size: $font-size-base * 1.728;
 $h5-font-size: $font-size-base * 1.44;
 $h6-font-size: $font-size-base * 1.2;
-
 // ================================================
 
 /**
@@ -130,20 +130,23 @@ $aspect-ratios: map-merge(
 	)
 );
 
+// Required Bootstrap Modules
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
 @import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
 
 // Useful Bootstrap Utilities (Optional)
-@import "bootstrap/scss/bootstrap-reboot";
-@import "bootstrap/scss/bootstrap-grid";
-@import "bootstrap/scss/bootstrap-utilities";
 @import "bootstrap/scss/buttons";
+
 @import "bootstrap/scss/transitions";
 @import "bootstrap/scss/close";
-@import "bootstrap/scss/offcanvas";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
 
 // Optional Bootstrap Modules (w/ Dependencies)
+@import "bootstrap/scss/offcanvas";
 @import "bootstrap/scss/accordion";
 @import "bootstrap/scss/alert";
 @import "bootstrap/scss/badge";
@@ -171,3 +174,9 @@ $aspect-ratios: map-merge(
 @import "bootstrap/scss/toasts";
 // @import "bootstrap/scss/tooltip";
 @import "bootstrap/scss/type";
+
+// Helpers
+@import "bootstrap/scss/helpers";
+
+// Utilities
+@import "bootstrap/scss/utilities/api";
