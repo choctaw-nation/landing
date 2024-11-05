@@ -4,6 +4,12 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.1.2
+
+-   Add (and use) new image sizes
+-   Update packages
+-   Update link for Casino Promos swiper "View All" CTA
+
 ## v2.1.1
 
 -   Add "View All" to promos

@@ -279,6 +279,9 @@ class Theme_Init {
 			'container-swiper'    => array( 1594 ),
 			'banner'              => array( 3840, 1200 ), // 16:5
 			'hero-desktop'        => array( 3840, 1646 ), // 21:9
+			'events-archive'      => array( 828 ),
+			'events-single'       => array( 1272, 1884 ), // 9:16
+			'events-swiper'       => array( 698, 1242 ), // 9:16
 		);
 
 		foreach ( $image_sizes as $name => $size ) {

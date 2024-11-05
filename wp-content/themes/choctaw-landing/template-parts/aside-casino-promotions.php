@@ -58,7 +58,7 @@ if ( ! $api->has_promotions || null === $promotions ) {
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-auto">
-				<a href="https://www.choctawcasinos.com/hochatown" target="_blank" class="btn btn-outline-light">View All</a>
+				<a href="https://www.choctawcasinos.com/promotions/?locations=hochatown" target="_blank" class="btn btn-outline-light">View All</a>
 			</div>
 		</div>
 	</div>
