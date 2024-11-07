@@ -1,0 +1,47 @@
+@use "./core";
+
+.pum-overlay {
+	background-color: rgba(var(--bs-dark-rgb), 0.6);
+}
+
+%close_button {
+	position: absolute;
+	height: auto;
+	width: auto;
+	left: auto;
+	right: 0px;
+	bottom: auto;
+	top: 0px;
+	padding: 8px;
+	font-family: inherit;
+	font-weight: 500;
+	font-size: 1rem;
+	font-style: inherit;
+	line-height: 3rem;
+	border-radius: 0px;
+	box-shadow: 1px 1px 3px 0px rgba(2, 2, 2, 0.23);
+	text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.23);
+	transition:
+		color var(--transition-standard),
+		background-color var(--transition-standard),
+		border-color var(--transition-standard);
+}
+
+.pum-container {
+	background-color: white;
+
+	.pum-content {
+		& + .pum-close {
+			@extend %close_button;
+			color: white;
+			background-color: var(--bs-primary);
+		}
+		& + .pum-close:active,
+		& + .pum-close:hover,
+		& + .pum-close:focus-visible {
+			@extend %close_button;
+			color: var(--bs-primary);
+			background-color: white;
+		}
+	}
+}
