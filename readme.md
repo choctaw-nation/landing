@@ -4,6 +4,12 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.2.0
+
+-   Fixed a bug where the SVG & `.vertical-line` arrow were out of alignment on odd screen sizes < 991px
+-   Fixed a bug where the SVG went too far down on screen sizes less than bs `lg`
+-   Added "Specials" CPT support for PDF assets
+
 ## v2.1.2
 
 -   Add (and use) new image sizes

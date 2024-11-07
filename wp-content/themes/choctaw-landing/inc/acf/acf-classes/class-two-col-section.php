@@ -211,11 +211,11 @@ class Two_Col_Section extends Generator {
 		$markup          = "<div class='{$col_2}'>";
 		$markup         .= "<div class='{$inner_row_class}'>";
 		if ( $this->has_cta ) {
-			$markup .= "<div class='col-3 col-xl-2 d-none d-md-block'></div>";
+			$markup .= "<div class='col-3 col-xl-2 d-none d-lg-block'></div>";
 		}
 		$markup .= $this->get_the_headline();
 		if ( $this->has_cta ) {
-			$markup .= "<div class='col-3 col-xl-2 d-none d-md-block'><div class='vertical-line'></div></div>";
+			$markup .= "<div class='col-3 col-xl-2 d-none d-lg-block'><div class='vertical-line'></div></div>";
 		}
 		$markup .= $this->get_the_subheadline();
 		$markup .= '</div>';
@@ -229,7 +229,7 @@ class Two_Col_Section extends Generator {
 	 * @return string - The HTML markup for the headline.
 	 */
 	protected function get_the_headline(): string {
-		return "<div class='col-12 col-md-9 col-xl-10 flex-grow-1'><h2 class='two-col__headline'>{$this->headline}</h2></div>";
+		return "<div class='col-12 col-lg-9 col-xl-10 flex-grow-1'><h2 class='two-col__headline'>{$this->headline}</h2></div>";
 	}
 
 	/**
@@ -238,7 +238,7 @@ class Two_Col_Section extends Generator {
 	 * @return string - The HTML markup for the subheadline and CTA.
 	 */
 	protected function get_the_subheadline(): string {
-		$markup = "<div class='col-12 col-md-9 col-xl-10 flex-grow-1'><div class='two-col__subheadline fs-6'>{$this->subheadline}</div>";
+		$markup = "<div class='col-12 col-lg-9 col-xl-10 flex-grow-1'><div class='two-col__subheadline fs-6'>{$this->subheadline}</div>";
 		if ( $this->has_cta ) {
 			$markup .= $this->get_the_cta();
 		}
@@ -255,10 +255,10 @@ class Two_Col_Section extends Generator {
 		ob_start();
 		get_template_part( 'template-parts/ui/content', 'double-arrow' );
 		$double_arrow_content = ob_get_clean();
-		$markup               = "<div class='mt-4 d-none d-md-block'><figure class='mb-0 arrow position-absolute'>{$double_arrow_content}</figure>";
+		$markup               = "<div class='mt-4 d-none d-lg-block'><figure class='mb-0 arrow position-absolute'>{$double_arrow_content}</figure>";
 		$markup              .= $this->get_the_link( 'desktop' );
 		$markup              .= '</div>';
-		$markup              .= "<div class='mt-4 d-block d-md-none'>";
+		$markup              .= "<div class='mt-4 d-block d-lg-none'>";
 		$markup              .= $this->get_the_link( 'mobile' );
 		$markup              .= '</div>';
 		return $markup;
