@@ -30,9 +30,14 @@
 	}
 }
 
+/**
+* Using half pixel width to fix a weird rounding issue
+* Using 58px caused the lines to be off by 1px on odd viewport sizes
+* (e.g. 991px looked bad, 992px looked good)
+*/
 .vertical-line {
 	border-right: 1.5px solid var(--bs-dark);
-	width: 58px;
+	width: 57.5px;
 	margin-top: 10px;
 	height: calc(100% - 80px);
 
