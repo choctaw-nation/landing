@@ -13,7 +13,7 @@ use ChoctawNation\ACF\Two_Col_Section;
 use ChoctawNation\Asset_Loader;
 use ChoctawNation\Enqueue_Type;
 
-new Asset_Loader( 'two-col-modal-handler', Enqueue_Type::script, 'modules' );
+new Asset_Loader( 'events', Enqueue_Type::script, 'pages' );
 get_header();
 $hero      = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
