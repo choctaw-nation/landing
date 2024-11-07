@@ -298,8 +298,9 @@ class Two_Col_Section extends Generator {
 			$link_attributes['data-modal-title']    = $this->modal->modal_title;
 			$link_attributes['data-modal-headline'] = $this->modal->headline;
 			$link_attributes['data-modal-content']  = $this->modal->modal_content;
-			$link_attributes['data-modal-video']    = $this->modal->video;
-
+			if ( $this->modal->is_video ) {
+				$link_attributes['data-modal-video'] = $this->modal->video;
+			}
 		} else {
 			$link_attributes['href']   = user_trailingslashit( esc_url( $this->cta['url'] ) );
 			$link_attributes['target'] = $this->cta['target'];

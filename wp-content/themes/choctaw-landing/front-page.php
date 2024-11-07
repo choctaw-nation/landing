@@ -11,7 +11,7 @@ use ChoctawNation\ACF\Two_Col_Section;
 use ChoctawNation\Asset_Loader;
 use ChoctawNation\Enqueue_Type;
 
-new Asset_Loader( 'two-col-modal-handler', Enqueue_Type::script, 'modules' );
+new Asset_Loader( 'frontPage', Enqueue_Type::script, 'pages' );
 get_header();
 echo "<h1 class='visually-hidden'>Choctaw Landing</h1>";
 $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
