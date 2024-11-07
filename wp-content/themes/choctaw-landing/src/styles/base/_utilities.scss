@@ -4,8 +4,7 @@
 
 	h2 {
 		color: white;
-		margin-top: 1rem;
-		margin-bottom: 1rem;
+		margin-block: 0.625rem;
 	}
 
 	.form-arrow {
@@ -31,28 +30,47 @@
 	}
 }
 
+/**
+* Using half pixel width to fix a weird rounding issue
+* Using 58px caused the lines to be off by 1px on odd viewport sizes
+* (e.g. 991px looked bad, 992px looked good)
+*/
 .vertical-line {
-	border: 1.5px solid transparent;
-	border-right-color: #414042;
-	height: calc(100% - 122px);
+	border-right: 1.5px solid var(--bs-dark);
 	width: 57.5px;
 	margin-top: 10px;
+	height: calc(100% - 80px);
 
 	&-white {
 		border-right-color: white;
 	}
 }
 
-.arrow {
-	height: 163px;
+%arrow_styles {
+	height: 165px;
 	width: 70.5px;
 	left: 33.5px;
 	z-index: 2;
 	margin-top: -63px;
+}
+
+.arrow {
+	@extend %arrow_styles;
 
 	&-white {
 		filter: brightness(100) saturate(100%);
 	}
+}
+
+figure.arrow {
+	@extend %arrow_styles;
+	height: unset;
+	bottom: -52px;
+}
+
+.arrow-svg {
+	width: 71px;
+	left: 34px;
 }
 
 .zi-1020 {

@@ -9,7 +9,7 @@ const THEME_DIR = `/wp-content/themes/${ THEME_NAME }`;
  *
  * !Be sure to import page scss in these files!
  */
-const appNames = [ 'stay', 'things-to-do' ];
+const appNames = [ 'stay', 'things-to-do', 'events', 'front-page' ];
 
 /**
  * For SCSS files (no leading `_`)
@@ -25,10 +25,10 @@ module.exports = {
 				// Define custom entry points here
 				global: `.${ THEME_DIR }/src/index.js`,
 				'vendors/bootstrap': `.${ THEME_DIR }/src/js/vendors/bootstrap.js`,
+				'vendors/cno-pum': `.${ THEME_DIR }/src/styles/vendors/popup-maker/custom.scss`,
 				'modules/date-range-picker': `.${ THEME_DIR }/src/js/vendors/date-range-picker.js`,
 				'modules/swiper/eat-drink-swiper': `.${ THEME_DIR }/src/js/vendors/swiperjs/eat-drink-swiper.ts`,
 				'modules/swiper/events-swiper': `.${ THEME_DIR }/src/js/vendors/swiperjs/events-swiper.ts`,
-				'modules/two-col-modal-handler': `.${ THEME_DIR }/src/js/TwoColModalHandler.ts`,
 				...addEntries( appNames, 'pages' ),
 				...addEntries( styleSheets, 'styles' ),
 			};

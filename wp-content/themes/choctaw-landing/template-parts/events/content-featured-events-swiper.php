@@ -41,64 +41,68 @@ if ( empty( $events ) ) {
 	return;
 }
 ?>
-<div class="offset-topo-bg py-5">
-	<section id="featured-events" class="container">
-		<div class="row events-list">
-			<div class="col-1 position-relative">
-				<div class="swiper-button-prev"></div>
-			</div>
-			<div class="swiper col-10" id='events-swiper'>
-				<div class="swiper-wrapper">
-					<?php
+<div class="offset-topo-bg py-5 my-5">
+    <section id="featured-events" class="container">
+        <div class="row events-list align-items-stretch">
+            <div class="col-1 position-relative">
+                <div class="swiper-button-prev events-swiper-button-prev"></div>
+            </div>
+            <div class="swiper h-100 col-10" id='events-swiper'>
+                <div class="swiper-wrapper">
+                    <?php
 					foreach ( $events as $event ) :
-						$event   = is_array( $event ) ? $event['featured_event'] : $event;
-						$feature = new Choctaw_Event( get_field( 'event_details', $event->ID ), $event->ID );
-						?>
-					<div class="swiper-slide d-flex flex-column">
-						<?php
-						if ( has_post_thumbnail( $event ) ) {
-							echo "<figure class='ratio ratio-16x9'>" . get_the_post_thumbnail(
-								$event,
-								'large',
-								array(
-									'class'   => 'w-100 h-100 object-fit-cover',
-									'loading' => 'lazy',
-								)
-							) . '</figure>';
-
+						$event     = is_array( $event ) ? $event['featured_event'] : $event;
+						$feature   = new Choctaw_Event( get_field( 'event_details', $event->ID ), $event->ID );
+						$swiper_el = empty( $feature->get_the_description() ) ? 'div' : 'a';
+						echo "<$swiper_el class='swiper-slide d-flex flex-column align-items-center border-primary border-2 border'" . ( 'a' === $swiper_el ? "href='" . get_permalink( $event->ID ) . "'" : '' ) . '>';
+						$swiper_image = get_field( 'swiper_image', $event->ID );
+						if ( ! $swiper_image ) {
+							$swiper_image = get_field( 'fallback_image', $event->ID );
 						}
+						echo '<figure class="mb-0 position-relative">' . wp_get_attachment_image(
+							$swiper_image['ID'],
+							'full',
+							false,
+							array(
+								'class'   => 'object-fit-cover w-auto',
+								'loading' => 'lazy',
+							)
+						);
 						?>
-						<div class="d-flex flex-column h-auto event pb-2 w-100">
-							<h3 class='event__title fs-5 fw-bold mb-1 text-uppercase'><?php $feature->the_name(); ?></h3>
-							<p class="event__meta fs-6 mb-0"><i class="text-primary fa-solid fa-calendar"></i>
-								<?php
+                    <figcaption class="d-flex flex-column justify-content-end h-100 event pb-2 w-100 flex-grow-1 position-absolute top-0 z-2 px-3">
+                        <h3 class='event__title fs-5 fw-bold mb-1 text-uppercase text-white'><?php $feature->the_name(); ?></h3>
+                        <p class="event__meta fs-6 mb-0 text-white"><i class="fa-solid fa-calendar"></i>
+                            <?php
 								$feature->the_dates( 'l, M j, Y' );
-								if ( $feature->has_time ) {
-									echo ! empty( $feature->get_the_times() ) ? ( ' • ' . $feature->get_the_times( 'g:iA' ) ) : '';
-								}
-								?>
-							</p>
-							<?php if ( $feature->has_venue ) : ?>
-							<p class='event__meta fs-6 mb-0'><i class="text-primary fa-solid fa-map-marker-alt"></i> <?php $feature->the_venue_name(); ?></p>
-							<?php endif; ?>
-						</div>
-					</div>
-					<?php endforeach; ?>
-				</div>
-			</div>
-			<div class="col-1 position-relative">
-				<div class="swiper-button-next"></div>
-			</div>
-		</div>
-		<div class="row position-relative mt-5">
-			<div class="col">
-				<div class="swiper-pagination"></div>
-			</div>
-		</div>
-		<div class="row mt-3">
-			<div class="col text-center text-uppercase">
-				<a href="<?php echo get_post_type_archive_link( 'choctaw-events' ); ?>">View All Events <i class="fa-regular fa-circle-right"></i></a>
-			</div>
-		</div>
-	</section>
+							if ( $feature->has_time ) {
+								echo ! empty( $feature->get_the_times() ) ? ( ' • ' . $feature->get_the_times( 'g:iA' ) ) : '';
+							}
+							?>
+                        </p>
+                        <?php if ( $feature->has_venue ) : ?>
+                        <p class="event__meta fs-6 mb-0 text-white"><i class=" fa-solid fa-map-marker-alt"></i> <?php $feature->the_venue_name(); ?></p>
+                        <?php endif; ?>
+                    </figcaption>
+                    <?php
+						echo '</figure>';
+						echo "</{$swiper_el}>";
+						?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="col-1 position-relative">
+                <div class="swiper-button-next events-swiper-button-next"></div>
+            </div>
+        </div>
+        <div class="row position-relative mt-5">
+            <div class="col">
+                <div class="swiper-pagination events-swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col text-center text-uppercase">
+                <a href="<?php echo get_post_type_archive_link( 'choctaw-events' ); ?>" class="fs-6 fw-bold">View All Events <i class="fa-regular fa-circle-right"></i></a>
+            </div>
+        </div>
+    </section>
 </div>

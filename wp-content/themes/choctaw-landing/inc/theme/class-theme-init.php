@@ -16,7 +16,7 @@ class Theme_Init {
 		$this->load_required_files();
 		$this->cno_set_environment();
 		$this->disable_discussion();
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_cno_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_cno_scripts' ), 50 );
 		add_action( 'after_setup_theme', array( $this, 'cno_theme_support' ) );
 		add_action( 'init', array( $this, 'alter_post_types' ) );
 	}
@@ -24,7 +24,11 @@ class Theme_Init {
 	/** Load required files. */
 	private function load_required_files() {
 		$base_path   = get_template_directory() . '/inc';
-		$theme_files = array( 'theme-functions', 'class-allow-svg' );
+		$theme_files = array(
+			'theme-functions',
+			'class-allow-svg',
+			'class-promotions-handler',
+		);
 		foreach ( $theme_files as $theme_file ) {
 			require_once $base_path . "/theme/{$theme_file}.php";
 		}
@@ -128,6 +132,17 @@ class Theme_Init {
 	 * Adds scripts with the appropriate dependencies
 	 */
 	public function enqueue_cno_scripts() {
+		// Check if Popup Maker is activated
+		if ( is_plugin_active( 'popup-maker/popup-maker.php' ) ) {
+			$asset_file = require_once get_stylesheet_directory() . '/dist/vendors/cno-pum.asset.php';
+			wp_enqueue_style(
+				'cno-pum-styles',
+				get_template_directory_uri() . '/dist/vendors/cno-pum.css',
+				array( 'bootstrap' ),
+				$asset_file['version']
+			);
+			wp_dequeue_style( 'popup-maker-site' );
+		}
 		// Adobe Font Typekit CSS
 		wp_enqueue_style(
 			'typekit',
@@ -208,14 +223,14 @@ class Theme_Init {
 		wp_register_script(
 			'events-swiper',
 			get_stylesheet_directory_uri() . '/dist/modules/swiper/events-swiper.js',
-			array( 'bootstrap' ),
+			array( 'global' ),
 			$events_swiper['version'],
 			array( 'strategy' => 'defer' )
 		);
 		wp_register_style(
 			'events-swiper',
 			get_stylesheet_directory_uri() . '/dist/modules/swiper/events-swiper.css',
-			array( 'bootstrap' ),
+			array( 'global' ),
 			$events_swiper['version'],
 		);
 	}
@@ -275,6 +290,9 @@ class Theme_Init {
 			'container-swiper'    => array( 1594 ),
 			'banner'              => array( 3840, 1200 ), // 16:5
 			'hero-desktop'        => array( 3840, 1646 ), // 21:9
+			'events-archive'      => array( 828 ),
+			'events-single'       => array( 1272, 1884 ), // 9:16
+			'events-swiper'       => array( 698, 1242 ), // 9:16
 		);
 
 		foreach ( $image_sizes as $name => $size ) {
