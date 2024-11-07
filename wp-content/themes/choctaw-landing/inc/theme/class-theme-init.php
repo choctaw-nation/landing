@@ -16,7 +16,7 @@ class Theme_Init {
 		$this->load_required_files();
 		$this->cno_set_environment();
 		$this->disable_discussion();
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_cno_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_cno_scripts' ), 50 );
 		add_action( 'after_setup_theme', array( $this, 'cno_theme_support' ) );
 		add_action( 'init', array( $this, 'alter_post_types' ) );
 	}
@@ -132,6 +132,17 @@ class Theme_Init {
 	 * Adds scripts with the appropriate dependencies
 	 */
 	public function enqueue_cno_scripts() {
+		// Check if Popup Maker is activated
+		if ( is_plugin_active( 'popup-maker/popup-maker.php' ) ) {
+			$asset_file = require_once get_stylesheet_directory() . '/dist/vendors/cno-pum.asset.php';
+			wp_enqueue_style(
+				'cno-pum-styles',
+				get_template_directory_uri() . '/dist/vendors/cno-pum.css',
+				array( 'bootstrap' ),
+				$asset_file['version']
+			);
+			wp_dequeue_style( 'popup-maker-site' );
+		}
 		// Adobe Font Typekit CSS
 		wp_enqueue_style(
 			'typekit',
