@@ -20,9 +20,11 @@ $content = $args['content'];
 			<div class="col">
 				<h1 class="mb-0"><?php the_title(); ?></h1>
 				<div class="fs-6 mb-4"><?php the_field( 'description' ); ?></div>
+				<?php if ( $content->get_the_menu_link() ) : ?>
 				<a class="featured-eats__menu-link fs-6 btn btn-outline-primary px-4 py-2" href="<?php echo $content->get_the_menu_link(); ?>" target="_blank" rel="noopener noreferrer">
 					<i class="fa-solid fa-utensils fs-5"></i> View Menu
 				</a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
