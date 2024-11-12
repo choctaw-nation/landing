@@ -25,20 +25,22 @@ $event_callouts = get_field( 'event_callouts' );
 if ( ! empty( $event_callouts['banner'] ) ) {
 	$banner = new Image( $event_callouts['banner'] );
 }
-echo '<div class="d-flex flex-column row-gap-5 my-5">';
-foreach ( $event_callouts['callouts'] as $callout ) {
-	if ( $callout['is_image_full_width'] ) {
-		$two_col_section = new Full_Width_Section( get_the_ID(), $callout );
-	} else {
-		$two_col_section = new Two_Col_Section( get_the_ID(), $callout );
-		if ( $two_col_section->has_modal ) {
-			$has_modal = true;
+if ( ! empty( $event_callouts['callouts'] ) ) {
+	echo '<div class="d-flex flex-column row-gap-5 my-5">';
+	foreach ( $event_callouts['callouts'] as $callout ) {
+		if ( $callout['is_image_full_width'] ) {
+			$two_col_section = new Full_Width_Section( get_the_ID(), $callout );
+		} else {
+			$two_col_section = new Two_Col_Section( get_the_ID(), $callout );
+			if ( $two_col_section->has_modal ) {
+				$has_modal = true;
+			}
 		}
+		$two_col_section->the_section();
 	}
-	$two_col_section->the_section();
+	if ( $has_modal ) {
+		get_template_part( 'template-parts/content', 'modal' );
+	}
+	echo '</div>';
 }
-if ( $has_modal ) {
-	get_template_part( 'template-parts/content', 'modal' );
-}
-echo '</div>';
 get_footer();
