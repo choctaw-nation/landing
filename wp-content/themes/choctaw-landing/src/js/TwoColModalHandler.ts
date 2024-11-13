@@ -24,8 +24,14 @@ export default class TwoColModalHandler {
 		body: HTMLElement;
 	};
 
-	constructor() {
-		const modal = document.querySelector< HTMLElement >( '.modal' );
+	/**
+	 * Constructor
+	 *
+	 * @param modalEl The modal element
+	 */
+	constructor( modalEl?: HTMLElement ) {
+		const modal =
+			modalEl || document.querySelector< HTMLElement >( '.modal' );
 		if ( ! modal ) {
 			throw new Error( 'Modal not found' );
 		}
