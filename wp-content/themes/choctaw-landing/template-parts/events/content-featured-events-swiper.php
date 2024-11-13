@@ -42,14 +42,14 @@ if ( empty( $events ) ) {
 }
 ?>
 <div class="offset-topo-bg py-5 my-5">
-    <section id="featured-events" class="container">
-        <div class="row events-list align-items-stretch">
-            <div class="col-1 position-relative">
-                <div class="swiper-button-prev events-swiper-button-prev"></div>
-            </div>
-            <div class="swiper h-100 col-10" id='events-swiper'>
-                <div class="swiper-wrapper">
-                    <?php
+	<section id="featured-events" class="container">
+		<div class="row events-list align-items-stretch">
+			<div class="col-1 position-relative">
+				<div class="swiper-button-prev events-swiper-button-prev"></div>
+			</div>
+			<div class="swiper h-100 col-10" id='events-swiper'>
+				<div class="swiper-wrapper">
+					<?php
 					foreach ( $events as $event ) :
 						$event     = is_array( $event ) ? $event['featured_event'] : $event;
 						$feature   = new Choctaw_Event( get_field( 'event_details', $event->ID ), $event->ID );
@@ -69,40 +69,40 @@ if ( empty( $events ) ) {
 							)
 						);
 						?>
-                    <figcaption class="d-flex flex-column justify-content-end h-100 event pb-2 w-100 flex-grow-1 position-absolute top-0 z-2 px-3">
-                        <h3 class='event__title fs-5 fw-bold mb-1 text-uppercase text-white'><?php $feature->the_name(); ?></h3>
-                        <p class="event__meta fs-6 mb-0 text-white"><i class="fa-solid fa-calendar"></i>
-                            <?php
+					<figcaption class="d-flex flex-column justify-content-end h-100 event pb-2 w-100 flex-grow-1 position-absolute top-0 z-2 px-3">
+						<h3 class='event__title fs-5 fw-bold mb-1 text-uppercase text-white'><?php $feature->the_name(); ?></h3>
+						<p class="event__meta fs-6 mb-0 text-white"><i class="fa-solid fa-calendar"></i>
+							<?php
 								$feature->the_dates( 'l, M j, Y' );
 							if ( $feature->has_time ) {
 								echo ! empty( $feature->get_the_times() ) ? ( ' • ' . $feature->get_the_times( 'g:iA' ) ) : '';
 							}
 							?>
-                        </p>
-                        <?php if ( $feature->has_venue ) : ?>
-                        <p class="event__meta fs-6 mb-0 text-white"><i class=" fa-solid fa-map-marker-alt"></i> <?php $feature->the_venue_name(); ?></p>
-                        <?php endif; ?>
-                    </figcaption>
-                    <?php
+						</p>
+						<?php if ( $feature->has_venue ) : ?>
+						<p class="event__meta fs-6 mb-0 text-white"><i class=" fa-solid fa-map-marker-alt"></i> <?php $feature->the_venue_name(); ?></p>
+						<?php endif; ?>
+					</figcaption>
+						<?php
 						echo '</figure>';
 						echo "</{$swiper_el}>";
 						?>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <div class="col-1 position-relative">
-                <div class="swiper-button-next events-swiper-button-next"></div>
-            </div>
-        </div>
-        <div class="row position-relative mt-5">
-            <div class="col">
-                <div class="swiper-pagination events-swiper-pagination"></div>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col text-center text-uppercase">
-                <a href="<?php echo get_post_type_archive_link( 'choctaw-events' ); ?>" class="fs-6 fw-bold">View All Events <i class="fa-regular fa-circle-right"></i></a>
-            </div>
-        </div>
-    </section>
+					<?php endforeach; ?>
+				</div>
+			</div>
+			<div class="col-1 position-relative">
+				<div class="swiper-button-next events-swiper-button-next"></div>
+			</div>
+		</div>
+		<div class="row position-relative mt-5">
+			<div class="col">
+				<div class="swiper-pagination events-swiper-pagination"></div>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col text-center text-uppercase">
+				<a href="<?php echo get_post_type_archive_link( 'choctaw-events' ); ?>" class="fs-6 fw-bold">View All Events <i class="fa-regular fa-circle-right"></i></a>
+			</div>
+		</div>
+	</section>
 </div>
