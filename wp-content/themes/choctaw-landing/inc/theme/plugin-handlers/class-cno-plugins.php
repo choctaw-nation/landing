@@ -43,8 +43,7 @@ class CNO_Plugins {
 	 */
 	private function modify_post_type_archive_slugs( $args, $post_type ) {
 		$post_type_slugs = array(
-			'choctaw-events' => 'all-events',
-			'choctaw-news'   => 'newsroom',
+			'choctaw-news' => 'newsroom',
 		);
 
 		if ( array_key_exists( $post_type, $post_type_slugs ) ) {
@@ -74,7 +73,7 @@ class CNO_Plugins {
 		$cpts_to_redirect = array(
 			array(
 				'post_type' => 'choctaw-events',
-				'location'  => get_post_type_archive_link( 'choctaw-events' ),
+				'location'  => user_trailingslashit( home_url( '/events' ) ),
 			),
 		);
 
