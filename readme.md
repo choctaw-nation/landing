@@ -4,6 +4,12 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.3.1
+
+-   Hide events swiper when no swiper images available
+-   Test with WP 6.7 and get working (see [the new `sizes` attr fix](https://core.trac.wordpress.org/ticket/61847#comment:23))
+-   Update ACF fields
+
 ## v2.3.0
 
 -   Rebuild `/events` to combine the UX of `/all-events` and redirect `/all-events` to the Events page
