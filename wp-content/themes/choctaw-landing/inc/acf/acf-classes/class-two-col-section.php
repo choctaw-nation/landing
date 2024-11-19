@@ -163,7 +163,7 @@ class Two_Col_Section extends Generator {
 			case 'section':
 				$class = '';
 				if ( $this->has_topography_bg ) {
-					$class .= ' offset-topo-bg';
+					$class .= 'offset-topo-bg py-5';
 				}
 				break;
 			case 'row':
