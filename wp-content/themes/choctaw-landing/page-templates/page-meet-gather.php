@@ -40,12 +40,12 @@ if ( have_rows( 'rooms' ) ) {
 <?php $contact_form = get_field( 'contact_form' ); ?>
 <?php if ( $contact_form ) : ?>
 <section class="container" id="contact-us">
-    <div class="row">
-        <div class="col-12">
-            <h2>Contact Us to Reserve Your Space</h2>
-            <?php echo do_shortcode( '[gravityform id="' . $contact_form . '" title="false"]' ); ?>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-12">
+			<h2>Contact Us to Reserve Your Space</h2>
+			<?php echo do_shortcode( '[gravityform id="' . $contact_form . '" title="false"]' ); ?>
+		</div>
+	</div>
 </section>
 <?php endif; ?>
 <?php

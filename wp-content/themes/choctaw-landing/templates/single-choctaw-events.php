@@ -15,7 +15,7 @@ $event = new Choctaw_Event( get_field( 'event_details' ), get_the_ID() );
 <div class="container pt-5 mb-5 d-flex flex-column row-gap-5" style="margin-top: var(--header-offset,110px);">
 	<nav arial-label="breadcrumb">
 		<ol class="breadcrumb m-0">
-			<li class="breadcrumb-item fs-6"><a href="/all-events">All Events</a></li>
+			<li class="breadcrumb-item fs-6"><a href="<?php echo user_trailingslashit( '/events' ); ?>">Events</a></li>
 			<li class="breadcrumb-item fs-6 active" aria-current="page"><?php echo $event->get_the_name(); ?></li>
 		</ol>
 	</nav>

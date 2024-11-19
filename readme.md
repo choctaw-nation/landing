@@ -4,6 +4,14 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.3.0
+
+-   Rebuild `/events` to combine the UX of `/all-events` and redirect `/all-events` to the Events page
+
+## v2.2.1
+
+-   Handled a use-case where there may be nothing to loop through on /events page
+
 ## v2.2.0
 
 -   Fixed a bug where the SVG & `.vertical-line` arrow were out of alignment on odd screen sizes < 991px
