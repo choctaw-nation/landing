@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.3.2
+
+-   Fixed a bug where two-col settings with the topographic background didn't have the appropriate padding on them.
+
 ## v2.3.1
 
 -   Hide events swiper when no swiper images available
