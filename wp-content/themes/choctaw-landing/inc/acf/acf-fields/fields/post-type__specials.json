@@ -1,0 +1,185 @@
+[
+	{
+		"key": "group_6717a9cd3d395",
+		"title": "Post Type — Specials",
+		"fields": [
+			{
+				"key": "field_6717aa3502fa2",
+				"label": "Food / Beverage",
+				"name": "is_food",
+				"aria-label": "",
+				"type": "true_false",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"message": "",
+				"default_value": 0,
+				"allow_in_bindings": 0,
+				"ui_on_text": "Food",
+				"ui_off_text": "Beverage",
+				"ui": 1
+			},
+			{
+				"key": "field_6717a9ce02fa0",
+				"label": "Description",
+				"name": "description",
+				"aria-label": "",
+				"type": "wysiwyg",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "",
+				"allow_in_bindings": 0,
+				"tabs": "all",
+				"toolbar": "basic",
+				"media_upload": 0,
+				"delay": 0
+			},
+			{
+				"key": "field_6717a9f702fa1",
+				"label": "Price",
+				"name": "price",
+				"aria-label": "",
+				"type": "text",
+				"instructions": "The Price or Deal (e.g. \"$7\" or \"$40 per person\"). HTML ignored",
+				"required": 1,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "",
+				"maxlength": "",
+				"allow_in_bindings": 0,
+				"placeholder": "",
+				"prepend": "",
+				"append": ""
+			},
+			{
+				"key": "field_6717ad9dc0792",
+				"label": "Date",
+				"name": "date",
+				"aria-label": "",
+				"type": "text",
+				"instructions": "Simple runtime dates (e.g. \"Thanksgiving Day\" or \"November & December\"). HTML ignored.",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "",
+				"maxlength": "",
+				"allow_in_bindings": 0,
+				"placeholder": "",
+				"prepend": "",
+				"append": ""
+			},
+			{
+				"key": "field_672cf831a19e2",
+				"label": "Asset",
+				"name": "asset",
+				"aria-label": "",
+				"type": "file",
+				"instructions": "e.g. a menu pdf",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"return_format": "url",
+				"library": "all",
+				"min_size": "",
+				"max_size": 10,
+				"mime_types": "pdf",
+				"allow_in_bindings": 0
+			},
+			{
+				"key": "field_672cf85ca19e3",
+				"label": "Asset Label",
+				"name": "asset_label",
+				"aria-label": "",
+				"type": "text",
+				"instructions": "",
+				"required": 1,
+				"conditional_logic": [
+					[
+						{
+							"field": "field_672cf831a19e2",
+							"operator": "!=empty"
+						}
+					]
+				],
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "",
+				"maxlength": "",
+				"allow_in_bindings": 0,
+				"placeholder": "",
+				"prepend": "",
+				"append": ""
+			},
+			{
+				"key": "field_6717aa5602fa3",
+				"label": "Related F&B Property",
+				"name": "related_post",
+				"aria-label": "",
+				"type": "relationship",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"post_type": [ "eat-and-drink" ],
+				"post_status": "",
+				"taxonomy": "",
+				"filters": [ "post_type" ],
+				"return_format": "object",
+				"min": "",
+				"max": "",
+				"allow_in_bindings": 0,
+				"elements": [ "featured_image" ],
+				"bidirectional": 1,
+				"bidirectional_target": [ "field_6717acce8cd67" ]
+			}
+		],
+		"location": [
+			[
+				{
+					"param": "post_type",
+					"operator": "==",
+					"value": "special"
+				}
+			]
+		],
+		"menu_order": 0,
+		"position": "normal",
+		"style": "default",
+		"label_placement": "top",
+		"instruction_placement": "label",
+		"hide_on_screen": "",
+		"active": true,
+		"description": "Specials for F&B Posts",
+		"show_in_rest": 1
+	}
+]

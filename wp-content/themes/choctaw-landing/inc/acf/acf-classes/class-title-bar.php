@@ -53,7 +53,7 @@ class Title_Bar extends Generator {
 	 */
 	private function get_the_content(): string {
 		$markup  = "<div class='col-10 py-3'>";
-		$markup .= "<h1 class='fw-bold text-center'>{$this->headline}</h1><div class='fs-5'>{$this->subheadline}</div>";
+		$markup .= "<h1 class='fw-bold text-center mb-0'>{$this->headline}</h1><div class='fs-5'>{$this->subheadline}</div>";
 		$markup .= '</div>';
 		return $markup;
 	}

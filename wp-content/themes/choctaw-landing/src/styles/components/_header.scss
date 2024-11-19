@@ -23,11 +23,17 @@
 		@include m.media-breakpoint-up(xxl) {
 			max-height: 1000px;
 		}
+
+		@media only screen and (991px < width < 1013px) {
+			& {
+				width: 180px;
+			}
+		}
 	}
 }
 
 .offcanvas {
-	height: 100dvh;
+	height: 100vh;
 
 	.btn-close {
 		filter: var(--bs-btn-close-white-filter);

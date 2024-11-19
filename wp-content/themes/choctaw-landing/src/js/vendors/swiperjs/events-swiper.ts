@@ -6,8 +6,18 @@ function eventsSwiper() {
 		throw new Error( `Couldn't get events swiper!` );
 	}
 	newSwiper( el, {
-		autoHeight: false,
+		autoHeight: true,
 		loop: false,
+		pagination: {
+			el: '.events-swiper-pagination',
+			clickable: true,
+		},
+
+		// Navigation arrows
+		navigation: {
+			nextEl: '.events-swiper-button-next',
+			prevEl: '.events-swiper-button-prev',
+		},
 		breakpoints: {
 			991: {
 				slidesPerView: 2,

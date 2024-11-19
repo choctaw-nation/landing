@@ -1,6 +1,6 @@
 import 'bootstrap/js/dist/modal';
 
-new ( class HandleModal {
+export default class TwoColModalHandler {
 	/**
 	 * The modal element
 	 */
@@ -24,8 +24,14 @@ new ( class HandleModal {
 		body: HTMLElement;
 	};
 
-	constructor() {
-		const modal = document.querySelector< HTMLElement >( '.modal' );
+	/**
+	 * Constructor
+	 *
+	 * @param modalEl The modal element
+	 */
+	constructor( modalEl?: HTMLElement ) {
+		const modal =
+			modalEl || document.querySelector< HTMLElement >( '.modal' );
 		if ( ! modal ) {
 			throw new Error( 'Modal not found' );
 		}
@@ -90,21 +96,18 @@ new ( class HandleModal {
 	private setModalContent() {
 		const { headline, content, video, title } = this.modalContent;
 		const { title: modalTitle, body: modalBody } = this.modalElements;
+		modalTitle.innerHTML = '';
+		modalBody.innerHTML = '';
 		if ( title ) {
-			modalTitle.innerHTML = title || '';
+			modalTitle.innerHTML = title;
 		}
 		if ( video ) {
 			modalBody.innerHTML = `<div class="ratio ratio-16x9">${ video }</
 			</div>`;
 		} else {
-			let markup = '';
-			if ( headline ) {
-				markup += `<h2 class="fs-5">${ headline }</h2>`;
-			}
-			if ( content ) {
-				markup += `<div class="fs-6">${ content }</div>`;
-			}
-			modalBody.innerHTML = markup;
+			modalBody.innerHTML = `${
+				headline ? `<h2 class="fs-5">${ headline }</h2>` : ''
+			}<div class="fs-6">${ content }</div>`;
 		}
 	}
-} )();
+}

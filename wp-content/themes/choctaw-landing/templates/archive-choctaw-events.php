@@ -7,7 +7,9 @@
  */
 
 use ChoctawNation\ACF\Image;
-
+wp_safe_redirect( user_trailingslashit( home_url( '/events' ) ), 301 );
+exit;
+// phpcs:disable Squiz.PHP.NonExecutableCode.Unreachable
 get_header();
 $floating_images = get_field( 'floating_images', 'options' );
 if ( ! empty( $floating_images ) ) {
@@ -31,7 +33,7 @@ if ( ! empty( $floating_images ) ) {
 		</div>
 	</div>
 	<?php if ( have_posts() ) : ?>
-	<ul class="row row-cols-auto gap-3 gx-0 align-items-stretch list-unstyled events-list mb-0">
+	<ul class="row row-gap-4 align-items-stretch list-unstyled events-list mb-0">
 		<?php
 		while ( have_posts() ) {
 			the_post();
@@ -48,3 +50,4 @@ if ( ! empty( $floating_images ) ) {
 </div>
 <?php
 get_footer();
+// phpcs:enable Squiz.PHP.NonExecutableCode.Unreachable

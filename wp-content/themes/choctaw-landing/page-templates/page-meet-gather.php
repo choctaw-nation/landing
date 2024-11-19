@@ -21,7 +21,7 @@ if ( $title_bar_content ) {
 	$title_bar = new Title_Bar( get_the_ID(), $title_bar_content );
 	$title_bar->the_title_bar();
 }
-
+echo '<div class="d-flex flex-column my-5 row-gap-5">';
 $sections = get_field( 'page_content' );
 if ( ! empty( $sections ) ) {
 	foreach ( $sections as $section ) {
@@ -39,7 +39,7 @@ if ( have_rows( 'rooms' ) ) {
 } ?>
 <?php $contact_form = get_field( 'contact_form' ); ?>
 <?php if ( $contact_form ) : ?>
-<section class="container my-4">
+<section class="container" id="contact-us">
 	<div class="row">
 		<div class="col-12">
 			<h2>Contact Us to Reserve Your Space</h2>
@@ -49,4 +49,5 @@ if ( have_rows( 'rooms' ) ) {
 </section>
 <?php endif; ?>
 <?php
+echo '</div>';
 get_footer();
