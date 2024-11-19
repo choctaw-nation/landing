@@ -40,6 +40,24 @@ $events         = array_merge( $featured_events, $further_events );
 if ( empty( $events ) ) {
 	return;
 }
+// Temporary fix while new event content is being implemented
+$swiper_images = array();
+foreach ( $events as $event ) {
+	$event        = is_array( $event ) ? $event['featured_event'] : $event;
+	$feature      = new Choctaw_Event( get_field( 'event_details', $event->ID ), $event->ID );
+	$swiper_image = get_field( 'swiper_image', $event->ID );
+	if ( ! $swiper_image ) {
+		$swiper_image = get_field( 'fallback_image', $event->ID );
+	}
+	if ( $swiper_image ) {
+		$swiper_images[] = $swiper_image['ID'];
+	}
+}
+if ( empty( $swiper_images ) ) {
+	return;
+}
+// End temporary fix.
+// Please remove in future versions when ready.
 ?>
 <div class="offset-topo-bg py-5 my-5">
 	<section id="featured-events" class="container">
@@ -47,6 +65,7 @@ if ( empty( $events ) ) {
 			<div class="col-1 position-relative">
 				<div class="swiper-button-prev events-swiper-button-prev"></div>
 			</div>
+
 			<div class="swiper h-100 col-10" id='events-swiper'>
 				<div class="swiper-wrapper">
 					<?php
@@ -83,7 +102,7 @@ if ( empty( $events ) ) {
 						<p class="event__meta fs-6 mb-0 text-white"><i class=" fa-solid fa-map-marker-alt"></i> <?php $feature->the_venue_name(); ?></p>
 						<?php endif; ?>
 					</figcaption>
-						<?php
+					<?php
 						echo '</figure>';
 						echo "</{$swiper_el}>";
 						?>

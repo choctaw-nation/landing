@@ -19,6 +19,10 @@ class Theme_Init {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_cno_scripts' ), 50 );
 		add_action( 'after_setup_theme', array( $this, 'cno_theme_support' ) );
 		add_action( 'init', array( $this, 'alter_post_types' ) );
+		add_filter(
+			'wp_get_attachment_image_attributes',
+			array( $this, 'wp_six_point_seven_image_sizes_fix' )
+		);
 	}
 
 	/** Load required files. */
@@ -323,5 +327,22 @@ class Theme_Init {
 				remove_post_type_support( $post_type, $support );
 			}
 		}
+	}
+
+	/**
+	 * Fixes image sizes for WordPress 6.7. This is a temporary solution until a more robust dev solution can be found
+	 * TODO: #243 Remove this function when a better solution is found
+	 *
+	 * @see https://make.wordpress.org/core/2024/10/18/auto-sizes-for-lazy-loaded-images-in-wordpress-6-7/
+	 * @see https://core.trac.wordpress.org/ticket/61847#comment:23
+	 *
+	 * @param array $attr the image attributes.
+	 * @return array
+	 */
+	public function wp_six_point_seven_image_sizes_fix( $attr ) {
+		if ( isset( $attr['sizes'] ) ) {
+			$attr['sizes'] = preg_replace( '/^auto, /', '', $attr['sizes'] );
+		}
+		return $attr;
 	}
 }
