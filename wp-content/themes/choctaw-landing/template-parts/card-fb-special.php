@@ -9,50 +9,60 @@
 $special     = $args['special'];
 $orientation = $args['orientation'];
 
-$card_classes = array(
+$card_classes  = array(
 	'card',
 	'h-100',
 	'text-bg-light',
 	'shadow',
-
 );
-
 $is_horizontal = 'horizontal' === $orientation;
-if ( $is_horizontal ) {
-	$horizontal_classes = array(
-		'row',
-		'row-cols-md-2',
-		'w-auto',
-		'align-items-center',
-	);
-	$card_classes       = array_merge( $card_classes, $horizontal_classes );
-}
+
+$additional_classes = $is_horizontal ? array(
+	'row',
+	'row-cols-md-2',
+	'w-auto',
+	'align-items-center',
+) : array( 'd-flex', 'flex-column' );
+
+$card_classes = array_merge( $card_classes, $additional_classes );
 ?>
 <div class="<?php echo implode( ' ', $card_classes ); ?>">
-	<?php if ( $special->has_image() ) : ?>
-		<?php if ( $is_horizontal ) : ?>
-	<div class="gx-0 flex-grow-1">
-		<?php endif; ?>
-		<figure class="ratio ratio-1x1 <?php echo $is_horizontal ? 'mb-md-0' : ''; ?>">
-			<?php $special->the_image( 'full', array( 'class' => 'w-100 h-100 object-fit-cover' ) ); ?>
-		</figure>
-		<?php if ( $is_horizontal ) : ?>
-	</div>
-	<?php endif; ?>
-	<?php endif; ?>
-	<div class="card-body mx-4 mb-3 d-flex flex-column">
+	<?php
+	if ( $special->has_image() ) {
+		$figure_classes = 'ratio ratio-1x1' . ( $is_horizontal ? ' mb-md-0' : '' );
+		$figure_markup  = "<figure class='{$figure_classes}'>" . $special->get_the_image( 'full', array( 'class' => 'w-100 h-100 object-fit-cover' ) ) . '</figure>';
+		if ( $is_horizontal ) {
+			echo '<div class="gx-0 flex-grow-1">' . $figure_markup . '</div>';
+		} else {
+			echo $figure_markup;
+		}
+	}
+	?>
+	<div class="card-body flex-grow-1 mx-4 mb-3 d-flex flex-column">
 		<div class="header">
 			<h3 class="fw-bold mb-0 lh-sm" style="font-size:clamp(32px,95%,48px);">
 				<?php $special->the_title(); ?>
 			</h3>
-			<p class="fw-bold fs-6">
-				<?php $special->the_date(); ?>
-			</p>
+			<div class="fs-6 fw-bold">
+				<span>
+					<?php
+					echo rtrim( $special->get_the_date() );
+					if ( $special->get_the_price() ) {
+						echo ',&nbsp;' . $special->get_the_price();
+					}
+					?>
+				</span>
+			</div>
 		</div>
 		<div class="content mb-2">
 			<div class="fs-6">
 				<?php $special->the_description(); ?>
 			</div>
+			<?php if ( $special->has_asset() ) : ?>
+			<div class="my-3">
+				<?php $special->the_asset(); ?>
+			</div>
+			<?php endif; ?>
 		</div>
 		<?php $locations = $special->get_the_related_posts(); ?>
 		<?php if ( $locations ) : ?>
