@@ -13,7 +13,16 @@ $content = $args['content'];
 			<?php if ( has_post_thumbnail() ) : ?>
 			<div class="col-lg-6">
 				<figure class="ratio ratio-1x1 mb-0">
-					<?php the_post_thumbnail( 'full', array( 'class' => 'w-100 h-100 object-fit-cover' ) ); ?>
+					<?php
+					the_post_thumbnail(
+						'full',
+						array(
+							'class'           => 'w-100 h-100 object-fit-cover',
+							'loading'         => 'eager',
+							'data-spai-eager' => true,
+						)
+					);
+					?>
 				</figure>
 			</div>
 			<?php endif; ?>

@@ -39,8 +39,9 @@ $favicon_base = get_stylesheet_directory_uri() . '/img/favicon';
 						'full',
 						false,
 						array(
-							'class'   => 'w-100 h-100 object-fit-cover skip-lazy',
-							'loading' => 'eager',
+							'class'           => 'w-100 h-100 object-fit-cover',
+							'loading'         => 'eager',
+							'data-spai-eager' => 'true',
 						)
 					);
 					?>
@@ -48,7 +49,7 @@ $favicon_base = get_stylesheet_directory_uri() . '/img/favicon';
 			<nav id="nav-main" class="navbar navbar-expand-lg">
 				<div class="container-xl">
 					<a class="navbar-brand" href="<?php echo user_trailingslashit( esc_url( home_url() ) ); ?>">
-						<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/img/logo/logo.svg' ); ?>" alt="Choctaw Landing Logo" class="logo">
+						<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/img/logo/logo.svg' ); ?>" alt="Choctaw Landing Logo" class="logo" data-spai-eager loading="eager">
 					</a>
 					<button class="btn btn-diamond d-lg-none ms-1 ms-md-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar" aria-controls="offcanvas-navbar">
 						<i class="fa-solid fa-bars"></i>
