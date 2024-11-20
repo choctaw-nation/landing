@@ -134,7 +134,7 @@ class FB_Specials {
 	public function the_image( string $size = 'full', ?array $args = null ): void {
 		echo $this->get_the_image( $size, $args );
 	}
-
+  
 	/**
 	 * Get the related posts
 	 *
