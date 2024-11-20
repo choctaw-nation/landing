@@ -5,6 +5,9 @@
  * @package ChoctawNation
  */
 
+if ( is_singular( 'special' ) ) {
+	wp_safe_redirect( home_url( '/eat-drink' ) );
+}
 get_header();
 ?>
 
