@@ -68,7 +68,7 @@ class Image {
 	 * @return string the HTML
 	 */
 	public function get_the_image( string $img_class = '', bool $lazy = true ): string {
-		$markup = "<img class='{$img_class}' src='{$this->src}' srcset='{$this->srcset}' alt='{$this->alt}'" . ( $lazy ? "loading='lazy'" : '' ) . ' />';
+		$markup = "<img class='{$img_class}' src='{$this->src}' srcset='{$this->srcset}' alt='{$this->alt}'" . ( $lazy ? "loading='lazy'" : 'loading="eager" data-spai-eager' ) . ' />';
 		return $markup;
 	}
 
