@@ -13,7 +13,7 @@ if ( ! $content ) {
 }
 ?>
 <header id="header-img" class="position-relative d-flex justify-content-center align-items-center hero__bg-container mx-auto" style="height:clamp(20vw,30vw,40vw);">
-	<?php $content->hero_image->the_image( 'hero__image object-fit-cover skip-lazy' ); ?>
+	<?php $content->hero_image->the_image( 'hero__image object-fit-cover', false ); ?>
 </header>
 <?php
 $acf_fields = array(

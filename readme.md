@@ -8,6 +8,7 @@ The WP Theme for the Choctaw Landing page.
 ## v2.4.0
 
 -   Added extra information to "featured special" cards on /eat-drink
+-   Optimized image loading for ShortPixel AI's engine
 
 ## v2.3.2
 
