@@ -4,6 +4,7 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+
 ## v2.4.0
 
 -   Added extra information to "featured special" cards on /eat-drink
@@ -84,6 +85,7 @@ The WP Theme for the Choctaw Landing page.
 ## v1.7.1
 
 -   Fixed a bug where an optional value (in ACF fields) was causing pages to break if not filled out correctly
+
 
 ## v1.7.0
 
