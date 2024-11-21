@@ -4,6 +4,9 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.4.1
+
+-   Updated Casino Promotions Handler logic to filter promotions based on ACF "start/end date" parameter (regardless of post status)
 
 ## v2.4.0
 
