@@ -36,13 +36,6 @@ class Promotions_Handler {
 	public bool $has_promotions;
 
 	/**
-	 * The promotions.
-	 *
-	 * @var array $promotions
-	 */
-	private array $promotions;
-
-	/**
 	 * Constructor
 	 */
 	public function __construct() {
