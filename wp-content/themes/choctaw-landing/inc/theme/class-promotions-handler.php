@@ -36,6 +36,13 @@ class Promotions_Handler {
 	public bool $has_promotions;
 
 	/**
+	 * The promotions.
+	 *
+	 * @var array $promotions
+	 */
+	private array $promotions;
+
+	/**
 	 * Constructor
 	 */
 	public function __construct() {
@@ -112,6 +119,18 @@ class Promotions_Handler {
 		if ( empty( $promotions ) ) {
 			return null;
 		}
+		$promotions = $this->parse_promotions( $promotions );
+		$promotions = $this->sort_promotions( $promotions );
+		$promotions = $this->filter_promotions( $promotions );
+		return $promotions;
+	}
+
+	/**
+	 * Parse the promotions object from a WP Rest Response object to a simple associative array.
+	 *
+	 * @param array $promotions The promotions.
+	 */
+	private function parse_promotions( array $promotions ): array {
 		$promotions = array_map(
 			function ( $promotion ) {
 				$pretty_promo             = array();
@@ -129,6 +148,15 @@ class Promotions_Handler {
 			},
 			$promotions
 		);
+		return $promotions;
+	}
+
+	/**
+	 * Sort the promotions by location so that promotions at "All Locations" appear last.
+	 *
+	 * @param array $promotions The promotions.
+	 */
+	private function sort_promotions( array $promotions ): array {
 		usort(
 			$promotions,
 			function ( $a, $b ) {
@@ -142,5 +170,39 @@ class Promotions_Handler {
 			}
 		);
 		return $promotions;
+	}
+
+	/**
+	 * Filter the promotions to only show the ones that are active (regardless of post_status).
+	 *
+	 * @param array $promotions The promotions.
+	 */
+	private function filter_promotions( array $promotions ): array {
+		return array_filter(
+			$promotions,
+			function ( $promotion ) {
+				$now         = new \DateTime();
+				$now         = $now->format( 'Y-m-d' );
+				$event_start = $promotion['acf']['from_date'];
+				if ( ! is_null( $event_start ) ) {
+					$start_date = \DateTime::createFromFormat( 'Ymd', $event_start );
+					if ( false !== $start_date ) {
+						$start = $start_date->format( 'Y-m-d' );
+						if ( $now < $start ) {
+							return false;
+						}
+					}
+				}
+				$end_date = \DateTime::createFromFormat( 'Ymd', $promotion['acf']['to_date'] );
+				if ( false === $end_date ) {
+					return false;
+				}
+				$end = $end_date->format( 'Y-m-d' );
+				if ( empty( $end ) ) {
+					return true;
+				}
+				return $now <= $end;
+			}
+		);
 	}
 }
