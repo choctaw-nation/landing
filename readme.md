@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.4.2
+
+-   Fixed an issue where `/events` archive wasn't redirecting properly
+
 ## v2.4.1
 
 -   Updated Casino Promotions Handler logic to filter promotions based on ACF "start/end date" parameter (regardless of post status)
@@ -89,7 +93,6 @@ The WP Theme for the Choctaw Landing page.
 ## v1.7.1
 
 -   Fixed a bug where an optional value (in ACF fields) was causing pages to break if not filled out correctly
-
 
 ## v1.7.0
 

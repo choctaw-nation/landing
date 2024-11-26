@@ -6,10 +6,10 @@
  * @package ChoctawNation
  */
 
-use ChoctawNation\ACF\Image;
 wp_safe_redirect( user_trailingslashit( home_url( '/events' ) ), 301 );
 exit;
 // phpcs:disable Squiz.PHP.NonExecutableCode.Unreachable
+use ChoctawNation\ACF\Image;
 get_header();
 $floating_images = get_field( 'floating_images', 'options' );
 if ( ! empty( $floating_images ) ) {
