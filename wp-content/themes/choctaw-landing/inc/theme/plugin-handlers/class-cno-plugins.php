@@ -19,7 +19,7 @@ class CNO_Plugins {
 	 */
 	public function __construct() {
 		add_action( 'template_redirect', array( $this, 'redirect_single_templates' ), 20, 1 );
-		add_filter( 'register_post_type_args', array( $this, 'alter_post_type_settings' ), 10, 2 );
+		add_filter( 'register_post_type_args', array( $this, 'alter_post_type_settings' ), 20, 2 );
 	}
 
 	/**
@@ -42,12 +42,15 @@ class CNO_Plugins {
 	 * @param string $post_type the post type name
 	 */
 	private function modify_post_type_archive_slugs( $args, $post_type ) {
-		$post_type_slugs = array(
+		$post_type_slugs_to_rewrite = array(
 			'choctaw-news' => 'newsroom',
 		);
 
-		if ( array_key_exists( $post_type, $post_type_slugs ) ) {
-			$args['has_archive'] = $post_type_slugs[ $post_type ];
+		if ( array_key_exists( $post_type, $post_type_slugs_to_rewrite ) ) {
+			$args['has_archive'] = $post_type_slugs_to_rewrite[ $post_type ];
+		}
+		if ( 'choctaw-events' === $post_type ) {
+			$args['has_archive'] = false;
 		}
 		return $args;
 	}
