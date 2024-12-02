@@ -102,7 +102,7 @@ if ( empty( $swiper_images ) ) {
 						<p class="event__meta fs-6 mb-0 text-white"><i class=" fa-solid fa-map-marker-alt"></i> <?php $feature->the_venue_name(); ?></p>
 						<?php endif; ?>
 					</figcaption>
-					<?php
+						<?php
 						echo '</figure>';
 						echo "</{$swiper_el}>";
 						?>
@@ -120,7 +120,7 @@ if ( empty( $swiper_images ) ) {
 		</div>
 		<div class="row mt-3">
 			<div class="col text-center text-uppercase">
-				<a href="<?php echo get_post_type_archive_link( 'choctaw-events' ); ?>" class="fs-6 fw-bold">View All Events <i class="fa-regular fa-circle-right"></i></a>
+				<a href="<?php echo user_trailingslashit( home_url( '/events' ) ); ?>" class="fs-6 fw-bold">View All Events <i class="fa-regular fa-circle-right"></i></a>
 			</div>
 		</div>
 	</section>
