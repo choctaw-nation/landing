@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.4.3
+
+-   Fixed an issue where the featured events swiper button wasn't pointing to the correct events page
+
 ## v2.4.2
 
 -   Fixed an issue where `/events` archive wasn't redirecting properly
