@@ -17,10 +17,8 @@ new Asset_Loader( 'events', Enqueue_Type::script, 'pages' );
 get_header();
 $hero      = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
-
 $hero->the_hero();
 $title_bar->the_title_bar();
-// get_template_part( 'template-parts/events/content', 'featured-events-swiper' ); phpcs:ignore Squiz.PHP.CommentedOutCode.Found
 $event_callouts = get_field( 'event_callouts' );
 if ( ! empty( $event_callouts['banner'] ) ) {
 	$banner = new Image( $event_callouts['banner'] );
@@ -61,12 +59,20 @@ $events = new WP_Query(
 		</div>
 	</div>
 	<ul class="row row-gap-4 align-items-stretch list-unstyled events-list mb-0">
-		<?php
-		while ( $events->have_posts() ) {
+		<?php while ( $events->have_posts() ) : ?>
+			<?php
 			$events->the_post();
-			get_template_part( 'template-parts/events/content', 'event-preview' );
-		}
-		?>
+			$event_details = get_field( 'event_details' );
+			if ( ! $event_details ) {
+				continue;
+			}
+			?>
+		<li class="event-preview-container col-auto col-md-6 col-lg-4 d-flex flex-column h-auto">
+			<div class="event-preview border border-primary border-1 shadow d-flex flex-column h-100">
+				<?php get_template_part( 'template-parts/events/content', 'event-card' ); ?>
+			</div>
+		</li>
+		<?php endwhile; ?>
 	</ul>
 	<?php else : ?>
 	<div class="col">
