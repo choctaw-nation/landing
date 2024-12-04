@@ -68,9 +68,7 @@ $events = new WP_Query(
 			}
 			?>
 		<li class="event-preview-container col-auto col-md-6 col-lg-4 d-flex flex-column h-auto">
-			<div class="event-preview border border-primary border-1 shadow d-flex flex-column h-100">
-				<?php get_template_part( 'template-parts/events/content', 'event-card' ); ?>
-			</div>
+			<?php get_template_part( 'template-parts/events/content', 'event-card' ); ?>
 		</li>
 		<?php endwhile; ?>
 	</ul>

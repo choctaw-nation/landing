@@ -52,10 +52,9 @@ if ( empty( $events ) ) {
 				<div class="swiper-wrapper">
 					<?php
 					foreach ( $events as $event ) :
-						$event     = is_array( $event ) ? $event['featured_event'] : $event;
-						$feature   = new Choctaw_Event( get_field( 'event_details', $event->ID ), $event->ID );
-						$swiper_el = empty( $feature->get_the_description() ) ? 'div' : 'a';
-						echo "<$swiper_el class='swiper-slide d-flex flex-column align-items-center border-primary border-2 border'" . ( 'a' === $swiper_el ? "href='" . get_permalink( $event->ID ) . "'" : '' ) . '>';
+						$event   = is_array( $event ) ? $event['featured_event'] : $event;
+						$feature = new Choctaw_Event( get_field( 'event_details', $event->ID ), $event->ID );
+						echo "<div class='swiper-slide'>";
 						get_template_part(
 							'template-parts/events/content',
 							'event-card',
@@ -63,7 +62,7 @@ if ( empty( $events ) ) {
 								'event_id' => $event->ID,
 							)
 						);
-						echo "</{$swiper_el}>";
+						echo '</div>';
 						?>
 					<?php endforeach; ?>
 				</div>
