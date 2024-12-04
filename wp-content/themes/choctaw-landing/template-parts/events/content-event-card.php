@@ -14,32 +14,45 @@ $swiper_image = get_field( 'swiper_image', $event_id );
 if ( ! $swiper_image ) {
 	$swiper_image = get_field( 'fallback_image', $event_id );
 }
+$should_wrap = ! empty( $feature->get_the_description() );
 ?>
-
-<figure class="mb-0 position-relative">
+<div class="event-preview border border-primary border-1 shadow d-flex flex-column h-100 position-relative">
 	<?php
-	echo wp_get_attachment_image(
-		$swiper_image['ID'],
-		'full',
-		false,
-		array(
-			'class'   => 'object-fit-cover w-auto',
-			'loading' => 'lazy',
-		)
-	);
+	if ( $should_wrap ) {
+		echo "<a href='" . get_permalink( $event_id ) . "' class='d-block'>";
+	}
 	?>
-	<figcaption class="d-flex flex-column justify-content-end h-100 event pb-2 w-100 flex-grow-1 position-absolute top-0 z-2 px-3">
-		<h3 class='event__title fs-5 fw-bold mb-1 text-uppercase text-white'><?php $feature->the_name(); ?></h3>
-		<p class="event__meta fs-6 mb-0 text-white"><i class="fa-solid fa-calendar"></i>
-			<?php
-			$feature->the_dates( 'l, M j, Y' );
-			if ( $feature->has_time ) {
-				echo ! empty( $feature->get_the_times() ) ? ( ' • ' . $feature->get_the_times( 'g:iA' ) ) : '';
-			}
-			?>
-		</p>
-		<?php if ( $feature->has_venue ) : ?>
-		<p class="event__meta fs-6 mb-0 text-white"><i class=" fa-solid fa-map-marker-alt"></i> <?php $feature->the_venue_name(); ?></p>
-		<?php endif; ?>
-	</figcaption>
-</figure>
+
+	<figure class="mb-0 position-relative">
+		<?php
+		echo wp_get_attachment_image(
+			$swiper_image['ID'],
+			'full',
+			false,
+			array(
+				'class'   => 'object-fit-cover w-auto',
+				'loading' => 'lazy',
+			)
+		);
+		?>
+		<figcaption class="d-flex flex-column justify-content-end h-100 event pb-2 w-100 flex-grow-1 position-absolute top-0 z-2 px-3">
+			<h3 class='event__title fs-5 fw-bold mb-1 text-uppercase text-white'><?php $feature->the_name(); ?></h3>
+			<p class="event__meta fs-6 mb-0 text-white"><i class="fa-solid fa-calendar"></i>
+				<?php
+				$feature->the_dates( 'l, M j, Y' );
+				if ( $feature->has_time ) {
+					echo ! empty( $feature->get_the_times() ) ? ( ' • ' . $feature->get_the_times( 'g:iA' ) ) : '';
+				}
+				?>
+			</p>
+			<?php if ( $feature->has_venue ) : ?>
+			<p class="event__meta fs-6 mb-0 text-white"><i class=" fa-solid fa-map-marker-alt"></i> <?php $feature->the_venue_name(); ?></p>
+			<?php endif; ?>
+		</figcaption>
+	</figure>
+	<?php
+	if ( $should_wrap ) {
+		echo '</a>';
+	}
+	?>
+</div>
