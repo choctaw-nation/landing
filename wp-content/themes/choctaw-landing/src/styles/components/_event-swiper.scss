@@ -1,19 +1,7 @@
+@use "./event-preview";
+
 #featured-events {
 	--swiper-pagination-color: var(--bs-primary);
 	--swiper-navigation-color: var(--bs-primary);
 	--swiper-navigation-sides-offset: 2px;
-
-	.swiper-slide {
-		img {
-			aspect-ratio: 9 / 16;
-		}
-
-		figcaption {
-			background-image: linear-gradient(
-				to bottom,
-				transparent 50%,
-				rgba(var(--bs-primary-rgb), 1) 80%
-			);
-		}
-	}
 }

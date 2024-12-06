@@ -4,6 +4,12 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.4.4
+
+-   Updated npm packages
+-   Introduced new events page card style
+-   Fixed a bug where end date wasn't appearing when it should be
+
 ## v2.4.3
 
 -   Fixed an issue where the featured events swiper button wasn't pointing to the correct events page

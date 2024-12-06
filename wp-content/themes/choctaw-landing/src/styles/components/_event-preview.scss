@@ -1,0 +1,13 @@
+.event-preview {
+	img {
+		aspect-ratio: 33 / 50;
+	}
+
+	figcaption {
+		background-image: linear-gradient(
+			to bottom,
+			transparent 50%,
+			rgba(var(--bs-primary-rgb), 1) 80%
+		);
+	}
+}
