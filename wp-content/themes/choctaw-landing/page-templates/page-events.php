@@ -58,7 +58,7 @@ $events = new WP_Query(
 			<h2 class="text-center">Upcoming Events</h2>
 		</div>
 	</div>
-	<ul class="row row-gap-4 align-items-stretch list-unstyled events-list mb-0">
+	<ul class="row row-gap-4 align-items-stretch justify-content-center justify-content-md-start list-unstyled events-list mb-0">
 		<?php while ( $events->have_posts() ) : ?>
 			<?php
 			$events->the_post();
