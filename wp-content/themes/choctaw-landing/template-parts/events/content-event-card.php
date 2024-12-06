@@ -30,8 +30,9 @@ $should_wrap = ! empty( $feature->get_the_description() );
 			'full',
 			false,
 			array(
-				'class'   => 'object-fit-cover w-auto',
+				'class'   => 'object-fit-cover w-100 h-auto',
 				'loading' => 'lazy',
+				'sizes'   => '(min-width:1400px) 414px, (min-width:1200px) 354px, (min-width: 991px) 293.984px, (min-width:767px) 334px, (min-width:576px) 514px, calc(100vw - 1.5rem)',
 			)
 		);
 		?>
