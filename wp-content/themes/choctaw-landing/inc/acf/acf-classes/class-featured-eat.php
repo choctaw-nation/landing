@@ -123,7 +123,8 @@ class Featured_Eat {
 		$specials         = empty( get_field( 'related_specials', $this->post ) ) ? null : get_field( 'related_specials', $this->post );
 		if ( $specials ) {
 			foreach ( $specials as $special ) {
-				$this->specials[] = new FB_Specials( $special );
+				if ( 'publish' === $special->post_status ) {
+					$this->specials[] = new FB_Specials( $special );}
 			}
 		} else {
 			$this->specials = null;

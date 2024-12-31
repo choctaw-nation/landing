@@ -8,12 +8,12 @@
 
 use ChoctawNation\ACF\FB_Specials;
 
-$featured_specials = array_map(
-	function ( $special ) {
-		return new FB_Specials( $special );
-	},
-	$args['featured_specials']
-);
+$featured_specials = array();
+foreach ( $args['featured_specials'] as $special ) {
+	if ( 'publish' === $special->post_status ) {
+		$featured_specials[] = new FB_Specials( $special );
+	}
+}
 
 $cols_map = array(
 	1 => 'col',
