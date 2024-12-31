@@ -7,7 +7,6 @@
  */
 
 use ChoctawNation\ACF\Featured_Eat;
-use ChoctawNation\ACF\Title_Bar;
 
 get_header();
 $content = new Featured_Eat( $post, false )
