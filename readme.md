@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.4.5
+
+-   Updated npm packages
+-   Fixed a bug that allowed Specials to appear, even when their status was "draft"
+
 ## v2.4.4
 
 -   Updated npm packages
