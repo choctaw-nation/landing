@@ -1,6 +1,6 @@
 {
 	"name": "choctaw-landing",
-	"version": "3.1.8",
+	"version": "3.2.0",
 	"description": "A custom wp theme for choctaw-landing",
 	"prettier": "@wordpress/prettier-config",
 	"browserslist": [
@@ -25,10 +25,11 @@
 	"dependencies": {
 		"bootstrap": "^5.3.3",
 		"daterangepicker": "^3.1.0",
-		"swiper": "^11.1.15"
+		"swiper": "^11.2.1"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.7.0",
-		"bootstrap-icons": "^1.11.3"
+		"@wordpress/scripts": "^30.9.0",
+		"bootstrap-icons": "^1.11.3",
+		"webpack-remove-empty-scripts": "^1.0.4"
 	}
 }

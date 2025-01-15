@@ -50,11 +50,11 @@ class Promotions_Handler {
 	 * @return array|void
 	 */
 	private function get_latest_promotions(): array|false|WP_Error|null {
-		// $promotions = get_transient( $this->transient_key );
-		// if ( $promotions ) {
-		// $this->has_promotions = true;
-		// return $promotions;
-		// }
+		$promotions = get_transient( $this->transient_key );
+		if ( $promotions ) {
+			$this->has_promotions = true;
+			return $promotions;
+		}
 		$api_url  = $this->build_api_url();
 		$response = wp_remote_get( $api_url );
 		if ( is_wp_error( $response ) ) {
