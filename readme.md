@@ -4,6 +4,15 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.4.6
+
+-   Added webpack config to remove dead `.js` files
+-   Updated packages
+-   Updated: Promotions API Bugs & Code Quality
+    -   API asks for 100 (max) posts per page to reduce the need for paginated (chained) requests
+    -   API now handles pagination in the rest request
+    -   API uses an associative array (dictionary/map) to clearly identify `casino_locations` taxonomy IDs from choctawcasinos.com instead of using magic numbers
+
 ## v2.4.5
 
 -   Updated npm packages
