@@ -67,6 +67,16 @@ class Promotions_Handler {
 			return null;
 		}
 		$this->has_promotions = true;
+		$headers              = wp_remote_retrieve_headers( $response );
+		$total_pages          = $headers['x-wp-totalpages'];
+		for ( $page_number = 2; $page_number <= $total_pages; $page_number++ ) {
+			$response = wp_remote_get( $this->build_api_url( $page_number ) );
+			if ( is_wp_error( $response ) ) {
+				return $response;
+			}
+			$body       = wp_remote_retrieve_body( $response );
+			$promotions = array_merge( $promotions, json_decode( $body, true ) );
+		}
 		set_transient( $this->transient_key, $promotions, $this->transient_expiration );
 		return $promotions;
 	}
@@ -74,12 +84,17 @@ class Promotions_Handler {
 	/**
 	 * Build the API URL.
 	 *
+	 * @param int|null $page The page number for paginated API requests
 	 * @return string
 	 */
-	private function build_api_url(): string {
-		$base_url   = 'https://www.choctawcasinos.com/wp-json/wp/v2/promotions';
-		$url_params = array(
-			'casino_location' => array( 25, 56 ),
+	private function build_api_url( int $page = null ): string {
+		$base_url                     = 'https://www.choctawcasinos.com/wp-json/wp/v2/promotions';
+		$casino_location_taxonomy_ids = array(
+			'hochatown'     => 56,
+			'all_locations' => 25,
+		);
+		$url_params                   = array(
+			'casino_location' => array_values( $casino_location_taxonomy_ids ),
 			'_fields'         => array(
 				'id',
 				'title',
@@ -90,16 +105,22 @@ class Promotions_Handler {
 				'excerpt',
 			),
 			'_embed'          => array( 'wp:featuredmedia', 'wp:term' ),
+			'per_page'        => 100,
 		);
+		if ( ! empty( $page ) ) {
+			$url_params['page'] = $page;
+		}
 
-		// transform arrays into strings
-		$url_params = array_map(
-			function ( $param ) {
-				return is_array( $param ) ? implode( ',', $param ) : $param;
-			},
-			$url_params
-		);
-		return "{$base_url}?casino_location={$url_params['casino_location']}&_fields={$url_params['_fields']}&_embed={$url_params['_embed']}";
+		// transform nested arrays into strings
+		$url_query_string = array();
+		foreach ( $url_params as $key => $value ) {
+			if ( is_array( $value ) ) {
+				$url_query_string[] = "{$key}=" . implode( ',', $value );
+			} else {
+				$url_query_string[] = "{$key}=" . $value;
+			}
+		}
+		return "{$base_url}?" . implode( '&', $url_query_string );
 	}
 
 	/**
