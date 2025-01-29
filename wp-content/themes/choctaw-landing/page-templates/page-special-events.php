@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Events
+ * Template Name: Special Events
  *
  * @package ChoctawNation
  */
