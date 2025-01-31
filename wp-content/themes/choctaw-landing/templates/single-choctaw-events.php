@@ -36,7 +36,14 @@ $event = new Choctaw_Event( get_field( 'event_details' ), get_the_ID() );
 				if ( $swiper_image && ! has_post_thumbnail() ) {
 					echo wp_get_attachment_image( $swiper_image['ID'], 'full', false, $image_args );
 				} else {
-					the_post_thumbnail( 'choctaw-events-single', array( 'class' => 'object-fit-cover w-100 h-100' ) );
+					the_post_thumbnail(
+						'choctaw-events-single',
+						array(
+							'class'           => 'object-fit-cover w-100 h-100',
+							'loading'         => 'eager',
+							'data-spai-eager' => true,
+						)
+					);
 				}
 				?>
 			</div>
@@ -58,7 +65,9 @@ $event = new Choctaw_Event( get_field( 'event_details' ), get_the_ID() );
 						$event->the_start_date( 'F j, Y' );
 					}
 					?>
-					at <span id='venue-name'><?php $event->the_venue_name(); ?></span>
+					<?php if ( $event->has_venue ) : ?>
+					at <span id="venue-name"><?php $event->the_venue_name(); ?></span>
+					<?php endif; ?>
 				</p>
 				<div class="fs-6" id="event-description">
 					<?php $event->the_description(); ?>
