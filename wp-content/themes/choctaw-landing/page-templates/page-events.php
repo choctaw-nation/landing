@@ -41,15 +41,26 @@ if ( ! empty( $event_callouts['callouts'] ) ) {
 	}
 	echo '</div>';
 }
-$events = new WP_Query(
-	array(
-		'post_type'      => 'choctaw-events',
-		'posts_per_page' => -1,
-		'meta_key'       => 'event_details_time_and_date_start_date',
-		'orderby'        => 'meta_value_num',
-		'order'          => 'ASC',
-	)
+
+$special_events_taxonomy = get_field( 'special_events_taxonomy' );
+$args                    = array(
+	'post_type'      => 'choctaw-events',
+	'posts_per_page' => -1,
+	'meta_key'       => 'event_details_time_and_date_start_date',
+	'orderby'        => 'meta_value_num',
+	'order'          => 'ASC',
 );
+
+if ( ! empty( $special_events_taxonomy ) ) {
+	$args['tax_query'] = array(
+		array(
+			'taxonomy' => 'choctaw-events-category',
+			'field'    => 'term_id',
+			'terms'    => $special_events_taxonomy,
+		),
+	);
+}
+$events = new WP_Query( $args );
 ?>
 <section class="container d-flex flex-column row-gap-4 my-5" id="all-events">
 	<?php if ( $events->have_posts() ) : ?>

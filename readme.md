@@ -4,6 +4,12 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.5.0
+
+-   Added new ACF field for selecting a specific event to highlight on the "Events" page template
+-   Fixed image loading for single events pages' hero images to be eagerly-loaded (since it's above-the-fold content)
+-   Fixed a bug where the single events pages would break if a venue wasn't set
+
 ## v2.4.6
 
 -   Added webpack config to remove dead `.js` files

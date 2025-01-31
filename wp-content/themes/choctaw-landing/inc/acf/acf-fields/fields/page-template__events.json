@@ -1,7 +1,7 @@
 [
 	{
 		"key": "group_6532be407d01f",
-		"title": "Page - Events",
+		"title": "Page Template – Events",
 		"fields": [
 			{
 				"key": "field_6532be4089868",
@@ -531,12 +531,67 @@
 						]
 					}
 				]
+			},
+			{
+				"key": "field_679cde3bb7a9b",
+				"label": "Filter Events By Category?",
+				"name": "should_filter_events",
+				"aria-label": "",
+				"type": "true_false",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"message": "Do you want to display all events or only events in a specific category?",
+				"default_value": 0,
+				"allow_in_bindings": 0,
+				"ui_on_text": "Filter by Category",
+				"ui_off_text": "Show All Events",
+				"ui": 1
+			},
+			{
+				"key": "field_679aa6d4ba399",
+				"label": "Special Events Taxonomy",
+				"name": "special_events_taxonomy",
+				"aria-label": "",
+				"type": "taxonomy",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": [
+					[
+						{
+							"field": "field_679cde3bb7a9b",
+							"operator": "==",
+							"value": "1"
+						}
+					]
+				],
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"taxonomy": "choctaw-events-category",
+				"add_term": 1,
+				"save_terms": 0,
+				"load_terms": 0,
+				"return_format": "id",
+				"field_type": "select",
+				"allow_null": 0,
+				"allow_in_bindings": 0,
+				"bidirectional": 0,
+				"multiple": 0,
+				"bidirectional_target": []
 			}
 		],
 		"location": [
 			[
 				{
-					"param": "post_template",
+					"param": "page_template",
 					"operator": "==",
 					"value": "page-templates/page-events.php"
 				}
