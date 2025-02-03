@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.5.1
+
+-   Updated the Event Single pages to show dates and times appropriately
+
 ## v2.5.0
 
 -   Added new ACF field for selecting a specific event to highlight on the "Events" page template
