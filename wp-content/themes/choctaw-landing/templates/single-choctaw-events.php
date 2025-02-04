@@ -55,14 +55,9 @@ $event = new Choctaw_Event( get_field( 'event_details' ), get_the_ID() );
 				<p class="event-header__date-time fs-5 fw-bold mb-0">
 					<?php
 					if ( $event->has_time ) {
-						if ( ! empty( $event->get_the_end_date_time() ) ) {
-							$format = 'M d, Y • g:i a';
-							echo $event->get_the_start_date_time( $format ) . ' &ndash; ' . $event->get_the_end_date_time( $format );
-						} else {
-							$event->the_start_date_time();
-						}
+						echo $event->get_the_dates( 'M d, Y' ) . ' • ' . $event->get_the_times();
 					} else {
-						$event->the_start_date( 'F j, Y' );
+						$event->the_dates( 'F j, Y' );
 					}
 					?>
 					<?php if ( $event->has_venue ) : ?>
