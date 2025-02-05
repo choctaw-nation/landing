@@ -38,7 +38,11 @@ if ( ! $api->has_promotions || null === $promotions ) {
 								</h3>
 								<div class="card-text fs-6 text-white mb-4">
 									<div class="fst-italic mb-3">
-										<i class="fa-regular fa-calendar"></i>&nbsp;<?php echo $promotion['acf']['dates_description']; ?>
+										<?php
+										if ( ! empty( $promotion['acf']['dates_description'] ) ) {
+											echo '<i class="fa-regular fa-calendar"></i>&nbsp;' . acf_esc_html( $promotion['acf']['dates_description'] );
+										}
+										?>
 									</div>
 									<?php echo $promotion['content']; ?>
 								</div>

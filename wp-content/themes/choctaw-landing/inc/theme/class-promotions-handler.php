@@ -68,7 +68,7 @@ class Promotions_Handler {
 		}
 		$this->has_promotions = true;
 		$headers              = wp_remote_retrieve_headers( $response );
-		$total_pages          = $headers['x-wp-totalpages'];
+		$total_pages          = intval( $headers['x-wp-totalpages'] );
 		for ( $page_number = 2; $page_number <= $total_pages; $page_number++ ) {
 			$response = wp_remote_get( $this->build_api_url( $page_number ) );
 			if ( is_wp_error( $response ) ) {
@@ -198,6 +198,10 @@ class Promotions_Handler {
 				$now         = new \DateTime();
 				$now         = $now->format( 'Y-m-d' );
 				$event_start = $promotion['acf']['from_date'];
+				$event_end   = $promotion['acf']['to_date'];
+				if ( is_null( $event_start ) && is_null( $event_end ) ) {
+					return true;
+				}
 				if ( ! is_null( $event_start ) ) {
 					$start_date = \DateTime::createFromFormat( 'Ymd', $event_start );
 					if ( false !== $start_date ) {

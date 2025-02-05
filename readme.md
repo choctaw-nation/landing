@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.5.2
+
+-   Fixed a bug that caused federated Casino Promos not to appear
+-   Patched a security vulnerability
+
 ## v2.5.1
 
 -   Updated the Event Single pages to show dates and times appropriately
