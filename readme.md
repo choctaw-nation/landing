@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.6.0
+
+-   Specials now have an additional "end date" field to auto handle expirations
+
 ## v2.5.2
 
 -   Fixed a bug that caused federated Casino Promos not to appear
