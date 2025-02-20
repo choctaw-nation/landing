@@ -6,25 +6,44 @@
  * @subpackage EatAndDrink
  */
 
-$special     = $args['special'];
-$orientation = $args['orientation'];
+$special       = $args['special'];
+$orientation   = $args['orientation'];
+$is_horizontal = 'horizontal' === $orientation;
 
-$card_classes  = array(
+$card_classes       = array(
 	'card',
 	'h-100',
 	'text-bg-light',
 	'shadow',
 );
-$is_horizontal = 'horizontal' === $orientation;
-
 $additional_classes = $is_horizontal ? array(
 	'row',
 	'row-cols-md-2',
+	'gx-0',
 	'w-auto',
 	'align-items-center',
 ) : array( 'd-flex', 'flex-column' );
+$card_classes       = array_merge( $card_classes, $additional_classes );
 
-$card_classes = array_merge( $card_classes, $additional_classes );
+
+$card_body_classes            = array(
+	'card-body',
+	'd-flex',
+	'flex-column',
+);
+$additional_card_body_classes = $is_horizontal ? array(
+	'p-4',
+	'py-lg-0',
+	'px-lg-5',
+	'px-xl-3',
+	'flex-grow-1',
+) : array(
+	'p-4',
+	'flex-grow-1',
+	'bg-light',
+);
+$card_body_classes            = array_merge( $card_body_classes, $additional_card_body_classes );
+
 ?>
 <div class="<?php echo implode( ' ', $card_classes ); ?>">
 	<?php
@@ -32,13 +51,13 @@ $card_classes = array_merge( $card_classes, $additional_classes );
 		$figure_classes = 'ratio ratio-1x1' . ( $is_horizontal ? ' mb-md-0' : '' );
 		$figure_markup  = "<figure class='{$figure_classes}'>" . $special->get_the_image( 'full', array( 'class' => 'w-100 h-100 object-fit-cover' ) ) . '</figure>';
 		if ( $is_horizontal ) {
-			echo '<div class="gx-0 flex-grow-1">' . $figure_markup . '</div>';
+			echo '<div>' . $figure_markup . '</div>';
 		} else {
 			echo $figure_markup;
 		}
 	}
 	?>
-	<div class="card-body flex-grow-1 mx-4 mb-3 d-flex flex-column">
+	<div class="<?php echo implode( ' ', $card_body_classes ); ?>">
 		<div class="header">
 			<h3 class="fw-bold mb-0 lh-sm" style="font-size:clamp(32px,95%,48px);">
 				<?php $special->the_title(); ?>

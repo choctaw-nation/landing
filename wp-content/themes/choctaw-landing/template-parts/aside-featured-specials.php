@@ -17,7 +17,7 @@ foreach ( $args['featured_specials'] as $special ) {
 
 $cols_map = array(
 	1 => 'col',
-	2 => 'col col-lg-6',
+	2 => 'col col-xl-6 flex-grow-1',
 	3 => 'col col-xl-4',
 );
 if ( array_key_exists( count( $featured_specials ), $cols_map ) ) {
@@ -29,17 +29,17 @@ if ( array_key_exists( count( $featured_specials ), $cols_map ) ) {
 	<h2 class="text-center text-white fw-bold fs-2 mb-4">Featured <?php echo count( $featured_specials ) > 1 ? 'Specials' : 'Special'; ?></h2>
 	<div class="container gx-lg-0">
 		<div class="row justify-content-center">
-			<div class="col-10">
+			<div class="<?php echo count( $featured_specials ) > 2 ? 'col-10' : 'col'; ?>">
 				<div class="row row-cols-auto row-gap-3 align-items-stretch justify-content-center">
 					<?php foreach ( $featured_specials as $special ) : ?>
-					<div class="<?php echo $col_classes; ?> flex-grow-1">
+					<div class="<?php echo $col_classes; ?>">
 						<?php
 						get_template_part(
 							'template-parts/card',
 							'fb-special',
 							array(
 								'special'     => $special,
-								'orientation' => count( $featured_specials ) > 1 ? 'vertical' : 'horizontal',
+								'orientation' => count( $featured_specials ) > 2 ? 'vertical' : 'horizontal',
 							)
 						);
 						?>
