@@ -32,11 +32,13 @@ class Theme_Init {
 			'theme-functions',
 			'class-allow-svg',
 			'class-promotions-handler',
+			'class-specials-handler',
 		);
 		foreach ( $theme_files as $theme_file ) {
 			require_once $base_path . "/theme/{$theme_file}.php";
 		}
 		new Allow_SVG();
+		new Specials_Handler();
 
 		$plugin_handlers = array(
 			'cno-plugins'   => 'CNO_Plugins',
