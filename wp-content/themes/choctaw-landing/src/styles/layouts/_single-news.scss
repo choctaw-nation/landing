@@ -1,4 +1,4 @@
-:where(.single-choctaw-news) article a {
+:where(.single-choctaw-news) article a:not(.btn) {
 	text-decoration: underline;
 	color: var(--bs-secondary);
 }

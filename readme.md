@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.6.1
+
+-   Button links on `single-news.php` pages no longer have underlines
+
 ## v2.6.0
 
 -   Specials now have an additional "end date" field to auto handle expirations
