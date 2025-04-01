@@ -6,6 +6,7 @@ The WP Theme for the Choctaw Landing page.
 
 ## v2.6.2
 
+-   Fixed: `$specials` property is now being set correctly when specials are assigned but unpublished.
 -   Chore: Update Packages
 -   Chore: Update theme compat to 6.7.2
 
