@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.6.2
+
+-   Chore: Update Packages
+-   Chore: Update theme compat to 6.7.2
+
 ## v2.6.1
 
 -   Button links on `single-news.php` pages no longer have underlines
