@@ -46,9 +46,21 @@ $special_events_taxonomy = get_field( 'special_events_taxonomy' );
 $args                    = array(
 	'post_type'      => 'choctaw-events',
 	'posts_per_page' => -1,
-	'meta_key'       => 'event_details_time_and_date_start_date',
-	'orderby'        => 'meta_value_num',
-	'order'          => 'ASC',
+	'meta_query'     => array(
+		'relation'          => 'AND',
+		'start_date_clause' => array(
+			'key'  => 'event_details_time_and_date_start_date',
+			'type' => 'NUMERIC',
+		),
+		'start_time_clause' => array(
+			'key'  => 'event_details_time_and_date_start_time',
+			'type' => 'TIME',
+		),
+	),
+	'orderby'        => array(
+		'start_date_clause' => 'ASC',
+		'start_time_clause' => 'ASC',
+	),
 );
 
 if ( ! empty( $special_events_taxonomy ) ) {
@@ -71,7 +83,7 @@ $events = new WP_Query( $args );
 	</div>
 	<ul class="row row-gap-4 align-items-stretch justify-content-center justify-content-md-start list-unstyled events-list mb-0">
 		<?php while ( $events->have_posts() ) : ?>
-			<?php
+		<?php
 			$events->the_post();
 			$event_details = get_field( 'event_details' );
 			if ( ! $event_details ) {
