@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.6.3
+
+-   Fixed: Events are now sorted first by start date _and then_ by start time.
+-   Chore: Updated packages.
+
 ## v2.6.2
 
 -   Fixed: `$specials` property is now being set correctly when specials are assigned but unpublished.
