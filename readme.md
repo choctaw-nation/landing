@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.6.4
+
+-   Fixed: Single "Featured Special" looks nice now
+
 ## v2.6.3
 
 -   Fixed: Events are now sorted first by start date _and then_ by start time.
