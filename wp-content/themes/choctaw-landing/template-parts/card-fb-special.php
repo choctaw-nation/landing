@@ -32,13 +32,23 @@ $card_classes = array_merge( $card_classes, $additional_classes );
 		$figure_classes = 'ratio ratio-1x1' . ( $is_horizontal ? ' mb-md-0' : '' );
 		$figure_markup  = "<figure class='{$figure_classes}'>" . $special->get_the_image( 'full', array( 'class' => 'w-100 h-100 object-fit-cover' ) ) . '</figure>';
 		if ( $is_horizontal ) {
-			echo '<div class="gx-0 flex-grow-1">' . $figure_markup . '</div>';
+			echo '<div class="gx-0">' . $figure_markup . '</div>';
 		} else {
 			echo $figure_markup;
 		}
 	}
+	$card_body_classes = array(
+		'card-body',
+		'd-flex',
+		'flex-column',
+		'mb-3',
+		'mb-lg-0',
+	);
+	if ( ! $is_horizontal ) {
+		array_merge( $card_body_classes, array( 'flex-grow-1', 'mx-4' ) );
+	}
 	?>
-	<div class="card-body flex-grow-1 mx-4 mb-3 d-flex flex-column">
+	<div class="<?php echo implode( ' ', $card_body_classes ); ?>">
 		<div class="header">
 			<h3 class="fw-bold mb-0 lh-sm" style="font-size:clamp(32px,95%,48px);">
 				<?php $special->the_title(); ?>
