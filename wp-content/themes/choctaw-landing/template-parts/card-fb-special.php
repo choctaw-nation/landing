@@ -42,10 +42,12 @@ $card_classes = array_merge( $card_classes, $additional_classes );
 		'd-flex',
 		'flex-column',
 		'mb-3',
-		'mb-lg-0',
 	);
 	if ( ! $is_horizontal ) {
-		array_merge( $card_body_classes, array( 'flex-grow-1', 'mx-4' ) );
+		$card_body_classes = array_merge( $card_body_classes, array( 'flex-grow-1', 'mx-4' ) );
+	}
+	if ( $is_horizontal ) {
+		$card_body_classes = array_merge( $card_body_classes, array( 'mb-lg-0' ) );
 	}
 	?>
 	<div class="<?php echo implode( ' ', $card_body_classes ); ?>">
