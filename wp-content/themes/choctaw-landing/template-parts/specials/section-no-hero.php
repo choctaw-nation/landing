@@ -34,6 +34,11 @@ $content = $args['content'];
 					<i class="fa-solid fa-utensils fs-5"></i> View Menu
 				</a>
 				<?php endif; ?>
+				<?php if ( $content->get_online_orders_link() ) : ?>
+				<a class="featured-eats__menu-link fs-6 btn btn-outline-primary px-4 py-2" href="<?php $content->the_online_orders_link(); ?>" target="_blank" rel="noopener noreferrer">
+					<i class="fa-solid fa-mobile-signal-out fs-5"></i> Order Online
+				</a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
