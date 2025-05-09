@@ -331,6 +331,16 @@ class Featured_Eat {
 		return "<div class='{$col_class}'><a class='featured-eats__menu-link fs-6' href='{$this->menu_link}' target='_blank' rel='noopener noreferrer'><i class='fa-solid fa-utensils fs-5'></i> Menu</a></div>";
 	}
 
+	/** Returns the Online Orders link or null */
+	public function get_online_orders_link(): ?string {
+		return $this->online_orders_link;
+	}
+
+	/** Echoes the Online Orders Link */
+	public function the_online_orders_link(): void {
+		echo $this->get_online_orders_link();
+	}
+
 	/** Generates the Eats Hours block
 	 *
 	 * @param bool $with_title whether to include the title
