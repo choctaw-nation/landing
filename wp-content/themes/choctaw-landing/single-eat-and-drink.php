@@ -32,6 +32,13 @@ $content = new Featured_Eat( $post, false )
 				</a>
 			</div>
 			<?php endif; ?>
+			<?php if ( $content->get_online_orders_link() ) : ?>
+			<div class="col-auto">
+				<a class="featured-eats__menu-link fs-6 btn btn-outline-primary px-4 py-2" href="<?php $content->the_online_orders_link(); ?>" target="_blank" rel="noopener noreferrer">
+					<i class="fa-solid fa-mobile-signal-out fs-5"></i> Order Online
+				</a>
+			</div>
+			<?php endif; ?>
 		</section>
 	</div>
 	<?php if ( $content->specials ) : ?>
