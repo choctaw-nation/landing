@@ -31,7 +31,6 @@ local-xdebuginfo.php
 auth.json
 /vendor
 /bundle-analyzer
-/.vscode/*
 .wpe-*
 local-xdebuginfo.php
 /_wpeprivate/
