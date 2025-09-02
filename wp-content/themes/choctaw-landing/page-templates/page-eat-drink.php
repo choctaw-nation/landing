@@ -18,8 +18,13 @@ $hero->the_hero();
 $title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
 $title_bar->the_title_bar();
 $featured_specials = get_field( 'featured_specials' );
-if ( $featured_specials ) {
-	get_template_part( 'template-parts/aside', 'featured-specials', array( 'featured_specials' => $featured_specials ) );
+if ( ! empty( $featured_specials ) ) {
+	foreach ( $featured_specials as $special ) {
+		if ( $special->post_status !== 'publish' ) {
+			continue;
+		}
+		get_template_part( 'template-parts/aside', 'featured-specials', array( 'featured_specials' => $featured_specials ) );
+	}
 }
 
 $sections = get_field( 'sections' );
