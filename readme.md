@@ -4,6 +4,12 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.7.1
+
+- Fixed: Featured Specials section is hidden appropriately
+- Tweak: Updated phpcs CI/CD to use latest flow
+- Chore: Update packages
+
 ## v2.7.0
 
 -   Added: Single Eat & Drink posts now support online order links!
