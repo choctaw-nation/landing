@@ -17,12 +17,17 @@ $hero = new Hero_Section( get_the_ID(), get_field( 'hero' ) );
 $hero->the_hero();
 $title_bar = new Title_Bar( get_the_ID(), get_field( 'title_bar' ) );
 $title_bar->the_title_bar();
+
 $featured_specials = get_field( 'featured_specials' );
 if ( ! empty( $featured_specials ) ) {
+	$can_render = false;
 	foreach ( $featured_specials as $special ) {
-		if ( 'publish' !== $special->post_status ) {
-			continue;
+		if ( 'publish' === $special->post_status ) {
+			$can_render = true;
+			break;
 		}
+	}
+	if ( $can_render ) {
 		get_template_part( 'template-parts/aside', 'featured-specials', array( 'featured_specials' => $featured_specials ) );
 	}
 }
