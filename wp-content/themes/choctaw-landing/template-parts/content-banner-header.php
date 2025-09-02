@@ -15,7 +15,7 @@ $title_class   = isset( $args['title']['class'] ) ? $args['title']['class'] : 't
 if ( empty( $args['id'] ) ) {
 	$banner_id = cno_get_the_section_id( $banner_title );
 } else {
-	$banner_id = isset( $args['id'] ) ?: 'id="' . $args['id'] . '"';
+	$banner_id = isset( $args['id'] ) ?: 'id="' . $args['id'] . '"'; // phpcs:ignore Universal.Operators.DisallowShortTernary.Found
 }
 ?>
 <div <?php echo $banner_id; ?> class="banner-bg-header position-relative container-fluid g-0 overflow-hidden d-flex flex-column">

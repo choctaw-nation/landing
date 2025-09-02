@@ -20,7 +20,7 @@ $title_bar->the_title_bar();
 $featured_specials = get_field( 'featured_specials' );
 if ( ! empty( $featured_specials ) ) {
 	foreach ( $featured_specials as $special ) {
-		if ( $special->post_status !== 'publish' ) {
+		if ( 'publish' !== $special->post_status ) {
 			continue;
 		}
 		get_template_part( 'template-parts/aside', 'featured-specials', array( 'featured_specials' => $featured_specials ) );

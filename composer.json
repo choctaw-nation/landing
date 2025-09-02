@@ -13,8 +13,8 @@
 		}
 	],
 	"scripts": {
-		"phpcs": "phpcs wp-content/themes/choctaw-landing/ --ignore=wp-content/themes/choctaw-landing/dist/ --extensions=php",
-		"phpcbf": "phpcbf wp-content/themes/choctaw-landing/ --ignore=wp-content/themes/choctaw-landing/dist/ --extensions=php"
+		"phpcs": "phpcs wp-content/themes/choctaw-landing/ --ignore=wp-content/themes/choctaw-landing/dist/,wp-content/themes/choctaw-landing/inc/bootscore/ --extensions=php",
+		"phpcbf": "phpcbf wp-content/themes/choctaw-landing/ --ignore=wp-content/themes/choctaw-landing/dist/,wp-content/themes/choctaw-landing/inc/bootscore/ --extensions=php"
 	},
 	"config": {
 		"allow-plugins": {

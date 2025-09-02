@@ -83,7 +83,7 @@ $events = new WP_Query( $args );
 	</div>
 	<ul class="row row-gap-4 align-items-stretch justify-content-center justify-content-md-start list-unstyled events-list mb-0">
 		<?php while ( $events->have_posts() ) : ?>
-		<?php
+			<?php
 			$events->the_post();
 			$event_details = get_field( 'event_details' );
 			if ( ! $event_details ) {
