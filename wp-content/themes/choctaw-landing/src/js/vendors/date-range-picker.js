@@ -4,7 +4,7 @@ import 'daterangepicker/daterangepicker';
 import '../../styles/components/booking-bar.scss';
 import ToastAlert from '../bs-toast';
 
-jQuery( function ( $ ) {
+jQuery( function( $ ) {
 	const dateRangePickerArgs = {
 		minDate: moment( '2024-04-01' ),
 		locale: {
@@ -24,7 +24,7 @@ jQuery( function ( $ ) {
 	$( '#startDate' ).daterangepicker( dateRangePickerArgs );
 
 	// On Submit, grab the values and redirect to the booking page
-	$( '#booking-bar' ).on( 'submit', function ( ev ) {
+	$( '#booking-bar' ).on( 'submit', function( ev ) {
 		ev.preventDefault();
 		const daterangepickerData = $( '#startDate' ).data( 'daterangepicker' );
 		const numGuests = $( '#numGuests' ).val();
@@ -43,8 +43,8 @@ jQuery( function ( $ ) {
  * Generates the URL to redirect to
  *
  * @param {daterangepicker|undefined} daterangepickerData the DateRangePicker data
- * @param {number} numGuests the number of guests
- * @returns {string} the url to redirect to
+ * @param {number}                    numGuests           the number of guests
+ * @return {string} the url to redirect to
  */
 function generateRedirectURL( daterangepickerData, numGuests ) {
 	const BASE_URL = `https://book.rguest.com/onecart/wbe/room/1180/choctaw-landing`;
@@ -58,8 +58,7 @@ function generateRedirectURL( daterangepickerData, numGuests ) {
 			type: 'warning',
 		} );
 		return null;
-	} else
-		return `${ BASE_URL }/${ startDate.format(
-			dateFormat
-		) }/${ endDate.format( dateFormat ) }/WEBSITE/${ numGuests }`;
+	} return `${ BASE_URL }/${ startDate.format(
+		dateFormat
+	) }/${ endDate.format( dateFormat ) }/WEBSITE/${ numGuests }`;
 }

@@ -41,8 +41,8 @@ module.exports = {
 
 /**
  * Helper function to add entries to the entries object. It takes an array of strings in either kebab-case or snake_case and returns an object with the key as the entry name and the value as the path to the entry file.
- * @param {array} array - Array of strings
- * @param {string} type - The type of entry. Either 'pages' or 'styles'
+ * @param {Array}  array - Array of strings
+ * @param {string} type  - The type of entry. Either 'pages' or 'styles'
  */
 function addEntries( array, type ) {
 	if ( ! Array.isArray( array ) ) {

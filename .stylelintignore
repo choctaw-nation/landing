@@ -1,0 +1,63 @@
+# Wordpress - ignore core, configuration, examples, uploads and logs.
+# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+
+
+
+# Core
+#
+# Note: if you want to stage/commit WP core files
+# you can delete this whole section/until Configuration.
+/wp-admin/
+/wp-content/index.php
+/wp-content/languages
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+/wp-includes/
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+!/wp-config-sample.php
+/xmlrpc.php
+
+# Configuration
+/.DS_Store
+wp-config.php
+local-xdebuginfo.php
+/node_modules
+.DS_Store
+.env
+.env*
+auth.json
+/vendor
+/bundle-analyzer
+.wpe-*
+local-xdebuginfo.php
+/_wpeprivate/
+/_wpeprivate/*.sql
+
+
+# WP-Content
+/wp-content/aiowps_backups/
+/wp-content/cache/
+/wp-content/mu-plugins/
+/wp-content/plugins
+/wp-content/themes/twenty*/
+/wp-content/themes/*/dist/
+/wp-content/themes/*/src/styles/vendors/bootscore-partials/
+/wp-content/themes/*/src/styles/vendors/popup-maker/
+/wp-content/themes/*/src/styles/vendors/bootscore.scss
+/wp-content/upgrade/
+/wp-content/upgrade-temp-backup/
+/wp-content/uploads/
+/wp-content/wflogs/
+/wp-content/.htaccess
+/wp-content/autoptimize_404_handler.php
+/wp-content/advanced-cache.php
+
+
+# Log files
+*.log
+
+# htaccess
+/.htaccess
