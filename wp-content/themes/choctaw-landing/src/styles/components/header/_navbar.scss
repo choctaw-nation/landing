@@ -9,6 +9,7 @@
 	@include m.media-breakpoint-up(xl) {
 		& > .nav-item {
 			--vertical-space: 2.1875rem;
+
 			margin-top: var(--vertical-space);
 			padding-bottom: var(--vertical-space);
 		}
@@ -38,6 +39,7 @@
 
 	.nav-link {
 		--bs-navbar-nav-link-padding-x: 0.75rem;
+
 		border: 1px solid white;
 		margin: 0;
 

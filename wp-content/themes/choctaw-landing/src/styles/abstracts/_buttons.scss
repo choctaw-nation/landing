@@ -15,6 +15,7 @@
 
 %diamond-button {
 	@extend %btn;
+
 	padding: 0.3125rem 0.625rem;
 	transform: rotateZ(45deg);
 	border-color: white;
@@ -29,6 +30,7 @@
 	&:focus,
 	&:active {
 		background-color: white;
+
 		i {
 			color: black;
 		}

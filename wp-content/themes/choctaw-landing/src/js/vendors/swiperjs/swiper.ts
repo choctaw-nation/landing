@@ -36,9 +36,9 @@ const defaultArgs = {
 
 /**
  *
- * @param {HTMLElement} el the element to create a slider on
+ * @param {HTMLElement}   el   the element to create a slider on
  * @param {SwiperOptions} args Swiper Options
- * @returns {Swiper} swiper instance
+ * @return {Swiper} swiper instance
  */
 export function newSwiper(
 	el: HTMLElement,

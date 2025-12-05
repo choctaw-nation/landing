@@ -5,6 +5,7 @@
 .h1,
 h1 {
 	@extend %headings;
+
 	font-weight: bold;
 	text-transform: uppercase;
 }
@@ -12,6 +13,7 @@ h1 {
 .h2,
 h2 {
 	@extend %headings;
+
 	font-weight: bold;
 	text-transform: uppercase;
 }

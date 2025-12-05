@@ -1,17 +1,17 @@
 @use "../abstracts/variables" as v;
 
 .daterangepicker {
-	background-color: rgba(white, 0.8);
+	background-color: rgb(white, 0.8);
 	backdrop-filter: blur(100px);
-	border: 1px solid rgba(white, 0.2);
+	border: 1px solid rgb(white, 0.2);
 
 	.calendar-table {
 		background-color: transparent;
-		border: 0px;
+		border: 0;
 	}
 
 	td.in-range {
-		background: rgba(var(--bs-primary-rgb), 0.7);
+		background: rgb(var(--bs-primary-rgb), 0.7);
 		color: white;
 	}
 
@@ -58,12 +58,14 @@
 						border-width: 0 2px 2px 0;
 					}
 				}
+
 				.next {
 					&:hover span,
 					span {
 						@extend %prev-next;
 					}
 				}
+
 				.prev {
 					&:hover span,
 					span {
@@ -75,15 +77,16 @@
 			.active {
 				background-color: var(--bs-primary);
 			}
+
 			.in-range.available {
-				background-color: rgba(var(--bs-primary-rgb), 0.5);
+				background-color: rgb(var(--bs-primary-rgb), 0.5);
 			}
 
 			td.off,
 			td.off.in-range,
 			td.off.start-date,
 			td.off.end-date {
-				background: rgba(grey, 0.3);
+				background: rgb(grey, 0.3);
 				color: white;
 				opacity: 0.5;
 			}

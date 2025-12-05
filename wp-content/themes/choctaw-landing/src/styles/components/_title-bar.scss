@@ -7,6 +7,7 @@
 		@include m.media-breakpoint-up(lg) {
 			margin-top: -90px;
 		}
+
 		@include m.media-breakpoint-down(lg) {
 			max-width: none;
 		}

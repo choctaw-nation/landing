@@ -37,6 +37,7 @@
 			background-color: transparent;
 			color: white;
 		}
+
 		&:focus-visible {
 			outline: var(--color-primary) 2px solid;
 			outline-offset: 2px;
@@ -56,6 +57,7 @@
 		z-index: 1;
 		color: white;
 		outline: none;
+
 		--bs-form-select-bg-img: none;
 
 		&::-ms-expand {

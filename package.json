@@ -1,6 +1,6 @@
 {
 	"name": "choctaw-landing",
-	"version": "3.2.5",
+	"version": "3.3.0",
 	"description": "A custom wp theme for choctaw-landing",
 	"prettier": "@wordpress/prettier-config",
 	"browserslist": [
@@ -8,6 +8,8 @@
 	],
 	"scripts": {
 		"build": "wp-scripts build",
+		"lint:css": "npx stylelint '**/*.scss' '**/*.css' --fix",
+		"lint:js": "npx eslint --fix",
 		"check-engines": "wp-scripts check-engines",
 		"packages-update": "wp-scripts packages-update",
 		"start": "wp-scripts start"
@@ -23,13 +25,23 @@
 	},
 	"homepage": "https://github.com/choctaw-nation/landing#readme",
 	"dependencies": {
-		"bootstrap": "^5.3.6",
+		"bootstrap": "^5.3.8",
 		"daterangepicker": "^3.1.0",
-		"swiper": "^11.2.8"
+		"swiper": "^11"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.22.0",
+		"@eslint/compat": "^2.0.0",
+		"@eslint/eslintrc": "^3.3.3",
+		"@wordpress/scripts": "^31.1.0",
 		"bootstrap-icons": "^1.13.1",
+		"eslint": "^9.39.1",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-import-resolver-typescript": "^4.4.4",
+		"eslint-plugin-react-hooks": "^7.0.1",
+		"globals": "^16.5.0",
+		"stylelint": "^16.26.1",
+		"stylelint-config-standard-scss": "^16.0.0",
+		"stylelint-scss": "^6.13.0",
 		"webpack-remove-empty-scripts": "^1.1.1"
 	}
 }

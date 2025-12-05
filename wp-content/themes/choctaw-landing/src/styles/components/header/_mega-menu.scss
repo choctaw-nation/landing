@@ -89,7 +89,7 @@
 			.mega-menu__container {
 				top: 100%;
 
-				@include show-dropdown();
+				@include show-dropdown;
 			}
 		}
 	}
@@ -98,16 +98,18 @@
 	&:nth-last-child(-n + 3) {
 		.mega-menu__container {
 			@include m.media-breakpoint-up(xl) {
-				right: 0px;
+				right: 0;
 				left: unset;
 			}
-			@media only screen and (min-width: 2000px) {
+
+			@media only screen and (width >= 2000px) {
 				& {
 					right: unset;
 				}
 			}
 		}
 	}
+
 	// END DROPDOWN POSITION FIX
 
 	// Double ampersand used for higher specificity selection
@@ -140,7 +142,7 @@
 
 		.dropdown-toggle-split.show ~ &.show {
 			@include m.media-breakpoint-up(lg) {
-				@include show-dropdown();
+				@include show-dropdown;
 			}
 		}
 	}
@@ -166,6 +168,7 @@
 
 	&__btn {
 		@extend %btn;
+
 		width: 150px;
 		background: var(--bs-primary);
 		color: white;
