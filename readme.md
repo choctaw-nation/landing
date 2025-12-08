@@ -4,6 +4,14 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.7.2 - [December 5, 2025]
+
+- Tweak: Add Core Web Vitals Configs to Theme_Init
+- Tweak: Disable certain plugins on non-prod environments
+- Tweak: Force auto-update for plugins on non-prod environments
+- Chore: Add Lints and Configs
+- Chore: Update Packages
+
 ## v2.7.1
 
 - Fixed: Featured Specials section is hidden appropriately

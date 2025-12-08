@@ -2,6 +2,7 @@
 @use "bootstrap/scss/vendor/rfs" as rfs;
 
 $standard-buttons: ("primary", "secondary");
+
 @each $color in $standard-buttons {
 	.btn-#{$color} {
 		color: white;
@@ -28,6 +29,7 @@ $standard-buttons: ("primary", "secondary");
 
 .btn-reserve {
 	@extend %btn;
+
 	color: var(--bs-secondary);
 	background: white;
 	height: 43px;
@@ -45,6 +47,7 @@ $standard-buttons: ("primary", "secondary");
 
 	&--white {
 		@extend %diamond-button;
+
 		background-color: white;
 
 		svg {
@@ -65,12 +68,14 @@ $standard-buttons: ("primary", "secondary");
 
 input[type="submit"].gform_button.button {
 	@extend %btn;
+
 	color: var(--bs-primary);
 	background-color: transparent;
 	border-color: var(--bs-primary);
 	padding: 0.125rem 0.625rem 0.3125rem;
 	font-weight: 500;
 	margin-bottom: 0 !important;
+
 	@include rfs.font-size(1.2rem);
 
 	&:hover,

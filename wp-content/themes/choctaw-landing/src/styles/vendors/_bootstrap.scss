@@ -13,10 +13,9 @@ $yellow: #f5dc5b;
 */
 $font-family-sans-serif: v.$font-body;
 $font-family-monospace:
-	Monaspace Neon,
+	monaspace neon,
 	"Courier New",
 	monospace;
-
 $font-size-base: 1rem;
 
 // LINKS
@@ -39,6 +38,7 @@ $h3-font-size: $font-size-base * 2.074;
 $h4-font-size: $font-size-base * 1.728;
 $h5-font-size: $font-size-base * 1.44;
 $h6-font-size: $font-size-base * 1.2;
+
 // ================================================
 
 /**
@@ -61,12 +61,11 @@ $dropdown-border-radius: 0;
 $navbar-light-color: white;
 $navbar-light-active-color: white;
 $navbar-light-hover-color: $yellow;
-
 $navbar-light-icon-color: white;
 $navbar-light-toggler-border-color: white;
-
 $navbar-nav-link-padding-x: 0rem;
 $navbar-padding-y: 0;
+
 // $navbar-padding-x: $spacer * 0.5;
 
 $caret-width: 0.3125rem;
@@ -92,10 +91,8 @@ $offcanvas-color: white;
 */
 
 $btn-border-width: 2px;
-
 $btn-padding-x: 0.625rem;
 $btn-padding-y: 0.2rem;
-
 $btn-font-weight: 500;
 $btn-font-size: 1.2rem;
 
@@ -121,6 +118,7 @@ $enable-rounded: false;
 // ================================================
 
 @import "bootstrap/scss/variables";
+
 // @import "bootstrap/scss/variables-dark";
 
 $aspect-ratios: map-merge(
@@ -139,7 +137,6 @@ $aspect-ratios: map-merge(
 
 // Useful Bootstrap Utilities (Optional)
 @import "bootstrap/scss/buttons";
-
 @import "bootstrap/scss/transitions";
 @import "bootstrap/scss/close";
 @import "bootstrap/scss/containers";
@@ -152,11 +149,13 @@ $aspect-ratios: map-merge(
 @import "bootstrap/scss/badge";
 @import "bootstrap/scss/breadcrumb";
 @import "bootstrap/scss/button-group";
+
 // @import "bootstrap/scss/card";
 // @import "bootstrap/scss/carousel";
 // @import "bootstrap/scss/code";
 @import "bootstrap/scss/dropdown";
 @import "bootstrap/scss/forms";
+
 // @import "bootstrap/scss/images";
 // @import "bootstrap/scss/jumbotron";
 // @import "bootstrap/scss/list-group";
@@ -165,6 +164,7 @@ $aspect-ratios: map-merge(
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar"; // Requires nav
 @import "bootstrap/scss/pagination";
+
 // @import "bootstrap/scss/placeholders";
 // @import "bootstrap/scss/popover";
 // @import "bootstrap/scss/print";
@@ -172,6 +172,7 @@ $aspect-ratios: map-merge(
 // @import "bootstrap/scss/spinners";
 // @import "bootstrap/scss/tables";
 @import "bootstrap/scss/toasts";
+
 // @import "bootstrap/scss/tooltip";
 @import "bootstrap/scss/type";
 
