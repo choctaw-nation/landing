@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.7.3 - [December 16, 2025]
+
+- Fixed: Bug that caused `specials` array to be emptied if a special was drafted is now fixed
+
 ## v2.7.2 - [December 5, 2025]
 
 - Tweak: Add Core Web Vitals Configs to Theme_Init
