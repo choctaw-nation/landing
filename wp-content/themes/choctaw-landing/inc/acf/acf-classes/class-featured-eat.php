@@ -125,8 +125,6 @@ class Featured_Eat {
 			foreach ( $specials as $special ) {
 				if ( 'publish' === $special->post_status ) {
 					$this->specials[] = new FB_Specials( $special );
-				} else {
-					$this->specials = null;
 				}
 			}
 		} else {
