@@ -1,6 +1,6 @@
 {
 	"name": "choctaw-landing",
-	"version": "3.3.0",
+	"version": "3.3.1",
 	"description": "A custom wp theme for choctaw-landing",
 	"prettier": "@wordpress/prettier-config",
 	"browserslist": [
@@ -32,7 +32,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^2.0.0",
 		"@eslint/eslintrc": "^3.3.3",
-		"@wordpress/scripts": "^31.1.0",
+		"@wordpress/scripts": "^31.2.0",
 		"bootstrap-icons": "^1.13.1",
 		"eslint": "^9.39.1",
 		"eslint-config-prettier": "^10.1.8",
@@ -41,7 +41,7 @@
 		"globals": "^16.5.0",
 		"stylelint": "^16.26.1",
 		"stylelint-config-standard-scss": "^16.0.0",
-		"stylelint-scss": "^6.13.0",
+		"stylelint-scss": "^6.14.0",
 		"webpack-remove-empty-scripts": "^1.1.1"
 	}
 }
