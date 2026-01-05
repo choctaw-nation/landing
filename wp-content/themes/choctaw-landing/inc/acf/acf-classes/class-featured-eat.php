@@ -111,6 +111,7 @@ class Featured_Eat {
 		$this->post           = $post;
 		$this->headline       = get_the_title( $post );
 		$this->should_reverse = $should_reverse;
+		$this->specials       = null;
 		$this->init_props();
 	}
 
@@ -127,8 +128,6 @@ class Featured_Eat {
 					$this->specials[] = new FB_Specials( $special );
 				}
 			}
-		} else {
-			$this->specials = null;
 		}
 		$meta = get_field( 'meta_details', $this->post );
 		$this->set_the_meta( $meta );
