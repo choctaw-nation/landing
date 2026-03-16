@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.8.0 - [March 16, 2026]
+
+- Added: Gutenberg support!
+- Chore: Update packages.
+
 ## v2.7.4 - [January 5, 2026]
 
 - Fixed: Further fixed the `specials` bug by explicitly setting it to `null` on init.
