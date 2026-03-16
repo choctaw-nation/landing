@@ -275,8 +275,8 @@ class Two_Col_Section extends Generator {
 		$text            = $this->has_modal ? $this->modal->modal_trigger_text : esc_textarea( $this->cta['title'] );
 		$element         = $this->has_modal ? 'button' : 'a';
 		$link_classes    = array(
-			'desktop' => 'arrow-link fs-5 fw-medium z-1',
-			'mobile'  => 'btn btn-outline-primary pb-2 fs-6',
+			'desktop' => 'arrow-link text-decoration-none fs-5 fw-medium z-1',
+			'mobile'  => 'btn btn-outline-primary fs-6',
 		);
 		if ( $this->has_modal ) {
 			$link_classes['desktop'] .= ' border-0 bg-transparent fw-medium text-primary';
