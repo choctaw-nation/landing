@@ -1,10 +1,10 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination, A11y, Keyboard } from 'swiper/modules';
-import 'swiper/scss';
-import 'swiper/scss/navigation';
-import 'swiper/scss/pagination';
-import 'swiper/scss/a11y';
-import 'swiper/scss/keyboard';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/a11y';
+import 'swiper/css/keyboard';
 import { SwiperOptions } from 'swiper/types';
 
 const defaultArgs = {
@@ -49,6 +49,7 @@ export function newSwiper(
 		const swiper = new Swiper( el, newArgs );
 		return swiper;
 	} catch ( err ) {
+		// eslint-disable-next-line no-console
 		console.error( err );
 	}
 }
