@@ -336,7 +336,7 @@
 						"text": "var:preset|color|primary"
 					}
 				},
-				"css":"&.arrow-link,&.nav-link { text-decoration: none; },&.nav-link:not(.dropdown-item):visited { color:white; }"
+				"css":"&.arrow-link,&.nav-link { text-decoration: none; },&.nav-link:not(.dropdown-item:not(.nav-btn .dropdown-item):visited { color:white; }"
 			}
 		},
 		"css": "text-wrap:pretty"
