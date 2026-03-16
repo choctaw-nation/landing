@@ -23,7 +23,20 @@
 		"editor.useTabStops": true,
 		"prettier.useTabs": false
 	},
-	"cSpell.words": [ "Appender", ],
+	"cSpell.words": [
+		"Appender",
+		"autoptimize",
+		"autoupdater",
+		"bloginfo",
+		"choctawnation",
+		"daterangepicker",
+		"loginout",
+		"nextpage",
+		"spai",
+		"swipers",
+		"trackbacks",
+		"wordfence"
+	],
 	"css.format.spaceAroundSelectorSeparator": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "always",
