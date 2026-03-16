@@ -163,7 +163,10 @@
 
 	&__image {
 		aspect-ratio: 1;
-		max-height: 150px;
+
+		@include m.media-breakpoint-up(lg) {
+			max-height: 150px;
+		}
 	}
 
 	&__btn {

@@ -14,7 +14,6 @@ class Theme_Init {
 	/** Constructor */
 	public function __construct() {
 		$this->load_required_files();
-		$this->cno_set_environment();
 		$this->disable_discussion();
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_cno_scripts' ), 50 );
 		add_action( 'after_setup_theme', array( $this, 'cno_theme_support' ) );
@@ -125,19 +124,6 @@ class Theme_Init {
 				}
 			}
 		);
-	}
-
-	/** Sets an Environment Variable */
-	private function cno_set_environment() {
-		$server_name = $_SERVER['SERVER_NAME'];
-
-		if ( false !== strpos( $server_name, '.local' ) ) {
-			$_ENV['CNO_ENV'] = 'dev';
-		} elseif ( false !== strpos( $server_name, 'wpengine' ) ) {
-			$_ENV['CNO_ENV'] = 'stage';
-		} else {
-			$_ENV['CNO_ENV'] = 'prod';
-		}
 	}
 
 	/**
@@ -329,7 +315,7 @@ class Theme_Init {
 	 * @param string $post_type the post type to remove supports from.
 	 */
 	private function disable_post_type_support( string $post_type ) {
-		$supports = array( 'editor', 'comments', 'trackbacks', 'revisions', 'author' );
+		$supports = array( 'comments', 'trackbacks', 'revisions', 'author' );
 		foreach ( $supports as $support ) {
 			if ( post_type_supports( $post_type, $support ) ) {
 				remove_post_type_support( $post_type, $support );
@@ -416,10 +402,10 @@ class Theme_Init {
 	/**
 	 * Handle automatic plugin updates based on environment.
 	 *
-	 * @param bool $update Whether to update the plugin.
-	 * @return bool
+	 * @param ?bool $update Whether to update the plugin.
+	 * @return ?bool
 	 */
-	public function handle_auto_update_plugin( $update ): bool {
+	public function handle_auto_update_plugin( ?bool $update ): ?bool {
 		if ( 'production' === wp_get_environment_type() ) {
 			return $update;
 		}
@@ -437,7 +423,7 @@ class Theme_Init {
 		if ( 'preconnect' === $relation_type ) {
 			$hints[] = array(
 				'href'        => 'https://use.typekit.net',
-				'crossorigin' => true,
+				'crossorigin' => 'anonymous',
 			);
 		}
 		return $hints;
@@ -460,7 +446,7 @@ class Theme_Init {
 			$preload = sprintf(
 				"<link rel='preload' as='style' href='%s' %s />\n",
 				$href,
-				'external' === $preload_handles[ $handle ] ? 'crossorigin' : ''
+				'external' === $preload_handles[ $handle ] ? 'crossorigin="anonymous"' : ''
 			);
 			$html    = $preload . $html;
 		}

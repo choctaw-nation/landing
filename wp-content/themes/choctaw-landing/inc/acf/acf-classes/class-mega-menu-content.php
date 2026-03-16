@@ -65,7 +65,7 @@ class Mega_Menu_Content extends Generator {
 		if ( $this->featured_event ) {
 			$markup .= $this->get_the_featured_event();
 		} else {
-			$markup .= '<div class="<div class="ratio ratio-1x1">';
+			$markup .= '<div class="ratio ratio-1x1">';
 			$markup .= $this->image->get_the_image( 'mega-menu__image object-fit-cover w-100' );
 			$markup .= '</div>';
 			if ( $this->has_cta ) {
@@ -113,7 +113,7 @@ class Mega_Menu_Content extends Generator {
 		$href   = user_trailingslashit( esc_url( $this->cta['url'] ) );
 		$text   = esc_textarea( $this->cta['title'] );
 		$target = $this->cta['target'];
-		$cta    = "<a href='{$href}' class='mega-menu__btn mt-3 d-inline-block text-uppercase text-center' target='{$target}'>{$text}</a>";
+		$cta    = "<a href='{$href}' class='mega-menu__btn text-decoration-none text-white mt-3 d-inline-block text-uppercase text-center' target='{$target}'>{$text}</a>";
 		return $cta;
 	}
 }
