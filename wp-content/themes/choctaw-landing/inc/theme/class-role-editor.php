@@ -12,10 +12,36 @@ namespace ChoctawNation;
  */
 class Role_Editor {
 	/**
+	 * Current role and capability schema version.
+	 *
+	 * @var string
+	 */
+	const VERSION = '1.0.0';
+
+	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'after_switch_theme', array( $this, 'create_custom_roles' ) );
+		add_action( 'admin_init', array( $this, 'maybe_sync_roles_and_capabilities' ) );
+	}
+
+	/**
+	 * Maybe sync roles and capabilities based on stored version.
+	 *
+	 * Ensures that updates to the role/capability schema are applied even when
+	 * the theme is updated in place (without triggering after_switch_theme).
+	 */
+	public function maybe_sync_roles_and_capabilities() {
+		$stored_version = get_option( 'choctaw_role_editor_version' );
+
+		if ( self::VERSION === $stored_version ) {
+			return;
+		}
+
+		$this->create_custom_roles();
+
+		update_option( 'choctaw_role_editor_version', self::VERSION );
 	}
 
 	/**

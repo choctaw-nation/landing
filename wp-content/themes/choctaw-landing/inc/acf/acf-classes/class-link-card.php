@@ -77,8 +77,13 @@ class Link_Card extends Card {
 	 * @param string $headline_element [optional] the Headline element (Default 'h3')
 	 */
 	protected function get_the_content( string $headline_element = 'h3' ): string {
+		$markup = '';
 		if ( $this->headline ) {
-			$markup = "<{$headline_element} class='card__headline fs-3'>{$this->headline}</{$headline_element}>";
+			$headline_content = $this->headline;
+			if ( $this->link && ! $this->with_button ) {
+				$headline_content = "<a href='{$this->link['url']}' class='stretched-link' {$this->target}>{$headline_content}</a>";
+			}
+			$markup .= "<{$headline_element} class='card__headline fs-3'>{$headline_content}</{$headline_element}>";
 		}
 		$markup .= "<div class='card__subheadline fs-6 mb-2'>{$this->subheadline}</div>";
 		return $markup;
