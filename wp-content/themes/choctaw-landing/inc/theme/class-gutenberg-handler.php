@@ -23,7 +23,7 @@ class Gutenberg_Handler {
 		add_action( 'after_setup_theme', array( $this, 'cno_block_theme_support' ), 50 );
 		add_filter( 'block_editor_settings_all', array( $this, 'restrict_gutenberg_ui' ), 10, 1 );
 		add_filter( 'allowed_block_types_all', array( $this, 'restrict_block_types' ), 10, 2 );
-		add_filter( 'use_block_editor_for_post_type', array( $this, 'handle_page_templates' ) );
+		add_filter( 'use_block_editor_for_post_type', array( $this, 'handle_page_templates' ), 10, 0 );
 	}
 
 	/**
@@ -188,8 +188,8 @@ class Gutenberg_Handler {
 		$is_homepage          = ( $homepage_id && $homepage_id === $post->ID );
 		$disallowed_templates = array(
 			'page-templates/page-blank.php',
-			'page-templates/eat-drink.php',
-			'page-templates/full-width-image.php',
+			'page-templates/page-eat-drink.php',
+			'page-templates/page-full-width-image.php',
 			'page-templates/page-meet-gather.php',
 			'page-templates/page-mercantile.php',
 			'page-templates/page-stay.php',

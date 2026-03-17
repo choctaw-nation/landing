@@ -78,7 +78,7 @@ $grid-breakpoints: (
 */
 @mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
 	$min: map.get($breakpoints, $name);
-	$next: get-next-breakpoint($name, $grid-breakpoints);
+	$next: get-next-breakpoint($name, $breakpoints);
 	$max: map.get($breakpoints, $next);
 
 	@if $min != null and $max != null {
@@ -98,7 +98,7 @@ $grid-breakpoints: (
 
 /**
 * Returns the maximum width for the given breakpoint name.
-* The maximum is calculated as the next breakpoint's minimum width minus 0.02px.
+* The maximum is calculated as the next breakpoint's minimum width.
 * Returns null for the largest breakpoint.
 */
 @function get-next-breakpoint($name, $breakpoints: $grid-breakpoints) {
