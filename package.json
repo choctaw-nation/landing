@@ -35,7 +35,7 @@
 		"@wordpress/eslint-plugin": "^24.3.0",
 		"@wordpress/scripts": "^31.6.0",
 		"bootstrap-icons": "^1.13.1",
-		"eslint": "^9.39.1",
+		"eslint": "^9",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-import-resolver-typescript": "^4.4.4",
 		"eslint-plugin-react-hooks": "^7.0.1",
