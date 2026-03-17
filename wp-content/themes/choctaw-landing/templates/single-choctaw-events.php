@@ -10,8 +10,9 @@ use ChoctawNation\Events\Choctaw_Event;
 
 wp_enqueue_script( 'choctaw-events-add-to-calendar' );
 get_header();
-$event = new Choctaw_Event( get_field( 'event_details' ), get_the_ID() );
 ?>
+<main <?php post_class(); ?>>
+<?php $event = new Choctaw_Event( get_field( 'event_details' ), get_the_ID() ); ?>
 <div class="container pt-5 mb-5 d-flex flex-column row-gap-5" style="margin-top: var(--header-offset,110px);">
 	<nav arial-label="breadcrumb">
 		<ol class="breadcrumb m-0">
@@ -19,7 +20,7 @@ $event = new Choctaw_Event( get_field( 'event_details' ), get_the_ID() );
 			<li class="breadcrumb-item fs-6 active" aria-current="page"><?php echo $event->get_the_name(); ?></li>
 		</ol>
 	</nav>
-	<article <?php post_class( 'd-flex flex-column row-gap-4' ); ?> id="<?php echo 'post-' . get_the_ID(); ?>">
+	<div <?php post_class( 'd-flex flex-column row-gap-4' ); ?> id="<?php echo 'post-' . get_the_ID(); ?>">
 		<div class="event-header row row-gap-3 align-items-center">
 			<?php
 			$swiper_image = get_field( 'swiper_image' );
@@ -70,8 +71,8 @@ $event = new Choctaw_Event( get_field( 'event_details' ), get_the_ID() );
 				<?php $event->the_add_to_calendar_button( 'btn btn-primary fs-6 mt-auto w-auto' ); ?>
 			</div>
 		</div>
-	</article>
+	</div>
 </div>
-
+</main>
 <?php
 get_footer();

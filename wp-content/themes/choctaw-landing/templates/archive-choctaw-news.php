@@ -8,7 +8,7 @@
 
 get_header();
 ?>
-<div class="container mb-5 py-5" style="margin-top:110px">
+<main <?php post_class( 'container mb-5 py-5' ); ?> style="margin-top:var(--header-offset,110px);">
 	<h1>Newsroom</h1>
 	<?php if ( have_posts() ) : ?>
 	<section class="results">
@@ -24,6 +24,6 @@ get_header();
 		<p>No articles found.</p>
 		<?php endif; ?>
 	</section>
-</div>
+</main>
 <?php
 get_footer();
