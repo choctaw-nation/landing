@@ -8,6 +8,7 @@ import { defineConfig, devices } from '@playwright/test';
 // import path from 'path';
 // dotenv.config( { path: path.resolve( __dirname, '.env' ) } );
 
+const DESKTOP_VIEWPORT = { width: 1920, height: 1080 };
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -25,7 +26,8 @@ export default defineConfig( {
 		{
 			name: 'wpe-dev-chromium',
 			use: {
-				...devices[ 'Desktop Chrome' ],
+				...devices[ 'Desktop Chrome HiDPI' ],
+				viewport: DESKTOP_VIEWPORT,
 				baseURL: 'https://choctawlandev.wpenginepowered.com/',
 				headless: true,
 			},
@@ -34,7 +36,7 @@ export default defineConfig( {
 		},
 		{
 			name: 'chromium',
-			use: { ...devices[ 'Desktop Chrome' ] },
+			use: { ...devices[ 'Desktop Chrome' ], viewport: DESKTOP_VIEWPORT },
 			fullyParallel: true,
 			retries: 1,
 		},
@@ -42,26 +44,29 @@ export default defineConfig( {
 			name: 'firefox',
 			use: {
 				...devices[ 'Desktop Firefox' ],
+				viewport: DESKTOP_VIEWPORT,
 				baseURL: 'https://choctawlandev.wpenginepowered.com/',
 			},
 			fullyParallel: true,
 		},
 		{
 			name: 'webkit',
-			use: { ...devices[ 'Desktop Safari' ] },
+			use: { ...devices[ 'Desktop Safari' ], viewport: DESKTOP_VIEWPORT },
 			fullyParallel: true,
 		},
 
 		/* Test against mobile viewports. */
-		// {
-		//   name: 'Mobile Chrome',
-		//   use: { ...devices['Pixel 5'] },
-		//   fullyParallel: true,
-		// },
-		// {
-		// 	name: 'Mobile Safari',
-		// 	use: { ...devices[ 'iPhone 12' ] },
-		//   fullyParallel: true,
-		// },
+		{
+			name: 'Mobile Chrome',
+			use: { ...devices[ 'Galaxy S24' ] },
+			fullyParallel: true,
+			retries: 1,
+		},
+		{
+			name: 'Mobile Safari',
+			use: { ...devices[ 'iPhone 15' ] },
+			fullyParallel: true,
+			retries: 1,
+		},
 	],
 } );
