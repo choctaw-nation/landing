@@ -178,7 +178,7 @@ class Navwalker extends \Walker_Nav_Menu {
 	}
 
 	/** Builds the anchor attributes */
-	protected function get_the_attributes(): string {
+	protected function get_the_attributes(): string|array {
 		$active_class = ( $this->current_item->current || $this->current_item->current_item_ancestor || in_array( 'current_page_parent', $this->current_item->classes, true ) || in_array( 'current-post-ancestor', $this->current_item->classes, true ) ) ? 'active' : '';
 		$attributes   = array(
 			'title'  => $this->current_item->attr_title,

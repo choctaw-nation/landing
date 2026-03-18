@@ -36,7 +36,10 @@ export default defineConfig( {
 		},
 		{
 			name: 'chromium',
-			use: { ...devices[ 'Desktop Chrome' ], viewport: DESKTOP_VIEWPORT },
+			use: {
+				...devices[ 'Desktop Chrome HiDPI' ],
+				viewport: DESKTOP_VIEWPORT,
+			},
 			fullyParallel: true,
 			retries: 1,
 		},
@@ -51,11 +54,13 @@ export default defineConfig( {
 		},
 		{
 			name: 'webkit',
-			use: { ...devices[ 'Desktop Safari' ], viewport: DESKTOP_VIEWPORT },
+			use: {
+				...devices[ 'Desktop Safari' ],
+				viewport: DESKTOP_VIEWPORT,
+				browserName: 'webkit',
+			},
 			fullyParallel: true,
 		},
-
-		/* Test against mobile viewports. */
 		{
 			name: 'Mobile Chrome',
 			use: { ...devices[ 'Galaxy S24' ] },
@@ -64,7 +69,7 @@ export default defineConfig( {
 		},
 		{
 			name: 'Mobile Safari',
-			use: { ...devices[ 'iPhone 15' ] },
+			use: { ...devices[ 'iPhone 15' ], browserName: 'webkit' },
 			fullyParallel: true,
 			retries: 1,
 		},
