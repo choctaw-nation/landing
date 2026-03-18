@@ -19,6 +19,7 @@ class Gutenberg_Handler {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'init_block_theme' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'enqueue_global_block_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_assets' ) );
 		add_action( 'after_setup_theme', array( $this, 'cno_block_theme_support' ), 50 );
 		add_filter( 'block_editor_settings_all', array( $this, 'restrict_gutenberg_ui' ), 10, 1 );
@@ -46,11 +47,23 @@ class Gutenberg_Handler {
 	}
 
 	/**
+	 * Enqueue global block assets that are needed both in the editor and on the frontend.
+	 */
+	public function enqueue_global_block_assets() {
+		wp_enqueue_style(
+			'typekit',
+			'https://use.typekit.net/jqq3pwr.css',
+			array(),
+		null // phpcs:ignore
+		);
+	}
+
+	/**
 	 * Enqueue the block editor assets that control the layout of the Block Editor.
 	 */
 	public function enqueue_block_assets() {
 		new Asset_Loader( 'editDefaultBlocks', Enqueue_Type::script, 'admin', array() );
-		new Asset_Loader( 'mediapressCustomFilters', Enqueue_Type::script, 'admin', array() );
+		// new Asset_Loader( 'mediapressCustomFilters', Enqueue_Type::script, 'admin', array() );
 	}
 
 	/**

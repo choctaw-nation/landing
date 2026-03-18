@@ -6,6 +6,7 @@ const THEME_DIR = `/wp-content/themes/${ THEME_NAME }`;
 
 const appNames = [ 'stay', 'things-to-do', 'events', 'front-page' ];
 const styleSheets = [];
+const blockEditor = [ 'editDefaultBlocks' ];
 
 module.exports = {
 	...defaultConfig,
@@ -21,6 +22,7 @@ module.exports = {
 				'modules/swiper/events-swiper': `.${ THEME_DIR }/src/js/vendors/swiperjs/events-swiper.ts`,
 				...addEntries( appNames, 'pages' ),
 				...addEntries( styleSheets, 'styles' ),
+				...addEntries( blockEditor, 'admin' ),
 			};
 		},
 		plugins: [
@@ -52,24 +54,43 @@ function addEntries( array, type ) {
 		return {};
 	}
 	const entries = {};
+	const typeOutput = {
+		styles: {
+			outputDir: ( assetOutput ) => `pages/${ assetOutput }`,
+			path: ( asset ) =>
+				`.${ THEME_DIR }/src/styles/pages/${ asset }.scss`,
+		},
+		pages: {
+			outputDir: ( assetOutput ) => `pages/${ assetOutput }`,
+			path: ( asset ) => `.${ THEME_DIR }/src/js/${ asset }/index.ts`,
+		},
+		admin: {
+			outputDir: ( assetOutput ) => `admin/${ assetOutput }`,
+			path: ( asset ) => `.${ THEME_DIR }/src/js/gutenberg/${ asset }.ts`,
+		},
+	};
 	array.forEach( ( asset ) => {
 		const assetOutput = snakeToCamel( asset );
-		if ( type === 'styles' ) {
-			entries[
-				`pages/${ assetOutput }`
-			] = `.${ THEME_DIR }/src/styles/pages/${ asset }.scss`;
-		} else if ( type === 'pages' ) {
-			entries[
-				`pages/${ assetOutput }`
-			] = `.${ THEME_DIR }/src/js/${ asset }/index.ts`;
+
+		if ( Object.hasOwn( typeOutput, type ) ) {
+			const output = typeOutput[ type ];
+			entries[ output.outputDir( assetOutput ) ] = output.path( asset );
 		} else {
 			throw new Error(
-				`Invalid type! Expected "styles" or "pages", received "${ type }"`
+				`Invalid type! Expected one of ${ Object.keys(
+					typeOutput
+				).join( ', ' ) }, received "${ type }"`
 			);
 		}
 	} );
 	return entries;
 }
+
+/**
+ * A simple utility class to alter strings from kebab-case or snake_case to camelCase
+ *
+ * @param {string} str - The string to be converted
+ */
 function snakeToCamel( str ) {
 	return str.replace( /([-_][a-z])/g, ( group ) =>
 		group.toUpperCase().replace( '-', '' ).replace( '_', '' )
