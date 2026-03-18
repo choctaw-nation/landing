@@ -1,5 +1,5 @@
 import { test, expect } from '@wordpress/e2e-test-utils-playwright';
-import { COLORS, DEFAULT_TRANSITION_TIMING } from './test-utils';
+import { COLORS, DEFAULT_TRANSITION_TIMING } from '../test-utils';
 import { Locator, Page } from '@playwright/test';
 
 async function getHoverColor( index: number, navLinks:Locator, page:Page ) {
