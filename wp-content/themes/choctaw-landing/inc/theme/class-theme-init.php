@@ -443,12 +443,18 @@ class Theme_Init {
 			'bootstrap' => null,
 		);
 		if ( in_array( $handle, array_keys( $preload_handles ), true ) ) {
+			$is_crossorigin = 'external' === $preload_handles[ $handle ];
+			// Add a preload link before the stylesheet link.
 			$preload = sprintf(
 				"<link rel='preload' as='style' href='%s' %s />\n",
 				$href,
-				'external' === $preload_handles[ $handle ] ? 'crossorigin="anonymous"' : ''
+				$is_crossorigin ? 'crossorigin="anonymous"' : ''
 			);
-			$html    = $preload . $html;
+			// Add crossorigin attribute if needed.
+			if ( $is_crossorigin && ! str_contains( $html, 'crossorigin' ) ) {
+				$html = str_replace( "/>\n", ' crossorigin="anonymous" />' . "\n", $html );
+			}
+			$html = $preload . $html;
 		}
 		return $html;
 	}

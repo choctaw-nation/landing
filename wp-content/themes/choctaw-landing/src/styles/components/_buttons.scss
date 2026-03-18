@@ -66,13 +66,14 @@ $standard-buttons: ("primary", "secondary");
 	}
 }
 
-input[type="submit"].gform_button.button {
+// stylelint-disable-next-line selector-class-pattern
+input[type="submit"].gform_button.button { 
 	@extend %btn;
 
 	color: var(--bs-primary);
 	background-color: transparent;
 	border-color: var(--bs-primary);
-	padding: 0.125rem 0.625rem 0.3125rem;
+	padding: 0.125rem 0.625rem;
 	font-weight: 500;
 	margin-bottom: 0 !important;
 

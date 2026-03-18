@@ -143,22 +143,38 @@ class Mega_Menu extends Navwalker {
 	 * @return string the anchor
 	 */
 	protected function get_the_anchor_element(): string {
-		$attributes = $this->get_the_attributes();
+		$attributes = $this->get_the_attributes( 'array' );
 
 		$title = apply_filters( 'the_title', $this->current_item->title, $this->current_item->ID );
 		$title = apply_filters( 'nav_menu_item_title', $title, $this->current_item, $this->args, $this->depth );
 
-		$item_output  = $this->args->before;
-		$item_output .= "<a {$attributes}>";
+		$item_output        = $this->args->before;
+		$class_list         = explode( ' ', $attributes['class'] );
+		$is_mega_menu_label = $this->has_children && ! $this->is_top_level && in_array( 'mega-menu__title', $class_list, true ) && '#' === $attributes['href'];
+
+		if ( $is_mega_menu_label ) {
+			unset( $attributes['title'], $attributes['target'], $attributes['href'] );
+			$item_output .= '<span ' . $this->build_atts( $attributes ) . '>';
+		} else {
+			$item_output .= '<a ' . $this->build_atts( $attributes ) . '>';
+		}
 		$item_output .= $this->args->link_before . $title . $this->args->link_after;
-		$item_output .= '</a>';
+		if ( $is_mega_menu_label ) {
+			$item_output .= '</span>';
+		} else {
+			$item_output .= '</a>';
+		}
 		$item_output .= $this->args->after;
 		$item_output  = apply_filters( 'walker_nav_menu_start_el', $item_output, $this->current_item, $this->depth, $this->args );
 		return $item_output;
 	}
 
-	/** Builds the anchor attributes */
-	protected function get_the_attributes(): string {
+	/** Builds the anchor attributes
+	 *
+	 * @param string $return_type the type of the return value, either 'string' or 'array'
+	 * @return string|array the attributes, either as a string or an array depending on the $return_type argument
+	 */
+	protected function get_the_attributes( $return_type = 'string' ): string|array {
 		$active_class = $this->is_top_level && ( $this->current_item->current || $this->current_item->current_item_ancestor || in_array( 'current_page_parent', $this->current_item->classes, true ) || in_array( 'current-post-ancestor', $this->current_item->classes, true ) ) ? 'active' : '';
 
 		$attributes = array(
@@ -178,7 +194,7 @@ class Mega_Menu extends Navwalker {
 		}
 
 		$attributes['class'] .= ' nav-link';
-		return $this->build_atts( $attributes );
+		return 'string' === $return_type ? $this->build_atts( $attributes ) : $attributes;
 	}
 
 	/**

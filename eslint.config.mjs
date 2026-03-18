@@ -25,7 +25,11 @@ export default defineConfig( [
 		)
 	),
 	{
-		files: [ 'wp-content/themes/choctaw-landing/src/**/*.{js,ts,jsx,tsx}' ],
+		files: [
+			'wp-content/themes/choctaw-landing/src/**/*.{js,ts,jsx,tsx}',
+			'specs/**/*.{js,ts,jsx,tsx}',
+			'./*.config.{js,ts,mjs,cjs}',
+		],
 		languageOptions: {
 			globals: globals.browser,
 		},

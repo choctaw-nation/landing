@@ -113,11 +113,11 @@ get_header();
 				<div class="<?php echo bootscore_main_col_class(); ?>">
 					<!-- Grid Layout -->
 					<?php if ( have_posts() ) : ?>
-					<?php
+						<?php
 						while ( have_posts() ) :
 							the_post();
 							?>
-					<?php
+							<?php
 							if ( is_sticky() ) {
 								continue; // ignore sticky posts
 							}
