@@ -7,7 +7,7 @@ import { defineConfig, devices } from '@playwright/test';
 // import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config( { path: path.resolve( __dirname, '.env' ) } );
-
+const BASE_URL = process.env.BASE_URL || 'https://landing.local';
 const DESKTOP_VIEWPORT = { width: 1920, height: 1080 };
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -19,21 +19,10 @@ export default defineConfig( {
 	workers: process.env.CI ? 1 : undefined,
 	reporter: 'html',
 	use: {
-		baseURL: 'https://landing.local',
+		baseURL: BASE_URL,
 		trace: 'on-first-retry',
 	},
 	projects: [
-		{
-			name: 'wpe-dev-chromium',
-			use: {
-				...devices[ 'Desktop Chrome HiDPI' ],
-				viewport: DESKTOP_VIEWPORT,
-				baseURL: 'https://choctawlandev.wpenginepowered.com/',
-				headless: true,
-			},
-			retries: 1,
-			fullyParallel: true,
-		},
 		{
 			name: 'chromium',
 			use: {
@@ -48,7 +37,6 @@ export default defineConfig( {
 			use: {
 				...devices[ 'Desktop Firefox' ],
 				viewport: DESKTOP_VIEWPORT,
-				baseURL: 'https://choctawlandev.wpenginepowered.com/',
 			},
 			fullyParallel: true,
 		},
