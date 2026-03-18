@@ -1,25 +1,34 @@
 name: Playwright Tests
 on:
-  pull_request:
-    branches: [ stg, dev ]
+    workflow_call:
+        inputs:
+            ref:
+                required: true
+                type: string
+    workflow_dispatch:
+
 jobs:
-  test:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 5
+    log-workflow-run:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Log head_branch
+              run: 'echo "head_branch: ${{ github.event.workflow_run.head_branch }}"'
+
+            - name: Log conclusion
+              run: "echo 'conclusion: ${{ github.event.workflow_run.conclusion }}'"
+
+    run-tests-on-dev:
+        if: startsWith( inputs.ref, 'refs/heads/dev' )
+        uses: choctaw-nation/shared-github-actions/.github/workflows/playwright-tests.yml@main
+        with:
+            environment: dev
+            script: test:dev
+        secrets: inherit
+
+    run-tests-on-stg:
+        if: startsWith( inputs.ref, 'refs/heads/stg' )
+        uses: choctaw-nation/shared-github-actions/.github/workflows/playwright-tests.yml@main
+        with:
+            environment: stg
+            script: test:stg
+        secrets: inherit
