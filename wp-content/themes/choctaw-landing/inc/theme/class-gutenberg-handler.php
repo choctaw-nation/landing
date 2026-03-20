@@ -63,7 +63,6 @@ class Gutenberg_Handler {
 	 */
 	public function enqueue_block_assets() {
 		new Asset_Loader( 'editDefaultBlocks', Enqueue_Type::script, 'admin', array() );
-		// new Asset_Loader( 'mediapressCustomFilters', Enqueue_Type::script, 'admin', array() );
 	}
 
 	/**
