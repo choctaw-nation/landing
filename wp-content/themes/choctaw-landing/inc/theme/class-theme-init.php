@@ -14,7 +14,6 @@ class Theme_Init {
 	/** Constructor */
 	public function __construct() {
 		$this->load_required_files();
-		$this->cno_set_environment();
 		$this->disable_discussion();
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_cno_scripts' ), 50 );
 		add_action( 'after_setup_theme', array( $this, 'cno_theme_support' ) );
@@ -36,14 +35,12 @@ class Theme_Init {
 		$base_path   = get_template_directory() . '/inc';
 		$theme_files = array(
 			'theme-functions',
-			'class-allow-svg',
 			'class-promotions-handler',
 			'class-specials-handler',
 		);
 		foreach ( $theme_files as $theme_file ) {
 			require_once $base_path . "/theme/{$theme_file}.php";
 		}
-		new Allow_SVG();
 		new Specials_Handler();
 
 		$plugin_handlers = array(
@@ -97,6 +94,20 @@ class Theme_Init {
 		foreach ( $navwalkers as $navwalker ) {
 			require_once $base_path . '/theme/navwalkers/class-' . $navwalker . '.php';
 		}
+
+		$utility_files = array(
+			'allow-svg'         => 'Allow_SVG',
+			'role-editor'       => 'Role_Editor',
+			'gutenberg-handler' => 'Gutenberg_Handler',
+		);
+		foreach ( $utility_files as $utility_file => $class_name ) {
+			require_once $base_path . "/theme/class-{$utility_file}.php";
+			if ( is_null( $class_name ) ) {
+				continue;
+			}
+			$class = __NAMESPACE__ . '\\' . $class_name;
+			new $class();
+		}
 	}
 
 	/** Remove comments, pings and trackbacks support from posts types. */
@@ -127,19 +138,6 @@ class Theme_Init {
 		);
 	}
 
-	/** Sets an Environment Variable */
-	private function cno_set_environment() {
-		$server_name = $_SERVER['SERVER_NAME'];
-
-		if ( false !== strpos( $server_name, '.local' ) ) {
-			$_ENV['CNO_ENV'] = 'dev';
-		} elseif ( false !== strpos( $server_name, 'wpengine' ) ) {
-			$_ENV['CNO_ENV'] = 'stage';
-		} else {
-			$_ENV['CNO_ENV'] = 'prod';
-		}
-	}
-
 	/**
 	 * Adds scripts with the appropriate dependencies
 	 */
@@ -155,13 +153,6 @@ class Theme_Init {
 			);
 			wp_dequeue_style( 'popup-maker-site' );
 		}
-		// Adobe Font Typekit CSS
-		wp_enqueue_style(
-			'typekit',
-			'https://use.typekit.net/jqq3pwr.css',
-			array(),
-            null // phpcs:ignore
-		);
 
 		new Asset_Loader(
 			'bootstrap',
@@ -204,7 +195,6 @@ class Theme_Init {
 				'classic-theme-styles',
 				'wp-block-library',
 				'dashicons',
-				'global-styles',
 			)
 		);
 
@@ -322,6 +312,10 @@ class Theme_Init {
 		foreach ( $post_types as $post_type ) {
 			$this->disable_post_type_support( $post_type );
 		}
+		/**
+		 * This will get turned on when ready
+		 */
+		// add_post_type_support( 'choctaw-events', array( 'editor' ) ); phpcs:ignore Squiz.PHP.CommentedOutCode.Found
 	}
 
 	/** Disable post-type-supports from posts
@@ -329,7 +323,7 @@ class Theme_Init {
 	 * @param string $post_type the post type to remove supports from.
 	 */
 	private function disable_post_type_support( string $post_type ) {
-		$supports = array( 'editor', 'comments', 'trackbacks', 'revisions', 'author' );
+		$supports = array( 'comments', 'trackbacks', 'revisions', 'author' );
 		foreach ( $supports as $support ) {
 			if ( post_type_supports( $post_type, $support ) ) {
 				remove_post_type_support( $post_type, $support );
@@ -416,10 +410,10 @@ class Theme_Init {
 	/**
 	 * Handle automatic plugin updates based on environment.
 	 *
-	 * @param bool $update Whether to update the plugin.
-	 * @return bool
+	 * @param ?bool $update Whether to update the plugin.
+	 * @return ?bool
 	 */
-	public function handle_auto_update_plugin( $update ): bool {
+	public function handle_auto_update_plugin( ?bool $update ): ?bool {
 		if ( 'production' === wp_get_environment_type() ) {
 			return $update;
 		}
@@ -437,7 +431,7 @@ class Theme_Init {
 		if ( 'preconnect' === $relation_type ) {
 			$hints[] = array(
 				'href'        => 'https://use.typekit.net',
-				'crossorigin' => true,
+				'crossorigin' => 'anonymous',
 			);
 		}
 		return $hints;
@@ -457,12 +451,18 @@ class Theme_Init {
 			'bootstrap' => null,
 		);
 		if ( in_array( $handle, array_keys( $preload_handles ), true ) ) {
+			$is_crossorigin = 'external' === $preload_handles[ $handle ];
+			// Add a preload link before the stylesheet link.
 			$preload = sprintf(
 				"<link rel='preload' as='style' href='%s' %s />\n",
 				$href,
-				'external' === $preload_handles[ $handle ] ? 'crossorigin' : ''
+				$is_crossorigin ? 'crossorigin="anonymous"' : ''
 			);
-			$html    = $preload . $html;
+			// Add crossorigin attribute if needed.
+			if ( $is_crossorigin && ! str_contains( $html, 'crossorigin' ) ) {
+				$html = str_replace( "/>\n", ' crossorigin="anonymous" />' . "\n", $html );
+			}
+			$html = $preload . $html;
 		}
 		return $html;
 	}

@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../abstracts/variables" as v;
 
 // Required
@@ -7,6 +8,11 @@ $primary: v.$color-primary;
 $secondary: v.$color-secondary;
 $dark: #231f20;
 $yellow: #f5dc5b;
+$custom-colors: (
+	"primary-dark": v.$color-primary--dark,
+	"black": black,
+	"white": white,
+);
 
 /**
 * Typography
@@ -19,7 +25,7 @@ $font-family-monospace:
 $font-size-base: 1rem;
 
 // LINKS
-$link-decoration: none;
+// $link-decoration: none;
 $link-color: $primary;
 $link-hover-color: v.$color-primary--dark;
 
@@ -48,7 +54,7 @@ $h6-font-size: $font-size-base * 1.2;
 $dropdown-color: $dark;
 $dropdown-link-color: $primary;
 $dropdown-link-hover-color: $secondary;
-$dropdown-font-size: 0.78125rem;
+$dropdown-font-size: 0.7813rem;
 $dropdown-border-width: 0;
 $dropdown-border-radius: 0;
 
@@ -121,12 +127,15 @@ $enable-rounded: false;
 
 // @import "bootstrap/scss/variables-dark";
 
-$aspect-ratios: map-merge(
+$aspect-ratios: map.merge(
 	$aspect-ratios,
 	(
 		"9x16": calc(16 / 9 * 100%),
 	)
 );
+
+// Custom Colors to extend the theme with
+$theme-colors: map.merge($theme-colors, $custom-colors);
 
 // Required Bootstrap Modules
 @import "bootstrap/scss/maps";

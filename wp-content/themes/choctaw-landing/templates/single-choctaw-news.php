@@ -13,7 +13,6 @@ get_header();
 $nation_boilerplate_id  = 1021;
 $landing_boilerplate_id = 1022;
 $news                   = new News( get_the_ID(), array( $landing_boilerplate_id, $nation_boilerplate_id ) );
-
 ?>
 <article <?php post_class( array( 'article', 'container', 'mb-5', 'py-5' ) ); ?> id="<?php echo 'post-' . get_the_ID(); ?>" style="margin-top: var(--header-offset);">
 	<header class="article__header">
@@ -39,7 +38,7 @@ $news                   = new News( get_the_ID(), array( $landing_boilerplate_id
 				</div>
 				<?php endif; ?>
 				<nav arial-label="breadcrumb" class="my-5">
-					<a href="<?php echo get_post_type_archive_link( 'choctaw-news' ); ?>" class='fs-6 fw-bold'>All News</a>
+					<a href="<?php echo get_post_type_archive_link( 'choctaw-news' ); ?>" class='fs-6 fw-bold text-decoration-none'>All News</a>
 				</nav>
 				<?php the_title( '<h1 class="fs-2">', '</h1>' ); ?>
 				<?php if ( $news->get_the_subheadline() ) : ?>

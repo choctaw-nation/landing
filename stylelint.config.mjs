@@ -2,6 +2,14 @@
 export default {
 	extends: [ 'stylelint-config-standard-scss' ],
 	rules: {
+		// Allow kebab-case and BEM (block__element--modifier) class names
+		'selector-class-pattern': [
+			'^([a-z0-9]+(?:-[a-z0-9]+)*)(?:__(?:[a-z0-9]+(?:-[a-z0-9]+)*))?(?:--(?:[a-z0-9]+(?:-[a-z0-9]+)*))?$',
+			{
+				message:
+					'Expected class selector to be kebab-case or BEM (block__element--modifier)',
+			},
+		],
 		'color-named': 'always-where-possible',
 		'scss/at-function-pattern': [
 			'^_?(-?[a-z][a-z0-9]*)(-[a-z0-9]+)*$',
@@ -24,7 +32,7 @@ export default {
 		],
 	},
 	ignoreFiles: [
-		'wp-content/themes/choctaw-landing/src/styles/abstracts/_bs_breakpoints.scss',
+		'wp-content/themes/choctaw-landing/src/styles/abstracts/_bs-breakpoints.scss',
 	],
 	overrides: [
 		{

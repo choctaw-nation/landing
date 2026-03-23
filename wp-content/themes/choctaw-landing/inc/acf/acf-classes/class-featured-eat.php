@@ -258,7 +258,7 @@ class Featured_Eat {
 		$markup               = "<div class='mt-4 d-none d-md-block'><figure class='mb-0 arrow position-absolute'>{$double_arrow_content}</figure>";
 		$anchor               = $this->get_the_anchor_settings();
 		if ( $anchor['href'] && $anchor['text'] ) {
-			$markup .= "<a href='{$anchor['href']}' class='arrow-link fs-5 fw-medium' target='{$anchor['target']}' rel='noopener noreferrer'>{$anchor['text']}</a>";
+			$markup .= "<a href='{$anchor['href']}' class='arrow-link fs-5 fw-medium text-decoration-none' target='{$anchor['target']}' rel='noopener noreferrer'>{$anchor['text']}</a>";
 		}
 		$markup .= '</div>';
 		return $markup;
@@ -325,7 +325,7 @@ class Featured_Eat {
 			return '';
 		}
 		$col_class = $this->has_cta || $this->specials ? 'offset-md-3 offset-xl-2 col-md-9 col-xl-10' : 'col-12';
-		return "<div class='{$col_class}'><a class='featured-eats__menu-link fs-6' href='{$this->menu_link}' target='_blank' rel='noopener noreferrer'><i class='fa-solid fa-utensils fs-5'></i> Menu</a></div>";
+		return "<div class='{$col_class}'><a class='featured-eats__menu-link fs-6 text-decoration-none' href='{$this->menu_link}' target='_blank' rel='noopener noreferrer'><i class='fa-solid fa-utensils fs-5'></i> Menu</a></div>";
 	}
 
 	/** Returns the Online Orders link or null */

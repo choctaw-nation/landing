@@ -10,8 +10,7 @@ if ( is_singular( 'special' ) ) {
 }
 get_header();
 ?>
-
-<article class="container" style="margin-top: var(--header-offset);">
+<main <?php post_class( 'container' ); ?> style="margin-top: var(--header-offset);">
 	<div class="row justify-content-center my-5 py-5">
 		<div class="col-12 col-lg-10">
 			<?php
@@ -23,8 +22,6 @@ get_header();
 			?>
 		</div>
 	</div>
-
-</article>
-
+</main>
 <?php
 get_footer();

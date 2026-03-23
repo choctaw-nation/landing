@@ -1,5 +1,7 @@
 document.addEventListener( 'DOMContentLoaded', () => {
-	new HeaderOffsetHandler();
+	const headerOffsetHandler = new HeaderOffsetHandler();
+	headerOffsetHandler.setOffset();
+	headerOffsetHandler.handleScrollBehavior();
 } );
 
 /**
@@ -30,11 +32,6 @@ class HeaderOffsetHandler {
 			this.masthead = masthead;
 		}
 
-		document.addEventListener( 'DOMContentLoaded', () => {
-			this.setOffset();
-			this.handleScrollBehavior();
-		} );
-
 		window.addEventListener( 'resize', () => this.setOffset() );
 
 		this.masthead.addEventListener( 'click', ( ev ) => {
@@ -47,7 +44,7 @@ class HeaderOffsetHandler {
 	/**
 	 * Sets the offset value as a CSS variable and updates the headerHeight property.
 	 */
-	private setOffset() {
+	setOffset() {
 		this.headerHeight = this.masthead.offsetHeight;
 		document.documentElement.style.setProperty(
 			'--header-offset',
@@ -67,7 +64,7 @@ class HeaderOffsetHandler {
 	 *
 	 * @param passedTarget The target element to scroll to. Defaults to the current hash value.
 	 */
-	private handleScrollBehavior( passedTarget?: string ) {
+	handleScrollBehavior( passedTarget?: string ) {
 		const target = passedTarget || window.location.hash;
 		if ( target ) {
 			setTimeout( () => {

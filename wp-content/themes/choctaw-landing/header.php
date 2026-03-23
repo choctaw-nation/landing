@@ -22,7 +22,6 @@ $favicon_base = get_stylesheet_directory_uri() . '/img/favicon';
 	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo "{$favicon_base}/favicon-32x32.png"; ?>">
 	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo "{$favicon_base}/favicon-16x16.png"; ?>">
 	<link rel="manifest" href="<?php echo "{$favicon_base}/site.webmanifest"; ?>">
-	<link rel="mask-icon" href="<?php echo "{$favicon_base}/safari-pinned-tab.svg"; ?>" color="#0d6efd">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="theme-color" content="#ffffff">
 	<?php wp_head(); ?>
@@ -67,18 +66,18 @@ $favicon_base = get_stylesheet_directory_uri() . '/img/favicon';
 						</div>
 						<div class="offcanvas-body pt-0">
 							<?php
-									wp_nav_menu(
-										array(
-											'theme_location' => 'main-menu',
-											'container'   => false,
-											'menu_class'  => 'navbar-nav ms-auto justify-content-xl-end align-items-xl-center column-gap-lg-2 column-gap-xl-3 row-gap-3 row-gap-lg-0 py-3 py-lg-0',
-											'menu_id'     => 'cno-navbar',
-											'fallback_cb' => '__return_false',
-											'depth'       => 3,
-											'walker'      => new Mega_Menu(),
-										)
-									);
-									?>
+							wp_nav_menu(
+								array(
+									'theme_location' => 'main-menu',
+									'container'      => false,
+									'menu_class'     => 'navbar-nav ms-auto justify-content-xl-end align-items-xl-center column-gap-lg-2 column-gap-xl-3 row-gap-3 row-gap-lg-0 py-3 py-lg-0',
+									'menu_id'        => 'cno-navbar',
+									'fallback_cb'    => '__return_false',
+									'depth'          => 3,
+									'walker'         => new Mega_Menu(),
+								)
+							);
+							?>
 						</div>
 					</div>
 				</div>
