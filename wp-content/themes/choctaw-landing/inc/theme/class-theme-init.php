@@ -200,6 +200,7 @@ class Theme_Init {
 
 		$this->register_swipers();
 		$this->register_daterangepicker();
+		$this->register_reservation_script();
 	}
 
 	/**
@@ -255,6 +256,32 @@ class Theme_Init {
 			array( 'global' ),
 			$cno_date_range_picker['version'],
 		);
+	}
+
+	/**
+	 * Registers Seven Rooms reservation widget script
+	 */
+	private function register_reservation_script() {
+		wp_register_script(
+			'seven-rooms-widget',
+			'https://www.sevenrooms.com/widget/embed.js',
+			array(),
+			null, // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+			array( 'strategy' => 'async' )
+		);
+		$reservation_script = require_once get_stylesheet_directory() . '/dist/vendors/seven-rooms.asset.php';
+		wp_register_script(
+			'seven-rooms-script',
+			get_stylesheet_directory_uri() . '/dist/vendors/seven-rooms.js',
+			array( 'seven-rooms-widget' ),
+			$reservation_script['version'],
+			array( 'strategy' => 'defer' )
+		);
+		$pages_using_reservation_script = array( 43, 949 );
+		if ( in_array( get_the_ID(), $pages_using_reservation_script, true ) ) {
+			wp_enqueue_script( 'seven-rooms-widget' );
+			wp_enqueue_script( 'seven-rooms-script' );
+		}
 	}
 
 	/**
