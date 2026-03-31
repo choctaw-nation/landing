@@ -4,6 +4,10 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.9.0 - [March 31, 2026]
+
+- Added: "Seven Rooms" Reservation script
+
 ## v2.8.0 - [March 16, 2026]
 
 - Added: Gutenberg support!
