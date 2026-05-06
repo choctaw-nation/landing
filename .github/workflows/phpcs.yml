@@ -11,6 +11,8 @@ concurrency:
 jobs:
      phpcs:
         uses: choctaw-nation/shared-github-actions/.github/workflows/phpcs.yml@main
+        with:
+            working_directory: 'wp-content/themes/choctaw-landing'
 
      final-check:
         needs: [phpcs]
