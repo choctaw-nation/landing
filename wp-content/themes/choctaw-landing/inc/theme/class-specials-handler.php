@@ -5,11 +5,10 @@
  * @package ChoctawNation
  */
 
-namespace ChoctawNation;
+namespace ChoctawNation\Theme;
 
 use DateTime;
 use DateTimeZone;
-use WP_Query;
 use WP_Post;
 
 /**

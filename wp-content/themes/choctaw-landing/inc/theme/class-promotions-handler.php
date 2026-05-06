@@ -6,7 +6,7 @@
  * @package ChoctawNation
  */
 
-namespace ChoctawNation;
+namespace ChoctawNation\Theme;
 
 use WP_Error;
 
