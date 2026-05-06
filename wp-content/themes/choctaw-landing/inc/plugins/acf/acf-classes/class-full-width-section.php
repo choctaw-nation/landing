@@ -30,7 +30,7 @@ class Full_Width_Section extends Two_Col_Section {
 	 * @return string the markup
 	 */
 	public function get_the_markup(): string {
-		$section_id = cno_get_the_section_id( $this->headline );
+		$section_id = sanitize_title( $this->headline );
 		$markup     = "<{$this->wrapper_el} id='{$section_id}' class='container-fluid px-0 py-5 two-col two-col--full-width position-relative'>";
 		$markup    .= "<div class='position-absolute z-n1 top-0 w-100 h-100'>{$this->image->get_the_image('object-fit-cover h-100 w-100 two-col--full-width-image')}</div>";
 		$markup    .= "<div class='position-relative z-1 container pt-5'><div class='row py-5'>";

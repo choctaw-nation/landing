@@ -122,7 +122,7 @@ class Two_Col_Section extends Generator {
 	 * @return string the markup
 	 */
 	public function get_the_markup(): string {
-		$section_id    = $this->get_the_section_id();
+		$section_id    = cno_get_the_section_id( $this->headline );
 		$section_class = $this->set_the_class( 'section' );
 		$row_class     = $this->set_the_class( 'row' );
 		$markup        = "<{$this->wrapper_el} class='{$section_class}' id='{$section_id}'><div class='container two-col'>";
@@ -134,11 +134,6 @@ class Two_Col_Section extends Generator {
 		$markup .= '</div>'; // end row
 		$markup .= "</div></{$this->wrapper_el}>";
 		return $markup;
-	}
-
-	/** A wrapper for the global 'cno_get_the_section_id' function */
-	protected function get_the_section_id(): string {
-		return cno_get_the_section_id( $this->headline );
 	}
 
 	/**
