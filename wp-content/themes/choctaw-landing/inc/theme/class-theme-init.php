@@ -23,6 +23,7 @@ class Theme_Init {
 		$this->cno_theme_support();
 		$this->allow_svg();
 		$this->gutenberg_support();
+		$this->handle_specials();
 		$this->disable_discussion();
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_cno_scripts' ), 50 );
 		add_action( 'init', array( $this, 'alter_post_types' ) );
@@ -83,16 +84,9 @@ class Theme_Init {
 
 	/** Load required files. */
 	private function load_required_files() {
-		$base_path   = get_template_directory() . '/inc';
-		$theme_files = array(
-			'theme-functions',
-			'class-promotions-handler',
-			'class-specials-handler',
-		);
-		foreach ( $theme_files as $theme_file ) {
-			require_once $base_path . "/theme/{$theme_file}.php";
-		}
-		new Specials_Handler();
+		$base_path = get_template_directory() . '/inc';
+		require_once $base_path . '/theme/theme-functions.php';
+		require_once $base_path . '/bootscore/theme-functions.php';
 
 		$weather_widget_files = array(
 			'api',
@@ -104,6 +98,18 @@ class Theme_Init {
 		foreach ( $weather_widget_files as $weather_widget_file ) {
 			require_once $base_path . "/weather-widget/class-{$weather_widget_file}.php";
 		}
+	}
+
+	/**
+	 * Handle Specials cron event
+	 */
+	public function handle_specials() {
+		$specials_handler = new Specials_Handler();
+		if ( ! wp_next_scheduled( $specials_handler->cron_key ) ) {
+			wp_schedule_event( strtotime( 'today 11:59pm CST' ), 'daily', $specials_handler->cron_key );
+		}
+
+		add_action( $specials_handler->cron_key, array( $specials_handler, 'update_specials' ) );
 	}
 
 	/** Remove comments, pings and trackbacks support from posts types. */

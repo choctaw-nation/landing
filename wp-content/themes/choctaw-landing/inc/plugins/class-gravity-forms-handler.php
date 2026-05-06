@@ -23,7 +23,7 @@ class Gravity_Forms_Handler {
 		$dom->loadHTML( $button );
 		$input   = $dom->getElementsByTagName( 'input' )->item( 0 );
 		$classes = $input->getAttribute( 'class' );
-		$classes = 'btn btn-lg btn-outline-primary text-uppercase border-sand animated-button animated-button-bg-dark inside';
+		$classes = 'btn btn-lg btn-outline-primary text-uppercase';
 		$input->setAttribute( 'class', $classes );
 		return $dom->saveHtml( $input );
 	}

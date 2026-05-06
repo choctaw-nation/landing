@@ -73,9 +73,6 @@ class Plugin_Handler {
 		}
 		$gravity_forms_handler = new Gravity_Forms_Handler();
 		add_filter( 'gform_submit_button', array( $gravity_forms_handler, 'add_bootstrap_classes' ) );
-		// Go back to form on submit
-		add_filter( 'gform_confirmation_anchor', '__return_true' );
-		add_action( 'gform_after_create_post_60', array( $gravity_forms_handler, 'assign_community_event_term_to_post' ), 10, 1 );
 	}
 
 	/**

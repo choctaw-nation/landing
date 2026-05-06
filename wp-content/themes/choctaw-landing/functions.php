@@ -26,8 +26,3 @@ if ( file_exists( $autoload_path ) ) {
 */
 $theme = new Theme_Init();
 add_action( 'after_setup_theme', array( $theme, 'setup_theme' ) );
-
-
-
-// Include Bootscore Functions
-require_once __DIR__ . '/inc/bootscore/theme-functions.php';

@@ -87,7 +87,7 @@ class Promotions_Handler {
 	 * @param int|null $page The page number for paginated API requests
 	 * @return string
 	 */
-	private function build_api_url( int $page = null ): string {
+	private function build_api_url( ?int $page = null ): string {
 		$base_url                     = 'https://www.choctawcasinos.com/wp-json/wp/v2/promotions';
 		$casino_location_taxonomy_ids = array(
 			'hochatown'     => 56,
@@ -154,10 +154,12 @@ class Promotions_Handler {
 				$pretty_promo['link']     = $promotion['link'];
 				$pretty_promo['acf']      = $promotion['acf'];
 				$pretty_promo['location'] = $promotion['_embedded']['wp:term'][0][0]['name'];
-				$pretty_promo['image']    = array(
-					'alt' => $promotion['_embedded']['wp:featuredmedia'][0]['alt_text'],
-					'src' => $promotion['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['large']['source_url'],
-				);
+				if ( isset( $promotion['_embedded']['wp:featuredmedia'][0]['alt_text'] ) && isset( $promotion['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['large']['source_url'] ) ) {
+					$pretty_promo['image'] = array(
+						'alt' => $promotion['_embedded']['wp:featuredmedia'][0]['alt_text'],
+						'src' => $promotion['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['large']['source_url'],
+					);
+				}
 				return $pretty_promo;
 			},
 			$promotions

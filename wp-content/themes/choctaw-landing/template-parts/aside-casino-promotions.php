@@ -5,7 +5,7 @@
  * @package ChoctawNation
  */
 
-use ChoctawNation\Promotions_Handler;
+use ChoctawNation\Theme\Promotions_Handler;
 
 $api        = new Promotions_Handler();
 $promotions = $api->get_the_promotions();
