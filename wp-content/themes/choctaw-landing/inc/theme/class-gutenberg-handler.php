@@ -8,6 +8,8 @@
 
 namespace ChoctawNation\Theme;
 
+use ChoctawNation\Asset_Loader;
+use ChoctawNation\Enqueue_Type;
 use WP_Block_Editor_Context;
 
 /**
@@ -41,7 +43,7 @@ class Gutenberg_Handler {
 			'typekit',
 			'https://use.typekit.net/jqq3pwr.css',
 			array(),
-		null // phpcs:ignore
+			null // phpcs:disable WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		);
 	}
 
@@ -197,7 +199,6 @@ class Gutenberg_Handler {
 			'templates/single-choctaw-news.php',
 		);
 		if ( in_array( $current_template, $disallowed_templates, true ) || $is_homepage ) {
-			// could also use $is_homepage check here if needed
 			return false;
 		}
 		return true;
