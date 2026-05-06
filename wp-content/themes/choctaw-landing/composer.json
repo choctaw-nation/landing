@@ -19,8 +19,8 @@
 		}
 	],
 	"scripts": {
-		"phpcs": "phpcs  --ignore=dist/,inc/bootscore/ --extensions=php",
-		"phpcbf": "phpcbf  --ignore=dist/,inc/bootscore/ --extensions=php"
+		"phpcs": "phpcs . inc/ --ignore=./dist/,./inc/bootscore/ --extensions=php",
+		"phpcbf": "phpcbf . inc/ --ignore=./dist/,./inc/bootscore/ --extensions=php"
 	},
 	"config": {
 		"allow-plugins": {
