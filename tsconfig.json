@@ -10,16 +10,11 @@
 		"noEmit": true,
 		"esModuleInterop": true,
 		"module": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"noImplicitAny": false,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"typeRoots": ["./node_modules/@types", "./wp-content/themes/choctaw-landing/src/js/**/types"],
-		"paths": {
-			"@": ["./wp-content/themes/choctaw-landing/src"],
-			"@/styles": ["./wp-content/themes/choctaw-landing/src/styles"]
-		}
 	},
 	"include": ["./wp-content/themes/choctaw-landing/src/js/**/*"],
 	"exclude": ["node_modules"]

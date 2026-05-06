@@ -5,11 +5,10 @@
  * @package ChoctawNation
  */
 
-namespace ChoctawNation;
+namespace ChoctawNation\Theme;
 
 use DateTime;
 use DateTimeZone;
-use WP_Query;
 use WP_Post;
 
 /**
@@ -19,21 +18,23 @@ class Specials_Handler {
 	/**
 	 * The Current Specials
 	 *
-	 * @var ?WP_Post[] $specials
+	 * @var ?int[] $specials
 	 */
 	public ?array $specials;
+
+	/**
+	 * The Cron Key
+	 *
+	 * @var string $cron_key
+	 */
+	public string $cron_key;
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
+		$this->cron_key = 'cno_daily_specials_update';
 		$this->get_current_specials();
-		$cron_event_name = 'cno_daily_specials_update';
-		if ( ! wp_next_scheduled( $cron_event_name ) ) {
-			wp_schedule_event( strtotime( 'today 11:59pm CST' ), 'daily', $cron_event_name );
-		}
-
-		add_action( $cron_event_name, array( $this, 'update_specials' ) );
 	}
 
 	/**
@@ -45,6 +46,7 @@ class Specials_Handler {
 				'post_type'      => 'special',
 				'post_status'    => array( 'publish', 'future' ),
 				'posts_per_page' => -1,
+				'fields'         => 'ids',
 			)
 		);
 		$this->specials = empty( $specials ) ? null : $specials;
@@ -57,11 +59,10 @@ class Specials_Handler {
 		if ( empty( $this->specials ) ) {
 			return;
 		}
-		$central_time = new DateTimeZone( 'CST' );
+		$central_time = wp_timezone();
 		$today        = new DateTime( 'now', $central_time );
 		$today->setTime( 23, 59, 0 );
-		foreach ( $this->specials as $special ) {
-			$special_id   = $special->ID;
+		foreach ( $this->specials as $special_id ) {
 			$end_date     = get_field( 'end_date', $special_id );
 			$end_date_obj = isset( $end_date ) ? new DateTime( $end_date, $central_time ) : null;
 			if ( ! $end_date_obj ) {

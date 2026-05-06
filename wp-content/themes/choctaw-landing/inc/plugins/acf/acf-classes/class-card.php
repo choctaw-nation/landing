@@ -49,13 +49,7 @@ class Card extends Generator {
 	 * Generates the id of the card
 	 */
 	protected function get_the_id(): string {
-		if ( function_exists( 'cno_get_the_section_id' ) ) {
-			return cno_get_the_section_id( $this->headline );
-		} else {
-			$lowercase  = strtolower( $this->headline );
-			$snake_case = preg_replace( '/\s+/', '-', $lowercase );
-			return $snake_case;
-		}
+		return sanitize_title( $this->headline );
 	}
 
 	/** Echoes the markup of the card

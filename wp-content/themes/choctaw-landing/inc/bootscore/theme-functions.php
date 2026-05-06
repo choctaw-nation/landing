@@ -7,71 +7,6 @@
  * @package Bootscore
  */
 
-// Register Comment List
-if ( ! function_exists( 'register_comment_list' ) ) :
-	function register_comment_list() {
-		// Register Comment List
-		require_once get_template_directory() . '/inc/bootscore/comment-list.php';
-	}
-endif;
-add_action( 'after_setup_theme', 'register_comment_list' );
-// Register Comment List END
-
-
-if ( ! function_exists( 'bootscore_setup' ) ) :
-	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
-	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
-	 */
-	function bootscore_setup() {
-		/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on Bootscore, use a find and replace
-		* to change 'bootscore' to the name of your theme in all the template files.
-		*/
-		load_theme_textdomain( 'bootscore', get_template_directory() . '/languages' );
-
-		/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
-		*/
-		add_theme_support(
-			'html5',
-			array(
-				'comment-form',
-				'comment-list',
-				'gallery',
-				'caption',
-			)
-		);
-
-		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
-	}
-endif;
-add_action( 'after_setup_theme', 'bootscore_setup' );
-
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function bootscore_content_width() {
-	// This variable is intended to be overruled from themes.
-	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
-  // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'bootscore_content_width', 640 );
-}
-
-add_action( 'after_setup_theme', 'bootscore_content_width', 0 );
-
-
 /**
  * Register widget area.
  *
@@ -248,29 +183,6 @@ require get_template_directory() . '/inc/bootscore/template-tags.php';
 require get_template_directory() . '/inc/bootscore/template-functions.php';
 
 
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/bootscore/jetpack.php';
-}
-
-
-// Amount of posts/products in category
-if ( ! function_exists( 'wpsites_query' ) ) :
-
-	function wpsites_query( $query ) {
-		if ( $query->is_archive() && $query->is_main_query() && ! is_admin() ) {
-			$query->set( 'posts_per_page', 24 );
-		}
-	}
-
-	add_action( 'pre_get_posts', 'wpsites_query' );
-
-endif;
-// Amount of posts/products in category END
-
-
 // Pagination Categories
 if ( ! function_exists( 'bootscore_pagination' ) ) :
 
@@ -341,11 +253,6 @@ function post_link_attributes( $output ) {
 // Pagination Buttons Single Posts END
 
 
-// Excerpt to pages
-add_post_type_support( 'page', 'excerpt' );
-// Excerpt to pages END
-
-
 // Breadcrumb
 if ( ! function_exists( 'the_breadcrumb' ) ) :
 	function the_breadcrumb() {
@@ -375,36 +282,6 @@ if ( ! function_exists( 'the_breadcrumb' ) ) :
 endif;
 // Breadcrumb END
 
-
-// Comment Button
-if ( ! function_exists( 'bootscore_comment_button' ) ) :
-	function bootscore_comment_button( $args ) {
-		$args['class_submit'] = 'btn btn-outline-primary'; // since WP 4.1
-
-		return $args;
-	}
-
-	add_filter( 'comment_form_defaults', 'bootscore_comment_button' );
-endif;
-// Comment Button END
-
-
-// Password protected form
-if ( ! function_exists( 'bootscore_pw_form' ) ) :
-	function bootscore_pw_form() {
-		$output = '
-        <form action="' . get_option( 'siteurl' ) . '/wp-login.php?action=postpass" method="post" class="input-group pw_form">' . "\n"
-				. '<input name="post_password" type="password" size="" class="form-control" placeholder="' . __( 'Password', 'bootscore' ) . '"/>' . "\n"
-				. '<input type="submit" class="btn btn-outline-primary input-group-text" name="Submit" value="' . __( 'Submit', 'bootscore' ) . '" />' . "\n"
-				. '</form>' . "\n";
-
-		return $output;
-	}
-
-	add_filter( 'the_password_form', 'bootscore_pw_form' );
-endif;
-// Password protected form END
-
 // Hook after #primary
 function bs_after_primary() {
 	do_action( 'bs_after_primary' );
@@ -422,35 +299,3 @@ if ( ! function_exists( 'bs_comment_links_in_new_tab' ) ) :
 	add_filter( 'comment_text', 'bs_comment_links_in_new_tab' );
 endif;
 // Open links in comments in new tab END
-
-
-// Disable Gutenberg blocks in widgets (WordPress 5.8)
-// Disables the block editor from managing widgets in the Gutenberg plugin.
-add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
-// Disables the block editor from managing widgets.
-add_filter( 'use_widgets_block_editor', '__return_false' );
-// Disable Gutenberg blocks in widgets (WordPress 5.8) END
-
-
-
-// Allow SVG
-add_filter(
-	'wp_check_filetype_and_ext',
-	function ( $data, $file, $filename, $mimes ) {
-
-		global $wp_version;
-		if ( $wp_version !== '4.7.1' ) {
-			return $data;
-		}
-
-		$filetype = wp_check_filetype( $filename, $mimes );
-
-		return array(
-			'ext'             => $filetype['ext'],
-			'type'            => $filetype['type'],
-			'proper_filename' => $data['proper_filename'],
-		);
-	},
-	10,
-	4
-);
