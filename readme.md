@@ -4,6 +4,13 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.9.1 - [May 6, 2026]
+
+- Updated: wp-scripts packages are updated for eslint v9 compat
+- Updated: Swap to composer autoloading
+- Chore: Sync all semver numbers
+- Fixed: Update `theme.json` to properly init styles without breaking inheritance
+
 ## v2.9.0 - [March 31, 2026]
 
 - Added: "Seven Rooms" Reservation script

@@ -62,7 +62,8 @@
 		"scss"
 	],
 	"html.format.templating": true,
-	"phpSniffer.standard": "phpcs.xml.dist",
+	"phpSniffer.standard": "wp-content/themes/choctaw-landing/phpcs.xml.dist",
+	"phpSniffer.executablesFolder": "wp-content/themes/choctaw-landing/vendor/bin",
 	"scss.format.spaceAroundSelectorSeparator": true,
 	"stylelint.snippet": [ "css", "scss" ],
 	"stylelint.validate": [ "css", "scss" ]

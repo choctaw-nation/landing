@@ -44,6 +44,7 @@ local-xdebuginfo.php
 /wp-content/plugins
 /wp-content/themes/twenty*/
 /wp-content/themes/*/dist/
+/wp-content/themes/*/vendor/
 /wp-content/themes/*/src/styles/vendors/bootscore-partials/
 /wp-content/themes/*/src/styles/vendors/popup-maker/
 /wp-content/themes/*/src/styles/vendors/bootscore.scss

@@ -2,6 +2,7 @@
 	"name": "choctaw-nation/choctaw-landing",
 	"description": "a custom WP theme",
 	"type": "project",
+	"version": "2.9.1",
 	"repositories": [
 		{
 			"type": "composer",
@@ -13,8 +14,8 @@
 		}
 	],
 	"scripts": {
-		"phpcs": "phpcs wp-content/themes/choctaw-landing/ --ignore=wp-content/themes/choctaw-landing/dist/,wp-content/themes/choctaw-landing/inc/bootscore/ --extensions=php",
-		"phpcbf": "phpcbf wp-content/themes/choctaw-landing/ --ignore=wp-content/themes/choctaw-landing/dist/,wp-content/themes/choctaw-landing/inc/bootscore/ --extensions=php"
+		"phpcs": "phpcs  --ignore=dist/,inc/bootscore/ --extensions=php",
+		"phpcbf": "phpcbf  --ignore=dist/,inc/bootscore/ --extensions=php"
 	},
 	"config": {
 		"allow-plugins": {
