@@ -22,6 +22,7 @@ jobs:
             WPE_ENV: choctawlandstg
             theme_name: choctaw-landing
             with_autoload: true
+            flags: -azvr --delete
         secrets: inherit
 
     deploy-dev:
@@ -32,6 +33,7 @@ jobs:
             WPE_ENV: choctawlandev
             theme_name: choctaw-landing
             with_autoload: true
+            flags: -azvr --delete
         secrets: inherit
 
     # test-dev:
