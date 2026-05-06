@@ -14,7 +14,7 @@
  * @version 2.0
  */
 
-namespace ChoctawNation;
+namespace ChoctawNation\Theme\Navwalkers;
 
 /**
  * Extends the WP Nav Walker to create megamenu option

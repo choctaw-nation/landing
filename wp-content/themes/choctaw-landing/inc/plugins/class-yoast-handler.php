@@ -13,15 +13,6 @@ namespace ChoctawNation\Plugins;
  * Yoast Handler
  */
 class Yoast_Handler {
-
-	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		add_filter( 'wpseo_metabox_prio', array( $this, 'force_yoast_to_bottom' ) );
-		add_filter( 'wpseo_robots', array( $this, 'noindex_singles' ) );
-	}
-
 	/**
 	 * Force Yoast SEO to the bottom of the page.
 	 *

@@ -6,7 +6,7 @@
  * @version 1.0.0
  */
 
-use ChoctawNation\Mega_Menu;
+use ChoctawNation\Theme\Navwalkers\Mega_Menu;
 
 $favicon_base = get_stylesheet_directory_uri() . '/img/favicon';
 ?>

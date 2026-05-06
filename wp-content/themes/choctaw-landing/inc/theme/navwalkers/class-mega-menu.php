@@ -5,7 +5,7 @@
  * @package ChoctawNation
  */
 
-namespace ChoctawNation;
+namespace ChoctawNation\Theme\Navwalkers;
 
 use ChoctawNation\ACF\Mega_Menu_Content;
 

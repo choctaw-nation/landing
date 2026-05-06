@@ -5,7 +5,7 @@
  * @package ChoctawNation
  */
 
-namespace ChoctawNation;
+namespace ChoctawNation\Theme;
 
 /**
  * Role Editor
@@ -17,14 +17,6 @@ class Role_Editor {
 	 * @var string
 	 */
 	const VERSION = '1.0.0';
-
-	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		add_action( 'after_switch_theme', array( $this, 'create_custom_roles' ) );
-		add_action( 'admin_init', array( $this, 'maybe_sync_roles_and_capabilities' ) );
-	}
 
 	/**
 	 * Maybe sync roles and capabilities based on stored version.

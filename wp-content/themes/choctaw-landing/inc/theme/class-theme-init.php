@@ -6,28 +6,79 @@
  * @since 1.3
  */
 
-namespace ChoctawNation;
+namespace ChoctawNation\Theme;
+
+use ChoctawNation\Asset_Loader;
+use ChoctawNation\Enqueue_Type;
+use ChoctawNation\Plugins\Plugin_Handler;
 
 /** Builds the Theme */
 class Theme_Init {
 
-	/** Constructor */
-	public function __construct() {
+	/** Setup Theme */
+	public function setup_theme() {
+		$this->edit_roles();
+		$this->handle_plugins();
 		$this->load_required_files();
+		$this->cno_theme_support();
+		$this->allow_svg();
+		$this->gutenberg_support();
 		$this->disable_discussion();
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_cno_scripts' ), 50 );
-		add_action( 'after_setup_theme', array( $this, 'cno_theme_support' ) );
 		add_action( 'init', array( $this, 'alter_post_types' ) );
 		add_filter(
 			'wp_get_attachment_image_attributes',
 			array( $this, 'wp_six_point_seven_image_sizes_fix' )
 		);
-		add_action( 'init', array( $this, 'disable_plugins_per_environment' ) );
 		add_filter( 'allowed_redirect_hosts', array( $this, 'add_allowed_redirect_hosts' ) );
 		add_filter( 'wp_speculation_rules_configuration', array( $this, 'handle_speculative_loading' ) );
-		add_filter( 'auto_update_plugin', array( $this, 'handle_auto_update_plugin' ) );
 		add_filter( 'wp_resource_hints', array( $this, 'add_resource_hints' ), 10, 2 );
 		add_filter( 'style_loader_tag', array( $this, 'preload_stylesheets' ), 10, 3 );
+	}
+
+	/**
+	 * Edit user roles and capabilities
+	 */
+	private function edit_roles() {
+		$role_editor = new Role_Editor();
+		add_action( 'after_switch_theme', array( $role_editor, 'create_custom_roles' ) );
+		add_action( 'admin_init', array( $role_editor, 'maybe_sync_roles_and_capabilities' ) );
+	}
+
+	/**
+	 * Handle plugin functionality, such as ACF and Gravity Forms
+	 */
+	private function handle_plugins() {
+		$plugin_handler = new Plugin_Handler();
+		$plugin_handler->handle_yoast();
+		$plugin_handler->handle_acf();
+		$plugin_handler->handle_gravity_forms();
+		$plugin_handler->handle_cno_plugins();
+		add_filter( 'auto_update_plugin', array( $plugin_handler, 'handle_auto_update_plugin' ) );
+		add_action( 'admin_init', array( $plugin_handler, 'disable_plugins_per_environment' ) );
+	}
+
+	/**
+	 * Add Gutenberg support and editor styles
+	 */
+	public function gutenberg_support() {
+		$gutenberg = new Gutenberg_Handler();
+		add_action( 'init', array( $gutenberg, 'init_block_theme' ) );
+		add_action( 'enqueue_block_assets', array( $gutenberg, 'enqueue_global_block_assets' ) );
+		add_action( 'enqueue_block_editor_assets', array( $gutenberg, 'enqueue_block_assets' ) );
+		add_action( 'after_setup_theme', array( $gutenberg, 'cno_block_theme_support' ), 50 );
+		add_filter( 'block_editor_settings_all', array( $gutenberg, 'restrict_gutenberg_ui' ), 10, 1 );
+		add_filter( 'allowed_block_types_all', array( $gutenberg, 'restrict_block_types' ), 10, 2 );
+		add_filter( 'use_block_editor_for_post_type', array( $gutenberg, 'handle_page_templates' ), 10, 0 );
+	}
+
+	/**
+	 * Allow SVG uploads
+	 */
+	private function allow_svg() {
+		$svg = new Allow_SVG();
+		add_filter( 'upload_mimes', array( $svg, 'cc_mime_types' ) );
+		add_action( 'admin_head', array( $svg, 'fix_svg' ) );
 	}
 
 	/** Load required files. */
@@ -43,16 +94,6 @@ class Theme_Init {
 		}
 		new Specials_Handler();
 
-		$plugin_handlers = array(
-			'cno-plugins'   => 'CNO_Plugins',
-			'yoast-handler' => 'Yoast_Handler',
-		);
-		foreach ( $plugin_handlers as $path => $name ) {
-			require_once $base_path . "/theme/plugin-handlers/class-{$path}.php";
-			$class_name = __NAMESPACE__ . '\\Plugins\\' . $name;
-			new $class_name();
-		}
-
 		$weather_widget_files = array(
 			'api',
 			'bootstrap-icons',
@@ -62,51 +103,6 @@ class Theme_Init {
 		);
 		foreach ( $weather_widget_files as $weather_widget_file ) {
 			require_once $base_path . "/weather-widget/class-{$weather_widget_file}.php";
-		}
-
-		$acf_classes = array(
-			'image',
-			'generator',
-			'hero-section',
-			'card',
-			'hero-section',
-			'mega-menu-content',
-			'title-bar',
-			'modal-generator',
-			'two-col-section',
-			'full-width-section',
-			'mega-menu-content',
-			'link-card',
-			'fb-specials',
-			'featured-eat',
-			'eat-and-drink',
-		);
-		foreach ( $acf_classes as $acf_class ) {
-			require_once $base_path . '/acf/acf-classes/class-' . $acf_class . '.php';
-		}
-
-		$asset_loaders = array( 'enum-enqueue-type', 'class-asset-loader' );
-		foreach ( $asset_loaders as $asset_loader ) {
-			require_once $base_path . '/theme/asset-loader/' . $asset_loader . '.php';
-		}
-
-		$navwalkers = array( 'navwalker', 'mega-menu' );
-		foreach ( $navwalkers as $navwalker ) {
-			require_once $base_path . '/theme/navwalkers/class-' . $navwalker . '.php';
-		}
-
-		$utility_files = array(
-			'allow-svg'         => 'Allow_SVG',
-			'role-editor'       => 'Role_Editor',
-			'gutenberg-handler' => 'Gutenberg_Handler',
-		);
-		foreach ( $utility_files as $utility_file => $class_name ) {
-			require_once $base_path . "/theme/class-{$utility_file}.php";
-			if ( is_null( $class_name ) ) {
-				continue;
-			}
-			$class = __NAMESPACE__ . '\\' . $class_name;
-			new $class();
 		}
 	}
 
@@ -339,6 +335,7 @@ class Theme_Init {
 		foreach ( $post_types as $post_type ) {
 			$this->disable_post_type_support( $post_type );
 		}
+		add_post_type_support( 'page', 'excerpt' );
 		/**
 		 * This will get turned on when ready
 		 */
@@ -404,47 +401,6 @@ class Theme_Init {
 			$config['eagerness'] = 'moderate';
 		}
 		return $config;
-	}
-
-	/**
-	 * Disable certain plugins based on the environment type.
-	 */
-	public function disable_plugins_per_environment() {
-		$env = wp_get_environment_type();
-		if ( 'production' === $env ) {
-			return;
-		}
-
-		$plugins_to_disable = array(
-			'wordfence/wordfence.php'                 => array( 'local', 'development', 'staging' ),
-			'wp-mail-smtp-pro/wp_mail_smtp.php'       => array( 'local', 'development', 'staging' ),
-			'google-site-kit/google-site-kit.php'     => array( 'local', 'development', 'staging' ),
-			'autoupdater/autoupdater.php'             => array( 'local', 'development', 'staging' ),
-			'autoptimize/autoptimize.php'             => array( 'local', 'development' ),
-			'wordpress-seo/wp-seo.php'                => array( 'local', 'development' ),
-			'yoast-test-helper/yoast-test-helper.php' => array( 'local', 'development' ),
-		);
-
-		foreach ( $plugins_to_disable as $plugin => $environments ) {
-			if ( in_array( $env, $environments, true ) ) {
-				if ( is_plugin_active( $plugin ) ) {
-					deactivate_plugins( $plugin );
-				}
-			}
-		}
-	}
-
-	/**
-	 * Handle automatic plugin updates based on environment.
-	 *
-	 * @param ?bool $update Whether to update the plugin.
-	 * @return ?bool
-	 */
-	public function handle_auto_update_plugin( ?bool $update ): ?bool {
-		if ( 'production' === wp_get_environment_type() ) {
-			return $update;
-		}
-		return true;
 	}
 
 	/**
