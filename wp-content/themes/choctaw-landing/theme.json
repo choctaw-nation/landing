@@ -213,41 +213,6 @@
 			"blockGap": "var:preset|spacing|base"
 		},
 		"blocks": {
-			"core/heading": {
-				"typography": {
-					"fontFamily": "var:preset|font-family|headings"
-				},
-				"spacing": {
-					"margin": {
-						"bottom": "var:preset|spacing|sm",
-						"top": "var:preset|spacing|none"
-					}
-				}
-			},
-			"core/list": {
-				"typography": {
-					"fontFamily": "var:preset|font-family|body",
-					"fontSize": "var:preset|font-size|base"
-				}
-			},
-			"core/list-item": {
-				"typography": {
-					"fontFamily": "var:preset|font-family|body",
-					"fontSize": "var:preset|font-size|base"
-				}
-			},
-			"core/paragraph": {
-				"typography": {
-					"fontFamily": "var:preset|font-family|body",
-					"fontSize": "var:preset|font-size|base"
-				},
-				"spacing": {
-					"margin": {
-						"bottom": "var:preset|spacing|base",
-						"top": "var:preset|spacing|none"
-					}
-				}
-			},
 			"core/cover": {
 				"spacing": {
 					"padding": {
@@ -287,12 +252,16 @@
 		"elements": {
 			"h1": {
 				"typography": {
-					"fontSize": "var:preset|font-size|xxxl"
+					"fontSize": "var:preset|font-size|xxxl",
+					"textTransform": "uppercase",
+					"fontWeight":"700"
 				}
 			},
 			"h2": {
 				"typography": {
-					"fontSize": "var:preset|font-size|xxl"
+					"fontSize": "var:preset|font-size|xxl",
+					"textTransform": "uppercase",
+					"fontWeight":"700"
 				}
 			},
 			"h3": {
@@ -330,11 +299,6 @@
 			"link": {
 				"color": {
 					"text": "var:preset|color|primary"
-				},
-				":visited": {
-					"color": {
-						"text": "var:preset|color|primary"
-					}
 				},
 				"css":"&.arrow-link,&.nav-link { text-decoration: none; } &.nav-link:not(.dropdown-item):not(.nav-btn .dropdown-item):visited { color:white; }"
 			}
