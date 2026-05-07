@@ -7,7 +7,11 @@
  * @since 0.2
  */
 
-use ChoctawNation\WeatherWidget\Weather_Widget;
+use ChoctawNation\WeatherWidget\Public\Weather_Widget;
+use ChoctawNation\WeatherWidget\Public\Bootstrap_Icons;
+if ( ! class_exists( 'ChoctawNation\WeatherWidget\Public\Weather_Widget' ) || ! class_exists( 'ChoctawNation\WeatherWidget\Public\Bootstrap_Icons' ) ) {
+	_doing_it_wrong( __FILE__, 'Required classes for Weather Widget are missing. Is the plugin activated?', '2.10.0' );
+}
 
 $weather = new Weather_Widget();
 ?>
@@ -18,7 +22,7 @@ $weather = new Weather_Widget();
 		<?php echo 'Weather Widget Error: ' . $weather->get_error_message(); ?>
 	</div>
 	<?php else : ?>
-		<?php
+	<?php
 		$icon_generator = new Bootstrap_Icons();
 		$today          = $weather->today();
 		?>
@@ -62,7 +66,7 @@ $weather = new Weather_Widget();
 				$total        = count( $weather_data );
 				?>
 				<?php for ( $i = 1; $i < $total; $i++ ) : ?>
-					<?php
+				<?php
 					$day_index = array_values( $weather_data )[ $i ]->get_the_day();
 					$day       = $weather_data[ $day_index ];
 					?>
