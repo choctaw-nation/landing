@@ -5,11 +5,24 @@
  * @package ChoctawNation
  */
 
-use ChoctawNation\Theme_Init;
+use ChoctawNation\Theme\Theme_Init;
 
-// Include Theme Init
-require_once __DIR__ . '/inc/theme/class-theme-init.php';
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+$autoload_path = get_stylesheet_directory() . '/vendor/autoload.php';
+if ( file_exists( $autoload_path ) ) {
+	include $autoload_path;
+} elseif ( is_admin() ) {
+	wp_die(
+		'Autoload file not found. Please run composer install inside the theme directory.',
+		'Choctaw Small Business Theme Error',
+		array( 'response' => 500 )
+	);
+}
+
+/**
+ * Get the theme init class
+*/
 $theme = new Theme_Init();
-
-// Include Bootscore Functions
-require_once __DIR__ . '/inc/bootscore/theme-functions.php';
+add_action( 'after_setup_theme', array( $theme, 'setup_theme' ) );

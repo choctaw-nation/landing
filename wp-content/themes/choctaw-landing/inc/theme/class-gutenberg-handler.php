@@ -6,27 +6,16 @@
  * @package ChoctawNation
  */
 
-namespace ChoctawNation;
+namespace ChoctawNation\Theme;
 
+use ChoctawNation\Asset_Loader;
+use ChoctawNation\Enqueue_Type;
 use WP_Block_Editor_Context;
 
 /**
  * Gutenberg Handler
  */
 class Gutenberg_Handler {
-	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		add_action( 'init', array( $this, 'init_block_theme' ) );
-		add_action( 'enqueue_block_assets', array( $this, 'enqueue_global_block_assets' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_assets' ) );
-		add_action( 'after_setup_theme', array( $this, 'cno_block_theme_support' ), 50 );
-		add_filter( 'block_editor_settings_all', array( $this, 'restrict_gutenberg_ui' ), 10, 1 );
-		add_filter( 'allowed_block_types_all', array( $this, 'restrict_block_types' ), 10, 2 );
-		add_filter( 'use_block_editor_for_post_type', array( $this, 'handle_page_templates' ), 10, 0 );
-	}
-
 	/**
 	 * Check if the current user is an administrator.
 	 *
@@ -54,7 +43,7 @@ class Gutenberg_Handler {
 			'typekit',
 			'https://use.typekit.net/jqq3pwr.css',
 			array(),
-		null // phpcs:ignore
+			null // phpcs:disable WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		);
 	}
 
@@ -210,7 +199,6 @@ class Gutenberg_Handler {
 			'templates/single-choctaw-news.php',
 		);
 		if ( in_array( $current_template, $disallowed_templates, true ) || $is_homepage ) {
-			// could also use $is_homepage check here if needed
 			return false;
 		}
 		return true;

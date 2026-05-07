@@ -1,29 +1,16 @@
-import globals from 'globals';
-import { fixupConfigRules, includeIgnoreFile } from '@eslint/compat';
-import wordpressConfig from '@wordpress/eslint-plugin';
+import wordpress from '@wordpress/eslint-plugin';
+import { includeIgnoreFile } from '@eslint/compat';
 import { globalIgnores, defineConfig } from 'eslint/config';
-import { FlatCompat } from '@eslint/eslintrc';
-import path from 'path';
 import { fileURLToPath, URL } from 'url';
+
 const gitignorePath = fileURLToPath( new URL( '.gitignore', import.meta.url ) );
-const __filename = fileURLToPath( import.meta.url );
-const __dirname = path.dirname( __filename );
-
-const compat = new FlatCompat( {
-	baseDirectory: __dirname,
-} );
-
 export default defineConfig( [
+	includeIgnoreFile( gitignorePath, 'Ignore .gitignore files' ),
 	globalIgnores( [
 		'wp-content/themes/choctaw-landing/src/js/**/*.d.ts',
 		'wp-content/themes/choctaw-landing/src/js/vendors/bootscore.js',
 	] ),
-	includeIgnoreFile( gitignorePath, 'Ignore .gitignore files' ),
-	...fixupConfigRules(
-		compat.config(
-			wordpressConfig.configs[ 'recommended-with-formatting' ]
-		)
-	),
+	...wordpress.configs.recommended,
 	{
 		files: [
 			'wp-content/themes/choctaw-landing/src/**/*.{js,ts,jsx,tsx}',
@@ -33,7 +20,6 @@ export default defineConfig( [
 		languageOptions: {
 			globals: globals.browser,
 		},
-
 		rules: {
 			'jsdoc/require-jsdoc': 'off',
 			'jsdoc/require-param': 'off',
@@ -48,14 +34,6 @@ export default defineConfig( [
 			'no-unused-vars': 'off',
 			'no-undef': 'off',
 			'no-shadow': 'off',
-		},
-		settings: {
-			'import/resolver': {
-				node: {
-					extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
-				},
-				typescript: {},
-			},
 		},
 	},
 ] );

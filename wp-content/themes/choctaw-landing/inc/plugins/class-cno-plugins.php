@@ -13,15 +13,6 @@ namespace ChoctawNation\Plugins;
  * CNO Plugin Handler
  */
 class CNO_Plugins {
-
-	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		add_action( 'template_redirect', array( $this, 'redirect_single_templates' ), 20, 1 );
-		add_filter( 'register_post_type_args', array( $this, 'alter_post_type_settings' ), 20, 2 );
-	}
-
 	/**
 	 * Modifies the post type settings.
 	 *
