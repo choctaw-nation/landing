@@ -7,7 +7,12 @@
  * @since 0.2
  */
 
-use ChoctawNation\WeatherWidget\Weather_Widget;
+use ChoctawNation\WeatherWidget\Public\Weather_Widget;
+use ChoctawNation\WeatherWidget\Public\Bootstrap_Icons;
+if ( ! class_exists( 'ChoctawNation\WeatherWidget\Public\Weather_Widget' ) || ! class_exists( 'ChoctawNation\WeatherWidget\Public\Bootstrap_Icons' ) ) {
+	_doing_it_wrong( __FILE__, 'Required classes for Weather Widget are missing. Is the plugin activated?', '2.10.0' );
+	return;
+}
 
 $weather = new Weather_Widget();
 ?>
