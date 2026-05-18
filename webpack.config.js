@@ -15,6 +15,7 @@ module.exports = {
 			return {
 				// Define custom entry points here
 				global: `.${ THEME_DIR }/src/index.js`,
+				'block-styles': `.${ THEME_DIR }/src/styles/block-styles.scss`,
 				'vendors/bootstrap': `.${ THEME_DIR }/src/js/vendors/bootstrap.js`,
 				'vendors/cno-pum': `.${ THEME_DIR }/src/styles/vendors/popup-maker/custom.scss`,
 				'vendors/seven-rooms': `.${ THEME_DIR }/src/js/vendors/sevenRooms.ts`,

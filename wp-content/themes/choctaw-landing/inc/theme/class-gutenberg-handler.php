@@ -45,6 +45,13 @@ class Gutenberg_Handler {
 			array(),
 			null // phpcs:disable WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		);
+		$block_assets = require get_template_directory() . '/dist/block-styles.asset.php';
+		wp_enqueue_style(
+			'choctaw-landing-block-styles',
+			get_template_directory_uri() . '/dist/block-styles.css',
+			$block_assets['dependencies'],
+			$block_assets['version']
+		);
 	}
 
 	/**

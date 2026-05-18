@@ -24,6 +24,8 @@
 		"prettier.useTabs": false
 	},
 	"cSpell.words": [
+		"alignfull",
+		"alignwide",
 		"Appender",
 		"autoptimize",
 		"autoupdater",
