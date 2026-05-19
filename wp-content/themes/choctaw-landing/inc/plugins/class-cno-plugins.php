@@ -64,21 +64,12 @@ class CNO_Plugins {
 	 * Redirects single custom post types to the archive page.
 	 */
 	public function redirect_single_templates() {
-		$cpts_to_redirect = array(
-			array(
-				'post_type' => 'choctaw-events',
-				'location'  => user_trailingslashit( home_url( '/events' ) ),
-			),
-		);
-
-		foreach ( $cpts_to_redirect as $cpt ) {
-			if ( is_singular( $cpt['post_type'] ) ) {
-				$post            = get_post();
-				$has_description = get_field( 'event_details_event_description', $post->ID );
-				if ( ! $has_description ) {
-					wp_safe_redirect( $cpt['location'] );
-					exit;
-				}
+		// only redirect event posts w/ no content extra content to display.
+		if ( is_singular( 'choctaw-events' ) ) {
+			$post = get_post();
+			if ( empty( $post->post_content ) ) {
+				wp_safe_redirect( user_trailingslashit( home_url( '/events' ) ) );
+				exit;
 			}
 		}
 	}
