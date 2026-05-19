@@ -16,7 +16,7 @@ if ( file_exists( $autoload_path ) ) {
 } elseif ( is_admin() ) {
 	wp_die(
 		'Autoload file not found. Please run composer install inside the theme directory.',
-		'Choctaw Small Business Theme Error',
+		'Choctaw Landing Theme Error',
 		array( 'response' => 500 )
 	);
 }
@@ -34,8 +34,9 @@ add_action(
 			'choctaw/v1',
 			'/events',
 			array(
-				'methods'  => 'GET',
-				'callback' => 'cno_update_events',
+				'methods'             => 'GET',
+				'callback'            => 'cno_update_events',
+				'permission_callback' => '__return_true',
 			)
 		);
 	}
@@ -97,8 +98,11 @@ function cno_update_events() {
 		// Update post content with event description if it exists
 		$event_details  = get_field( 'event_details_event_description', $event_id );
 		$featured_image = get_field( 'swiper_image', $event_id );
+		$fallback_image = get_field( 'fallback_image', $event_id );
 		if ( $featured_image && is_array( $featured_image ) ) {
 			set_post_thumbnail( $event_id, $featured_image['ID'] );
+		} elseif ( $fallback_image && is_array( $fallback_image ) ) {
+			set_post_thumbnail( $event_id, $fallback_image['ID'] );
 		}
 		if ( ! empty( $event_details ) ) {
 			wp_update_post(
