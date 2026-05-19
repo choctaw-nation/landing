@@ -200,9 +200,11 @@
 		},
 		"useRootPaddingAwareAlignments": true,
 		"custom": {
-			"transition-timing": "ease-in-out",
-			"transition-duration": ".15s",
-			"transition-standard": "var(--wp--custom--transition-duration) var(--wp--custom--transition-timing)"
+			"transition": {
+				"timing": "ease-in-out",
+				"duration": ".15s",
+				"standard": "var(--wp--custom--transition--duration) var(--wp--custom--transition--timing)"
+			}
 		}
 	},
 	"styles": {
@@ -223,7 +225,7 @@
 		"color": {
 			"text":"#212529"
 		},
-		"css": "text-wrap:pretty",
+		"css": "text-wrap:pretty;word-break:normal;",
 		"blocks": {
 			"core/cover": {
 				"spacing": {
@@ -293,7 +295,7 @@
 				"color": {
 					"text": "var:preset|color|primary"
 				},
-				"css":".arrow-link,.nav-link { text-decoration: none; }.nav-link:not(.dropdown-item,.nav-btn .dropdown-item)"
+				"css":".arrow-link,.nav-link {text-decoration:none;}.nav-link:not(.dropdown-item,.nav-btn .dropdown-item);transition:color var(--wp--custom--transition--standard);"
 			},
 			"button":{
 				"border": {
