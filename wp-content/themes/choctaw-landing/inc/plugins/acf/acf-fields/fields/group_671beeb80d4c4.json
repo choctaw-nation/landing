@@ -278,9 +278,9 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": 0,
-    "display_title": "",
+    "show_in_rest": 1,
+    "display_title": "Extra Event Details",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1779218919
+    "modified": 1779220772
 }
