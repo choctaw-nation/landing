@@ -1,7 +1,7 @@
 {
     "key": "ui_options_page_66339d4af2d75",
     "title": "Events Archive Settings",
-    "active": true,
+    "active": false,
     "menu_order": 0,
     "page_title": "Events Archive Settings",
     "menu_slug": "events-archive-settings",
@@ -22,5 +22,5 @@
     "data_storage": "options",
     "post_id": "",
     "autoload": 0,
-    "modified": 1778172627
+    "modified": 1779214753
 }
