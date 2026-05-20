@@ -114,7 +114,7 @@
             },
             "layout": "table",
             "pagination": 0,
-            "min": 0,
+            "min": 1,
             "max": 0,
             "collapsed": "",
             "button_label": "Add Row",
@@ -282,5 +282,5 @@
     "display_title": "Extra Event Details",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1779220772
+    "modified": 1779292466
 }

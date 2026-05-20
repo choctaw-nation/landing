@@ -46,7 +46,7 @@
 	}
 }
 
-%arrow_styles {
+%arrow-styles {
 	height: 165px;
 	width: 70.5px;
 	left: 33.5px;
@@ -55,7 +55,7 @@
 }
 
 .arrow {
-	@extend %arrow_styles;
+	@extend %arrow-styles;
 
 	&-white {
 		filter: brightness(100) saturate(100%);
@@ -63,7 +63,7 @@
 }
 
 figure.arrow {
-	@extend %arrow_styles;
+	@extend %arrow-styles;
 
 	height: unset;
 	bottom: -52px;
@@ -80,4 +80,16 @@ figure.arrow {
 
 .text-transform-none {
 	text-transform: none !important;
+}
+
+.fw-bold {
+	font-weight: bold !important;
+}
+
+.fw-normal {
+	font-weight: normal !important;
+}
+
+.fst-italic {
+	font-style: italic !important;
 }
