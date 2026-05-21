@@ -24,6 +24,8 @@
 		"prettier.useTabs": false
 	},
 	"cSpell.words": [
+		"alignfull",
+		"alignwide",
 		"Appender",
 		"autoptimize",
 		"autoupdater",
@@ -40,6 +42,7 @@
 		"spai",
 		"swiperjs",
 		"swipers",
+		"topo",
 		"totalpages",
 		"trackbacks",
 		"wordfence"

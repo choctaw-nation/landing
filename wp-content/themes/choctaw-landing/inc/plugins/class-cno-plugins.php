@@ -23,6 +23,7 @@ class CNO_Plugins {
 	public function alter_post_type_settings( $args, $post_type ): array {
 		$args = $this->modify_news_slugs( $args, $post_type );
 		$args = $this->modify_post_type_archive_slugs( $args, $post_type );
+		$args = $this->modify_event_supports( $args, $post_type );
 		return $args;
 	}
 
@@ -61,24 +62,40 @@ class CNO_Plugins {
 	}
 
 	/**
+	 * Modifies the supports of the events post type.
+	 *
+	 * @param array  $args the post type arguments
+	 * @param string $post_type the post type name
+	 */
+	private function modify_event_supports( $args, $post_type ): array {
+		if ( 'choctaw-events' !== $post_type ) {
+			return $args;
+		}
+		$args['hierarchical'] = true;
+		$args['supports']     = array_unique( array( ...$args['supports'], 'page-attributes' ) );
+		return $args;
+	}
+
+	/**
 	 * Redirects single custom post types to the archive page.
 	 */
 	public function redirect_single_templates() {
-		$cpts_to_redirect = array(
-			array(
-				'post_type' => 'choctaw-events',
-				'location'  => user_trailingslashit( home_url( '/events' ) ),
-			),
-		);
-
-		foreach ( $cpts_to_redirect as $cpt ) {
-			if ( is_singular( $cpt['post_type'] ) ) {
-				$post            = get_post();
-				$has_description = get_field( 'event_details_event_description', $post->ID );
-				if ( ! $has_description ) {
-					wp_safe_redirect( $cpt['location'] );
-					exit;
-				}
+		$events_slug = 'choctaw-events';
+		// only redirect event posts w/ no content extra content to display and no children.
+		if ( is_singular( $events_slug ) ) {
+			$post     = get_post();
+			$children = get_children(
+				array(
+					'post_parent' => $post->ID,
+					'post_type'   => $events_slug,
+					'fields'      => 'ids',
+					'post_status' => 'publish',
+					'numberposts' => 1,
+				)
+			);
+			if ( empty( $post->post_content ) && empty( $children ) ) {
+				wp_safe_redirect( user_trailingslashit( home_url( '/events' ) ) );
+				exit;
 			}
 		}
 	}

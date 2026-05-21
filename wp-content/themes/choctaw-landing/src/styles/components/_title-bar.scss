@@ -1,16 +1,18 @@
 @use "../abstracts/mixins" as m;
 
 .title-bar {
-	&.with-background {
-		background: url("../../img/bg-images/light-gray-map-background.webp");
-
+	:root & {
 		@include m.media-breakpoint-up(lg) {
 			margin-top: -90px;
 		}
-
+	
 		@include m.media-breakpoint-down(lg) {
 			max-width: none;
 		}
+	}
+
+	&.with-background {
+		background: url("../../img/bg-images/light-gray-map-background.webp");
 	}
 
 	label {
