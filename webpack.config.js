@@ -4,7 +4,7 @@ const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 const THEME_NAME = 'choctaw-landing';
 const THEME_DIR = `/wp-content/themes/${ THEME_NAME }`;
 
-const appNames = [ 'stay', 'things-to-do', 'events', 'front-page' ];
+const appNames = [ 'stay', 'things-to-do', 'front-page' ];
 const styleSheets = [];
 const blockEditor = [ 'editDefaultBlocks' ];
 

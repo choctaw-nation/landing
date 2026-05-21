@@ -41,6 +41,9 @@ add_action(
 		);
 	}
 );
+/**
+ * Utility function to help with migration
+ */
 function cno_update_events() {
 	$events = get_posts(
 		array(

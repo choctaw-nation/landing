@@ -23,7 +23,7 @@ $custom_query = get_posts(
 		'meta_query'     => array(
 			array(
 				'key'     => 'start_date',
-				'value'   => date( 'Ymd' ),
+				'value'   => gmdate( 'Ymd' ),
 				'compare' => '>=',
 				'type'    => 'NUMERIC',
 			),
@@ -86,7 +86,7 @@ foreach ( $events_by_day as $date => $events ) {
 			<li class="position-relative border border-1 border-primary shadow p-3 flex-grow-1 flex-shrink-1">
 				<h2 class="has-lg-font-size">
 					<time datetime="<?php echo $date; ?>">
-						<?php echo date( 'l, M d Y', strtotime( $date ) ); ?>
+						<?php echo gmdate( 'l, M d Y', strtotime( $date ) ); ?>
 					</time>
 				</h2>
 				<?php if ( ! empty( $events ) ) : ?>
