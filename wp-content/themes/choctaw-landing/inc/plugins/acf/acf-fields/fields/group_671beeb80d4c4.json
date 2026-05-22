@@ -79,7 +79,7 @@
                 "true": "Yes",
                 "false": "No"
             },
-            "default_value": false,
+            "default_value": "false",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -282,5 +282,5 @@
     "display_title": "Extra Event Details",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1779292466
+    "modified": 1779463454
 }

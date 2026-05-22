@@ -6,10 +6,16 @@
  * @subpackage Events
  */
 
-wp_enqueue_script( 'choctaw-events-add-to-calendar' );
+$children = get_pages(
+	array(
+		'child_of'  => get_the_ID(),
+		'post_type' => 'choctaw-events',
+	)
+);
 get_header();
 ?>
 <div <?php post_class( array( 'alignfull', 'has-global-padding', 'is-layout-constrained' ) ); ?> style="margin-top: var(--header-offset);margin-bottom:3rem;">
+	<?php if ( empty( $children ) ) : ?>
 	<div class="alignwide pt-5 mb-5 d-flex flex-column row-gap-5">
 		<nav arial-label="breadcrumb">
 			<ol class="breadcrumb m-0">
@@ -18,6 +24,7 @@ get_header();
 			</ol>
 		</nav>
 	</div>
+	<?php endif; ?>
 	<?php the_content(); ?>
 </div>
 <?php
