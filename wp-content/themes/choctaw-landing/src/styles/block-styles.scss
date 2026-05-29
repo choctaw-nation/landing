@@ -1,0 +1,8 @@
+@use "./base/utilities";
+@use './base/bs-utils';
+@use './components/title-bar';
+
+body {
+	// migrated from theme.json to override bootstrap's default word-break: break-word
+	word-break: normal;
+}

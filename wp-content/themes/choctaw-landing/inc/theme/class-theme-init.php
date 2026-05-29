@@ -150,7 +150,7 @@ class Theme_Init {
 			Enqueue_Type::both,
 			'vendors',
 			array(
-				'scripts' => array( 'jquery' ),
+				'scripts' => array(),
 				'styles'  => array(),
 			),
 		);
@@ -184,7 +184,6 @@ class Theme_Init {
 		$this->remove_wordpress_styles(
 			array(
 				'classic-theme-styles',
-				'wp-block-library',
 				'dashicons',
 			)
 		);
@@ -211,21 +210,6 @@ class Theme_Init {
 			get_stylesheet_directory_uri() . '/dist/modules/swiper/eat-drink-swiper.css',
 			array( 'bootstrap' ),
 			$eat_drink_swiper['version'],
-		);
-
-		$events_swiper = require_once get_stylesheet_directory() . '/dist/modules/swiper/events-swiper.asset.php';
-		wp_register_script(
-			'events-swiper',
-			get_stylesheet_directory_uri() . '/dist/modules/swiper/events-swiper.js',
-			array( 'global' ),
-			$events_swiper['version'],
-			array( 'strategy' => 'defer' )
-		);
-		wp_register_style(
-			'events-swiper',
-			get_stylesheet_directory_uri() . '/dist/modules/swiper/events-swiper.css',
-			array( 'global' ),
-			$events_swiper['version'],
 		);
 	}
 
@@ -290,6 +274,7 @@ class Theme_Init {
 	public function cno_theme_support() {
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'title-tag' );
+		add_theme_support( 'editor-styles' );
 		$this->register_image_sizes();
 		register_nav_menus(
 			array(
@@ -331,10 +316,6 @@ class Theme_Init {
 			$this->disable_post_type_support( $post_type );
 		}
 		add_post_type_support( 'page', 'excerpt' );
-		/**
-		 * This will get turned on when ready
-		 */
-		// add_post_type_support( 'choctaw-events', array( 'editor' ) ); phpcs:ignore Squiz.PHP.CommentedOutCode.Found
 	}
 
 	/** Disable post-type-supports from posts
