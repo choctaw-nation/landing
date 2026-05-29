@@ -150,7 +150,7 @@ class Theme_Init {
 			Enqueue_Type::both,
 			'vendors',
 			array(
-				'scripts' => array( 'jquery' ),
+				'scripts' => array(),
 				'styles'  => array(),
 			),
 		);
@@ -184,7 +184,6 @@ class Theme_Init {
 		$this->remove_wordpress_styles(
 			array(
 				'classic-theme-styles',
-				'wp-block-library',
 				'dashicons',
 			)
 		);
@@ -290,6 +289,7 @@ class Theme_Init {
 	public function cno_theme_support() {
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'title-tag' );
+		add_theme_support( 'editor-styles' );
 		$this->register_image_sizes();
 		register_nav_menus(
 			array(
@@ -331,10 +331,6 @@ class Theme_Init {
 			$this->disable_post_type_support( $post_type );
 		}
 		add_post_type_support( 'page', 'excerpt' );
-		/**
-		 * This will get turned on when ready
-		 */
-		// add_post_type_support( 'choctaw-events', array( 'editor' ) ); phpcs:ignore Squiz.PHP.CommentedOutCode.Found
 	}
 
 	/** Disable post-type-supports from posts

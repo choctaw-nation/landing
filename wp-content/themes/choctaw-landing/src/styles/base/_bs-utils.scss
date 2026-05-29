@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "sass:list";
+
+$positions: ("absolute", "relative", "fixed", "sticky");
+
+@each $position in $positions {
+	.position-#{$position} {
+		position: $position !important;
+	}
+}
+
+$z-indexes: ("auto", "0", "1", "2", "3", "4", "5");
+
+@each $z-index in $z-indexes {
+	.z-#{$z-index} {
+		z-index: $z-index !important;
+	}
+}
+
+.z-n1 {
+	z-index: -1 !important;
+}

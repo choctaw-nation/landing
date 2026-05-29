@@ -93,3 +93,11 @@ figure.arrow {
 .fst-italic {
 	font-style: italic !important;
 }
+
+.inset-0 {
+	inset:0;
+}
+
+.text-trim-alphabetic {
+	text-box:trim-both cap alphabetic
+}
