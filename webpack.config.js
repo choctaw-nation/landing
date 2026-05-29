@@ -21,7 +21,6 @@ module.exports = {
 				'vendors/seven-rooms': `.${ THEME_DIR }/src/js/vendors/sevenRooms.ts`,
 				'modules/date-range-picker': `.${ THEME_DIR }/src/js/vendors/date-range-picker.js`,
 				'modules/swiper/eat-drink-swiper': `.${ THEME_DIR }/src/js/vendors/swiperjs/eat-drink-swiper.ts`,
-				'modules/swiper/events-swiper': `.${ THEME_DIR }/src/js/vendors/swiperjs/events-swiper.ts`,
 				...addEntries( appNames, 'pages' ),
 				...addEntries( styleSheets, 'styles' ),
 				...addEntries( blockEditor, 'admin' ),
