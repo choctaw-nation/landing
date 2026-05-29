@@ -1,6 +1,6 @@
 {
   "name": "choctaw-landing",
-  "version": "2.10.0",
+  "version": "2.11.0",
   "engines": {
     "node": ">=24"
   },
@@ -34,23 +34,22 @@
     "@choctawnationofoklahoma/wp-flex-reverse-toggle": "^1.1.2",
     "bootstrap": "^5.3.8",
     "daterangepicker": "^3.1.0",
-    "swiper": "^12.1.4"
+    "swiper": "^12.2.0"
   },
   "devDependencies": {
-    "@eslint/compat": "^2.0.5",
-    "@playwright/test": "^1.59.1",
-    "@wordpress/e2e-test-utils-playwright": "^1.45.0",
-    "@wordpress/eslint-plugin": "^25.1.0",
-    "@wordpress/scripts": "^32.1.0",
+    "@eslint/compat": "^2.1.0",
+    "@playwright/test": "^1.60.0",
+    "@wordpress/e2e-test-utils-playwright": "^1.47.0",
+    "@wordpress/eslint-plugin": "^25.3.0",
+    "@wordpress/scripts": "^32.3.0",
     "bootstrap-icons": "^1.13.1",
-    "dotenv": "^17.4.2",
     "eslint": "^9",
     "globals": "^17.6.0",
-    "prettier":"npm:wp-prettier@^3",
-    "stylelint": "^17.11.0",
+    "prettier": "npm:wp-prettier@^3",
+    "stylelint": "^17.12.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "stylelint-scss": "^7.0.0",
-    "typescript":"^6.0.3",
+    "stylelint-scss": "^7.1.1",
+    "typescript": "^6.0.3",
     "webpack-remove-empty-scripts": "^1.1.1"
   }
 }

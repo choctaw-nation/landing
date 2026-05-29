@@ -4,6 +4,13 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.11.0 - [May 29, 2026]
+
+- Added: Events are blocks powered!
+- Added: New Taxonomy template for event venues is added.
+- Removed: All events css and events-swiper code is removed.
+- Chore: Update packages and bump semver.
+
 ## v2.10.0 - [May 21, 2026]
 
 - Added: ACF fields are reintroduced via ACF JSON
