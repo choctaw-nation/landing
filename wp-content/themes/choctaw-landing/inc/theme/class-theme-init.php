@@ -211,21 +211,6 @@ class Theme_Init {
 			array( 'bootstrap' ),
 			$eat_drink_swiper['version'],
 		);
-
-		$events_swiper = require_once get_stylesheet_directory() . '/dist/modules/swiper/events-swiper.asset.php';
-		wp_register_script(
-			'events-swiper',
-			get_stylesheet_directory_uri() . '/dist/modules/swiper/events-swiper.js',
-			array( 'global' ),
-			$events_swiper['version'],
-			array( 'strategy' => 'defer' )
-		);
-		wp_register_style(
-			'events-swiper',
-			get_stylesheet_directory_uri() . '/dist/modules/swiper/events-swiper.css',
-			array( 'global' ),
-			$events_swiper['version'],
-		);
 	}
 
 	/**
