@@ -25,6 +25,17 @@ class Theme_Init {
 		$this->gutenberg_support();
 		$this->handle_specials();
 		$this->disable_discussion();
+		add_action(
+			'wp_default_scripts',
+			function ( $scripts ) {
+				if ( isset( $scripts->registered['jquery'] ) ) {
+					$scripts->registered['jquery']->deps = array_diff(
+						$scripts->registered['jquery']->deps,
+						array( 'jquery-migrate' )
+					);
+				}
+			}
+		);
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_cno_scripts' ), 50 );
 		add_action( 'init', array( $this, 'alter_post_types' ) );
 		add_filter(
@@ -57,6 +68,7 @@ class Theme_Init {
 		$plugin_handler->handle_cno_plugins();
 		add_filter( 'auto_update_plugin', array( $plugin_handler, 'handle_auto_update_plugin' ) );
 		add_action( 'admin_init', array( $plugin_handler, 'disable_plugins_per_environment' ) );
+		add_filter( 'cno_publishing_checklist_config_path', fn() => get_template_directory() . '/inc/plugins/publishing-checklist-config.json' );
 	}
 
 	/**

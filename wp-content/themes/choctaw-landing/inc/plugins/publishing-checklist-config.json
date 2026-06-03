@@ -1,0 +1,46 @@
+{
+	"$schema": "https://raw.githubusercontent.com/choctaw-nation/cno-plugin-publishing-checklist/refs/heads/main/inc/configs/config-schema.json?token=GHSAT0AAAAAADSK6VFCNYWKD5GRSRH2QMRW2RATVDA",
+	"items": [
+		{
+			"name": "excerpt_exists",
+			"type": "blocking",
+			"check": {
+				"type": "exists",
+				"sourceKey": "excerpt"
+			},
+			"messages": {
+				"pass": "Has an excerpt",
+				"fail": "Must have an excerpt"
+			},
+			"postTypes": [ "choctaw-events" ]
+		},
+		{
+			"name": "excerpt_less_than_160_characters",
+			"type": "blocking",
+			"check": {
+				"type": "max",
+				"max": 160,
+				"sourceKey": "excerpt"
+			},
+			"messages": {
+				"pass": "Excerpt is less than 160 characters",
+				"fail": "Excerpt must be less than 160 characters"
+			},
+			"postTypes": [ "choctaw-events" ]
+		},
+		{
+			"name": "has_featured_image",
+			"type": "blocking",
+			"check": {
+				"type": "min",
+				"min": 1,
+				"sourceKey": "featured_media"
+			},
+			"messages": {
+				"pass": "Featured image is set",
+				"fail": "Featured image is required"
+			},
+			"postTypes": [ "choctaw-events" ]
+		}
+	]
+}
