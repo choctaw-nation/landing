@@ -109,11 +109,10 @@ class CNO_Plugins {
 			array(
 				'label'              => 'Event Venue',
 				'uses_context'       => array( 'postId', 'postType' ),
-				'get_value_callback' => function ( $source_args, $block_instance, $attribute_name ) {
+				'get_value_callback' => function ( $source_args, $block_instance, $attribute_name ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 
 					$post_id = $block_instance->context['postId'] ?? null;
 					$post_type = $block_instance->context['postType'] ?? null;
-					$title = get_the_title( $post_id );
 					$taxonomy = 'choctaw-events-venue';
 					if ( ! $post_id || 'choctaw-events' !== $post_type ) {
 						return '';
