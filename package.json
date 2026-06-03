@@ -39,7 +39,10 @@
   "devDependencies": {
     "@eslint/compat": "^2.1.0",
     "@playwright/test": "^1.60.0",
+    "@wordpress/blocks": "^15.20.0",
+    "@wordpress/core-data": "^7.47.0",
     "@wordpress/e2e-test-utils-playwright": "^1.47.0",
+    "@wordpress/editor": "^14.47.0",
     "@wordpress/eslint-plugin": "^25.3.0",
     "@wordpress/scripts": "^32.3.0",
     "bootstrap-icons": "^1.13.1",

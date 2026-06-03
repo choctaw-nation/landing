@@ -62,6 +62,7 @@ class Plugin_Handler {
 		$acf = new ACF_Handler();
 		$acf->init_save_filters();
 		add_filter( 'acf/settings/load_json', array( $acf, 'load_json_paths' ) );
+		add_filter( 'acf/settings/enable_datastore', '__return_true' );
 	}
 
 	/**
@@ -92,6 +93,7 @@ class Plugin_Handler {
 	 */
 	public function handle_cno_plugins() {
 		$cno_plugins_handler = new CNO_Plugins();
+		add_action( 'init', array( $cno_plugins_handler, 'register_custom_block_bindings' ) );
 		add_action( 'template_redirect', array( $cno_plugins_handler, 'redirect_single_templates' ), 20, 1 );
 		add_filter( 'register_post_type_args', array( $cno_plugins_handler, 'alter_post_type_settings' ), 20, 2 );
 	}

@@ -99,4 +99,68 @@ class CNO_Plugins {
 			}
 		}
 	}
+
+	/**
+	 * Registers a block bindings source for event venues, allowing blocks to access the venue information of an event post.
+	 */
+	public function register_custom_block_bindings() {
+		register_block_bindings_source(
+			'cno/event-venue',
+			array(
+				'label'              => 'Event Venue',
+				'uses_context'       => array( 'postId', 'postType' ),
+				'get_value_callback' => function ( $source_args, $block_instance, $attribute_name ) {
+
+					$post_id = $block_instance->context['postId'] ?? null;
+					$post_type = $block_instance->context['postType'] ?? null;
+					$title = get_the_title( $post_id );
+					$taxonomy = 'choctaw-events-venue';
+					if ( ! $post_id || 'choctaw-events' !== $post_type ) {
+						return '';
+					}
+					$children = get_children(
+						array(
+							'post_parent' => $post_id,
+							'post_type'   => 'choctaw-events',
+							'fields'      => 'ids',
+							'post_status' => 'publish',
+							'numberposts' => -1,
+						)
+					);
+
+					$terms = get_the_terms( $post_id, $taxonomy );
+
+					if ( is_wp_error( $terms ) || ( empty( $terms ) && empty( $children ) ) ) {
+						return '';
+					}
+					$terms = wp_list_pluck( $terms, 'name' );
+					if ( count( $children ) > 0 ) {
+						$child_terms = array();
+						foreach ( $children as $child_id ) {
+							$child_terms_result = get_the_terms( $child_id, $taxonomy );
+							if ( is_wp_error( $child_terms_result ) || empty( $child_terms_result ) || ! is_array( $child_terms_result ) ) {
+								continue;
+							}
+							$child_terms = array_merge( $child_terms, wp_list_pluck( $child_terms_result, 'name' ) );
+						}
+
+						$all_terms = array_unique( array( ...$child_terms, ...$terms ) );
+						return esc_html(
+							implode(
+								', ',
+								$all_terms
+							)
+						);
+					}
+
+					return esc_html(
+						implode(
+							', ',
+							$terms
+						)
+					);
+				},
+			)
+		);
+	}
 }

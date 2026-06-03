@@ -6,7 +6,7 @@ const THEME_DIR = `/wp-content/themes/${ THEME_NAME }`;
 
 const appNames = [ 'stay', 'things-to-do', 'front-page' ];
 const styleSheets = [];
-const blockEditor = [ 'editDefaultBlocks' ];
+const blockEditor = [ 'editDefaultBlocks','registerVenueBlockBindingSource' ];
 
 module.exports = {
 	...defaultConfig,

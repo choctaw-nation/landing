@@ -4,6 +4,7 @@ import { globalIgnores, defineConfig } from 'eslint/config';
 import { fileURLToPath, URL } from 'url';
 
 const gitignorePath = fileURLToPath( new URL( '.gitignore', import.meta.url ) );
+
 export default defineConfig( [
 	includeIgnoreFile( gitignorePath, 'Ignore .gitignore files' ),
 	globalIgnores( [
@@ -29,7 +30,7 @@ export default defineConfig( [
 			'jsdoc/require-returns-description': 'off',
 			'jsdoc/check-param-names': 'off',
 			'no-console': 'warn',
-			'no-duplicate-imports': 'off',
+			'no-duplicate-imports': 'error',
 			'import/no-duplicates': 'error',
 			'no-unused-vars': 'off',
 			'no-undef': 'off',
