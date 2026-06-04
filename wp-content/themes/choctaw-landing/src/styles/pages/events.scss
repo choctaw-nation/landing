@@ -1,0 +1,35 @@
+@use "../components/event-preview";
+
+.event-preview:where(.sold-out) {
+	position: relative;
+
+	&::before {
+		content: "SOLD OUT";
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		translate: -50% -50%;
+		rotate: -45deg;
+		font-size: var(--wp--preset--font-size--xxl);
+		font-weight: 700;
+		font-family: var(--wp--preset--font-family--headings);
+		color: white;
+		z-index: 3;
+	}
+
+	img {
+		filter: grayscale(100%);
+	}
+
+	figcaption {
+		background-image: linear-gradient(
+			to bottom,
+			hsl(
+				var(--wp--custom--color--primary--h)
+					var(--wp--custom--color--primary--s)
+					var(--wp--custom--color--primary--l) / 45%
+			),
+			var(--wp--preset--color--primary) 75%
+		);
+	}
+}

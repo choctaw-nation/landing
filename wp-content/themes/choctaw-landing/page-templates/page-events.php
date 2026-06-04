@@ -13,7 +13,7 @@ use ChoctawNation\ACF\Two_Col_Section;
 use ChoctawNation\Asset_Loader;
 use ChoctawNation\Enqueue_Type;
 
-new Asset_Loader( 'events', Enqueue_Type::script, 'pages' );
+new Asset_Loader( 'events', Enqueue_Type::both, 'pages' );
 get_header();
 ?>
 <main <?php post_class(); ?>>
@@ -28,6 +28,7 @@ get_header();
 	}
 	if ( ! empty( $event_callouts['callouts'] ) ) {
 		echo '<div class="d-flex flex-column row-gap-5 my-5">';
+		$has_modal = false;
 		foreach ( $event_callouts['callouts'] as $callout ) {
 			if ( $callout['is_image_full_width'] ) {
 				$two_col_section = new Full_Width_Section( get_the_ID(), $callout );
@@ -86,7 +87,7 @@ get_header();
 		</div>
 		<ul class="row row-gap-4 align-items-stretch justify-content-center justify-content-md-start list-unstyled events-list mb-0">
 			<?php while ( $events->have_posts() ) : ?>
-				<?php
+			<?php
 				$events->the_post();
 				$event_details = get_field( 'event_details' );
 				if ( ! $event_details ) {
