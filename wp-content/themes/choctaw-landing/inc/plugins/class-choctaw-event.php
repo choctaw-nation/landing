@@ -720,6 +720,9 @@ class Choctaw_Event {
 	 * @param bool            $with_ticketmaster_addendum Whether to include the Ticketmaster addendum
 	 */
 	public function get_the_tickets_button( string|array $classes, bool $with_ticketmaster_addendum = true ): ?string {
+		if ( empty( $this->tickets_link ) && ! $this->is_sold_out ) {
+			return null;
+		}
 		$attributes  = array(
 			'class' => is_array( $classes ) ? implode( ' ', $classes ) : $classes,
 		);
@@ -771,6 +774,9 @@ class Choctaw_Event {
 	 * @return string the Ticketmaster addendum text
 	 */
 	public function get_ticketmaster_addendum(): string {
+		if ( empty( $this->tickets_link ) ) {
+			return '';
+		}
 		return '<p class="mb-0">Ticketmaster is the official ticketing agent of Choctaw Landing.</p>';
 	}
 
