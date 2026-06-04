@@ -1,33 +1,6 @@
 {
-	"$schema": "https://raw.githubusercontent.com/choctaw-nation/cno-plugin-publishing-checklist/refs/heads/main/inc/configs/config-schema.json?token=GHSAT0AAAAAADSK6VFCNYWKD5GRSRH2QMRW2RATVDA",
+	"$schema": "https://gist.githubusercontent.com/kjroelke/88b262195bcc25d40f1d20830872921c/raw/12a46a0b508f2ef58073854eeab1b8461bd1519e/config-schema.json",
 	"items": [
-		{
-			"name": "excerpt_exists",
-			"type": "blocking",
-			"check": {
-				"type": "exists",
-				"sourceKey": "excerpt"
-			},
-			"messages": {
-				"pass": "Has an excerpt",
-				"fail": "Must have an excerpt"
-			},
-			"postTypes": [ "choctaw-events" ]
-		},
-		{
-			"name": "excerpt_less_than_160_characters",
-			"type": "blocking",
-			"check": {
-				"type": "max",
-				"max": 160,
-				"sourceKey": "excerpt"
-			},
-			"messages": {
-				"pass": "Excerpt is less than 160 characters",
-				"fail": "Excerpt must be less than 160 characters"
-			},
-			"postTypes": [ "choctaw-events" ]
-		},
 		{
 			"name": "has_featured_image",
 			"type": "blocking",
@@ -39,6 +12,20 @@
 			"messages": {
 				"pass": "Featured image is set",
 				"fail": "Featured image is required"
+			},
+			"postTypes": [ "choctaw-events" ]
+		},
+		{
+			"name": "has_venue",
+			"type": "blocking",
+			"check": {
+				"type": "min",
+				"min": 1,
+				"sourceKey": "choctaw-events-venue"
+			},
+			"messages": {
+				"pass": "Event has venue assigned.",
+				"fail": "No venue assigned to event."
 			},
 			"postTypes": [ "choctaw-events" ]
 		}
