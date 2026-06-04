@@ -6,7 +6,7 @@
  * @subpackage Events
  */
 
-use ChoctawNation\Events\Choctaw_Event;
+use ChoctawNation\Plugins\Events\Choctaw_Event;
 
 wp_enqueue_script( 'choctaw-events-add-to-calendar' );
 get_header();
@@ -32,18 +32,16 @@ get_header();
 				<div class="col-lg-6">
 					<?php
 					$image_args = array(
-						'class' => 'object-fit-cover w-100 h-100',
+						'class'           => 'object-fit-cover w-100 h-100',
+						'loading'         => 'eager',
+						'data-spai-eager' => true,
 					);
 					if ( $swiper_image && ! has_post_thumbnail() ) {
 						echo wp_get_attachment_image( $swiper_image['ID'], 'full', false, $image_args );
 					} else {
 						the_post_thumbnail(
-							'choctaw-events-single',
-							array(
-								'class'           => 'object-fit-cover w-100 h-100',
-								'loading'         => 'eager',
-								'data-spai-eager' => true,
-							)
+							'full',
+							$image_args
 						);
 					}
 					?>
@@ -55,11 +53,11 @@ get_header();
 					</h1>
 					<p class="event-header__date-time fs-5 fw-bold mb-0">
 						<?php
-						if ( $event->has_time ) {
-							echo $event->get_the_dates( 'M d, Y' ) . ' • ' . $event->get_the_times();
-						} else {
-							$event->the_dates( 'F j, Y' );
-						}
+						printf(
+							'<time datetime="%s">%s</time>',
+							esc_attr( $event->get_the_start_date( 'c' ) ),
+							$event->has_time ? $event->get_the_dates( 'M d, Y' ) . ' • ' . $event->get_the_times() : $event->get_the_dates( 'F j, Y' )
+						);
 						?>
 						<?php if ( $event->has_venue ) : ?>
 						at <span id="venue-name"><?php $event->the_venue_name(); ?></span>
@@ -68,7 +66,13 @@ get_header();
 					<div class="fs-6" id="event-description">
 						<?php $event->the_description(); ?>
 					</div>
-					<?php $event->the_add_to_calendar_button( 'btn btn-primary fs-6 mt-auto w-auto' ); ?>
+					<div class="d-flex gap-2 flex-wrap mb-3">
+						<?php
+						$event->the_tickets_button( 'btn btn-primary fs-6 w-auto', false );
+						$event->the_add_to_calendar_button( 'btn btn-outline-primary fs-6 w-auto' );
+						?>
+					</div>
+					<?php $event->the_ticketmaster_addendum(); ?>
 				</div>
 			</div>
 		</div>
