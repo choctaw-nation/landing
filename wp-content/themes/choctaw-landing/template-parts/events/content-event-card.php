@@ -14,8 +14,7 @@ $swiper_image = get_field( 'swiper_image', $event_id );
 if ( ! $swiper_image ) {
 	$swiper_image = get_field( 'fallback_image', $event_id );
 }
-$should_wrap = ! empty( $feature->get_the_description() ) && ! $feature->is_ticketed_event;
-$classes     = array( 'event-preview', 'border', 'border-primary', 'border-1', 'shadow', 'd-flex', 'flex-column', 'h-100', 'position-relative' );
+$classes = array( 'event-preview', 'border', 'border-primary', 'border-1', 'shadow', 'd-flex', 'flex-column', 'h-100', 'position-relative' );
 if ( $feature->is_sold_out ) {
 	$classes[] = 'sold-out';
 }
@@ -41,17 +40,7 @@ if ( $feature->is_sold_out ) {
 		?>
 		<figcaption class="d-flex flex-column justify-content-end h-100 event pb-2 w-100 flex-grow-1 position-absolute top-0 z-2 px-3">
 			<h3 class='event__title fs-5 fw-bold mb-1 text-uppercase text-white'>
-				<?php
-				if ( $should_wrap ) {
-					printf(
-						"<a href='%s' class='stretched-link text-decoration-none text-white'>%s</a>",
-						get_permalink( $event_id ),
-						$feature->get_the_name()
-					);
-				} else {
-					$feature->the_name();
-				}
-				?>
+				<?php $feature->the_name(); ?>
 			</h3>
 			<time datetime="<?php echo $feature->get_the_start_date( DATE_ATOM ); ?>" class="event__meta fs-6 mb-0 text-white"><i class="fa-solid fa-calendar"></i>
 				<?php
@@ -73,16 +62,20 @@ if ( $feature->is_sold_out ) {
 					$feature->get_the_venue_name()
 				);
 			}
-			if ( $feature->is_ticketed_event ) {
-				$view_details_button = sprintf(
-					'<a href="%s" class="btn btn-outline-white w-auto">%s</a>',
-					get_permalink( $event_id ),
-					'View Details'
-				);
-				printf(
-					'<div class="d-flex align-items-center flex-wrap gap-2 mt-2">%s</div>',
-					$feature->get_the_tickets_button( 'btn btn-outline-white w-auto', false ) . $view_details_button
-				);
+			$has_details = ! empty( $feature->get_the_description() );
+			if ( $has_details || $feature->is_ticketed_event ) {
+				echo '<div class="d-flex align-items-center flex-wrap gap-2 mt-2">';
+				if ( $has_details ) {
+					printf(
+						'<a href="%s" class="btn btn-outline-white w-auto">%s</a>',
+						get_permalink( $event_id ),
+						'View Details'
+					);
+				}
+				if ( $feature->is_ticketed_event ) {
+					$feature->the_tickets_button( 'btn btn-outline-white w-auto', false );
+				}
+				echo '</div>';
 			}
 			?>
 
