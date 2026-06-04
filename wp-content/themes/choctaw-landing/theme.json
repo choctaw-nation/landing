@@ -305,10 +305,10 @@
 				},
 				"spacing": {
 					"padding": {
-						"top": "var:preset|spacing|sm",
-						"right": "var:preset|spacing|lg",
-						"bottom": "var:preset|spacing|sm",
-						"left": "var:preset|spacing|lg"
+						"top": "var:preset|spacing|xs",
+						"right": "var:preset|spacing|base",
+						"bottom": "var:preset|spacing|xs",
+						"left": "var:preset|spacing|base"
 					},
 					"blockGap": "var:preset|spacing|base"
 				},
