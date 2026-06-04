@@ -5,7 +5,7 @@ const THEME_NAME = 'choctaw-landing';
 const THEME_DIR = `/wp-content/themes/${ THEME_NAME }`;
 
 const appNames = [ 'stay', 'things-to-do', 'front-page' ];
-const styleSheets = [];
+const styleSheets = ['events-archive'];
 const blockEditor = [ 'editDefaultBlocks','registerVenueBlockBindingSource' ];
 
 module.exports = {

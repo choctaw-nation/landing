@@ -1,0 +1,39 @@
+:where(article:has(.sold-out)) {
+	position: relative;
+
+	&::before {
+		content: "SOLD OUT";
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		translate: -50% -50%;
+		rotate: -45deg;
+		font-size: var(--wp--preset--font-size--xxl);
+		font-weight: 700;
+		font-family: var(--wp--preset--font-family--headings);
+		color: white;
+		z-index: 2;
+	}
+
+	img {
+		filter: grayscale(100%);
+	}
+
+	.wp-block-cover__background {
+		opacity: 1 !important;
+		background-color: transparent !important;
+		background-image: linear-gradient(
+			to bottom,
+			hsl(
+				var(--wp--custom--color--primary--h)
+					var(--wp--custom--color--primary--s)
+					var(--wp--custom--color--primary--l) / 25%
+			),
+			var(--wp--preset--color--primary) 75%
+		) !important;
+	}
+
+	.wp-block-cover__inner-container > .wp-block-group.has-background {
+		background: none !important;
+	}
+}

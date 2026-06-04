@@ -29,7 +29,7 @@
 					"slug": "secondary"
 				},
 				{
-					"color":"#f5dc5b",
+					"color": "#f5dc5b",
 					"name": "Yellow",
 					"slug": "yellow"
 				},
@@ -204,14 +204,21 @@
 				"timing": "ease-in-out",
 				"duration": ".15s",
 				"standard": "var(--wp--custom--transition--duration) var(--wp--custom--transition--timing)"
+			},
+			"color": {
+				"primary": {
+					"h": "81",
+					"s": "37%",
+					"l": "37%"
+				}
 			}
 		}
 	},
 	"styles": {
 		"typography": {
-			"fontFamily":"var:preset|font-family|body",
-			"fontSize":"var:preset|font-size|root",
-			"lineHeight":"1.5"
+			"fontFamily": "var:preset|font-family|body",
+			"fontSize": "var:preset|font-size|root",
+			"lineHeight": "1.5"
 		},
 		"spacing": {
 			"padding": {
@@ -223,7 +230,7 @@
 			"blockGap": "var:preset|spacing|base"
 		},
 		"color": {
-			"text":"#212529"
+			"text": "#212529"
 		},
 		"css": "text-wrap:pretty;word-break:normal;",
 		"blocks": {
@@ -244,14 +251,14 @@
 				"typography": {
 					"fontSize": "var:preset|font-size|xxxl",
 					"textTransform": "uppercase",
-					"fontWeight":"700"
+					"fontWeight": "700"
 				}
 			},
 			"h2": {
 				"typography": {
 					"fontSize": "var:preset|font-size|xxl",
 					"textTransform": "uppercase",
-					"fontWeight":"700"
+					"fontWeight": "700"
 				}
 			},
 			"h3": {
@@ -277,11 +284,11 @@
 			"heading": {
 				"typography": {
 					"fontFamily": "var:preset|font-family|headings",
-					"lineHeight":"1.2",
-					"fontWeight":"500"
+					"lineHeight": "1.2",
+					"fontWeight": "500"
 				},
 				"color": {
-					"text":"var:preset|color|primary"
+					"text": "var:preset|color|primary"
 				},
 				"spacing": {
 					"margin": {
@@ -295,9 +302,9 @@
 				"color": {
 					"text": "var:preset|color|primary"
 				},
-				"css":".arrow-link,.nav-link {text-decoration:none;}.nav-link:not(.dropdown-item,.nav-btn .dropdown-item){transition:color var(--wp--custom--transition--standard);}"
+				"css": ".arrow-link,.nav-link {text-decoration:none;}.nav-link:not(.dropdown-item,.nav-btn .dropdown-item){transition:color var(--wp--custom--transition--standard);}"
 			},
-			"button":{
+			"button": {
 				"border": {
 					"radius": "0",
 					"width": "2px",
