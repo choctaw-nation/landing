@@ -60,6 +60,90 @@
             "mime_types": "jpg, webp, png, jpeg",
             "allow_in_bindings": 0,
             "preview_size": "medium"
+        },
+        {
+            "key": "field_6a21a139d85f8",
+            "label": "Is Ticketed Event",
+            "name": "is_ticketed_event",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "true": "Yes",
+                "false": "No"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_6a21a14cd85f9",
+            "label": "Tickets Link",
+            "name": "tickets_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a21a139d85f8",
+                        "operator": "==",
+                        "value": "true"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6a21a15fd85fa",
+            "label": "Is Sold Out",
+            "name": "is_sold_out",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a21a139d85f8",
+                        "operator": "==",
+                        "value": "true"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -83,5 +167,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1778172584
+    "modified": 1780588978
 }
