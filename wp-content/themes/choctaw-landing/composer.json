@@ -2,7 +2,7 @@
 	"name": "choctaw-nation/choctaw-landing",
 	"description": "a custom WP theme",
 	"type": "project",
-	"version": "2.9.1",
+	"version": "2.11.0",
 	"autoload":{
 		"classmap": [
 			"inc/"

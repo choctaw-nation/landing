@@ -4,6 +4,12 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.11.0 - [June 4, 2026]
+
+- Added: New ACF controls for handling Events
+- Updated: Event date/time elements use `<time>` for better a11y.
+- Chore: Update packages.
+
 ## v2.10.0 - [May 7, 2026]
 
 - Added: ACF fields are reintroduced via ACF JSON
