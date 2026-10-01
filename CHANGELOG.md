@@ -4,6 +4,11 @@ The WP Theme for the Choctaw Landing page.
 
 # Changelog
 
+## v2.11.1 - [October 1, 2026]
+
+- Fixed: Synced Repo with production code
+- Chore: Update packages
+
 ## v2.11.0 - [June 4, 2026]
 
 - Added: New ACF controls for handling Events
