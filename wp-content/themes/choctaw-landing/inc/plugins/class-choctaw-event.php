@@ -291,7 +291,7 @@ class Choctaw_Event {
 	 */
 	private function set_the_terms(): void {
 		$categories = get_the_terms( $this->event_id, 'choctaw-events-category' );
-		if ( false === $categories ) {
+		if ( false === $categories || is_wp_error( $categories ) ) {
 			$this->categories = null;
 		} else {
 			$this->categories = $categories;
