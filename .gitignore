@@ -52,6 +52,7 @@ local-xdebuginfo.php
 /wp-content/.htaccess
 /wp-content/autoptimize_404_handler.php
 /wp-content/advanced-cache.php
+/wp-content/db.php
 
 
 # Log files

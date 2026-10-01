@@ -29,9 +29,11 @@ if ( ! $api->has_promotions || null === $promotions ) {
 					<?php foreach ( $promotions as $promotion ) : ?>
 					<div class="swiper-slide">
 						<div class="card bg-dark text-white d-flex flex-column position-relative h-100">
+							<?php if ( ! empty( $promotion['image'] ) ) : ?>
 							<figure class="ratio ratio-16x9 mb-0">
 								<img src="<?php echo $promotion['image']['src']; ?>" class="card-img-top" alt="<?php echo $promotion['image']['alt']; ?>" loading="lazy" />
 							</figure>
+							<?php endif; ?>
 							<div class="card-body m-4 d-flex flex-column h-100">
 								<h3 class="card-title text-white fw-bold h4 mb-0">
 									<?php echo $promotion['title']; ?>

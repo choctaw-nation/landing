@@ -17,9 +17,6 @@ export default defineConfig( [
 			'specs/**/*.{js,ts,jsx,tsx}',
 			'./*.config.{js,ts,mjs,cjs}',
 		],
-		languageOptions: {
-			globals: globals.browser,
-		},
 		rules: {
 			'jsdoc/require-jsdoc': 'off',
 			'jsdoc/require-param': 'off',
