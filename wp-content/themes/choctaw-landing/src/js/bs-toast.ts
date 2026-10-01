@@ -39,7 +39,7 @@ export default class ToastAlert {
 	private message?: string;
 
 	/** The bootstrap CSS modifier class */
-	private type?: ToastArgs['type'] = 'info';
+	private type?: ToastArgs[ 'type' ] = 'info';
 
 	constructor( args: ToastArgs ) {
 		const { element, message, event, trigger, type } = args;
@@ -49,7 +49,7 @@ export default class ToastAlert {
 
 		if ( ! toast && ! element ) {
 			throw new Error(
-				`Couldn't initialize toast message! No element found!`,
+				`Couldn't initialize toast message! No element found!`
 			);
 		}
 
@@ -73,7 +73,7 @@ export default class ToastAlert {
 	/** Sets up the default toast element */
 	private configToastEl() {
 		const toastMessageContainer = this.toast.querySelector(
-			'.toast-message',
+			'.toast-message'
 		) as HTMLElement;
 
 		if ( this.message && toastMessageContainer ) {

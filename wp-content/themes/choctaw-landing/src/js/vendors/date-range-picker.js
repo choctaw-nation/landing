@@ -4,7 +4,7 @@ import 'daterangepicker/daterangepicker';
 import '../../styles/components/booking-bar.scss';
 import ToastAlert from '../bs-toast';
 
-jQuery( function( $ ) {
+jQuery( function ( $ ) {
 	const dateRangePickerArgs = {
 		minDate: moment( '2024-04-01' ),
 		locale: {
@@ -24,7 +24,7 @@ jQuery( function( $ ) {
 	$( '#startDate' ).daterangepicker( dateRangePickerArgs );
 
 	// On Submit, grab the values and redirect to the booking page
-	$( '#booking-bar' ).on( 'submit', function( ev ) {
+	$( '#booking-bar' ).on( 'submit', function ( ev ) {
 		ev.preventDefault();
 		const daterangepickerData = $( '#startDate' ).data( 'daterangepicker' );
 		const numGuests = $( '#numGuests' ).val();
@@ -58,7 +58,8 @@ function generateRedirectURL( daterangepickerData, numGuests ) {
 			type: 'warning',
 		} );
 		return null;
-	} return `${ BASE_URL }/${ startDate.format(
+	}
+	return `${ BASE_URL }/${ startDate.format(
 		dateFormat
 	) }/${ endDate.format( dateFormat ) }/WEBSITE/${ numGuests }`;
 }
