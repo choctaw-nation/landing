@@ -1,4 +1,3 @@
-
 export const COLORS = {
 	primary: {
 		hex: '#69813b',
@@ -16,11 +15,11 @@ export const COLORS = {
 		hex: '#f5dc5b',
 		bootstrapRgb: 'rgb(245, 220, 91)',
 	},
-	dark:{
+	dark: {
 		hex: '#212529',
 		bootstrapRgb: 'rgb(33, 37, 41)',
 	},
-	black:{
+	black: {
 		hex: '#000000',
 		bootstrapRgb: 'rgb(0, 0, 0)',
 	},
