@@ -7,6 +7,8 @@
  * @since 1.0.2
  */
 
+use ChoctawNation\Features\Federated_About;
+
 ?>
 
 <footer class="pt-5 position-relative">
@@ -14,32 +16,52 @@
 		loading="lazy" />
 	<div class="border-top py-5">
 		<div class="container">
-			<?php
-			if ( is_active_sidebar( 'top-footer' ) ) {
-				dynamic_sidebar( 'top footer' );
-			}
-			?>
-			<div class=" row">
+			<div class="row row-gap-4">
 				<div class="col-md-6 col-lg-4">
+					<h2 class="fs-5 text-white fw-normal">About Us</h2>
 					<?php
-					if ( is_active_sidebar( 'footer-1' ) ) {
-						dynamic_sidebar( 'footer-1' );
+					if ( get_field( 'use_federated_about', 'option' ) ) {
+						echo esc_html( Federated_About::get_about_content() );
+					} else {
+						the_field( 'custom_about', 'option' );
 					}
 					?>
 				</div>
 				<div class="col-md-6 col-lg-8">
-					<div class="row justify-content-around">
+					<div class="row justify-content-around row-gap-4">
 						<div class="col-sm-6 col-md-12 col-lg-4">
+							<h2 class="fs-5 text-white fw-normal">Information</h2>
 							<?php
-							if ( is_active_sidebar( 'footer-2' ) ) {
-								dynamic_sidebar( 'footer-2' );
-							}
+							wp_nav_menu(
+								array(
+									'theme_location' => 'footer-info-menu',
+									'container'      => 'nav',
+									'menu_id'        => 'footer-info-menu',
+									'menu_class'     => 'list-unstyled m-0 d-flex flex-column row-gap-2',
+									'fallback_cb'    => '__return_false',
+								)
+							);
 							?>
 						</div>
 						<div class="col-sm-6 col-md-12 col-lg-4">
+							<h2 class="fs-5 text-white fw-normal">Contact</h2>
 							<?php
-							if ( is_active_sidebar( 'footer-3' ) ) {
-								dynamic_sidebar( 'footer-3' );
+							the_field( 'contact_information', 'option' );
+							if ( have_rows( 'socials', 'option' ) ) {
+								echo '<ul class="socials list-unstyled row row-cols-auto gx-0 column-gap-3 mb-0">';
+								while ( have_rows( 'socials', 'option' ) ) {
+									the_row();
+									$platform     = get_sub_field( 'platform' );
+									$profile_link = get_sub_field( 'profile_link' );
+									$link_label   = get_sub_field( 'link_label' );
+									printf(
+										'<li class="col"><a href="%s" target="_blank" rel="noopener noreferrer" aria-label="%s"><i class="fa-brands fa-%s fa-2xl"></i></a></li>',
+										esc_url( $profile_link ),
+										esc_attr( $link_label ),
+										esc_attr( $platform )
+									);
+								}
+								echo '</ul>';
 							}
 							?>
 						</div>
