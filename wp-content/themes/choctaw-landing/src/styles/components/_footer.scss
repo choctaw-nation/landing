@@ -8,9 +8,7 @@ footer {
 	);
 	color: white;
 
-	.widget-title {
-		color: white;
-	}
+
 
 	a {
 		color: white;
@@ -22,23 +20,6 @@ footer {
 			color: var(--bs-primary);
 			text-decoration: underline;
 		}
-	}
-
-	ul,
-	ol {
-		list-style: none;
-		padding-left: 0;
-
-		li {
-			margin-bottom: 0.3125rem;
-		}
-	}
-
-	.social-icons a {
-		--padding-x: 0.3125rem;
-
-		padding-left: var(--padding-x);
-		padding-right: var(--padding-x);
 	}
 
 	.footer-info {
