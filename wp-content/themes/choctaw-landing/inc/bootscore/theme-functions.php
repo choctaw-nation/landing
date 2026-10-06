@@ -177,11 +177,6 @@ add_filter( 'widget_text', 'do_shortcode' );
  */
 require get_template_directory() . '/inc/bootscore/template-tags.php';
 
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/bootscore/template-functions.php';
-
 
 // Pagination Categories
 if ( ! function_exists( 'bootscore_pagination' ) ) :

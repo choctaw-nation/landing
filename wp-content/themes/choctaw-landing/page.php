@@ -1,41 +1,22 @@
 <?php
 /**
- * The template for displaying all pages
+ * Default page template.
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Bootscore
+ * @package ChoctawNation
  */
 
 get_header();
 ?>
-
-<div id="content" class="site-content container py-5 mt-5">
-	<div id="primary" class="content-area">
-		<div class="row">
-			<div class="<?php echo bootscore_main_col_class(); ?>">
-				<main id="main" class="site-main">
-					<header class="entry-header">
-						<?php the_post(); ?>
-						<h1><?php the_title(); ?></h1>
-						<?php bootscore_post_thumbnail(); ?>
-					</header>
-					<div class="entry-content">
-						<?php the_content(); ?>
-					</div>
-					<footer class="entry-footer">
-						<?php comments_template(); ?>
-					</footer>
-				</main>
-			</div>
-			<?php get_sidebar(); ?>
+<main id="main" class="site-main container" style="margin-top: var(--header-offset,110px);">
+	<div class="entry-content row my-5 py-5 justify-content-center">
+		<div class="col-lg-10 fs-6">
+			<?php
+			the_title( '<h1>', '</h1>' );
+			the_field( 'page_content' );
+			?>
 		</div>
 	</div>
-</div>
+</main>
+
 <?php
 get_footer();
