@@ -1,10 +1,10 @@
 {
-    "key": "ui_options_page_650c92a25cdd6",
-    "title": "Mega Menu Content",
+    "key": "ui_options_page_6ac5430828bdb",
+    "title": "Footer Settings",
     "active": true,
     "menu_order": 0,
-    "page_title": "Mega Menu Content",
-    "menu_slug": "mega-menu-content",
+    "page_title": "Footer Settings",
+    "menu_slug": "footer-settings",
     "parent_slug": "site-settings",
     "advanced_configuration": 1,
     "icon_url": "",
@@ -14,11 +14,11 @@
     "description": "",
     "menu_icon": [],
     "update_button": "Update",
-    "updated_message": "Menu Updated",
+    "updated_message": "Footer Updated",
     "capability": "edit_posts",
     "data_storage": "options",
     "post_id": "",
     "autoload": 0,
     "_parent": 2346,
-    "modified": 1791312789
+    "modified": 1791312802
 }

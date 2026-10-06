@@ -35,6 +35,7 @@ class Theme_Init {
 		add_filter( 'wp_speculation_rules_configuration', array( $this, 'handle_speculative_loading' ) );
 		add_filter( 'wp_resource_hints', array( $this, 'add_resource_hints' ), 10, 2 );
 		add_filter( 'style_loader_tag', array( $this, 'preload_stylesheets' ), 10, 3 );
+		add_action( 'init', array( '\ChoctawNation\Features\Federated_About', 'schedule_fetch' ) );
 	}
 
 	/**
@@ -86,7 +87,6 @@ class Theme_Init {
 	private function load_required_files() {
 		$base_path = get_template_directory() . '/inc';
 		require_once $base_path . '/theme/theme-functions.php';
-		require_once $base_path . '/bootscore/theme-functions.php';
 	}
 
 	/**
@@ -293,8 +293,9 @@ class Theme_Init {
 		$this->register_image_sizes();
 		register_nav_menus(
 			array(
-				'main-menu'   => 'Main Menu',
-				'footer-menu' => 'Footer Menu',
+				'main-menu'        => 'Main Menu',
+				'footer-menu'      => 'Footer Menu',
+				'footer-info-menu' => 'Footer Info Menu',
 			)
 		);
 	}
