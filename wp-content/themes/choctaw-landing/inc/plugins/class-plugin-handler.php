@@ -95,4 +95,14 @@ class Plugin_Handler {
 		add_action( 'template_redirect', array( $cno_plugins_handler, 'redirect_single_templates' ), 20, 1 );
 		add_filter( 'register_post_type_args', array( $cno_plugins_handler, 'alter_post_type_settings' ), 20, 2 );
 	}
+
+	/**
+	 * Prevent Site Kit from loading GTM for logged-in users.
+	 *
+	 * @param bool $blocked Whether the GTM tag is blocked.
+	 * @return bool
+	 */
+	public function block_gtm_for_logged_in_users( $blocked ) {
+		return $blocked || is_user_logged_in();
+	}
 }

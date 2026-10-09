@@ -7,9 +7,9 @@
  */
 
 use ChoctawNation\ACF\Featured_Eat;
-
+global $post;
 get_header();
-$content = new Featured_Eat( $post, false )
+$content = new Featured_Eat( $post, false );
 ?>
 <main <?php post_class( 'd-flex flex-column row-gap-5 mb-5' ); ?>>
 	<?php

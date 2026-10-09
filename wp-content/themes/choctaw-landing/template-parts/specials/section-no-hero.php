@@ -3,6 +3,7 @@
  * The "Specials" CPT Hero Section when no hero image is present
  *
  * @package ChoctawNation
+ * @var array $args The array of arguments passed to the template part.
  */
 
 $content = $args['content'];
@@ -20,6 +21,7 @@ $content = $args['content'];
 							'class'           => 'w-100 h-100 object-fit-cover',
 							'loading'         => 'eager',
 							'data-spai-eager' => true,
+							'alt'             => '',
 						)
 					);
 					?>

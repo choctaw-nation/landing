@@ -38,3 +38,21 @@ function cno_enqueue_date_range_picker() {
 	wp_enqueue_script( 'cno-date-range-picker' );
 	wp_enqueue_style( 'cno-date-range-picker' );
 }
+
+/**
+ * Replace "Learn More" with additional accessible text for screen readers.
+ *
+ * @param string $text The original link text.
+ * @param string $link_title The title of the link for additional context.
+ * @return string The modified link text with additional accessible context.
+ */
+function cno_better_learn_more_link( string $text, string $link_title ): string {
+	if ( str_contains( $text, 'Learn More' ) ) {
+		$replace_text_prefix = 'about ';
+		if ( ! str_starts_with( strtolower( $link_title ), 'the' ) ) {
+			$replace_text_prefix = 'about our ';
+		}
+		return str_replace( 'Learn More', 'Learn More <span class="visually-hidden">' . $replace_text_prefix . esc_html( $link_title ) . '</span>', $text );
+	}
+	return $text;
+}
