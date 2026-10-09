@@ -58,6 +58,10 @@ class Theme_Init {
 		$plugin_handler->handle_cno_plugins();
 		add_filter( 'auto_update_plugin', array( $plugin_handler, 'handle_auto_update_plugin' ) );
 		add_action( 'admin_init', array( $plugin_handler, 'disable_plugins_per_environment' ) );
+		add_filter(
+			'googlesitekit_tag-manager_tag_blocked',
+			array( $plugin_handler, 'block_gtm_for_logged_in_users' )
+		);
 	}
 
 	/**
