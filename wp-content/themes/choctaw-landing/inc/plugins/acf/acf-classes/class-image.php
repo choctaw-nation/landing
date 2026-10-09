@@ -65,10 +65,11 @@ class Image {
 	 *
 	 * @param string $img_class the class to add
 	 * @param bool   $lazy [optional] whether to use lazy loading (Default true)
+	 * @param bool   $decorative [optional] whether the image is decorative (Default true)
 	 * @return string the HTML
 	 */
-	public function get_the_image( string $img_class = '', bool $lazy = true ): string {
-		$markup = "<img class='{$img_class}' src='{$this->src}' srcset='{$this->srcset}' alt='{$this->alt}'" . ( $lazy ? "loading='lazy'" : 'loading="eager" data-spai-eager' ) . ' />';
+	public function get_the_image( string $img_class = '', bool $lazy = true, bool $decorative = true ): string {
+		$markup = "<img class='{$img_class}' src='{$this->src}' srcset='{$this->srcset}'" . ( $decorative ? ' alt' : " alt='{$this->alt}'" ) . ( $lazy ? " loading='lazy'" : ' loading="eager" data-spai-eager' ) . ' />';
 		return $markup;
 	}
 
@@ -77,8 +78,9 @@ class Image {
 	 *
 	 * @param string $img_class the html class to give the image
 	 * @param bool   $lazy [optional] whether to use lazy loading (Default true)
+	 * @param bool   $decorative [optional] whether the image is decorative (Default true)
 	 */
-	public function the_image( string $img_class = '', bool $lazy = true ) {
-		echo $this->get_the_image( $img_class, $lazy );
+	public function the_image( string $img_class = '', bool $lazy = true, bool $decorative = true ) {
+		echo $this->get_the_image( $img_class, $lazy, $decorative );
 	}
 }

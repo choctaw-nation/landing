@@ -19,7 +19,9 @@ $news = new News( $post->ID );
 				$news->the_photo(
 					'choctaw-news-preview',
 					array(
-						'class' => 'object-fit-cover',
+						'class'   => 'object-fit-cover',
+						'alt'     => '',
+						'loading' => 'lazy',
 					)
 				);
 				?>
