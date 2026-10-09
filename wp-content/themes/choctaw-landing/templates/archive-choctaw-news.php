@@ -12,7 +12,7 @@ get_header();
 	<h1>Newsroom</h1>
 	<?php if ( have_posts() ) : ?>
 	<section class="results">
-		<ol class="list-unstyled">
+		<ol class="list-unstyled m-0 d-flex flex-column row-gap-5">
 			<?php
 			while ( have_posts() ) {
 				the_post();

@@ -276,8 +276,10 @@ class Two_Col_Section extends Generator {
 		if ( $this->has_modal ) {
 			$link_classes['desktop'] .= ' border-0 bg-transparent fw-medium wp-color-primary-dark';
 		}
+		$text = cno_better_learn_more_link( esc_textarea( $text ), esc_textarea( $this->headline ) );
 		return "<{$element} class='{$link_classes[$type]}'{$link_attributes}>{$text}</{$element}>";
 	}
+
 
 	/**
 	 * Generate the HTML markup for the link attributes.

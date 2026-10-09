@@ -39,7 +39,7 @@ class Link_Card extends Card {
 		$this->link        = empty( $acf['link'] ) || ! is_array( $acf['link'] ) ? null : $acf['link'];
 		if ( $this->link ) {
 			$this->with_button = true;
-			$this->target      = $this->link['target'] ? " target='{$this->link['target']}'" : "target='{$this->link['target']}'";
+			$this->target      = $this->link['target'] ? " target='{$this->link['target']}'" : '';
 		}
 	}
 
@@ -53,7 +53,13 @@ class Link_Card extends Card {
 		$markup .= $this->image->get_the_image( 'pb-3 card__image' );
 		$markup .= $this->get_the_content( $headline_element );
 		if ( $this->link && $this->with_button ) {
-			$markup .= "<a href='{$this->link['url']}' class='btn btn-outline-primary stretched-link mt-auto align-self-start fs-6' {$this->target}>{$this->link['title']}</a>";
+
+			$markup .= sprintf(
+				"<a href='%s' class='btn btn-outline-primary stretched-link mt-auto align-self-start fs-6' %s>%s</a>",
+				$this->link['url'],
+				$this->target,
+				cno_better_learn_more_link( $this->link['title'], $this->headline )
+			);
 		}
 		$markup .= '</div>';
 		return $markup;
