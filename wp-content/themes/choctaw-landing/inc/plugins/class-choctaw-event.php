@@ -492,7 +492,15 @@ class Choctaw_Event {
 			}
 		}
 
-		$button = "<button type='button' id='add-to-calendar' class='{$btn_class}' data-event-start='{$start}'" . ( ! empty( $end ) ? "data-event-end='{$end}'" : '' ) . "data-is-all-day='{$this->is_all_day}'>{$text}</button>";
+		$button = sprintf(
+			"<button type='button' id='add-to-calendar' class='%s' data-event-start='%s'%s data-is-all-day='%s' aria-label='%s'>%s</button>",
+			$btn_class,
+			$start,
+			! empty( $end ) ? " data-event-end='{$end}'" : '',
+			$this->is_all_day,
+			$text . ': ' . $this->name,
+			$text
+		);
 		return $button;
 	}
 
