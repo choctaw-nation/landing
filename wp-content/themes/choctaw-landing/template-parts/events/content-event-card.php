@@ -25,8 +25,7 @@ if ( $feature->is_sold_out ) {
 		echo '<span class="visually-hidden">Sold Out</span>';
 	}
 	?>
-	<figure class="mb-0 position-relative">
-		<?php
+	<?php
 		echo wp_get_attachment_image(
 			$swiper_image['ID'],
 			'full',
@@ -34,51 +33,51 @@ if ( $feature->is_sold_out ) {
 			array(
 				'class'   => 'object-fit-cover w-100 h-auto',
 				'loading' => 'lazy',
+				'alt'     => '',
 				'sizes'   => '(min-width:1400px) 414px, (min-width:1200px) 354px, (min-width: 991px) 293.984px, (min-width:767px) 334px, (min-width:576px) 514px, calc(100vw - 1.5rem)',
 			)
 		);
 		?>
-		<figcaption class="d-flex flex-column justify-content-end h-100 event pb-2 w-100 flex-grow-1 position-absolute top-0 z-2 px-3">
-			<h3 class='event__title fs-5 fw-bold mb-1 text-uppercase text-white'>
-				<?php $feature->the_name(); ?>
-			</h3>
-			<time datetime="<?php echo $feature->get_the_start_date( DATE_ATOM ); ?>" class="event__meta fs-6 mb-0 text-white"><i class="fa-solid fa-calendar"></i>
-				<?php
-				if ( $feature->is_multiday_event ) {
-					$feature->the_dates( 'F j, Y' );
-				} else {
-					$feature->the_dates( 'l, M j, Y' );
-					if ( $feature->has_time ) {
-						echo ! empty( $feature->get_the_times() ) ? ( ' • ' . $feature->get_the_times( 'g:iA' ) ) : '';
-					}
-				}
-
-				?>
-			</time>
+	<div class="event-preview__details d-flex flex-column justify-content-end h-100 event pb-2 w-100 flex-grow-1 position-absolute top-0 z-2 px-3">
+		<h3 class='event__title fs-5 fw-bold mb-1 text-uppercase text-white'>
+			<?php $feature->the_name(); ?>
+		</h3>
+		<time datetime="<?php echo $feature->get_the_start_date( DATE_ATOM ); ?>" class="event__meta fs-6 mb-0 text-white"><i class="fa-solid fa-calendar"></i>
 			<?php
-			if ( $feature->has_venue ) {
+			if ( $feature->is_multiday_event ) {
+				$feature->the_dates( 'F j, Y' );
+			} else {
+				$feature->the_dates( 'l, M j, Y' );
+				if ( $feature->has_time ) {
+					echo ! empty( $feature->get_the_times() ) ? ( ' • ' . $feature->get_the_times( 'g:iA' ) ) : '';
+				}
+			}
+
+			?>
+		</time>
+		<?php
+		if ( $feature->has_venue ) {
+			printf(
+				'<p class="event__meta fs-6 mb-0 text-white"><i class="fa-solid fa-map-marker-alt"></i> %s</p>',
+				$feature->get_the_venue_name()
+			);
+		}
+			$has_details = ! empty( $feature->get_the_description() );
+		if ( $has_details || $feature->is_ticketed_event ) {
+			echo '<div class="d-flex align-items-center flex-wrap gap-2 mt-2">';
+			if ( $has_details ) {
 				printf(
-					'<p class="event__meta fs-6 mb-0 text-white"><i class="fa-solid fa-map-marker-alt"></i> %s</p>',
-					$feature->get_the_venue_name()
+					'<a href="%s" class="btn btn-outline-white w-auto">%s</a>',
+					get_permalink( $event_id ),
+					'View Details'
 				);
 			}
-			$has_details = ! empty( $feature->get_the_description() );
-			if ( $has_details || $feature->is_ticketed_event ) {
-				echo '<div class="d-flex align-items-center flex-wrap gap-2 mt-2">';
-				if ( $has_details ) {
-					printf(
-						'<a href="%s" class="btn btn-outline-white w-auto">%s</a>',
-						get_permalink( $event_id ),
-						'View Details'
-					);
-				}
-				if ( $feature->is_ticketed_event ) {
-					$feature->the_tickets_button( 'btn btn-outline-white w-auto', false );
-				}
-				echo '</div>';
+			if ( $feature->is_ticketed_event ) {
+				$feature->the_tickets_button( 'btn btn-outline-white w-auto', false );
 			}
-			?>
+			echo '</div>';
+		}
+		?>
 
-		</figcaption>
-	</figure>
+	</div>
 </article>
