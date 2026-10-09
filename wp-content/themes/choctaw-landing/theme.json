@@ -300,7 +300,7 @@
 			},
 			"link": {
 				"color": {
-					"text": "var:preset|color|primary"
+					"text": "var:preset|color|primary-dark"
 				},
 				"css": ".arrow-link,.nav-link {text-decoration:none;}.nav-link:not(.dropdown-item,.nav-btn .dropdown-item){transition:color var(--wp--custom--transition--standard);}"
 			},
@@ -308,7 +308,7 @@
 				"border": {
 					"radius": "0",
 					"width": "2px",
-					"color": "var:preset|color|primary"
+					"color": "var:preset|color|primary-dark"
 				},
 				"spacing": {
 					"padding": {
@@ -324,7 +324,7 @@
 					"fontSize": "var:preset|font-size|base"
 				},
 				"color": {
-					"background": "var:preset|color|primary",
+					"background": "var:preset|color|primary-dark",
 					"text": "var:preset|color|white"
 				}
 			}
