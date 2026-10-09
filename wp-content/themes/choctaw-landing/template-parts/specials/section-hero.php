@@ -3,6 +3,7 @@
  * The "Specials" CPT Hero Section
  *
  * @package ChoctawNation
+ * @var array $args The array of arguments passed to the template part.
  */
 
 use ChoctawNation\ACF\Title_Bar;
@@ -13,7 +14,7 @@ if ( ! $content ) {
 }
 ?>
 <header id="header-img" class="position-relative d-flex justify-content-center align-items-center hero__bg-container mx-auto" style="height:clamp(20vw,30vw,40vw);">
-	<?php $content->hero_image->the_image( 'hero__image object-fit-cover', false ); ?>
+	<?php $content->hero_image->the_image( 'hero__image object-fit-cover', false, true ); ?>
 </header>
 <?php
 $acf_fields = array(

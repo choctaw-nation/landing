@@ -3,7 +3,7 @@
 		aspect-ratio: 33 / 50;
 	}
 
-	figcaption {
+	&__details {
 		background-image: linear-gradient(
 			to bottom,
 			transparent 50%,
@@ -32,7 +32,7 @@
 			filter: grayscale(100%);
 		}
 
-		figcaption {
+		.event-preview__details {
 			background-image: linear-gradient(
 				to bottom,
 				hsl(

@@ -181,6 +181,7 @@ class Featured_Eat {
 			array(
 				'class'   => "{$img_class} object-fit-cover",
 				'loading' => 'lazy',
+				'alt'     => '',
 			)
 		);
 	}

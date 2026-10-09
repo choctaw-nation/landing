@@ -19,13 +19,15 @@ use ChoctawNation\Features\Federated_About;
 			<div class="row row-gap-4">
 				<div class="col-md-6 col-lg-4">
 					<h2 class="fs-5 text-white fw-normal">About Us</h2>
-					<?php
-					if ( get_field( 'use_federated_about', 'option' ) ) {
-						echo esc_html( Federated_About::get_about_content() );
-					} else {
-						the_field( 'custom_about', 'option' );
-					}
-					?>
+					<div>
+						<?php
+						if ( get_field( 'use_federated_about', 'option' ) ) {
+							echo esc_html( Federated_About::get_about_content() );
+						} else {
+							the_field( 'custom_about', 'option' );
+						}
+						?>
+					</div>
 				</div>
 				<div class="col-md-6 col-lg-8">
 					<div class="row justify-content-around row-gap-4">
