@@ -103,6 +103,6 @@ class Plugin_Handler {
 	 * @return bool
 	 */
 	public function block_gtm_for_logged_in_users( $blocked ) {
-		return $blocked || is_user_logged_in();
+		return $blocked || is_user_logged_in() || 'production' !== wp_get_environment_type();
 	}
 }

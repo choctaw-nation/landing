@@ -19,12 +19,13 @@ class Gravity_Forms_Handler {
 	 * @return string The modified button HTML.
 	 */
 	public function add_bootstrap_classes( string $button ): string {
-		$dom = new \DOMDocument();
-		$dom->loadHTML( $button );
-		$input   = $dom->getElementsByTagName( 'input' )->item( 0 );
-		$classes = $input->getAttribute( 'class' );
-		$classes = 'btn btn-lg btn-outline-primary text-uppercase';
-		$input->setAttribute( 'class', $classes );
-		return $dom->saveHtml( $input );
+		$fragment = \WP_HTML_Processor::create_fragment( $button );
+		$fragment->next_token();
+		$fragment->add_class( 'btn' );
+		$fragment->add_class( 'btn-lg' );
+		$fragment->add_class( 'btn-outline-primary' );
+		$fragment->add_class( 'text-uppercase' );
+
+		return $fragment->get_updated_html();
 	}
 }
